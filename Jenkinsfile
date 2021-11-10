@@ -2,9 +2,12 @@ pipeline {
    agent any
 
    stages {
-      stage('testing'){
+      stage('checkout'){
           steps {
-            sh 'echo this is found'
+            script {
+                properties([pipelineTriggers([githubPush()])])
+            }
+            git branch: 'main', url: 'repo url'
           }
       }
    }
