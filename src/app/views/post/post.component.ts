@@ -23,7 +23,7 @@ export class PostComponent implements OnInit {
       (result)=>{
         console.log(result);
         this.postArray = result;
-        this.onePost = this.postArray[0];
+        this.onePost = this.postArray[2];
         console.log(this.onePost.creator?.username);
         this.username = this.onePost.creator?.username;
         this.imgURL = this.onePost.imgURL;
