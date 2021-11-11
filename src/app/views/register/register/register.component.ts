@@ -46,6 +46,9 @@ export class RegisterComponent implements OnInit {
           }
         )
       }
+      else{
+        this.pswMatch = true;
+      }
     } 
     else{
       this.missing = true;
