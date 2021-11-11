@@ -2,7 +2,7 @@
 <div class="container col-sm-10">
     <br>
 
-<div  class="card w-50 center">
+<div  class="card w-50">
     <p>Last Name: {{this.profile.lastName}}</p>
     <p>First Name: {{this.profile.firstName}}</p>
     <p>Email: {{this.profile.email}}</p>
@@ -10,14 +10,17 @@
 
 
 
-<div  *ngIf = updated class="card">
+<div  *ngIf = updated class="w-50">
     <br>
-    <input type="text" placeholder="update first name" [(ngModel)] = firstName>
-    <input type="text" placeholder="update last name" [(ngModel)] = lastName>
-    <input type="email" placeholder="update email" [(ngModel)] = email>
+    <input type="text" class="form-control" placeholder="update first name" [(ngModel)] = firstName>
+    <br>
+    <input type="text" class="form-control" placeholder="update last name" [(ngModel)] = lastName>
+    <br>
+    <input type="email" class="form-control" placeholder="update email" [(ngModel)] = email>
+    <br>
     <button class="btn btn-dark" (click)="updateProfile()">Submit Update</button>
 </div>
 <br>
-<button class="btn btn-dark" (click)="showUpdateMenu()">Update Profile</button>
+<button *ngIf ="updated == false" class="btn btn-dark" (click)="showUpdateMenu()">Update Profile</button>
 </div>
 
