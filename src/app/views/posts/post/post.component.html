@@ -1,0 +1,11 @@
+<div class="post">
+    <p class="post-body">{{post.body}}</p>
+    <p class="post-creator">{{post.creator.firstName}} {{post.creator.lastName}}</p>
+    <p class="post-date">{{post.datePosted}}</p>
+
+    <div *ngIf="post.imgURL">
+        <img [src]="post.imgURL" width="100px"/>
+    </div>
+    
+    
+</div>

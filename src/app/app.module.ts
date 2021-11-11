@@ -9,6 +9,8 @@ import { ProfileComponent } from './views/profile/profile/profile.component';
 import { RegisterComponent } from './views/register/register/register.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreatePostComponent } from './views/posts/create-post/create-post.component';
+import { PostComponent } from './views/posts/post/post.component';
+import { PostsContainerComponent } from './views/posts/posts-container/posts-container.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { CreatePostComponent } from './views/posts/create-post/create-post.compo
     LoginComponent,
     ProfileComponent,
     RegisterComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    PostComponent,
+    PostsContainerComponent
   ],
   imports: [
     BrowserModule,

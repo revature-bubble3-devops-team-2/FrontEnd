@@ -5,5 +5,5 @@ export interface Post {
     creator: Profile;
     body: string;
     datePosted: Date;
-    imgURL: string;
+    imgURL?: string;
 }
