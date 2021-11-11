@@ -24,13 +24,9 @@ export class CreatePostComponent implements OnInit {
   };
 
   createPost() {
-    console.log(`creating post: ${this.addPost} `);
     this.postService.createPost(this.addPost).subscribe(response=> console.log(response));
-
   }
   
-  
-
   constructor(public postService: PostService) { }
 
   ngOnInit(): void {
