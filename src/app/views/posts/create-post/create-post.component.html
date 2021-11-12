@@ -1,14 +1,17 @@
-<div class="card-body">
+<div class="card-body rounded">
     <div class="create-post-container">
-        <form id="create-post-form" >
+        <form class="create-post-form" >
             <label for="create-post">Create a new post: </label>
+            <hr/>
             <div class="mb-3">
-                <label for="formGroupExampleInput" class="form-label">Example label</label>
-                <textarea type="text" class="form-control" [(ngModel)]="addPost.body" name="create-post" id="create-post" placeholder="create a post..." required>
-                </textarea>
+                <textarea type="text" class="form-control" [(ngModel)]="addPost.body" name="create-post"
+                id="create-post" placeholder="What's Bubblin?" required></textarea>
+                <p class = "error" *ngIf="show">Please input some post text.</p>
             </div>
             <!-- <input type="file" [(ngModel)]="addPost.imgURL" name="create-post-image" id="create-post-image"/> -->
-            <input type="submit" (click)="createPost()"/>
+            <div class="submit">
+                <button mat-raised-button type="submit" (click)="createPost()">Submit</button>
+            </div>
         </form>
     </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Post } from 'src/app/models/post';
 import { PostService } from 'src/app/services/post.service';
@@ -12,16 +12,18 @@ export class CreatePostComponent implements OnInit {
   addPost: Post = {
     creator: {
       pid: 2,
-      username: 'profile2',
-      passkey: '22',
-      firstName: 'Two',
-      lastName: 'LastTwo',
-      email: 'Email2',
+      username: 'profile3',
+      passkey: '33',
+      firstName: 'Three',
+      lastName: 'LastThree',
+      email: 'Email3',
     },
     body: '',
     datePosted: new Date(),
     imgURL: 'https://source.unsplash.com/random/300x300',
   };
+
+ @Input() show: boolean=false;
 
   constructor(
     public postService: PostService, 
@@ -31,6 +33,11 @@ export class CreatePostComponent implements OnInit {
   ngOnInit(): void {}
 
   createPost() {
+    if(this.addPost.body!==''){
     this.postService.createPost(this.addPost);
+    this.activeModal.close();
+    }else{
+      this.show=true;
+    }
   }
 }
