@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Post } from 'src/app/models/post';
 import { PostService } from 'src/app/services/post.service';
 
@@ -23,7 +23,10 @@ export class CreatePostComponent implements OnInit {
     imgURL: 'https://source.unsplash.com/random/300x300',
   };
 
-  constructor(public postService: PostService) {}
+  constructor(
+    public postService: PostService, 
+    public activeModal: NgbActiveModal
+    ) {}
 
   ngOnInit(): void {}
 

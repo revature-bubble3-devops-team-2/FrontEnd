@@ -11,7 +11,6 @@ export class PostComponent implements OnInit {
 
   @Input() post!: Post;
   
-
   constructor(public activeModal: NgbActiveModal) { }
 
   ngOnInit(): void {

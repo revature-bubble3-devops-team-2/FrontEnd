@@ -3,6 +3,7 @@ import { Post } from 'src/app/models/post';
 import { PostService } from 'src/app/services/post.service';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PostComponent } from '../post/post.component';
+import { CreatePostComponent } from '../create-post/create-post.component';
 
 @Component({
   selector: 'app-posts-container',
@@ -27,9 +28,12 @@ export class PostsContainerComponent implements OnInit {
     })
   }
 
+  openCreatePost() {
+    this.modalService.open(CreatePostComponent);
+  }
+
   open(post: Post) {
     const modalRef = this.modalService.open(PostComponent);
     modalRef.componentInstance.post = post;
   }
-
 }
