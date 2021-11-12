@@ -9,6 +9,8 @@ import { ProfileComponent } from './views/profile/profile/profile.component';
 import { RegisterComponent } from './views/register/register/register.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreatePostComponent } from './views/posts/create-post/create-post.component';
+import { PostComponent } from './views/posts/post/post.component';
+import { PostsContainerComponent } from './views/posts/posts-container/posts-container.component';
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
@@ -17,7 +19,9 @@ import { AppRoutingModule } from './app-routing.module';
     LoginComponent,
     ProfileComponent,
     RegisterComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    PostComponent,
+    PostsContainerComponent
   ],
   imports: [
     BrowserModule,
@@ -26,6 +30,9 @@ import { AppRoutingModule } from './app-routing.module';
     HttpClientModule,
     NgbModule,
     AppRoutingModule
+  ],
+  entryComponents:[
+    PostComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
