@@ -1,10 +1,36 @@
 * {box-sizing: border-box}
 
+.register-container {
+    background-image: ;
+}
+
+.error {
+    color: rgb(185, 37, 37);
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.sign-in {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.register-form {
+    padding: 5rem;
+}
+
+.text-center {
+    background-color: #F26925;
+    border-radius: 50%;
+    padding: 2rem;
+}
+
 /* Add padding to containers */
 .container {
-    padding: 16px;
+    padding: 4rem;
     background-color: #474C55;
-    border-radius: 5%;
+    border-radius: 80px;
+    max-width: 600px;
 }
 
 /* Full-width input fields */
@@ -15,6 +41,7 @@ input[type=text], input[type=password] {
     display: inline-block;
     border: none;
     background: #f1f1f1;
+    border-radius: 100px;
 }
 
 input[type=text]:focus, input[type=password]:focus {
@@ -38,6 +65,7 @@ hr {
     cursor: pointer;
     width: 100%;
     opacity: 0.9;
+    border-radius: 100px;
 }
 
 .registerbtn:hover {
