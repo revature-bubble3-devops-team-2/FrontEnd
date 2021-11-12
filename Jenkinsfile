@@ -9,7 +9,7 @@ pipeline {
       }
       stage('build') {
          steps {
-            sh 'ng build --aot'
+            sh 'npm -v'
          }
       }
    }
