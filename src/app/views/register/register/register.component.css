@@ -1,5 +1,9 @@
 * {box-sizing: border-box}
 
+.register-container {
+    background-image: url("assets/images/login_register_background.jpg");
+}
+
 .error {
     color: rgb(185, 37, 37);
     font-size: 18px;
