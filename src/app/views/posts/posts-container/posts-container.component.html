@@ -1,7 +1,10 @@
-<app-create-post></app-create-post>
-<!-- <div class="posts-container" *ngFor="let post of posts">
-    <app-post [post]="post"></app-post>
-</div> -->
+<div class="d-flex flex-column justify-content-center">
+  <div class="card-body align-self-center">
+    <div (click)="openCreatePost()">
+      <input class="rounded" placeholder="Create a post..." />
+    </div>
+  </div>
+</div>
 
 <div class="album py-5 bg-light">
   <div class="container">

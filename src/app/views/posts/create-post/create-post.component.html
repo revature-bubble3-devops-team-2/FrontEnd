@@ -1,14 +1,14 @@
-<div class="create-post-container">
-    <form id="create-post-form" >
-        <label for="create-post">Create a new post: </label>
-        <div class="mb-3">
-            <label for="formGroupExampleInput" class="form-label">Example label</label>
-            <textarea type="text" class="form-control" [(ngModel)]="addPost.body" name="create-post" id="create-post" placeholder="create a post..." required>
-                
-            </textarea>
-          </div>
-        <!-- <input type="text" [(ngModel)]="addPost.body" name="create-post" id="create-post" placeholder="create a post..." required/> -->
-        <!-- <input type="file" [(ngModel)]="addPost.imgURL" name="create-post-image" id="create-post-image"/> -->
-        <input type="submit" (click)="createPost()"/>
-    </form>
+<div class="card-body">
+    <div class="create-post-container">
+        <form id="create-post-form" >
+            <label for="create-post">Create a new post: </label>
+            <div class="mb-3">
+                <label for="formGroupExampleInput" class="form-label">Example label</label>
+                <textarea type="text" class="form-control" [(ngModel)]="addPost.body" name="create-post" id="create-post" placeholder="create a post..." required>
+                </textarea>
+            </div>
+            <!-- <input type="file" [(ngModel)]="addPost.imgURL" name="create-post-image" id="create-post-image"/> -->
+            <input type="submit" (click)="createPost()"/>
+        </form>
+    </div>
 </div>
