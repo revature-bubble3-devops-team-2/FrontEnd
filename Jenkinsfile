@@ -6,7 +6,7 @@ pipeline {
 
    stages {
       stage('checkout') {
-          steps {
+         steps {
             checkout scm
             discordSend description: ":cyclone: *Cloning Repo*", result: currentBuild.currentResult, webhookURL: discordurl
          }
