@@ -2,3 +2,7 @@
     border: 2px solid blue;
     padding: 5px;
 }
+
+.card {
+    cursor: pointer;
+}

@@ -11,6 +11,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreatePostComponent } from './views/posts/create-post/create-post.component';
 import { PostComponent } from './views/posts/post/post.component';
 import { PostsContainerComponent } from './views/posts/posts-container/posts-container.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,11 @@ import { PostsContainerComponent } from './views/posts/posts-container/posts-con
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    AppRoutingModule
+  ],
+  entryComponents:[
+    PostComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
