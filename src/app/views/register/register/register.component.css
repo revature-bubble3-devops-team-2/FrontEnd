@@ -1,0 +1,90 @@
+* {box-sizing: border-box}
+
+.register-container {
+    background-image: url("assets/images/login_register_background.jpg");
+}
+
+.error {
+    color: rgb(185, 37, 37);
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.success {
+    color: rgb(29, 133, 29);
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.sign-in {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.register-form {
+    padding: 5rem;
+}
+
+.text-center {
+    background-color: #F26925;
+    border-radius: 50%;
+    padding: 2rem;
+}
+
+/* Add padding to containers */
+.container {
+    padding: 4rem;
+    background-color: #474C55;
+    border-radius: 80px;
+    max-width: 600px;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 5px 22px 5px;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+    border-radius: 100px;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+/* Set a style for the submit/register button */
+.registerbtn {
+    background-color: #F26925;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    border-radius: 100px;
+}
+
+.registerbtn:hover {
+    opacity:1;
+}
+
+/* Add a blue text color to links */
+a {
+    color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+    background-color: #f1f1f1;
+    text-align: center;
+}
