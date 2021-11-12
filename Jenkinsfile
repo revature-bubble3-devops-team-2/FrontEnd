@@ -2,7 +2,7 @@ def discordurl = "https://discord.com/api/webhooks/908752964670337095/S9h_mpTXF3
 pipeline {
    agent any
 
-   options disableConcurrentBuilds()
+   options {disableConcurrentBuilds()}
 
    tools { nodejs "node"}
 
