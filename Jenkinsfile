@@ -13,7 +13,7 @@ pipeline {
       }
       stage('Install Dependencies') {
          steps {
-            sh 'npm install'
+            sh 'npm uninstall @angular/cli'
             discordSend description: ":construction_site: *Dependencies Updated*", result: currentBuild.currentResult, webhookURL: discordurl
          }
       }
