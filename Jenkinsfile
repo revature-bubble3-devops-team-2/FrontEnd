@@ -7,27 +7,26 @@ pipeline {
    stages {
       stage('checkout') {
           steps {
-            checkout scm
             discordSend description: ":cyclone: *Cloning Repo*", result: currentBuild.currentResult, webhookURL: discordurl
+            checkout scm
          }
       }
       stage('Install Dependencies') {
          steps {
-            sh 'npm uninstall @angular/cli --legacy-peer-deps'
-            sh 'npm install @angular/cli'
-            discordSend description: ":construction_site: *Dependencies Updated*", result: currentBuild.currentResult, webhookURL: discordurl
+            discordSend description: ":construction: *Updating Dependencies*", result: currentBuild.currentResult, webhookURL: discordurl
+            sh 'npm install'
          }
       }
       stage('build') {
          steps {
+            discordSend description: ":construction_site: *Building Angular*", result: currentBuild.currentResult, webhookURL: discordurl
             sh 'ng build --aot'
-            discordSend description: ":desktop: *Webpage Successfully Built*", result: currentBuild.currentResult, webhookURL: discordurl
          }
       }
    }
    post {
       success {
-         discordSend description: ":whale2: *Ready for Docker pick up*", result: currentBuild.currentResult, webhookURL: discordurl
+         discordSend description: ":whale2: **Ready for Docker pick up**", result: currentBuild.currentResult, webhookURL: discordurl
       }
    }
 }
