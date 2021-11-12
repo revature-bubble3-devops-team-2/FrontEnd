@@ -10,6 +10,8 @@ export class ProfileService {
 
   constructor(private http: HttpClient,) { }
 
+  // Sends post request to the profile controller that then responds
+  // with httpstatus code
   registerProfile(profile: Profile): Observable<any> {
     return this.http.post('http://localhost:8082/profiles', profile)
   }

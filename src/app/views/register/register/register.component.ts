@@ -27,7 +27,16 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // First checks if all fields are not empty, then checks if passwords
+  // match, and finally calls the profile service to use the register profile
+  // method.
+
   registerProfile(){
+    this.taken = false;
+    this.missing = false;
+    this.pswMatch = false;
+    this.success = false;
+
     if(this.firstname != "" && this.lastname != "" && this.email != "" && this.psw != "" && this.pswrepeat != "" && this.username != ""){
       
       if(this.psw==this.pswrepeat){
