@@ -1,1 +1,26 @@
-<p>profile works!</p>
+<h5 class="card-header">{{this.profile.username}}</h5>
+<div class="container col-sm-10">
+    <br>
+
+<div  class="card w-50">
+    <p>Last Name: {{this.profile.lastName}}</p>
+    <p>First Name: {{this.profile.firstName}}</p>
+    <p>Email: {{this.profile.email}}</p>
+</div>
+
+
+
+<div  *ngIf = updated class="w-50">
+    <br>
+    <input type="text" class="form-control" placeholder="update first name" [(ngModel)] = firstName>
+    <br>
+    <input type="text" class="form-control" placeholder="update last name" [(ngModel)] = lastName>
+    <br>
+    <input type="email" class="form-control" placeholder="update email" [(ngModel)] = email>
+    <br>
+    <button class="btn btn-dark" (click)="updateProfile()">Submit Update</button>
+</div>
+<br>
+<button *ngIf ="updated == false" class="btn btn-dark" (click)="showUpdateMenu()">Update Profile</button>
+</div>
+
