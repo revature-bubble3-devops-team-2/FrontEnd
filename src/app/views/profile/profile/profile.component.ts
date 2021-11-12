@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { Profile } from 'app/models/profile';
 import { ProfileService } from 'app/services/profile.service';
 
@@ -33,32 +33,37 @@ export class ProfileComponent implements OnInit {
     if(sessionProfile!=null){
       this.profile = JSON.parse(sessionProfile);
       //console.log(this.profile)
-    }   
+    }
+
+    // if(this.profileService.getData()!={}){
+    //   this.profile = this.profileService.getData();
+    // }   
   }
+
 
   showUpdateMenu(){
     this.updated = true;
   }
 
-  updateProfile(){
-    if(this.email!=""){
-      this.profile.email = this.email;
-    }
-    if(this.firstName!=""){
-      this.profile.firstName = this.firstName;
-    }  
-    if(this.lastName!=""){
-      this.profile.lastName = this.lastName;
-    }
-    this.profile.pid = 1;
-    this.profileService.updateProfile(this.profile).subscribe(
-      (result)=>{
-        console.log(result);
-      }
-    )  
-  }
+  // updateProfile(){
+  //   if(this.email!=""){
+  //     this.profile.email = this.email;
+  //   }
+  //   if(this.firstName!=""){
+  //     this.profile.firstName = this.firstName;
+  //   }  
+  //   if(this.lastName!=""){
+  //     this.profile.lastName = this.lastName;
+  //   }
+  //   this.profileService.updateProfile(this.profile).subscribe(
+  //     (result)=>{
+  //       sessionStorage.setItem("profile", JSON.stringify(result));
+  //       console.log(result);
+  //     }
+  //   )  
+  // }
 
   leaveUpdate(){
-    this.updated == false;
+    this.updated = false;
   }
 }

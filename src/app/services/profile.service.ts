@@ -2,11 +2,23 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Profile } from 'app/models/profile';
 import { Observable } from 'rxjs';
+import { ThrowStmt } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileService {
+  private profile: Profile={};
+
+  setData(profile: Profile){
+    this.profile = profile;
+  }
+
+  getData(){
+    let temp = this.profile;
+    this.profile={};
+    return temp;
+  }
 
   constructor(private http: HttpClient,) { }
 
