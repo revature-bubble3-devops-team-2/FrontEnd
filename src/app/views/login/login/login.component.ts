@@ -12,6 +12,7 @@ import { Profile } from '../../../models/profile';
 })
 export class LoginComponent implements OnInit {
 
+
   username: String = "";
   password: String = "";
 
@@ -88,5 +89,4 @@ export class LoginComponent implements OnInit {
     
     return error;
   }
-
 }
