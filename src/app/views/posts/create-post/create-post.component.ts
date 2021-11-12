@@ -1,35 +1,33 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Post } from 'src/app/models/post';
 import { PostService } from 'src/app/services/post.service';
 
 @Component({
   selector: 'app-create-post',
   templateUrl: './create-post.component.html',
-  styleUrls: ['./create-post.component.css']
+  styleUrls: ['./create-post.component.css'],
 })
 export class CreatePostComponent implements OnInit {
   addPost: Post = {
     creator: {
-        "pid":2,
-        "username":"profile2",
-        "passkey":"22",
-        "firstName":"Two",
-        "lastName":"LastTwo",
-        "email":"Email2"
-  }
-  ,
-    body: "",
+      pid: 2,
+      username: 'profile2',
+      passkey: '22',
+      firstName: 'Two',
+      lastName: 'LastTwo',
+      email: 'Email2',
+    },
+    body: '',
     datePosted: new Date(),
-    imgURL: ""
+    imgURL: 'https://source.unsplash.com/random/300x300',
   };
 
+  constructor(public postService: PostService) {}
+
+  ngOnInit(): void {}
+
   createPost() {
-    this.postService.createPost(this.addPost).subscribe(response=> console.log(response));
+    this.postService.createPost(this.addPost);
   }
-  
-  constructor(public postService: PostService) { }
-
-  ngOnInit(): void {
-  }
-
 }

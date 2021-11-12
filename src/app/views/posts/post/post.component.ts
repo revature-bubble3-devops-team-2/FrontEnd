@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Post } from 'src/app/models/post'; 
 
 @Component({
@@ -9,8 +10,9 @@ import { Post } from 'src/app/models/post';
 export class PostComponent implements OnInit {
 
   @Input() post!: Post;
+  
 
-  constructor() { }
+  constructor(public activeModal: NgbActiveModal) { }
 
   ngOnInit(): void {
   }
