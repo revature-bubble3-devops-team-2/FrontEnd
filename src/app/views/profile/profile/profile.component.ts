@@ -15,6 +15,7 @@ export class ProfileComponent implements OnInit {
   lastName: string = "";
   email: string = "";
   updated: boolean = false;
+  credential: string = "";
 
   constructor(private profileService: ProfileService) { }
 
@@ -55,5 +56,9 @@ export class ProfileComponent implements OnInit {
         console.log(result);
       }
     )  
+  }
+
+  leaveUpdate(){
+    this.updated == false;
   }
 }

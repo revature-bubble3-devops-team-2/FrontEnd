@@ -1,26 +1,38 @@
 <h5 class="card-header">{{this.profile.username}}</h5>
-<div class="container col-sm-10">
+<div class="container" >
     <br>
-
-<div  class="card w-50">
-    <p>Last Name: {{this.profile.lastName}}</p>
-    <p>First Name: {{this.profile.firstName}}</p>
-    <p>Email: {{this.profile.email}}</p>
+    <div class="row">
+        <div class="col-sm-3" style="background-color:rgb(253, 181, 21);">
+            <h6>Profile</h6>
+            <div  class="card">
+                <p>Last Name: {{this.profile.lastName}}</p>
+                <p>First Name: {{this.profile.firstName}}</p>
+                <p>Email: {{this.profile.email}}</p>
+            </div>
+            <div  *ngIf = updated>
+                <br>
+                <input type="text" class="form-control" placeholder="update first name" [(ngModel)] = firstName>
+                <br>
+                <input type="text" class="form-control" placeholder="update last name" [(ngModel)] = lastName>
+                <br>
+                <input type="email" class="form-control" placeholder="update email" [(ngModel)] = email>
+            <br>
+                <button class="btn btn-dark" (click)="updateProfile()">Submit Update</button>
+                <p> </p>
+                <button class="btn btn-dark" (click)="leaveUpdate()">Go back</button>
+            </div>
+            <br>
+            <div *ngIf ="updated == false">
+                <button  class="btn btn-dark" (click)="showUpdateMenu()">Update Profile</button>
+                <br><br>
+                <h6>Add Friend</h6>
+                <input type="email" class="form-control" placeholder="Add frineds by email" [(ngModel)] = credential>
+                <br><button  class="btn btn-dark">Add Friend</button>
+            </div>
+            
+        </div>
+        <div>
+            <div></div>
+        </div>  
+    </div>
 </div>
-
-
-
-<div  *ngIf = updated class="w-50">
-    <br>
-    <input type="text" class="form-control" placeholder="update first name" [(ngModel)] = firstName>
-    <br>
-    <input type="text" class="form-control" placeholder="update last name" [(ngModel)] = lastName>
-    <br>
-    <input type="email" class="form-control" placeholder="update email" [(ngModel)] = email>
-    <br>
-    <button class="btn btn-dark" (click)="updateProfile()">Submit Update</button>
-</div>
-<br>
-<button *ngIf ="updated == false" class="btn btn-dark" (click)="showUpdateMenu()">Update Profile</button>
-</div>
-
