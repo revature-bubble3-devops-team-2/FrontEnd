@@ -23,4 +23,8 @@ export class ProfileService {
   updateProfile(profile: Profile): Observable<Profile>{
     return this.http.put(`http://localhost:8090/profiles/${profile.pid}`, profile);
   }
+
+  login(username: string, password: string): Observable<any> {    
+    return this.http.post('http://localhost:8082/login', {username: username, password: password});
+  }
 }

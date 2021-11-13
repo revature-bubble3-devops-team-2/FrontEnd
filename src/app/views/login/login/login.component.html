@@ -1,7 +1,6 @@
-<p>login works!</p>
-
+<!---
 <div class="login">
-    <form name = "loginForm">
+    <form class = "loginForm">
         <input type="text" placeholder="Username" #username required/>
         <span class="text-danger" hidden #usernameError>Username is required.</span>
 
@@ -11,8 +10,22 @@
         <button class="btn btn-primary" (click)="onLogin($event, username.value, password.value)">             
             Login
         </button>
-    <a routerLink="/register" class="btn btn-link">Register</a>
-</form>
+        
+        <a routerLink="/register" class="btn btn-link">Register</a>
+    </form>
+</div>
+-->
 
-<button (click)="getPosts()"> Get Post</button>
+<div class="login-contrainer">
+    <form class = "loginForm">
+        <h1 class="text-center">Login</h1>
+        <div class="error" *ngIf="error">Username or password is not in the database.</div>
+        <div class="error" *ngIf="missing">Must enter both username and password.</div>
+
+        <input class="form-control" type="text" placeholder="Enter Username" name="username" id="username" [(ngModel)]="username" required>
+
+        <input class="form-control" type="password" placeholder="Enter Password" name="password" id="password" [(ngModel)]="password" required>
+
+        <button type="submit" class="onLoginBtn btn" (click)="login()">Login</button>
+    </form>
 </div>

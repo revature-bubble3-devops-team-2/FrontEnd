@@ -11,8 +11,6 @@ import { RegisterComponent } from './views/register/register/register.component'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 
-import { HttpClientModule } from '@angular/common/http';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +24,9 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
+    FormsModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     HttpClientModule,
   ],
   providers: [],
