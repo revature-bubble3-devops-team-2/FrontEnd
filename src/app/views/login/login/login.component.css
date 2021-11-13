@@ -1,7 +1,10 @@
-
+* {box-sizing: border-box}
 
 .login-container {
-    background-image: url("/assets/images/login_register_background.jpg");
+    background-image: url("/assets/images/login-register-background.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100vh;
 }
 
 .error {
@@ -15,17 +18,20 @@
 }
 
 .text-center {
-    background-color: #F26925;    
-    border-radius: 100px;
-    padding: 2rem;
+    background-color: #de6f3d;
+    border-radius: 80px;
+    padding: 1rem;
+    color: white;
+    margin-bottom: 3rem;
 }
 
 /* Add padding to containers */
 .container {
     padding: 4rem;
-    background-color: #474C55;
     border-radius: 80px;
-    max-width: 600px;
+    max-width: 500px;
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
 }
 
 /* Full-width input fields */
@@ -69,5 +75,12 @@ hr {
 
 /* Add a blue text color to links */
 a {
-    color: dodgerblue;
+    color: rgb(156, 112, 45);
+    font-weight: 500;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.sign-up {
+    margin-top: 3rem;
+    text-align: center;
 }
