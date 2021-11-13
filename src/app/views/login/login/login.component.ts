@@ -37,8 +37,17 @@ export class LoginComponent implements OnInit {
       this.profileService.login(this.username, this.password).subscribe(
         r => { 
           console.log(r);
-          sessionStorage.setItem("Authorization", r.headers.get("Authorization"));
-          this.router.navigate(['/profile']);         
+
+          
+          if (r.headers.get("Authorization") !== null)
+          {
+            let headerVar =r.headers.get("Authorization");
+            console.log(headerVar);
+            /*headerVar = r.headers.get("Authorization");
+            sessionStorage.setItem("Authorization", headerVar);*/
+          }
+          
+          this.router.navigate(['/profile']);
         }
       )
 
