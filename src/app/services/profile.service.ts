@@ -25,15 +25,6 @@ export class ProfileService {
   }
   
   login(username: string, password: string): Observable<HttpResponse<Profile>> {    
-    
-    const body = new HttpParams()
-                  .set('username', username)
-                  .set('password', password);
-
-    console.log("test", username, password, "Object:", body);
-    return this.http.post<HttpResponse<Profile>>('http://localhost:8082/profile', body.toString(), {
-      headers: new HttpHeaders()
-        .set('Content-Type', 'application/x-www-form-urlencoded')
-    });
+    return this.http.post<Profile>('http://localhost:8082/profile', `username=${username}&password=${password}`, { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
   }
 }
