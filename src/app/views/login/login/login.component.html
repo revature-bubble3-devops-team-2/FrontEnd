@@ -1,12 +1,18 @@
 <p>login works!</p>
 
 <div class="login">
-    <form>
-        <input type="text" placeholder="Username" #username/>
-        <input type="password" placeholder="Password" #password/>
+    <form name = "loginForm">
+        <input type="text" placeholder="Username" #username required/>
+        <span class="text-danger" hidden #usernameError>Username is required.</span>
+
+        <input type="password" placeholder="Password" #password required/>
+        <span class="text-danger" #passwordError>Password is required.</span>
+
         <button class="btn btn-primary" (click)="onLogin($event, username.value, password.value)">             
             Login
         </button>
     <a routerLink="/register" class="btn btn-link">Register</a>
 </form>
+
+<button (click)="getPosts()"> Get Post</button>
 </div>
