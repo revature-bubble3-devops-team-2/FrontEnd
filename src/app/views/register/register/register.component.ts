@@ -18,10 +18,10 @@ export class RegisterComponent implements OnInit {
   psw: string = "";
   pswrepeat: string = "";
 
-  taken: boolean = true;
-  missing: boolean = true;
+  taken: boolean = false;
+  missing: boolean = false;
   pswMatch: boolean = false;
-  success: boolean = true;
+  success: boolean = false;
 
   constructor(private profileService:ProfileService, private router: Router) { }
 
@@ -48,11 +48,12 @@ export class RegisterComponent implements OnInit {
         this.profile.passkey = this.psw;
 
         this.profileService.registerProfile(this.profile).subscribe(
-          (data) => {
+          (data: any) => {
             sessionStorage.setItem("Authorization", data.headers.get("Authorization"));
             this.router.navigate(['/profile']);
           },
-          (error) => {
+          (error: Error) => {
+            console.log(error);
             this.taken = true;
           }
         )
