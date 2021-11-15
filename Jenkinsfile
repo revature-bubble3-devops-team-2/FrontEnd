@@ -29,7 +29,7 @@ pipeline {
          steps {
             sh 'ng build --aot'
             discordSend description: ":construction_site: *Built Production Model*", result: currentBuild.currentResult, webhookURL: discordurl
-            sh 'ls /dist'
+            sh 'ls ./dist'
          }
       }
       stage('remove previous docker image') {
