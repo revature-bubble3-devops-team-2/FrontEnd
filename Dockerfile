@@ -1,3 +1,4 @@
 FROM nginx
-ADD dist/* .
+WORKDIR /usr/share/nginx/html
+ADD ./dist/* ./
 EXPOSE 80
