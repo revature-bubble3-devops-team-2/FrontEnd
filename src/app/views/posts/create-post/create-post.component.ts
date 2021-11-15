@@ -20,7 +20,8 @@ export class CreatePostComponent implements OnInit {
     },
     body: '',
     datePosted: new Date(),
-    imgURL: 'https://source.unsplash.com/random/300x300',
+  //  imgURL: 'https://source.unsplash.com/random/300x300',
+    imgURL: '',
   };
 
  @Input() show: boolean=false;
