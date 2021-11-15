@@ -33,21 +33,20 @@ export class LoginComponent implements OnInit {
     //Check both field if there's value
     if(this.username != "" && this.password!= "")
     {
-      console.log("test", this.username, this.password);
+      //console.log("test", this.username, this.password);
       this.profileService.login(this.username, this.password).subscribe(
-        r => { 
-          console.log(r);
-
-          
-          if (r.headers.get("Authorization") !== null)
+        r => {           
+          if (r.body !== null)
           {
-            let headerVar =r.headers.get("Authorization");
-            console.log(headerVar);
-            /*headerVar = r.headers.get("Authorization");
-            sessionStorage.setItem("Authorization", headerVar);*/
-          }
-          
-          this.router.navigate(['/profile']);
+            let profile = r.body;     
+
+            //Store the return body into sessionStorage and then redirect to profile page
+            sessionStorage.setItem("Authorization", JSON.stringify(profile) );
+            this.router.navigate(['/profile']); 
+          } else {
+            //Error in case if something in the backend doesn't give us data for w.e reason.
+            console.log("Returned profile but no data")
+          }                  
         }
       )
 
