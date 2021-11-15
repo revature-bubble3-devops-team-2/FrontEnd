@@ -13,7 +13,7 @@ export class ProfileService {
   // Sends post request to the profile controller that then responds
   // with httpstatus code
   registerProfile(profile: Profile): Observable<any> {
-    return this.http.post('http://localhost:8082/profile/profiles', profile,
+    return this.http.post('http://localhost:8082/profile/register', profile,
     {observe: 'response'});
   }
 

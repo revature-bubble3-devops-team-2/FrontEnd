@@ -26,6 +26,7 @@ export class RegisterComponent implements OnInit {
   constructor(private profileService:ProfileService, private router: Router) { }
 
   ngOnInit(): void {
+    sessionStorage.clear();
   }
 
   // First checks if all fields are not empty, then checks if passwords
