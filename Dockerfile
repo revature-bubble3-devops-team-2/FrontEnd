@@ -1,4 +1,3 @@
 FROM nginx
-COPY ./dist/* /usr/share/nginx/html
-RUN ls /etc/nginx/conf.d/default.conf
+COPY ./dist/bubble/* /usr/share/nginx/html
 EXPOSE 80
