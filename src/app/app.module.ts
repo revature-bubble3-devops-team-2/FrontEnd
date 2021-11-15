@@ -12,6 +12,10 @@ import { CreatePostComponent } from './views/posts/create-post/create-post.compo
 import { PostComponent } from './views/posts/post/post.component';
 import { PostsContainerComponent } from './views/posts/posts-container/posts-container.component';
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule} from '@angular/material/button';
+
+
 
 @NgModule({
   declarations: [
@@ -29,7 +33,9 @@ import { AppRoutingModule } from './app-routing.module';
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatButtonModule
   ],
   entryComponents:[
     PostComponent
