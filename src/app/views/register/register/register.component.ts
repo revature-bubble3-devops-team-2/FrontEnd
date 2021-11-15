@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from 'app/services/profile.service';
 import { Profile } from 'app/models/profile';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -17,14 +18,15 @@ export class RegisterComponent implements OnInit {
   psw: string = "";
   pswrepeat: string = "";
 
-  taken: boolean = true;
-  missing: boolean = true;
+  taken: boolean = false;
+  missing: boolean = false;
   pswMatch: boolean = false;
-  success: boolean = true;
+  success: boolean = false;
 
-  constructor(private profileService:ProfileService) { }
+  constructor(private profileService:ProfileService, private router: Router) { }
 
   ngOnInit(): void {
+    sessionStorage.clear();
   }
 
   // First checks if all fields are not empty, then checks if passwords
@@ -47,10 +49,14 @@ export class RegisterComponent implements OnInit {
         this.profile.passkey = this.psw;
 
         this.profileService.registerProfile(this.profile).subscribe(
-          (data) => {
-            this.success = true;
+          (data: any) => {
+            const temp = data.body as Profile;
+            sessionStorage.setItem("Authorization", data.headers.get("Authorization"));
+            sessionStorage.setItem("profile", JSON.stringify(temp));
+            this.router.navigate(['/profile']);
           },
-          (error) => {
+          (error: Error) => {
+            console.log(error);
             this.taken = true;
           }
         )
