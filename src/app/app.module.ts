@@ -10,6 +10,7 @@ import { ProfileComponent } from './views/profile/profile/profile.component';
 import { RegisterComponent } from './views/register/register/register.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
+import { FollowComponent } from './views/profile/follow/follow.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { AppRoutingModule } from './app-routing.module';
     LoginComponent,
     ProfileComponent,
     RegisterComponent,
+    FollowComponent,
   ],
   imports: [
     BrowserModule,
