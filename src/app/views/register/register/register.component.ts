@@ -49,7 +49,9 @@ export class RegisterComponent implements OnInit {
 
         this.profileService.registerProfile(this.profile).subscribe(
           (data: any) => {
+            const temp = data.body as Profile;
             sessionStorage.setItem("Authorization", data.headers.get("Authorization"));
+            sessionStorage.setItem("profile", JSON.stringify(temp));
             this.router.navigate(['/profile']);
           },
           (error: Error) => {
