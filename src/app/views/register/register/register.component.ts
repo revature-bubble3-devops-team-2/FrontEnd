@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from 'app/services/profile.service';
 import { Profile } from 'app/models/profile';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -22,7 +23,7 @@ export class RegisterComponent implements OnInit {
   pswMatch: boolean = false;
   success: boolean = true;
 
-  constructor(private profileService:ProfileService) { }
+  constructor(private profileService:ProfileService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -48,7 +49,8 @@ export class RegisterComponent implements OnInit {
 
         this.profileService.registerProfile(this.profile).subscribe(
           (data) => {
-            this.success = true;
+            sessionStorage.setItem("Authorization", data.headers.get("Authorization"));
+            this.router.navigate(['/profile']);
           },
           (error) => {
             this.taken = true;
