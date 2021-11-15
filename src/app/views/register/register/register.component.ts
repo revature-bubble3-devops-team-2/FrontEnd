@@ -17,10 +17,10 @@ export class RegisterComponent implements OnInit {
   psw: string = "";
   pswrepeat: string = "";
 
-  taken: boolean = false;
-  missing: boolean = false;
+  taken: boolean = true;
+  missing: boolean = true;
   pswMatch: boolean = false;
-  success: boolean = false;
+  success: boolean = true;
 
   constructor(private profileService:ProfileService) { }
 
