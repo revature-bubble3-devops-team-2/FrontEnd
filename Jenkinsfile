@@ -29,7 +29,7 @@ pipeline {
          steps {
             sh 'ng build --aot'
             discordSend description: ":construction_site: *Built Production Model*", result: currentBuild.currentResult, webhookURL: discordurl
-            sh 'ls ./dist'
+            sh 'ls ./dist/bubble/'
          }
       }
       stage('remove previous docker image') {
@@ -48,7 +48,7 @@ pipeline {
       }
       stage('create container') {
          steps {
-               sh 'docker run --rm -d -p ${PORT}:${PORT} --name ${CONTAINER_NAME} ${IMAGE_TAG}'
+               sh 'docker run -it --rm -d -p ${PORT}:${PORT} --name ${CONTAINER_NAME} ${IMAGE_TAG}'
                discordSend description: ":whale: *Running Docker Container*", result: currentBuild.currentResult, webhookURL: discordurl
          }
       }
