@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Post } from '../models/post';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators'
-import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
