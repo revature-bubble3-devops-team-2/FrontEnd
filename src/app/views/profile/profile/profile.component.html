@@ -1,11 +1,10 @@
-<h5 class="card-header">{{this.profile.username}}</h5>
-<div class="row py-2 px-4">
-    <div class="col-md-5">
-        <div class="bg-white shadow rounded overflow-hidden">
+<div class="row py-2 px-4" >
+    <div class="col-md-4 profile" style="height: 100%;">
+        <div class="bg-white shadow overflow-hidden" style="border-radius: 50px;">
             <div class="px-4 pt-0 pb-4 cover">
                 <div class="media align-items-end profile-head">
-                    <div class="profile mr-3"><img src="https://pbs.twimg.com/profile_images/738088068800872448/hjSp3OqX_400x400.jpg" alt="..." width="130" class="rounded mb-2 img-thumbnail">
-                       <br> <app-modal-button></app-modal-button>
+                    <div class="profile mr-3"><img src="https://pbs.twimg.com/profile_images/738088068800872448/hjSp3OqX_400x400.jpg" alt="..." width="130" class="mb-2 img-thumbnail" style="border-radius: 30px;">
+                       <br> <app-modal-button ></app-modal-button>
                        </div>
                     <div class="media-body mb-5 text-black">
                         <h4 class="mt-0 mb-0">{{this.profile.firstName}}</h4>
@@ -26,7 +25,7 @@
             </div>
             <div class="px-4 py-3">
                 <h5 class="mb-0">About</h5>
-                <div class="p-4 rounded shadow-sm bg-light">
+                <div class="p-4 shadow-sm bg-light" style="border-radius: 50px;">
                     <p class="font-italic mb-0">Placeholder</p>
                     <p class="font-italic mb-0">Placeholder</p>
                     <p class="font-italic mb-0">Placeholder</p>
@@ -34,8 +33,8 @@
             </div>
             <div class="py-4 px-4">
                 <h5 class="mb-0">Add Friends</h5>
-                <input type="email" class="form-control" placeholder="Add friends by email" [(ngModel)] = credential>
-                <br><button  class="btn btn-dark">Add Friend</button>
+                <input type="email" class="form-control" placeholder="Add friends by email" [(ngModel)] = credential style="border-radius: 50px;">
+                <br><button  class="btn btn-dark" style="border-radius: 50px;">Add Friend</button>
             </div>
         </div>
     </div>

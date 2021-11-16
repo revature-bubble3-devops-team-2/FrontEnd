@@ -14,12 +14,26 @@ h6{
     -webkit-backdrop-filter: blur(40px);
 }
 
+
+
 .profile-head {
     transform: translateY(5rem)
 }
 
+
+.col-md-7{
+    background-color: #474C55;
+}
+.postFeed{
+    background-color: #474C55;
+}
+
 .cover {
     background-color: #72A4C2;
+}
+
+.modal-content{
+    border-radius: 50px;
 }
 
 body {

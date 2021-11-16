@@ -35,31 +35,4 @@ export class ProfileComponent implements OnInit {
      return JSON.parse(sessionProfile);
     }
   }
-
-  // showUpdateMenu(){
-  //   this.updated = true;
-  // }
-
-  // updateProfile(){
-  //   if(this.email!=""){
-  //     this.profile.email = this.email;
-  //   }
-  //   if(this.firstName!=""){
-  //     this.profile.firstName = this.firstName;
-  //   }  
-  //   if(this.lastName!=""){
-  //     this.profile.lastName = this.lastName;
-  //   }
-  //   this.profile.pid = 1;
-  //   this.profileService.updateProfile(this.profile).subscribe(
-  //     (result)=>{
-  //       console.log(result);
-  //       this.updated = true;
-  //     }
-  //   )  
-  // }
-
-  // leaveUpdate(){
-  //   this.updated = false;
-  // }
 }
