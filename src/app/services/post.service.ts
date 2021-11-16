@@ -1,5 +1,5 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Post } from '../models/post';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators'
@@ -38,20 +38,6 @@ export class PostService implements OnDestroy {
 
   getPosts(): Observable<any> {
     return this.postsSubject.asObservable();
-  }
-
-  getNumLikes(): void {
-    const headerDict = {'post': '1'}
-    const requestOptions = {                                                                                                                                                                                 
-      headers: new HttpHeaders(headerDict),
-    };
-
-    this.httpClient
-      .get<Post[]>('http://localhost:8082/like', requestOptions)
-      .pipe(takeUntil(this._unsubscribeAll))
-      .subscribe((data) => {
-        console.log("GET request was successful ", data);
-    });
   }
 
   ngOnDestroy(): void {
