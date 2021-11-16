@@ -27,7 +27,7 @@ pipeline {
       }
       stage('build') {
          steps {
-            sh 'ng build --aot'
+            sh 'ng build'
             discordSend description: ":construction_site: *Built Production Model*", result: currentBuild.currentResult, webhookURL: discordurl
             sh 'ls ./dist/bubble/'
          }
