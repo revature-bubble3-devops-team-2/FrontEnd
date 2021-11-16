@@ -24,7 +24,7 @@ export class ProfileService {
     return this.http.put(`http://localhost:8090/profiles/${profile.pid}`, profile);
   }
   
-  login(username: string, password: string): Observable<HttpResponse<Profile>> {    
-    return this.http.post<Profile>('http://localhost:8082/profile', `username=${username}&password=${password}`, { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
+  login(username: string, password: string): Observable<HttpResponse<string>> {   
+    return this.http.post<string>('http://localhost:8082/profile', `username=${username}&password=${password}`, { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
   }
 }

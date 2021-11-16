@@ -35,22 +35,22 @@ export class LoginComponent implements OnInit {
     {
       //console.log("test", this.username, this.password);
       this.profileService.login(this.username, this.password).subscribe(
-        r => {           
+        r => {
           if (r.body !== null)
           {
-            let profile = r.body;     
-
             //Store the return body into sessionStorage and then redirect to profile page
-            sessionStorage.setItem("Authorization", JSON.stringify(profile) );
+            sessionStorage.setItem("Authorization", JSON.stringify(r.body) );
             this.router.navigate(['/profile']); 
           } else {
             //Error in case if something in the backend doesn't give us data for w.e reason.
-            console.log("Returned profile but no data")
+            console.log("Returned profile but no data");
           }                  
+        },
+        (error) => {
+          console.log(error);
+          this.error = true;
         }
       )
-
-
     } else { //If one of the field is empty missing div shows up
       this.missing = true;
     }
