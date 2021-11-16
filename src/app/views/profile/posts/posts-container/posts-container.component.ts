@@ -1,14 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD:src/app/views/posts/posts-container/posts-container.component.ts
-=======
 import { Post } from 'app/models/post';
 import { PostService } from 'app/services/post.service';
->>>>>>> ff4c80807aefb67b316730308f945c945890c485:src/app/views/profile/posts/posts-container/posts-container.component.ts
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PostComponent } from '../post/post.component';
 import { CreatePostComponent } from '../create-post/create-post.component';
-import { Post } from 'app/models/post';
-import { PostService } from 'app/services/post.service';
 
 @Component({
   selector: 'app-posts-container',

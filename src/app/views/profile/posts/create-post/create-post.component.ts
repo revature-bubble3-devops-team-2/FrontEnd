@@ -19,12 +19,12 @@ export class CreatePostComponent implements OnInit {
       email: 'Email3',
     },
     body: '',
-    datePosted: 'new Date()',
+    datePosted: new Date(),
   //  imgURL: 'https://source.unsplash.com/random/300x300',
     imgURL: '',
   };
 
- @Input() show: boolean=false;
+  @Input() show: boolean=false;
 
   constructor(
     public postService: PostService, 
