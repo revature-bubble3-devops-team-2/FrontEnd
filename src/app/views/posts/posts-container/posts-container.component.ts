@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Post } from 'src/app/models/post';
-import { PostService } from 'src/app/services/post.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PostComponent } from '../post/post.component';
 import { CreatePostComponent } from '../create-post/create-post.component';
+import { Post } from 'app/models/post';
+import { PostService } from 'app/services/post.service';
 
 @Component({
   selector: 'app-posts-container',
@@ -23,7 +23,7 @@ export class PostsContainerComponent implements OnInit {
 
   public getAllPosts() {
     this.postService.getAllPosts();
-    this.postService.getPosts().subscribe(data => {
+    this.postService.getPosts().subscribe((data: any) => {
       this.posts = data as Post[];
     })
   }

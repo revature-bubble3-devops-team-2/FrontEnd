@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Post } from 'src/app/models/post';
-import { Profile } from 'src/app/models/profile';
-import { PostService } from 'src/app/services/post.service';
+import { Post } from 'app/models/post';
+import { PostService } from 'app/services/post.service';
 
 @Component({
   selector: 'app-like',
@@ -18,12 +17,12 @@ export class LikeComponent implements OnInit {
   constructor(public postService: PostService) { }
 
   public getLikes(){
-    this.postService.getNumLikes(this.postInfo).subscribe((data) => {
+    this.postService.getNumLikes(this.postInfo).subscribe((data: any) => {
       this.num = data;});
   }
 
   public likePost() {
-    this.postService.postLike(this.postInfo).subscribe((data) => {
+    this.postService.postLike(this.postInfo).subscribe((data: any) => {
       console.log(data);
       this.getLikes();
     })

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Post } from 'src/app/models/post';
-import { PostService } from 'src/app/services/post.service';
+import { Post } from 'app/models/post';
+import { PostService } from 'app/services/post.service';
 
 @Component({
   selector: 'app-create-post',
@@ -19,7 +19,7 @@ export class CreatePostComponent implements OnInit {
       email: 'Email3',
     },
     body: '',
-    datePosted: new Date(),
+    datePosted: 'new Date()',
   //  imgURL: 'https://source.unsplash.com/random/300x300',
     imgURL: '',
   };
