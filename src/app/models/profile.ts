@@ -1,8 +1,19 @@
-export interface Profile {
-    pid: number;
-    username: string;
-    passkey: string;
-    firstName: string;
-    lastName: string;
-    email: string;
+export class Profile {
+
+    pid?:number;
+    firstName?:string;
+    lastName?:string;
+    passkey?:string;
+    email?:string;
+    username?:string;
+
+    constructor(pid:number, firstName:string, lastName:string, passkey:string, email:string, username:string){
+
+        this.pid = pid;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.passkey = passkey;
+        this.email = email;
+        this.username = username;
+    }
 }

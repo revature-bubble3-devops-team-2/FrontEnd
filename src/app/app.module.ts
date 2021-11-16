@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './views/login/login/login.component';
@@ -12,6 +15,8 @@ import { CreatePostComponent } from './views/posts/create-post/create-post.compo
 import { PostComponent } from './views/posts/post/post.component';
 import { PostsContainerComponent } from './views/posts/posts-container/posts-container.component';
 import { AppRoutingModule } from './app-routing.module';
+import { ModalUpdateFormComponent } from './views/profile/modal-update-form/modal-update-form.component';
+import { ModalButtonComponent } from './views/profile/modal-button/modal-button.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +27,9 @@ import { AppRoutingModule } from './app-routing.module';
     CreatePostComponent,
     PostComponent,
     PostsContainerComponent
+    RegisterComponent,
+    ModalUpdateFormComponent,
+    ModalButtonComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +41,10 @@ import { AppRoutingModule } from './app-routing.module';
   ],
   entryComponents:[
     PostComponent
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
