@@ -4,6 +4,7 @@ import { PostService } from 'src/app/services/post.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PostComponent } from '../post/post.component';
 import { CreatePostComponent } from '../create-post/create-post.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-posts-container',
