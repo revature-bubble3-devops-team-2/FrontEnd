@@ -57,6 +57,7 @@ pipeline {
       success {
          discordSend description: ":potable_water: **Pipeline Successful!**", result: currentBuild.currentResult, webhookURL: discordurl
          sh 'docker container ls'
+         sh 'docker start ${CONTAINER_NAME}'
          sh 'curl http://localhost'
       }
    }
