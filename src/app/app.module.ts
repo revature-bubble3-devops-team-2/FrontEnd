@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './views/login/login/login.component';
@@ -39,7 +40,9 @@ import { MatButtonModule} from '@angular/material/button';
     MatButtonModule
   ],
   entryComponents:[
-    PostComponent
+    PostComponent,
+    NgbTooltipModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

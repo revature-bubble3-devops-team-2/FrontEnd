@@ -27,7 +27,7 @@ pipeline {
       }
       stage('build') {
          steps {
-            sh 'ng build'
+            sh 'ng build --aot --output-hashing none'
             discordSend description: ":construction_site: *Built Production Model*", result: currentBuild.currentResult, webhookURL: discordurl
             sh 'ls ./dist/bubble/'
          }
@@ -56,6 +56,7 @@ pipeline {
    post {
       success {
          discordSend description: ":potable_water: **Pipeline Successful!**", result: currentBuild.currentResult, webhookURL: discordurl
+         sh 'docker container ls'
       }
    }
 }
