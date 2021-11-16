@@ -1,4 +1,4 @@
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable, Input, OnDestroy } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Post } from '../models/post';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
@@ -11,6 +11,7 @@ export class PostService implements OnDestroy {
   private postsSubject = new BehaviorSubject<Post[]>([]);
   constructor(private httpClient: HttpClient) {}
   private _unsubscribeAll = new Subject<any>();
+  public numLikes!: number;
 
   public createPost(post: Post) {
     this.httpClient
@@ -36,17 +37,20 @@ export class PostService implements OnDestroy {
     return this.postsSubject.asObservable();
   }
 
-  getNumLikes(): void {
-    const headerDict = {'post': '1'}
+  getNumLikes(post: Post): Observable<number> {
+    console.log("getnumlikes called");
+    const headerDict = {'post': `${post.psid}`}
+    console.log(post.psid);
     const requestOptions = {                                                                                                                                                                                 
       headers: new HttpHeaders(headerDict),
     };
-    this.httpClient
-      .get<Post[]>('http://localhost:8082/like', requestOptions)
-      .pipe(takeUntil(this._unsubscribeAll))
-      .subscribe((data) => {
-        console.log("GET request was successful ", data);
-    });
+    return this.httpClient.get<number>('http://localhost:8082/like', requestOptions).pipe(takeUntil(this._unsubscribeAll));
+  }
+
+  postLike(post: Post): Observable<any> {
+    console.log("postlike called");
+    return this.httpClient.post<Post>('http://localhost:8082/like', post).pipe(takeUntil(this._unsubscribeAll));
+    
   }
 
   ngOnDestroy(): void {
