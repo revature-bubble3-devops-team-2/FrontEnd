@@ -1,27 +1,44 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Post } from '../models/post';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators'
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
+export class PostService implements OnDestroy {
+  private postsSubject = new BehaviorSubject<Post[]>([]);
+  constructor(private httpClient: HttpClient) {}
+  private _unsubscribeAll = new Subject<any>();
 
-export class PostService {
-
-  constructor(private http: HttpClient) {}
-
-  getAllPosts(): Observable<any> {
-    return this.http.get<any>("http://localhost:3000/post");
+  public createPost(post: Post) {
+    this.httpClient
+      .post<Post>('http://localhost:8082/posts', post)
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe((data) => {
+        const currentValue = this.postsSubject.value;
+        const updatedValue = [...currentValue, data];
+        this.postsSubject.next(updatedValue);
+      });
   }
 
-  public convertTransactionTime(datePosted: number){
-    var d = new Date(datePosted);
-    var formattedDate = (d.getMonth() + 1)  + "-"  +d.getDate()+  "-"+ d.getFullYear() ;
-    var hours = (d.getHours() < 10) ? "0" + d.getHours() : d.getHours();
-    var minutes = (d.getMinutes() < 10) ? "0" + d.getMinutes() : d.getMinutes();
-    var formattedTime = hours + ":" + minutes;
-
-    formattedDate = formattedDate + " " + formattedTime;
-    return formattedDate;
+  public getAllPosts(): void {
+    this.httpClient
+      .get<Post[]>('http://localhost:8082/posts')
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe((data) => {
+        this.postsSubject.next(data as Post[]);
+      });
   }
+
+  getPosts(): Observable<any> {
+    return this.postsSubject.asObservable();
+  }
+
+  ngOnDestroy(): void {
+    this._unsubscribeAll.next();
+    this._unsubscribeAll.complete();
+  }
+
 }

@@ -9,7 +9,15 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './views/login/login/login.component';
 import { ProfileComponent } from './views/profile/profile/profile.component';
 import { RegisterComponent } from './views/register/register/register.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CreatePostComponent } from './views/profile/posts/create-post/create-post.component';
+import { PostComponent } from './views/profile/posts/post/post.component';
+import { PostsContainerComponent } from './views/profile/posts/posts-container/posts-container.component';
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule} from '@angular/material/button';
+
+
 
 @NgModule({
   declarations: [
@@ -17,12 +25,22 @@ import { AppRoutingModule } from './app-routing.module';
     LoginComponent,
     ProfileComponent,
     RegisterComponent,
+    CreatePostComponent,
+    PostComponent,
+    PostsContainerComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgbModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatButtonModule
+  ],
+  entryComponents:[
+    PostComponent,
     NgbTooltipModule,
     AppRoutingModule
   ],
