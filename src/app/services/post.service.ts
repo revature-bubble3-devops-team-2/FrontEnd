@@ -21,9 +21,6 @@ export class PostService implements OnDestroy {
         const updatedValue = [...currentValue, data];
         this.postsSubject.next(updatedValue);
       });
-    // return this.httpClient.post<Post>(environment.postURL, post, { headers: {
-    //   "Authorization" : `${sessionStorage.getItem('token')}`
-    // }});
   }
 
   public getAllPosts(): void {

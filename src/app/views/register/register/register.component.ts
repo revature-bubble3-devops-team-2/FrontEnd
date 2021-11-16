@@ -10,14 +10,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
-  profile: Profile = {
-    pid: 0,
-    username: '',
-    passkey: '',
-    firstName: '',
-    lastName: '',
-    email: ''
-  };
+  profile: Profile = {};
   firstname: string = "";
   lastname: string = "";
   email: string = "";
