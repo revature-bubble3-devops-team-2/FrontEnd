@@ -17,11 +17,11 @@ export class ProfileService {
     {observe: 'response'});
   }
 
-  getProfileByPid(pid: number): Observable<Profile>{
+  getProfileByPid(pid: number): Observable<any>{
     return this.http.get(`http://localhost:8082/profile/profiles/${pid}`)
   }
 
-  updateProfile(profile: Profile): Observable<Profile>{
+  updateProfile(profile: Profile): Observable<any>{
     return this.http.put(`http://localhost:8082/profile/profiles/${profile.pid}`, profile);
   }
 }

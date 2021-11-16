@@ -10,7 +10,14 @@ import { ProfileService } from 'app/services/profile.service';
 })
 export class ProfileComponent implements OnInit {
 
-  profile: Profile = {};
+  profile: Profile = {
+    pid: 0,
+    username: '',
+    passkey: '',
+    firstName: '',
+    lastName: '',
+    email: ''
+  };
   firstName: string = "";
   lastName: string = "";
   email: string = "";
