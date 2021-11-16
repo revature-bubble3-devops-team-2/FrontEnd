@@ -2,9 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+
+
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './views/login/login/login.component';
@@ -26,7 +25,7 @@ import { ModalButtonComponent } from './views/profile/modal-button/modal-button.
     RegisterComponent,
     CreatePostComponent,
     PostComponent,
-    PostsContainerComponent
+    PostsContainerComponent,
     RegisterComponent,
     ModalUpdateFormComponent,
     ModalButtonComponent
@@ -40,7 +39,7 @@ import { ModalButtonComponent } from './views/profile/modal-button/modal-button.
     AppRoutingModule
   ],
   entryComponents:[
-    PostComponent
+    PostComponent,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Post } from 'src/app/models/post';
-import { PostService } from 'src/app/services/post.service';
+import { Post } from 'app/models/post';
+import { PostService } from 'app/services/post.service';
 
 @Component({
   selector: 'app-create-post',
@@ -11,12 +11,7 @@ import { PostService } from 'src/app/services/post.service';
 export class CreatePostComponent implements OnInit {
   addPost: Post = {
     creator: {
-      pid: 2,
-      username: 'profile2',
-      passkey: '22',
-      firstName: 'Two',
-      lastName: 'LastTwo',
-      email: 'Email2',
+      pid: 1
     },
     body: '',
     datePosted: new Date(),
@@ -31,6 +26,7 @@ export class CreatePostComponent implements OnInit {
   ngOnInit(): void {}
 
   createPost() {
+    console.log(this.addPost);
     this.postService.createPost(this.addPost);
   }
 }
