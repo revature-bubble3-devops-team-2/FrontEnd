@@ -23,14 +23,14 @@ export class ProfileService {
   constructor(private http: HttpClient,) { }
 
   registerProfile(profile: Profile): Observable<any> {
-    return this.http.post('http://localhost:8082/profiles', profile)
+    return this.http.post('http://localhost:8082/profile', profile)
   }
 
   getProfileByPid(pid: number): Observable<Profile>{
-    return this.http.get(`http://localhost:8090/profiles/${pid}`)
+    return this.http.get(`http://localhost:8082/profile/${pid}`)
   }
 
   updateProfile(profile: Profile): Observable<Profile>{
-    return this.http.put(`http://localhost:8090/profiles/${profile.pid}`, profile);
+    return this.http.put(`http://localhost:8082/profile/${profile.pid}`, profile);
   }
 }

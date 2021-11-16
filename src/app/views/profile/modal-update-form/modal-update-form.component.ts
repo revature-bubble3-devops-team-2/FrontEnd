@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,EventEmitter, Output } from '@angular/core';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Profile } from 'app/models/profile';
+import {ProfileComponent} from 'app/views/profile/profile/profile.component';
 import { ProfileService } from 'app/services/profile.service';
 
 @Component({
@@ -10,7 +11,6 @@ import { ProfileService } from 'app/services/profile.service';
 })
 export class ModalUpdateFormComponent implements OnInit {
 
-
   constructor(public activeModal: NgbActiveModal, private profileService: ProfileService, private modalService: NgbModal) { }
 
   profile: Profile = {};
@@ -18,12 +18,13 @@ export class ModalUpdateFormComponent implements OnInit {
   lastName: string = "";
   email: string = "";
 
+  @Output() changed = new EventEmitter<any>();
+
   ngOnInit(): void {
   
     var sessionProfile = sessionStorage.getItem("profile");
     if(sessionProfile!=null){
       this.profile = JSON.parse(sessionProfile);
-      //console.log(this.profile)
     }   
 }
 
@@ -40,9 +41,8 @@ export class ModalUpdateFormComponent implements OnInit {
     this.profileService.updateProfile(this.profile).subscribe(
       (result)=>{
         sessionStorage.setItem("profile", JSON.stringify(result));
-        console.log(result);
-      }
-    )  
+ }
+    )
+    this.activeModal.close();
   }
-
 }
