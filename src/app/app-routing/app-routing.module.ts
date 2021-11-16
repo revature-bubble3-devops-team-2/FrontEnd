@@ -4,10 +4,12 @@ import { ProfileComponent } from 'app/views/profile/profile/profile.component';
 import { RegisterComponent } from 'app/views/register/register/register.component';
 import { Routes, RouterModule } from '@angular/router';
 import { AppRoutingRoutingModule } from './app-routing-routing.module';
+import { PostFeedComponent } from 'app/views/post-feed/post-feed.component';
 
 const routes: Routes = [
   { path: 'profile', component: ProfileComponent},
-  { path: 'regiser', component: RegisterComponent}
+  { path: 'regiser', component: RegisterComponent},
+  {path:'home', component: PostFeedComponent}
 ];
 
 
