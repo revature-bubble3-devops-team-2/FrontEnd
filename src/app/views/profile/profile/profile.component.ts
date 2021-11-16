@@ -31,7 +31,7 @@ export class ProfileComponent implements OnInit {
     var sessionProfile = sessionStorage.getItem("profile");
     if(sessionProfile!=null){
       this.profile = JSON.parse(sessionProfile);
-      //console.log(this.profile)
+      console.log(this.profile)
     }   
   }
 
