@@ -4,7 +4,7 @@
     src: url("/assets/fonts/Futura-Normal.woff2") format("woff2");
 }
 
-html, body {
+/* html, body {
   height: 100vh;
   width: 100vw;
   overflow: auto;
@@ -16,4 +16,14 @@ body {
   display: flex;
   flex-direction: column;
   font-family: Futura;
+} */
+.modal-content{
+    background-color: transparent!important;
+    border: none!important;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

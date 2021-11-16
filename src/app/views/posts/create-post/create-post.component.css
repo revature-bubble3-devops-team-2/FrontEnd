@@ -1,0 +1,33 @@
+textarea {
+    outline: none;
+    box-shadow:none !important;
+    border:1px solid #ccc !important;
+    }
+
+.rounded{
+   border-radius: 2rem!important;
+    padding: 0.75rem;
+ /*   overflow: hidden; */
+}
+
+.card-body{
+    background-color: #72A4C2;
+    overflow: hidden;
+}
+
+.submit{
+    text-align: center;
+}
+
+label{
+    color:#fff;
+    font-weight: bold;
+    margin-bottom:0;
+}
+
+.error{
+    margin: 1rem 0;
+    font-size: .80rem;
+    color:red;
+}
+

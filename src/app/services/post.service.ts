@@ -1,13 +1,15 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { observable, Observable } from 'rxjs';
 import { Profile } from 'app/models/profile';
+import { Injectable, Input, OnDestroy } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Post } from '../models/post';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators'
+import { environment } from '../../environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
-export class PostService {
+export class PostService implements OnDestroy {
   posts = [
     {
       psid: 1,
@@ -31,36 +33,63 @@ export class PostService {
       datePosted: Date.parse("18 Nov 2021 00:00:00 GMT")
     }
   ];
+  
+  private postsSubject = new BehaviorSubject<Post[]>([]);
+  constructor(private httpClient: HttpClient) {}
+  private _unsubscribeAll = new Subject<any>();
+  public numLikes!: number;
 
-  followers = [
-    {
-      fid:1,
-      portfolio_id:1
-    },
-    {
-      fid:2,
-      portfolio_id:2
-    }
-  ];
+  public createPost(post: Post) {
+    this.httpClient
+      .post<Post>('http://localhost:8082/posts', post)
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe((data) => {
+        const currentValue = this.postsSubject.value;
+        const updatedValue = [...currentValue, data];
+        this.postsSubject.next(updatedValue);
+      });
+    // return this.httpClient.post<Post>(environment.postURL, post, { headers: {
+    //   "Authorization" : `${sessionStorage.getItem('token')}`
+    // }});
+  }
 
-  constructor(private http: HttpClient) {}
+  public getAllPosts(): void {
+    this.httpClient
+      .get<Post[]>('http://localhost:8082/posts')
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe((data) => {
+        this.postsSubject.next(data as Post[]);
+      });
+  }
 
-  getAllPosts(): Observable<any> {
-    return this.http.get<any>("http://localhost:3000/post");
+  getPosts(): Observable<any> {
+    return this.postsSubject.asObservable();
+  }
+
+  getNumLikes(post: Post): Observable<number> {
+    console.log("getnumlikes called");
+    const headerDict = {'post': `${post.psid}`}
+    console.log(post.psid);
+    const requestOptions = {                                                                                                                                                                                 
+      headers: new HttpHeaders(headerDict),
+    };
+
+    return this.httpClient.get<number>('http://localhost:8082/like', requestOptions).pipe(takeUntil(this._unsubscribeAll));
+  }
+
+  postLike(post: Post): Observable<any> {
+    console.log("postlike called");
+    return this.httpClient.post<Post>('http://localhost:8082/like', post).pipe(takeUntil(this._unsubscribeAll));
+    
   }
 
   getPostsByFollowers(): any {
     return this.posts;
   }
 
-  public convertTransactionTime(datePosted: number){
-    var d = new Date(datePosted);
-    var formattedDate = (d.getMonth() + 1)  + "-"  +d.getDate()+  "-"+ d.getFullYear() ;
-    var hours = (d.getHours() < 10) ? "0" + d.getHours() : d.getHours();
-    var minutes = (d.getMinutes() < 10) ? "0" + d.getMinutes() : d.getMinutes();
-    var formattedTime = hours + ":" + minutes;
-
-    formattedDate = formattedDate + " " + formattedTime;
-    return formattedDate;
+  ngOnDestroy(): void {
+    this._unsubscribeAll.next();
+    this._unsubscribeAll.complete();
   }
+
 }
