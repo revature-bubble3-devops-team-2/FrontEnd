@@ -45,7 +45,6 @@ export class PostService implements OnDestroy {
     const requestOptions = {                                                                                                                                                                                 
       headers: new HttpHeaders(headerDict),
     };
-
     this.httpClient
       .get<Post[]>('http://localhost:8082/like', requestOptions)
       .pipe(takeUntil(this._unsubscribeAll))
