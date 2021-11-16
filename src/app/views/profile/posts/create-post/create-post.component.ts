@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Post } from 'src/app/models/post';
-import { PostService } from 'src/app/services/post.service';
+import { Post } from 'app/models/post';
+import { PostService } from 'app/services/post.service';
 
 @Component({
   selector: 'app-create-post',

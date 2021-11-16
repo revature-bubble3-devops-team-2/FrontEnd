@@ -7,7 +7,11 @@ textarea {
 .rounded{
    border-radius: 2rem!important;
     padding: 0.75rem;
- /*   overflow: hidden; */
+}
+
+.header{
+    padding-top: 10px;
+    text-align: center;
 }
 
 .card-body{
@@ -20,6 +24,7 @@ textarea {
 }
 
 label{
+    display: block;
     color:#fff;
     font-weight: bold;
     margin-bottom:0;

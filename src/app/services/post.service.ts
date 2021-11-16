@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Post } from '../models/post';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators'
-import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -22,9 +21,6 @@ export class PostService implements OnDestroy {
         const updatedValue = [...currentValue, data];
         this.postsSubject.next(updatedValue);
       });
-    // return this.httpClient.post<Post>(environment.postURL, post, { headers: {
-    //   "Authorization" : `${sessionStorage.getItem('token')}`
-    // }});
   }
 
   public getAllPosts(): void {
