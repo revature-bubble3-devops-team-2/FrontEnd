@@ -1,3 +1,12 @@
-.col {
+.post-card {
     max-width: 100mm;
+    border: 1px solid darkgray;
+}
+
+.post-date {
+    font-size: 12px;
+}
+
+.user-info {
+    margin: 0.8rem 0;
 }

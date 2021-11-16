@@ -1,35 +1,40 @@
-  
-  <div class="album py-5 bg-light">
-    <div class="container">
-      <div class="col">
-        <div class="col mb-4" *ngFor="let post of post">
-          <div >
-            <ng-container>
-              <img
-                class="img-fluid img-thumbnail"
-                width="100%"
-                height="225"
-                [src]="post.imgURL"
-                aria-label="Placeholder: Thumbnail"
-              />
-            </ng-container>
-  
-            <div class="card-body">
-              <p class="card-text">{{ post.body }}</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">
-                    View
-                  </button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">
-                    Edit
-                  </button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
+<div class="container-fluid d-flex flex-column justify-content-between align-items-center m-1" *ngIf="posts">
+  <div class="col mb-4 post-card" *ngFor="let post of posts">
+    <div class="d-flex justify-content-between user-info">
+      <div class="d-flex flex-column">
+        {{post.creator?.username}}
+        <small class="text-muted post-date">{{post.datePosted | date}}</small>
+      </div>
+      <div>
+        <button type="button" class="btn btn-sm btn-outline-secondary">
+          Follow
+        </button>
+      </div>
+    </div>
+    <!-- <app-post [post]="post"></app-post> -->
+      <ng-container>
+        <img
+          class="img-fluid img-thumbnail"
+          width="100%"
+          [src]="post.imgURL"
+          aria-label="Placeholder: Thumbnail"
+        />
+      </ng-container>
+
+      <div class="card-body">
+        <p class="card-text">{{ post.body }}</p>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="btn-group">
+            <button type="button" class="btn btn-sm btn-outline-secondary">
+              Like
+            </button>
+          </div>
+          <div class="btn-group">
+            <button type="button" class="btn btn-sm btn-outline-secondary">
+              Comment
+            </button>
           </div>
         </div>
       </div>
-    </div>
   </div>
+</div>

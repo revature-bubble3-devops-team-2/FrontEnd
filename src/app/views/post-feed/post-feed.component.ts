@@ -9,12 +9,12 @@ import { PostService } from 'app/services/post.service';
 })
 export class PostFeedComponent implements OnInit {
 
-  post: Post[] = [];
+  posts: Post[] = [];
 
   constructor(private postService: PostService) { }
 
   ngOnInit(): void {
-    this.post = this.postService.getPostsByFollowers()
+    this.posts = this.postService.getPostsByFollowers()
   }
 
 
