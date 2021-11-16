@@ -14,6 +14,7 @@ import { PostsContainerComponent } from './views/posts/posts-container/posts-con
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule} from '@angular/material/button';
+import { LikeComponent } from './views/posts/like/like.component';
 
 
 
@@ -25,7 +26,8 @@ import { MatButtonModule} from '@angular/material/button';
     RegisterComponent,
     CreatePostComponent,
     PostComponent,
-    PostsContainerComponent
+    PostsContainerComponent,
+    LikeComponent
   ],
   imports: [
     BrowserModule,
