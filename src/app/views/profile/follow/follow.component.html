@@ -1,1 +1,13 @@
-<p>follow works!</p>
+<div class="follow-container">
+    <form class="follow-form">
+        <h3 class="text center">Follow by email</h3>
+        <div class="error" *ngIf="error">Unknown email address.</div>
+        <div class="error" *ngIf="missing">The email is empty.</div>
+        <div class="success" *ngIf="success">Successfully followed.</div>
+
+        <hr>
+
+        <input class="form-control" type="text" placceholder="Enter Email" name="email" id="email" [(ngModel)]="email" required>
+        <button type="submit" class="onFollowBtn" (click)="follow()">Follow this person</button>
+    </form>
+</div>
