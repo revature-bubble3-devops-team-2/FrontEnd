@@ -23,14 +23,26 @@ export class LikeComponent implements OnInit {
   }
 
   public likePost() {
+    
     this.postService.postLike(this.postInfo).subscribe((data) => {
-      console.log(data);
-      this.getLikes();
-    })
+      
+        console.log(data);
+        this.getLikes();
+     
+        }, (err) => {
+          console.log(err);
+          this.postService.deleteLike(this.postInfo).subscribe((data) => {
+            console.log("like deleted");
+            this.getLikes();
+          })
+        })
+    
+    
   }
 
   ngOnInit(): void {
     this.getLikes();
+    
   }
 
 }
