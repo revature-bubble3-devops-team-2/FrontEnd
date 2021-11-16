@@ -9,7 +9,7 @@ import { Profile } from 'src/app/models/profile';
 })
 export class LikeComponent implements OnInit {
 
-  public like(post Post, profile Profile)
+  //public like(post Post, profile Profile)
 
   constructor() { }
 
