@@ -1,7 +1,7 @@
 import { Profile } from "./profile";
 
 export interface Post {
-    postId?: number;
+    psid?: number;
     creator: Profile;
     body: string;
     datePosted: Date;
