@@ -16,6 +16,7 @@ import { PostsContainerComponent } from './views/posts/posts-container/posts-con
 import { AppRoutingModule } from './app-routing.module';
 import { ModalUpdateFormComponent } from './views/profile/modal-update-form/modal-update-form.component';
 import { ModalButtonComponent } from './views/profile/modal-button/modal-button.component';
+import { CreateCommentComponent } from './views/posts/create-comment/create-comment.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ModalButtonComponent } from './views/profile/modal-button/modal-button.
     PostsContainerComponent,
     RegisterComponent,
     ModalUpdateFormComponent,
-    ModalButtonComponent
+    ModalButtonComponent,
+    CreateCommentComponent
   ],
   imports: [
     BrowserModule,
