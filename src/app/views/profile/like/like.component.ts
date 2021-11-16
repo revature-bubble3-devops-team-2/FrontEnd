@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Post } from 'src/app/models/post';
-import { Profile } from 'src/app/models/profile';
-import { PostService } from 'src/app/services/post.service';
+import { Post } from 'app/models/post';
+import { Profile } from 'app/models/profile';
+import { PostService } from 'app/services/post.service';
 
 @Component({
   selector: 'app-like',
