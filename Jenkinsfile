@@ -27,9 +27,9 @@ pipeline {
       }
       stage('build') {
          steps {
-            sh 'ng build --aot'
+            sh 'ng build --aot --output-hashing none'
             discordSend description: ":construction_site: *Built Production Model*", result: currentBuild.currentResult, webhookURL: discordurl
-            sh 'ls ./dist'
+            sh 'ls ./dist/bubble/'
          }
       }
       stage('remove previous docker image') {
@@ -42,7 +42,7 @@ pipeline {
       }
       stage('create docker image') {
          steps {
-               sh 'docker build -t ${IMAGE_TAG} -f Dockerfile .'
+               sh 'docker build -t ${IMAGE_TAG} .'
                discordSend description: ":screwdriver: *Built New Docker Image*", result: currentBuild.currentResult, webhookURL: discordurl
          }
       }
@@ -56,6 +56,9 @@ pipeline {
    post {
       success {
          discordSend description: ":potable_water: **Pipeline Successful!**", result: currentBuild.currentResult, webhookURL: discordurl
+         sh 'docker container ls'
+         sh 'docker start ${CONTAINER_NAME}'
+         sh 'curl http://ec2-54-211-142-207.compute-1.amazonaws.com/'
       }
    }
 }

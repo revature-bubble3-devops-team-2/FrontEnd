@@ -4,6 +4,11 @@
     "analytics": false
   },
   "version": 1,
+  "cli": {
+    "cache": {
+      "enabled": false
+    }
+  },
   "newProjectRoot": "projects",
   "projects": {
     "bubble": {
