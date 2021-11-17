@@ -47,6 +47,16 @@ export class PostService implements OnDestroy {
     return this.httpClient.get<number>('http://localhost:8082/like', requestOptions).pipe(takeUntil(this._unsubscribeAll));
   }
 
+  getLiked(post: Post): Observable<number> {
+    console.log("getnumlikes called");
+    const headerDict = {'post': `${post.psid}`, "find": "true"}
+    console.log(post.psid);
+    const requestOptions = {                                                                                                                                                                                 
+      headers: new HttpHeaders(headerDict),
+    };
+    return this.httpClient.get<number>('http://localhost:8082/like', requestOptions).pipe(takeUntil(this._unsubscribeAll));
+  }
+
   postLike(post: Post): Observable<any> {
     console.log("postlike called");
     return this.httpClient.post<Post>('http://localhost:8082/like', post).pipe(takeUntil(this._unsubscribeAll));

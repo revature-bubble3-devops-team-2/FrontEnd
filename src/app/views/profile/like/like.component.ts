@@ -11,6 +11,7 @@ import { PostService } from 'app/services/post.service';
 export class LikeComponent implements OnInit {
 
   public num!: number;
+  public hasLiked!: Boolean;
   
 
   @Input()
@@ -35,11 +36,19 @@ export class LikeComponent implements OnInit {
             this.getLikes();
           })
         })
+        this.hasLiked = !this.hasLiked;
   }
+
 
   ngOnInit(): void {
     this.getLikes();
-    
+    this.postService.getLiked(this.postInfo).subscribe((data) => {
+      if(data === 0) {
+        this.hasLiked = false;
+      } else {
+        this.hasLiked = true;
+      }
+    })
   }
 
 }
