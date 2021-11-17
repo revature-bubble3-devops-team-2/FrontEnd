@@ -11,6 +11,7 @@ import { PostService } from 'app/services/post.service';
 export class LikeComponent implements OnInit {
 
   public num!: number;
+  
 
   @Input()
   postInfo!: Post;
@@ -28,15 +29,12 @@ export class LikeComponent implements OnInit {
       
         console.log(data);
         this.getLikes();
-     
-        })
-  }
-
-  public unlikePost() {
-    this.postService.deleteLike(this.postInfo).subscribe((data) => {
+        }, (err) => {
+          this.postService.deleteLike(this.postInfo).subscribe((data) => {
             console.log("like deleted");
             this.getLikes();
           })
+        })
   }
 
   ngOnInit(): void {

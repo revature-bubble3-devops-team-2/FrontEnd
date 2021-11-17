@@ -56,7 +56,10 @@ export class PostService implements OnDestroy {
   deleteLike(post: Post): Observable<any> {
     console.log("deletelike called");
     console.log(post);
-    return this.httpClient.delete<Post>('http://localhost:8082/like', post).pipe(takeUntil(this._unsubscribeAll));
+    const options = {
+      body: post,
+    };
+    return this.httpClient.delete<Post>('http://localhost:8082/like', options).pipe(takeUntil(this._unsubscribeAll));
   }
 
   ngOnDestroy(): void {
