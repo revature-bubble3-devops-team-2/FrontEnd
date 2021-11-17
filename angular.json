@@ -35,7 +35,6 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
@@ -104,7 +103,10 @@
               "src/assets"
             ],
             "styles": [
+<<<<<<< HEAD
               "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
+=======
+>>>>>>> a44b58dac1389b04394935c7d23982cf2796d9eb
               "src/styles.css"
             ],
             "scripts": []

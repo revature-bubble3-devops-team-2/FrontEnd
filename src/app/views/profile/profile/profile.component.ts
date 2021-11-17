@@ -10,11 +10,11 @@ import { ProfileService } from 'app/services/profile.service';
 })
 export class ProfileComponent implements OnInit {
 
-  profile: Profile = {};
   firstName: string = "";
   lastName: string = "";
   email: string = "";
   updated: boolean = false;
+  credential: string = "";
 
   constructor(private profileService: ProfileService) { }
 
@@ -22,38 +22,17 @@ export class ProfileComponent implements OnInit {
       this.profileService.getProfileByPid(1).subscribe(
       (result)=>{
         if(result){
-          //this.profile = result;
           sessionStorage.setItem("profile", JSON.stringify(result));
         }
       }
     )
-    
-    var sessionProfile = sessionStorage.getItem("profile");
+  }
+
+ 
+  get profile(){
+    let sessionProfile = sessionStorage.getItem("profile");
     if(sessionProfile!=null){
-      this.profile = JSON.parse(sessionProfile);
-      //console.log(this.profile)
-    }   
-  }
-
-  showUpdateMenu(){
-    this.updated = true;
-  }
-
-  updateProfile(){
-    if(this.email!=""){
-      this.profile.email = this.email;
+     return JSON.parse(sessionProfile);
     }
-    if(this.firstName!=""){
-      this.profile.firstName = this.firstName;
-    }  
-    if(this.lastName!=""){
-      this.profile.lastName = this.lastName;
-    }
-    this.profile.pid = 1;
-    this.profileService.updateProfile(this.profile).subscribe(
-      (result)=>{
-        console.log(result);
-      }
-    )  
   }
 }
