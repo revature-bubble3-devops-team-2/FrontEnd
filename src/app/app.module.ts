@@ -14,6 +14,7 @@ import { CreatePostComponent } from './views/profile/posts/create-post/create-po
 import { PostsContainerComponent } from './views/profile/posts/posts-container/posts-container.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FollowComponent } from './views/profile/follow/follow.component';
 
 
 
@@ -24,7 +25,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ProfileComponent,
     RegisterComponent,
     CreatePostComponent,
-    PostsContainerComponent
+    PostsContainerComponent,
+    FollowComponent
   ],
   imports: [
     BrowserModule,

@@ -17,8 +17,7 @@ export class FollowComponent implements OnInit {
 
   constructor(private followService:FollowService, private router:Router) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   follow()
   {
@@ -40,14 +39,10 @@ export class FollowComponent implements OnInit {
           }
           else
           {
-            this.error=true;
+            this.error = true;
           }
         }
       )
-    }
-    else
-    {
-      this.missing = true;
-    }
+    } else { this.missing = true; }
   }
 }

@@ -10,13 +10,13 @@ export class FollowService {
 
   constructor(private http: HttpClient,) {  }
 
-  followUserByEmail(email: string): Observable<any>
+  followUserByEmail(email: string): Observable<HttpResponse<string>>
   {
-    return this.http.post("http://localhost:8082/follow", `token=${this.token}&email=${email}`);
+    return this.http.post<string>("http://localhost:8082/follow", `token=${this.token}&email=${email}`, { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
   }
   
-  followUserById(id: number): Observable<any>
+  followUserById(id: number): Observable<HttpResponse<string>>
   {
-    return this.http.post("http://localhost:8082/follow", `token=${this.token}&id=${id}`);
+    return this.http.post<string>("http://localhost:8082/follow", `token=${this.token}&id=${id}`, { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
   }
 }
