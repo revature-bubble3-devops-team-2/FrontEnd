@@ -14,10 +14,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalUpdateFormComponent } from './views/home/modal-update-form/modal-update-form.component';
 import { ModalButtonComponent } from './views/home/modal-button/modal-button.component';
-import { HomeComponent } from './views/home/home/home.component';
-import { LikeComponent } from './views/home/like/like.component';
 import { CreatePostComponent } from './views/home/posts/create-post/create-post.component';
 import { PostsContainerComponent } from './views/home/posts/posts-container/posts-container.component';
+import { HomeComponent } from './views/home/home/home.component';
+import { LikeComponent } from './views/home/like/like.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +41,7 @@ import { PostsContainerComponent } from './views/home/posts/posts-container/post
     NgbModule,
     AppRoutingModule,
     BrowserAnimationsModule
+    
   ],
   entryComponents:[
     NgbTooltipModule,
