@@ -13,12 +13,6 @@ pipeline {
    tools { nodejs "node"}
 
    stages {
-      stage('checkout') {
-          steps {
-            checkout scm
-            discordSend description: ":cyclone: *Cloned Repo*", result: currentBuild.currentResult, webhookURL: discordurl
-         }
-      }
       stage('Install Dependencies') {
          steps {
             sh 'npm install'
