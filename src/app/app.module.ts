@@ -15,7 +15,6 @@ import { PostsContainerComponent } from './views/profile/posts/posts-container/p
 import { AppRoutingModule } from './app-routing.module';
 import { PostFeedComponent } from './views/post-feed/post-feed.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule} from '@angular/material/button';
 import { LikeComponent } from './views/posts/like/like.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -42,7 +41,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     NgbModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatButtonModule,
     FontAwesomeModule
   ],
   entryComponents:[

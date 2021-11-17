@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from 'app/models/post';
 import { PostService } from 'app/services/post.service';
+import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
+import { faComment } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-post-feed',
@@ -10,6 +12,9 @@ import { PostService } from 'app/services/post.service';
 export class PostFeedComponent implements OnInit {
 
   posts: Post[] = [];
+
+  faThumbsUp = faThumbsUp;
+  faComment = faComment;
 
   constructor(private postService: PostService) { }
 
