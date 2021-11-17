@@ -26,7 +26,7 @@ pipeline {
             sh 'ls ./dist/bubble/'
          }
       }
-      stage('Remove Previous Images') {
+      stage('Remove Previous Artifacts') {
          steps {
                sh 'docker stop ${CONTAINER_NAME} || true'
                sh 'docker rmi ${IMAGE_TAG} || true'
