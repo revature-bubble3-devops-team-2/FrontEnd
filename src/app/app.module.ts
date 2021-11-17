@@ -16,6 +16,7 @@ import { PostFeedComponent } from './views/post-feed/post-feed.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule} from '@angular/material/button';
 import { LikeComponent } from './views/posts/like/like.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 
@@ -39,7 +40,8 @@ import { LikeComponent } from './views/posts/like/like.component';
     NgbModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    FontAwesomeModule
   ],
   entryComponents:[
     PostComponent

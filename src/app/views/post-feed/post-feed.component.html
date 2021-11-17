@@ -1,5 +1,5 @@
 <div class="container-fluid d-flex flex-column justify-content-between align-items-center m-1" *ngIf="posts">
-  <div class="col mb-4 post-card" *ngFor="let post of posts">
+  <div class="col mb-4 post-card card shadow" *ngFor="let post of posts">
     <div class="d-flex justify-content-between user-info">
       <div class="d-flex flex-column">
         {{post.creator?.username}}
@@ -13,12 +13,14 @@
     </div>
     <!-- <app-post [post]="post"></app-post> -->
       <ng-container>
-        <img
+        <div class="image-container">
+          <img
           class="img-fluid img-thumbnail"
           width="100%"
           [src]="post.imgURL"
           aria-label="Placeholder: Thumbnail"
         />
+        </div>
       </ng-container>
 
       <div class="card-body">
