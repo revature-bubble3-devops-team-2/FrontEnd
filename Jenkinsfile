@@ -19,27 +19,27 @@ pipeline {
             discordSend description: ":construction: *Updated Dependencies*", result: currentBuild.currentResult, webhookURL: discordurl
          }
       }
-      stage('build') {
+      stage('Build Angular Files') {
          steps {
             sh 'ng build --aot --output-hashing none'
             discordSend description: ":construction_site: *Built Production Model*", result: currentBuild.currentResult, webhookURL: discordurl
             sh 'ls ./dist/bubble/'
          }
       }
-      stage('remove previous docker image') {
+      stage('Remove Previous Images') {
          steps {
                sh 'docker stop ${CONTAINER_NAME} || true'
                sh 'docker rmi ${IMAGE_TAG} || true'
                discordSend description: ":axe: *Removed Previous Docker Artifacts*", result: currentBuild.currentResult, webhookURL: discordurl
          }
       }
-      stage('create docker image') {
+      stage('Create Image') {
          steps {
                sh 'docker build -t ${IMAGE_TAG} .'
                discordSend description: ":screwdriver: *Built New Docker Image*", result: currentBuild.currentResult, webhookURL: discordurl
          }
       }
-      stage('create container') {
+      stage('Start Container') {
          steps {
                sh 'docker run -it --rm -p ${PORT}:${PORT} -d --name ${CONTAINER_NAME} ${IMAGE_TAG}'
                discordSend description: ":whale: *Running Docker Container*", result: currentBuild.currentResult, webhookURL: discordurl
