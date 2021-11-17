@@ -1,6 +1,13 @@
+.container-fluid {
+    background-color: #F26925;
+    padding: 2rem;
+}
+
 .post-card {
     max-width: 100mm;
-    /* border: 1px solid darkgray; */
+    border-radius: 20px;
+    padding: 0.5rem 1rem 1rem 1rem;
+    background-color:  #B9B9BA;
 }
 
 /* .post-date {
@@ -9,6 +16,7 @@
 
 h2, h4 {
     margin: 0 !important;
+    color: #474C55 !important;
 }
 
 .card-body {
@@ -27,20 +35,21 @@ h2, h4 {
 .follow-btn{
     border: none;
     text-align: center;
-}
-
-.follow-btn {
     background-color: #F26925;
+    border-radius: 20px;
+    padding: 6px 20px !important;
 }
 
-/* .comment-btn, .like-btn {
-    background-color:  #FCB414;
-} */
 
 .like-icon, .comment-icon {
     margin-right: 4px;
 }
 
+
 a:hover {
     text-decoration: none;
+}
+
+fa-icon{
+    font-size: 14pt;
 }
