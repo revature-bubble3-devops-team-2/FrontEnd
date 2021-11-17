@@ -1,7 +1,6 @@
 import { Component, OnInit,EventEmitter, Output } from '@angular/core';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Profile } from 'app/models/profile';
-import {ProfileComponent} from 'app/views/profile/profile/profile.component';
 import { ProfileService } from 'app/services/profile.service';
 
 @Component({
