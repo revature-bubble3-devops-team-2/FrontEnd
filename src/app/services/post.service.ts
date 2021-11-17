@@ -39,7 +39,7 @@ export class PostService implements OnDestroy {
 
   getNumLikes(post: Post): Observable<number> {
     console.log("getnumlikes called");
-    const headerDict = {'post': `${post.psid}`}
+    const headerDict = {'post': `${post.psid}`, "find": "false"}
     console.log(post.psid);
     const requestOptions = {                                                                                                                                                                                 
       headers: new HttpHeaders(headerDict),

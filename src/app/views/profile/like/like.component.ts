@@ -29,15 +29,14 @@ export class LikeComponent implements OnInit {
         console.log(data);
         this.getLikes();
      
-        }, (err) => {
-          console.log(err);
-          this.postService.deleteLike(this.postInfo).subscribe((data) => {
+        })
+  }
+
+  public unlikePost() {
+    this.postService.deleteLike(this.postInfo).subscribe((data) => {
             console.log("like deleted");
             this.getLikes();
           })
-        })
-    
-    
   }
 
   ngOnInit(): void {
