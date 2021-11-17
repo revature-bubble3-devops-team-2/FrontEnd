@@ -14,8 +14,21 @@ export class PostFeedComponent implements OnInit {
   constructor(private postService: PostService) { }
 
   ngOnInit(): void {
-    this.posts = this.postService.getPostsByFollowers()
+    this.getFollowerPosts();
+  }
+
+  getFollowerPosts():any{
+    this.postService.getPostsByFollowers();
+    this.postService.getFollowerPosts().subscribe(async (data: any) => {
+      this.posts = await data as Post[];
+      this.posts.sort((a: Post, b: Post) => {
+        let as =  new Date(a.datePosted).getTime();
+        let bs =  new Date(b.datePosted).getTime();
+        return bs - as;
+      })
+    })
+  }
+
   }
 
 
-}
