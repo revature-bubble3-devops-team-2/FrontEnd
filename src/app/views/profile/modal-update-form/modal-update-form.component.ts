@@ -18,7 +18,7 @@ export class ModalUpdateFormComponent implements OnInit {
   lastName: string = "";
   email: string = "";
 
-  @Output() changed = new EventEmitter<any>();
+ // @Output() changed = new EventEmitter<any>();
 
   ngOnInit(): void {
   
@@ -41,7 +41,7 @@ export class ModalUpdateFormComponent implements OnInit {
     this.profileService.updateProfile(this.profile).subscribe(
       (result)=>{
         sessionStorage.setItem("profile", JSON.stringify(result));
- }
+      }
     )
     this.activeModal.close();
   }

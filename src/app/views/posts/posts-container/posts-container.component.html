@@ -9,7 +9,7 @@
 <div class="album py-5 bg-light">
   <div class="container">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-      <div class="col mb-4" *ngFor="let post of posts">
+      <div class="col mb-4" *ngFor="let post of posts" >
         <div class="card shadow-sm" >
           <ng-container>
             <img
@@ -33,9 +33,26 @@
                 </button>
                 <button type="button" class="btn btn-sm btn-outline-secondary" (click)="createComment(post)">
                   Comment
-                </button>               
+                </button>             
               </div>
+              
               <small class="text-muted">9 mins</small>
+            </div>
+            <!-- <div class="card"> -->
+              <div>
+                <p class="card-text">{{ post.body }}</p>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary" (click)="open(post)">
+                    View
+                  </button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">
+                    Edit
+                  </button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary" (click)="createComment(post)">
+                    Comment
+                  </button>             
+                </div>
+              <!-- </div> -->
             </div>
           </div>
         </div>

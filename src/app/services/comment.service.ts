@@ -14,4 +14,9 @@ export class CommentService {
     console.log(comment);
     return this.http.post('http://localhost:8082/comment', comment)
   }
+
+  getCommentsByPsid(psid: number): Observable<any> {
+    console.log(psid);
+    return this.http.get(`http://localhost:8082/comment?psid=${psid}`)
+  }
 }

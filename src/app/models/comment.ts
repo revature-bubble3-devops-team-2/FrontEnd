@@ -4,9 +4,9 @@ import { Profile } from "./profile";
 
 export class Comment {
     cid?:number;
-    creator?:Profile;
+    writer?:Profile;
     post?: Post;
-    cBody?: string;
-    timeCreated?: Date;
+    cbody?: string;
+    dateCreated?: Date;
     previous?: Comment;
 }

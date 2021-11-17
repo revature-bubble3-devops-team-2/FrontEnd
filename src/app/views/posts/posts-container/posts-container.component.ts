@@ -5,6 +5,7 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PostComponent } from '../post/post.component';
 import { CreatePostComponent } from '../create-post/create-post.component';
 import { CreateCommentComponent } from '../create-comment/create-comment.component';
+import { Comment } from 'app/models/comment';
 
 @Component({
   selector: 'app-posts-container',
@@ -14,6 +15,7 @@ import { CreateCommentComponent } from '../create-comment/create-comment.compone
 export class PostsContainerComponent implements OnInit {
 
   posts!: Post[];
+  
 
   constructor(public postService: PostService, private modalService: NgbModal) { }
 
@@ -29,6 +31,7 @@ export class PostsContainerComponent implements OnInit {
     })
   }
 
+
   openCreatePost() {
     this.modalService.open(CreatePostComponent);
   }
@@ -39,7 +42,6 @@ export class PostsContainerComponent implements OnInit {
   }
 
   createComment(post: Post) {
-    console.log(post.postId)
     const modalRef = this.modalService.open(CreateCommentComponent);
     modalRef.componentInstance.post = post;
   }

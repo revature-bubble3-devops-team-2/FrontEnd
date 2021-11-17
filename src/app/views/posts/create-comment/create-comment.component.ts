@@ -12,23 +12,42 @@ import { Post } from 'app/models/post';
 export class CreateCommentComponent implements OnInit {
   @Input() 
   post!: Post;
-
   comment: Comment= {};
+  comments!: Comment[];
 
   constructor(
     public commentService: CommentService, 
     public activeModal: NgbActiveModal
     ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getCommentsByPsid();
+  }
+
+  getCommentsByPsid(){
+    console.log(this.post);
+    if(this.post.psid){
+      this.commentService.getCommentsByPsid(this.post.psid).subscribe(
+        (result)=>{
+          this.comments = result;
+        }
+      )
+    }  
+  }
 
   submitComment(comment: Comment){
     console.log(this.post);
     comment.post = this.post;
-    comment.creator = this.post.creator;
+    comment.dateCreated = new Date();
+    let sessionProfile = sessionStorage.getItem("profile");
+    if(sessionProfile!=null){
+      comment.writer = JSON.parse(sessionProfile);
+    } 
+    console.log(comment);
     this.commentService.createComment(comment).subscribe(
       (result)=>{
         console.log(result)
+        this.getCommentsByPsid();
       }
     )
   }
