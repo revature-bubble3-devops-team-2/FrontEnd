@@ -28,7 +28,7 @@ import { MatButtonModule} from '@angular/material/button';
     ProfileComponent,
     RegisterComponent,
     ModalUpdateFormComponent,
-    ModalButtonComponent
+    ModalButtonComponent,
     RegisterComponent,
     CreatePostComponent,
     PostComponent,
