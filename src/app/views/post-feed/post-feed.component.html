@@ -2,17 +2,18 @@
   <div class="col mb-4 post-card card shadow-lg" *ngFor="let post of posts">
     <div class="d-flex justify-content-between user-info">
       <div class="d-flex flex-column">
-        {{post.creator?.username}}
-        <small class="text-muted post-date">{{post.datePosted | date}}</small>
+        <h2>{{post.creator?.username | titlecase}}</h2>
+        <h4 class="text-muted post-date">{{post.datePosted | date}}</h4>
       </div>
       <div>
-        <button type="button" class="btn btn-sm btn-outline-secondary">
+        <button type="button" class="btn btn-sm btn-secondary follow-btn">
           Follow
         </button>
       </div>
     </div>
+    <hr>
     <!-- <app-post [post]="post"></app-post> -->
-      <ng-container>
+      <ng-container *ngIf="post.imgURL">
         <div class="image-container">
           <img
           class="img-fluid img-thumbnail"
@@ -25,16 +26,14 @@
 
       <div class="card-body">
         <p class="card-text">{{ post.body }}</p>
+        <hr>
         <div class="d-flex justify-content-between align-items-center">
           <div class="btn-group">
-            <button type="button" class="btn btn-sm btn-outline-secondary">
-              <fa-icon [icon]="faThumbsUp"></fa-icon> Like
-            </button>
+            <a href="#"><fa-icon class="like-icon" [icon]="faThumbsUp"></fa-icon> Like</a>
+              
           </div>
           <div class="btn-group">
-            <button type="button" class="btn btn-sm btn-outline-secondary">
-              <fa-icon [icon]="faComment"></fa-icon>Comment
-            </button>
+            <a href="#"><fa-icon class="comment-icon" [icon]="faComment"></fa-icon>Comment</a>
           </div>
         </div>
       </div>

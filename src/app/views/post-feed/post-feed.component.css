@@ -3,8 +3,16 @@
     /* border: 1px solid darkgray; */
 }
 
-.post-date {
+/* .post-date {
     font-size: 12px;
+} */
+
+h2, h4 {
+    margin: 0 !important;
+}
+
+.card-body {
+    text-align: center;
 }
 
 .user-info {
@@ -14,4 +22,25 @@
 .image-container {
     max-height: 512px;
     margin: 0px auto;
+}
+
+.follow-btn{
+    border: none;
+    text-align: center;
+}
+
+.follow-btn {
+    background-color: #F26925;
+}
+
+/* .comment-btn, .like-btn {
+    background-color:  #FCB414;
+} */
+
+.like-icon, .comment-icon {
+    margin-right: 4px;
+}
+
+a:hover {
+    text-decoration: none;
 }
