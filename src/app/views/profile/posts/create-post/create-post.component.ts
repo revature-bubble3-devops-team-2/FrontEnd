@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Post } from 'app/models/post';
+import { Profile } from 'app/models/profile';
 import { PostService } from 'app/services/post.service';
 
 @Component({
@@ -9,18 +10,18 @@ import { PostService } from 'app/services/post.service';
   styleUrls: ['./create-post.component.css'],
 })
 export class CreatePostComponent implements OnInit {
+  profile: Profile = {};
   addPost: Post = {
     creator: {
-      pid: 2,
-      username: 'profile3',
-      passkey: '33',
-      firstName: 'Three',
-      lastName: 'LastThree',
-      email: 'Email3',
+      pid: this.profile.pid,
+      username: this.profile.username,
+      passkey: '',
+      firstName: this.profile.firstName,
+      lastName: this.profile.lastName,
+      email: this.profile.email
     },
     body: '',
     datePosted: new Date(),
-  //  imgURL: 'https://source.unsplash.com/random/300x300',
     imgURL: '',
   };
 
@@ -31,7 +32,13 @@ export class CreatePostComponent implements OnInit {
     public activeModal: NgbActiveModal
     ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    var sessionProfile = sessionStorage.getItem("profile");
+    if(sessionProfile!=null){
+      this.profile = JSON.parse(sessionProfile);
+      console.log(this.profile)
+    }  
+  }
 
   createPost() {
     if(this.addPost.body!==''){

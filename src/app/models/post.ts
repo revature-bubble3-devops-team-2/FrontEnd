@@ -6,7 +6,7 @@ export class Post {
     creator:Profile;
     body?:string;
     imgURL?:string;
-    datePosted?:Date;
+    datePosted:Date;
 
     constructor(psid:number, creator:Profile, body:string, imgURL:string, datePosted:Date){
         this.psid = psid;
