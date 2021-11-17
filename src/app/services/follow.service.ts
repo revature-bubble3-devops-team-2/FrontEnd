@@ -12,11 +12,21 @@ export class FollowService {
 
   followUserByEmail(email: string): Observable<HttpResponse<string>>
   {
-    return this.http.post<string>("http://localhost:8082/follow", `token=${this.token}&email=${email}`, { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
+    return this.http.post<string>
+    (
+      "http://localhost:8082/follow",
+      { "Authorization":this.token, "email":email },
+      { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded'}}
+    );
   }
   
   followUserById(id: number): Observable<HttpResponse<string>>
   {
-    return this.http.post<string>("http://localhost:8082/follow", `token=${this.token}&id=${id}`, { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
+    return this.http.post<string>
+    (
+      "http://localhost:8082/follow",
+      { "Authorization":this.token, "id":id  },
+      { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded'}}
+    );
   }
 }
