@@ -14,7 +14,7 @@ export class FollowService {
   {
     return this.http.post<string>
     (
-      "http://localhost:8082/follow",
+      "http://localhost:8082/profile/follow",
       { "Authorization":this.token, "email":email },
       { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded'}}
     );
@@ -24,9 +24,19 @@ export class FollowService {
   {
     return this.http.post<string>
     (
-      "http://localhost:8082/follow",
+      "http://localhost:8082/profile/follow",
       { "Authorization":this.token, "id":id  },
       { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded'}}
     );
+  }
+
+  unfollowUserById(id: number): Observable<HttpResponse<string>>
+  {
+    return this.http.post<string>
+    (
+      "http://localhost:8082/profile/unfollow",
+      { "Authorization":this.token, "id":id  },
+      { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded'}}
+    )
   }
 }
