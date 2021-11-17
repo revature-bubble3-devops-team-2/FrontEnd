@@ -19,4 +19,9 @@ export class CommentService {
     console.log(psid);
     return this.http.get(`http://localhost:8082/comment?psid=${psid}`)
   }
+
+  deleteCommentByCid(cid: number): Observable<any> {
+    console.log(cid);
+    return this.http.delete(`http://localhost:8082/comment/${cid}`)
+  }
 }

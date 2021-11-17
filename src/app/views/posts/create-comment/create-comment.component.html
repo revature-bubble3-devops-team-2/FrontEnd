@@ -1,17 +1,25 @@
 <div class="card-body">
     <div class="create-comment-container">
-        <div *ngFor="let commentData of comments">
-            <p>{{commentData.cbody}}</p>
-        </div>
         <form id="create-comment-form" >
             <label for="create-comment">Create a comment: </label>
             <div class="mb-3">
-                <!-- <label for="formGroupExampleInput" class="form-label"></label> -->
                 <textarea type="text" class="form-control" [(ngModel)]="comment.cbody" name="create-post" id="create-post" placeholder="create a comment..." required>
                 </textarea>
             </div>
-            <!-- <input type="file" [(ngModel)]="addPost.imgURL" name="create-post-image" id="create-post-image"/> -->
-            <input type="submit" (click)="submitComment(comment)"/>
+            <input type="submit" class="btn btn-dark" (click)="submitComment(comment)"/>
         </form>
+        <br>
+        <div *ngFor="let commentData of comments" >
+            <div class="card">
+                <div class="card-body" *ngIf="checkWriterForEachComment(commentData)">
+                    <p>{{commentWriter.firstName}}</p>
+                    <p>{{commentData.cbody}}</p>
+                    <p>{{commentLocaleDate}}</p>
+                    <button class="btn btn-dark" *ngIf="isWriter" (click)="deleteCommentByCid(commentData.cid)">delete</button>
+                </div>      
+            </div>
+            <br>
+        </div>
+
     </div>
 </div>

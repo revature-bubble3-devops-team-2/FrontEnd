@@ -21,11 +21,15 @@ export class ModalUpdateFormComponent implements OnInit {
  // @Output() changed = new EventEmitter<any>();
 
   ngOnInit(): void {
-  
+    var modaled = document.querySelector('.modal-content');
+    modaled?.setAttribute("style","border-radius:30px;");
+    
     var sessionProfile = sessionStorage.getItem("profile");
     if(sessionProfile!=null){
       this.profile = JSON.parse(sessionProfile);
-    }   
+    }
+    
+    
 }
 
   updateProfile(){
