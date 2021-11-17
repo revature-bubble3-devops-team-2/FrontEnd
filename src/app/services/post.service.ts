@@ -38,9 +38,7 @@ export class PostService implements OnDestroy {
   }
 
   getNumLikes(post: Post): Observable<number> {
-    console.log("getnumlikes called");
     const headerDict = {'post': `${post.psid}`, "find": "false"}
-    console.log(post.psid);
     const requestOptions = {                                                                                                                                                                                 
       headers: new HttpHeaders(headerDict),
     };
@@ -48,9 +46,7 @@ export class PostService implements OnDestroy {
   }
 
   getLiked(post: Post): Observable<number> {
-    console.log("getnumlikes called");
     const headerDict = {'post': `${post.psid}`, "find": "true"}
-    console.log(post.psid);
     const requestOptions = {                                                                                                                                                                                 
       headers: new HttpHeaders(headerDict),
     };
@@ -58,14 +54,10 @@ export class PostService implements OnDestroy {
   }
 
   postLike(post: Post): Observable<any> {
-    console.log("postlike called");
     return this.httpClient.post<Post>('http://localhost:8082/like', post).pipe(takeUntil(this._unsubscribeAll));
-    
   }
 
   deleteLike(post: Post): Observable<any> {
-    console.log("deletelike called");
-    console.log(post);
     const options = {
       body: post,
     };
@@ -76,5 +68,4 @@ export class PostService implements OnDestroy {
     this._unsubscribeAll.next();
     this._unsubscribeAll.complete();
   }
-
 }

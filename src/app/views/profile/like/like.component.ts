@@ -13,7 +13,6 @@ export class LikeComponent implements OnInit {
   public num!: number;
   public hasLiked!: Boolean;
   
-
   @Input()
   postInfo!: Post;
 
@@ -25,14 +24,10 @@ export class LikeComponent implements OnInit {
   }
 
   public likePost() {
-    
     this.postService.postLike(this.postInfo).subscribe((data) => {
-      
-        console.log(data);
         this.getLikes();
         }, (err) => {
           this.postService.deleteLike(this.postInfo).subscribe((data) => {
-            console.log("like deleted");
             this.getLikes();
           })
         })
