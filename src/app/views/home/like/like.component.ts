@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Post } from 'app/models/post';
-import { Profile } from 'app/models/profile';
 import { PostService } from 'app/services/post.service';
 
 @Component({
@@ -11,7 +10,8 @@ import { PostService } from 'app/services/post.service';
 export class LikeComponent implements OnInit {
 
   public num!: number;
-
+  public hasLiked!: Boolean;
+  
   @Input()
   postInfo!: Post;
 
@@ -23,26 +23,26 @@ export class LikeComponent implements OnInit {
   }
 
   public likePost() {
-    
     this.postService.postLike(this.postInfo).subscribe((data) => {
-      
-        console.log(data);
         this.getLikes();
-     
         }, (err) => {
-          console.log(err);
           this.postService.deleteLike(this.postInfo).subscribe((data) => {
-            console.log("like deleted");
             this.getLikes();
           })
         })
-    
-    
+        this.hasLiked = !this.hasLiked;
   }
+
 
   ngOnInit(): void {
     this.getLikes();
-    
+    this.postService.getLiked(this.postInfo).subscribe((data) => {
+      if(data === 0) {
+        this.hasLiked = false;
+      } else {
+        this.hasLiked = true;
+      }
+    })
   }
 
 }

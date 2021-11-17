@@ -1,12 +1,24 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Profile } from 'app/models/profile';
+import { HttpClient, HttpResponse, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Profile } from '../models/profile';
 import { Observable } from 'rxjs';
+import { ThrowStmt } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileService {
+  private profile: Profile={};
+
+  setData(profile: Profile){
+    this.profile = profile;
+  }
+
+  getData(){
+    let temp = this.profile;
+    this.profile={};
+    return temp;
+  }
 
   constructor(private http: HttpClient,) { }
 
@@ -23,5 +35,9 @@ export class ProfileService {
 
   updateProfile(profile: Profile): Observable<Profile>{
     return this.http.put(`http://localhost:8082/profile/profiles/${profile.pid}`, profile);
+  }
+
+  login(username: string, password: string): Observable<HttpResponse<string>> {
+    return this.http.post<string>('http://localhost:8082/profile', `username=${username}&password=${password}`, { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
   }
 }

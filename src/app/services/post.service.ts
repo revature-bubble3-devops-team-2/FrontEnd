@@ -1,4 +1,4 @@
-import { Injectable, Input, OnDestroy } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Post } from '../models/post';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
@@ -38,9 +38,15 @@ export class PostService implements OnDestroy {
   }
 
   getNumLikes(post: Post): Observable<number> {
-    console.log("getnumlikes called");
-    const headerDict = {'post': `${post.psid}`}
-    console.log(post.psid);
+    const headerDict = {'post': `${post.psid}`, "find": "false"}
+    const requestOptions = {                                                                                                                                                                                 
+      headers: new HttpHeaders(headerDict),
+    };
+    return this.httpClient.get<number>('http://localhost:8082/like', requestOptions).pipe(takeUntil(this._unsubscribeAll));
+  }
+
+  getLiked(post: Post): Observable<number> {
+    const headerDict = {'post': `${post.psid}`, "find": "true"}
     const requestOptions = {                                                                                                                                                                                 
       headers: new HttpHeaders(headerDict),
     };
@@ -48,20 +54,18 @@ export class PostService implements OnDestroy {
   }
 
   postLike(post: Post): Observable<any> {
-    console.log("postlike called");
     return this.httpClient.post<Post>('http://localhost:8082/like', post).pipe(takeUntil(this._unsubscribeAll));
-    
   }
 
   deleteLike(post: Post): Observable<any> {
-    console.log("deletelike called");
-    console.log(post);
-    return this.httpClient.delete<Post>('http://localhost:8082/like', post).pipe(takeUntil(this._unsubscribeAll));
+    const options = {
+      body: post,
+    };
+    return this.httpClient.delete<Post>('http://localhost:8082/like', options).pipe(takeUntil(this._unsubscribeAll));
   }
 
   ngOnDestroy(): void {
     this._unsubscribeAll.next();
     this._unsubscribeAll.complete();
   }
-
 }

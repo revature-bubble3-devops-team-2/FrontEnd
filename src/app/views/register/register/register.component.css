@@ -3,7 +3,7 @@
 }
 
 .register-container {
-  background-image: url("/assets/images/login_register_background.jpg");
+  background-image: url("/assets/images/login-register-background.jpg");
   background-size: cover;
   background-attachment: fixed;
 }

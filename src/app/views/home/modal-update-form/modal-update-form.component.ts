@@ -1,43 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,EventEmitter, Output } from '@angular/core';
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Profile } from 'app/models/profile';
 import { ProfileService } from 'app/services/profile.service';
 
-
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  selector: 'app-modal-update-form',
+  templateUrl: './modal-update-form.component.html',
+  styleUrls: ['./modal-update-form.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class ModalUpdateFormComponent implements OnInit {
+
+  constructor(public activeModal: NgbActiveModal, private profileService: ProfileService, private modalService: NgbModal) { }
 
   profile: Profile = {};
   firstName: string = "";
   lastName: string = "";
   email: string = "";
-  updated: boolean = false;
 
-  constructor(private profileService: ProfileService) { }
+  @Output() changed = new EventEmitter<any>();
 
   ngOnInit(): void {
-      this.profileService.getProfileByPid(1).subscribe(
-      (result)=>{
-        if(result){
-          //this.profile = result;
-          sessionStorage.setItem("profile", JSON.stringify(result));
-        }
-      }
-    )
-    
+  
     var sessionProfile = sessionStorage.getItem("profile");
     if(sessionProfile!=null){
       this.profile = JSON.parse(sessionProfile);
-      //console.log(this.profile)
     }   
-  }
-
-  showUpdateMenu(){
-    this.updated = true;
-  }
+}
 
   updateProfile(){
     if(this.email!=""){
@@ -49,11 +37,11 @@ export class ProfileComponent implements OnInit {
     if(this.lastName!=""){
       this.profile.lastName = this.lastName;
     }
-    this.profile.pid = 1;
     this.profileService.updateProfile(this.profile).subscribe(
       (result)=>{
-        console.log(result);
-      }
-    )  
+        sessionStorage.setItem("profile", JSON.stringify(result));
+ }
+    )
+    this.activeModal.close();
   }
 }

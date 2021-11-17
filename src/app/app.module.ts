@@ -7,17 +7,17 @@ import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './views/login/login/login.component';
-import { ProfileComponent } from './views/profile/profile/profile.component';
+import { ProfileComponent } from './views/home/profile/profile.component';
 import { RegisterComponent } from './views/register/register/register.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { CreatePostComponent } from './views/profile/posts/create-post/create-post.component';
-import { PostComponent } from './views/profile/posts/post/post.component';
-import { PostsContainerComponent } from './views/profile/posts/posts-container/posts-container.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LikeComponent } from './views/profile/like/like.component';
-
-
+import { ModalUpdateFormComponent } from './views/home/modal-update-form/modal-update-form.component';
+import { ModalButtonComponent } from './views/home/modal-button/modal-button.component';
+import { HomeComponent } from './views/home/home/home.component';
+import { LikeComponent } from './views/home/like/like.component';
+import { CreatePostComponent } from './views/home/posts/create-post/create-post.component';
+import { PostsContainerComponent } from './views/home/posts/posts-container/posts-container.component';
 
 @NgModule({
   declarations: [
@@ -25,9 +25,12 @@ import { LikeComponent } from './views/profile/like/like.component';
     LoginComponent,
     ProfileComponent,
     RegisterComponent,
+    ModalUpdateFormComponent,
+    ModalButtonComponent,
+    RegisterComponent,
     CreatePostComponent,
-    PostComponent,
     PostsContainerComponent,
+    HomeComponent,
     LikeComponent
   ],
   imports: [
@@ -37,11 +40,9 @@ import { LikeComponent } from './views/profile/like/like.component';
     HttpClientModule,
     NgbModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
-    MatButtonModule
+    BrowserAnimationsModule
   ],
   entryComponents:[
-    PostComponent,
     NgbTooltipModule,
     AppRoutingModule
   ],

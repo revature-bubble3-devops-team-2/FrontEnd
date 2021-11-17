@@ -1,5 +1,5 @@
 export class Profile {
-
+    
     pid?:number;
     firstName?:string;
     lastName?:string;

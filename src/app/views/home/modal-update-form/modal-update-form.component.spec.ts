@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LikeComponent } from './like.component';
+import { ModalUpdateFormComponent } from './modal-update-form.component';
 
-describe('LikeComponent', () => {
-  let component: LikeComponent;
-  let fixture: ComponentFixture<LikeComponent>;
+describe('ModalUpdateFormComponent', () => {
+  let component: ModalUpdateFormComponent;
+  let fixture: ComponentFixture<ModalUpdateFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LikeComponent ]
+      declarations: [ ModalUpdateFormComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LikeComponent);
+    fixture = TestBed.createComponent(ModalUpdateFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
