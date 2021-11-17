@@ -35,7 +35,6 @@ pipeline {
       stage('remove previous docker image') {
          steps {
                sh 'docker stop ${CONTAINER_NAME} || true'
-               sh 'docker rm ${CONTAINER_NAME} || true'
                sh 'docker rmi ${IMAGE_TAG} || true'
                discordSend description: ":axe: *Removed Previous Docker Artifacts*", result: currentBuild.currentResult, webhookURL: discordurl
          }
@@ -54,11 +53,13 @@ pipeline {
       }
    }
    post {
+      failure {
+         discordSend description: ":warning: **Pipeline Failure!**", result: currentBuild.currentResult, webhookURL: discordurl
+         sh 'docker container ls'
+      }
       success {
          discordSend description: ":potable_water: **Pipeline Successful!**", result: currentBuild.currentResult, webhookURL: discordurl
          sh 'docker container ls'
-         sh 'docker start ${CONTAINER_NAME}'
-         sh 'curl http://ec2-54-211-142-207.compute-1.amazonaws.com/'
       }
    }
 }
