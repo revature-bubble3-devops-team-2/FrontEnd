@@ -10,36 +10,15 @@ import { takeUntil } from 'rxjs/operators'
   providedIn: 'root',
 })
 export class PostService implements OnDestroy {
-  posts = [
-    {
-      psid: 1,
-      creator: new Profile(1, "First", "Last", "Pass", "a@lachlan.dev", "FL"),
-      body: "A new post.",
-      imgURL: "https://source.unsplash.com/random/300x300",
-      datePosted: Date.parse("16 Nov 2021 00:00:00 GMT")
-    },
-    {
-      psid: 2,
-      creator: new Profile(2, "Amy", "Aadams", "Pass", "ant@lachlan.dev", "aaadams"),
-      body: "Hello everyone!",
-      imgURL: "https://source.unsplash.com/random/300x300",
-      datePosted: Date.parse("17 Nov 2021 00:00:00 GMT")
-    },
-    {
-      psid: 3,
-      creator: new Profile(2, "Amy", "Aadams", "Pass", "ant@lachlan.dev", "aaadams"),
-      body: "Another post.",
-      imgURL: "https://source.unsplash.com/random/300x300",
-      datePosted: Date.parse("18 Nov 2021 00:00:00 GMT")
-    }
-  ];
   
+  private followerPostsSubject = new BehaviorSubject<Post[]>([]);
   private postsSubject = new BehaviorSubject<Post[]>([]);
   constructor(private httpClient: HttpClient) {}
   private _unsubscribeAll = new Subject<any>();
   public numLikes!: number;
 
   public createPost(post: Post) {
+    console.log(post);
     this.httpClient
       .post<Post>('http://localhost:8082/posts', post)
       .pipe(takeUntil(this._unsubscribeAll))
@@ -63,6 +42,10 @@ export class PostService implements OnDestroy {
     return this.postsSubject.asObservable();
   }
 
+  getFollowerPosts(): Observable<any> {
+    return this.followerPostsSubject.asObservable();
+  }
+
   getNumLikes(post: Post): Observable<number> {
     console.log("getnumlikes called");
     const headerDict = {'post': `${post.psid}`}
@@ -80,7 +63,12 @@ export class PostService implements OnDestroy {
   }
 
   getPostsByFollowers(): any {
-    return this.posts;
+    this.httpClient
+      .get<Post[]>('http://localhost:8082/posts')
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe((data) => {
+        this.followerPostsSubject.next(data as Post[]);
+      });
   }
 
 

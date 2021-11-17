@@ -14,8 +14,14 @@ export class PostFeedComponent implements OnInit {
   constructor(private postService: PostService) { }
 
   ngOnInit(): void {
-    this.posts = this.postService.getPostsByFollowers()
+    this.getFollowerPosts();
   }
 
+  getFollowerPosts():void{
+    this.postService.getPostsByFollowers();
+    this.postService.getFollowerPosts().subscribe(
+      (result)=>this.posts  = result as Post[]
+    )
+  }
 
 }
