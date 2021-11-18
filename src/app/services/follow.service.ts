@@ -12,41 +12,45 @@ export class FollowService {
 
   followUserByEmail(email: string): Observable<HttpResponse<string>>
   {
-    return this.http.post<string>
-    (
-      "http://localhost:8082/profile/follow",
-      { "email":email },
-      { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': `${this.token}`}}
-    );
+      const httpOptions = {
+        headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded',
+                                  'Authorization': `${this.token}`
+                                }),
+      }
+      const body = JSON.stringify({'email': email});
+      return this.http.post<any>("http://localhost:8082/profile/follow", body, httpOptions);
   }
-  
+
   followUserById(id: number): Observable<HttpResponse<string>>
   {
-    return this.http.post<string>
-    (
-      "http://localhost:8082/profile/follow",
-      { "id":id },
-      { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': `${this.token}`}}
-    );
+      const httpOptions = {
+        headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded',
+                                  'Authorization': `${this.token}`
+                                }),
+      }
+      const body = JSON.stringify({'id': id});
+      return this.http.post<any>("http://localhost:8082/profile/follow", body, httpOptions);
   }
 
   unfollowUserByEmail(email: string): Observable<HttpResponse<string>>
   {
-    return this.http.post<string>
-    (
-      "http://localhost:8082/profile/unfollow",
-      { "id":email },
-      { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': `${this.token}`}}
-    )
+      const httpOptions = {
+        headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded',
+                                  'Authorization': `${this.token}`
+                                }),
+      }
+      const body = JSON.stringify({'email': email});
+      return this.http.post<any>("http://localhost:8082/profile/unfollow", body, httpOptions);
   }
 
   unfollowUserById(id: number): Observable<HttpResponse<string>>
   {
-    return this.http.post<string>
-    (
-      "http://localhost:8082/profile/unfollow",
-      { "id":id },
-      { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': `${this.token}`}}
-    )
+      const httpOptions = {
+        headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded',
+                                  'Authorization': `${this.token}`
+                                }),
+      }
+      const body = JSON.stringify({'id': id});
+      return this.http.post<any>("http://localhost:8082/profile/unfollow", body, httpOptions);
   }
 }
