@@ -42,7 +42,8 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     NgbModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    InfiniteScrollModule
   ],
   entryComponents:[
     PostComponent,

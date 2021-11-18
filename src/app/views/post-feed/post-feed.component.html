@@ -3,7 +3,7 @@ infiniteScroll
 [infiniteScrollDistance]="2"
 [infiniteScrollThrottle]="50"
 (scrolled)="onScroll()"
-[scrollWindow] = "false"
+[scrollWindow]="false"
 >
   <div class="col mb-4 post-card card shadow-lg" *ngFor="let post of posts">
     <div class="d-flex justify-content-between user-info">
@@ -33,15 +33,15 @@ infiniteScroll
 
       <div class="card-body">
         <p class="card-text">{{ post.body }}</p>
-        <hr>
-        <div class="d-flex justify-content-between align-items-center">
-          <div class="btn-group">
-            <a href="#"><fa-icon class="like-icon"  [icon]="faThumbsUp"></fa-icon> 5</a>
-              
-          </div>
-          <div class="btn-group">
-            <a href="#"><fa-icon class="comment-icon" [icon]="faComment"></fa-icon>10</a>
-          </div>
+      </div>
+      <hr>
+      <div class="d-flex justify-content-between align-items-center btn-div">
+        <div class="btn-group">
+          <a href="#"><fa-icon class="like-icon"  [icon]="faThumbsUp"></fa-icon> 5</a>
+            
+        </div>
+        <div class="btn-group">
+          <a href="#"><fa-icon class="comment-icon" [icon]="faComment"></fa-icon>10</a>
         </div>
       </div>
   </div>
@@ -49,5 +49,8 @@ infiniteScroll
     <div class="spinner-border" role="status">
       <span class="sr-only">Loading...</span>
     </div>
+  </div>
+  <div class=" mb-4 post-card card shadow-lg d-flex justify-content-center" *ngIf = "endOfContents">
+      No More Contents
   </div>
 </div>

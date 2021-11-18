@@ -67,13 +67,14 @@ export class PostService implements OnDestroy {
       .get<Post[]>(`http://localhost:8082/posts/page/${id}`)
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe((data) => {
-        if(data)
-        const currentValue = this.followerPostsSubject.value;
-        const updatedValue = currentValue.concat(data);
-        this.followerPostsSubject.next(updatedValue);
-      }
-    };
-     
+        if (data) {
+          const currentValue = this.followerPostsSubject.value;
+          console.log(currentValue);
+          const updatedValue = currentValue.concat(data);
+          this.followerPostsSubject.next(updatedValue);
+        }
+        return null;
+      });
   }
 
 
