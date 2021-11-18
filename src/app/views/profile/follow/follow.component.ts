@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
 import { FollowService } from 'app/services/follow.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-follow',
@@ -10,7 +10,6 @@ import { FollowService } from 'app/services/follow.service';
 export class FollowComponent implements OnInit {
 
   email: string = "";
-
   error: boolean = false;
   missing: boolean = false;
   success: boolean = false;
