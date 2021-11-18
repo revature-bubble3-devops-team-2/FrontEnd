@@ -37,13 +37,13 @@ pipeline {
       }
       stage('Create Image') {
          steps {
-               sh 'docker build -t ${REPO}:${REPO_TAG} -t ${IMAGE_TAG} .'
+               sh 'docker build -t ${REPO}:${REPO_TAG} -t .'
                discordSend description: ":screwdriver: *Built New Docker Image*", result: currentBuild.currentResult, webhookURL: discordurl
          }
       }
       stage('Start Container') {
          steps {
-               sh 'docker run -it --rm -p ${PORT}:${PORT} -d --name ${CONTAINER_NAME} ${IMAGE_TAG}'
+               sh 'docker run -it --rm -p ${PORT}:${PORT} -d --name ${CONTAINER_NAME} ${REPO}:${REPO_TAG}'
                discordSend description: ":whale: *Running Docker Container*", result: currentBuild.currentResult, webhookURL: discordurl
          }
       }
@@ -51,6 +51,7 @@ pipeline {
    post {
       failure {
          discordSend description: ":warning: **Pipeline Failure!**", result: currentBuild.currentResult, webhookURL: discordurl
+         sh 'docker rmi -f $(docker images -aq)'
          sh 'docker image ls'
       }
       success {
