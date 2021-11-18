@@ -8,7 +8,7 @@ pipeline {
       PORT = 80
       REPO = "cpete22/revature-bubble"
       REPO_TAG= "fe"
-      IMAGE_TAG = "bubblefeimg"
+      IMAGE_TAG = "bfeimg"
       CONTAINER_NAME = "bubblefe"
    }
 
@@ -37,7 +37,7 @@ pipeline {
       }
       stage('Create Image') {
          steps {
-               sh 'docker build -t ${REPO}:${REPO_TAG} .'
+               sh 'docker build -t ${REPO}:${REPO_TAG} -t ${IMAGE_TAG} .'
                discordSend description: ":screwdriver: *Built New Docker Image*", result: currentBuild.currentResult, webhookURL: discordurl
          }
       }
