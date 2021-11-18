@@ -1,12 +1,20 @@
 <div class="card-body">
     <div class="create-comment-container">
-        <form id="create-comment-form" >
+        <form id="create-comment-form" *ngIf="isReply==false">
             <label for="create-comment">Create a comment: </label>
             <div class="mb-3">
                 <textarea type="text" class="form-control" [(ngModel)]="comment.cbody" name="create-post" id="create-post" placeholder="create a comment..." required>
                 </textarea>
             </div>
             <input type="submit" class="btn btn-dark" (click)="submitComment(comment)"/>
+        </form>
+        <form id="create-comment-form" *ngIf="isReply==true">
+            <label for="create-comment">Reply comment: </label>
+            <div class="mb-3">
+                <textarea type="text" class="form-control" [(ngModel)]="comment.cbody" name="create-post" id="create-post" placeholder="reply comment" required>
+                </textarea>
+            </div>
+            <input type="submit" class="btn btn-dark" (click)="replyComment(comment)"/>
         </form>
         <br>
         <div *ngFor="let commentData of comments" >
@@ -15,11 +23,16 @@
                     <p>{{commentWriter.firstName}}</p>
                     <p>{{commentData.cbody}}</p>
                     <p>{{commentLocaleDate}}</p>
-                    <button class="btn btn-dark" *ngIf="isWriter" (click)="deleteCommentByCid(commentData.cid)">delete</button>
+                    <div *ngFor="let reply of replys">
+                        <div class="card">
+                            <p>{{reply.cbody}}</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-dark" *ngIf="isWriter" (click)="deleteCommentByCid(commentData.cid)">delete</button><br>
+                    <button class="btn btn-dark" (click)="submitCommentOnComment(commentData)">Reply</button>
                 </div>      
             </div>
             <br>
         </div>
-
     </div>
 </div>

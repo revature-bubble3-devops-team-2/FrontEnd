@@ -16,11 +16,16 @@ export class CreateCommentComponent implements OnInit {
   post!: Post;
   comment: Comment= {};
   comments!: Comment[];
+  replys!: Comment[];
+  replyOnComment!: Comment[];
+  displayComments!: Comment[];
   profile: Profile = {};
   isWriter: boolean = false;
+  isReply: boolean = false;
   commentData: Comment = {};
   commentWriter: Profile = {};
   commentLocaleDate: string = "";
+  previous: Comment ={};
 
   constructor(
     public commentService: CommentService, 
@@ -31,12 +36,14 @@ export class CreateCommentComponent implements OnInit {
 
     var modaled = document.querySelector('.modal-content');
     modaled?.setAttribute("style","border-radius:30px;");
+
+    this.getOriginCommentsByPsid();
+    this.getReplyCommentsByPsid();
     
-    this.getCommentsByPsid();
     let sessionProfile = sessionStorage.getItem("profile");
     if(sessionProfile!=null){
       this.profile = JSON.parse(sessionProfile);
-      console.log(this.profile)
+      //console.log(this.profile)
     } 
   }
 
@@ -45,11 +52,10 @@ export class CreateCommentComponent implements OnInit {
       this.commentService.deleteCommentByCid(cid).subscribe(
         (result)=>{
           console.log(result);
-          this.getCommentsByPsid();
+          this.getOriginCommentsByPsid();
         }
       )
-    }
-    
+    }  
   }
 
   dateFormat(d: Date){
@@ -65,6 +71,7 @@ export class CreateCommentComponent implements OnInit {
   }
 
   checkWriterForEachComment(comment: Comment){
+    this.filterReplyOnComment(comment);
     this.isWriter=false;
     this.commentData = comment;
     var temp = this.commentData.dateCreated;
@@ -84,13 +91,36 @@ export class CreateCommentComponent implements OnInit {
     }
   }
 
-  getCommentsByPsid(){
-    console.log(this.post);
+  filterReplyOnComment(comment: Comment){
+    //this.getReplyCommentsByPsid();
+
+    //this.getCommentsByPsid();
+    
+    //this.replys = this.replys.filter(obj => obj.previous?.cid==comment.cid);
+    console.log(this.replys);
+  }
+
+  getOriginCommentsByPsid(){
     if(this.post.psid){
       this.commentService.getCommentsByPsid(this.post.psid).subscribe(
         (result)=>{
           this.comments = result;
-          //console.log(this.comments)
+          //sessionStorage.setItem("comments", JSON.stringify(this.comments))
+          this.comments = this.comments.filter(obj => obj.previous==null);
+        }
+      )
+    }  
+  }
+
+  getReplyCommentsByPsid(){
+    if(this.post.psid){
+      this.commentService.getCommentsByPsid(this.post.psid).subscribe(
+        (result)=>{
+          this.replys = result;
+          this.replys = this.replys.filter(obj => obj.previous!=null)
+          console.log(this.replys);
+          //sessionStorage.setItem("comments", JSON.stringify(this.comments))
+          //this.comments = this.comments.filter(obj => obj.previous==null);
         }
       )
     }  
@@ -109,8 +139,33 @@ export class CreateCommentComponent implements OnInit {
     this.commentService.createComment(comment).subscribe(
       (result)=>{
         //console.log(result)
-        this.getCommentsByPsid();
+        this.isReply = false;
+        this.getOriginCommentsByPsid();
+
       }
     )
+  }
+
+  replyComment(comment: Comment){
+    console.log(this.post);
+    comment.post = this.post;
+    comment.dateCreated = new Date();
+    comment.previous = this.previous;
+    comment.writer = this.profile;
+    this.commentService.createComment(comment).subscribe(
+      (result)=>{
+        this.isReply = false;
+        this.getOriginCommentsByPsid();
+      }
+    )
+  }
+
+  submitCommentOnComment(comment: Comment){
+ 
+    this.previous = comment;
+    //console.log(comment)
+    //console.log(this.previous)
+    this.isReply = true;
+    this.getOriginCommentsByPsid();
   }
 }
