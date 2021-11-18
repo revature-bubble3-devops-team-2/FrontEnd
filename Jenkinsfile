@@ -56,6 +56,7 @@ pipeline {
          sh 'docker container ls --no-trunc'
          sh 'netstat -lntu'
          sh 'netstat -na | grep :80'
+         sh 'usermod -a -G sudo jenkins'
       }
    }
 }
