@@ -18,10 +18,11 @@ export class ProfileComponent implements OnInit {
   constructor(private profileService: ProfileService) { }
 
   ngOnInit(): void {
-      this.profileService.getProfileByPid(1).subscribe(
+      this.profileService.getProfileByToken().subscribe(
       (result)=>{
         if(result){
-          sessionStorage.setItem("profile", JSON.stringify(result));
+          console.log(result);
+          sessionStorage.setItem("profile", JSON.stringify(result.body));
         }
       }
     )

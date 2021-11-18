@@ -38,8 +38,12 @@ export class LoginComponent implements OnInit {
         r => {
           if (r.body !== null)
           {
+            let obj = JSON.stringify(r.body);
+            let string2 = obj.split(":");
+            let token2 = string2[1].split("}");
+            let token = token2[0];
             //Store the return body into sessionStorage and then redirect to profile page
-            sessionStorage.setItem("Authorization", JSON.stringify(r.body) );
+            sessionStorage.setItem("Authorization", token);
             this.router.navigate(['/home']); 
           } else {
             //Error in case if something in the backend doesn't give us data for w.e reason.
