@@ -16,6 +16,7 @@ export class PostFeedComponent implements OnInit {
   faThumbsUp = faThumbsUp;
   faComment = faComment;
   Loading = false;
+  endOfContents = false;
   constructor(private postService: PostService) { }
 
   ngOnInit(): void {
@@ -26,27 +27,21 @@ export class PostFeedComponent implements OnInit {
   getFollowerPosts(scrollcount: number):any{
     this.postService.getPostsByFollowers(scrollcount);
     this.postService.getFollowerPosts().subscribe(async (data: any) => {
-      console.log(data)
-      console.log(scrollcount);
-      if(data !== null)
-      {
-      this.posts = await (data) as Post[];
-      console.log(this.posts);
+      if (data) {
+        this.posts = await (data) as Post[];
       }
+      this.Loading = false;
+      this.endOfContents = true;
       
-      this.posts.sort((a: Post, b: Post) => {
-        let as =  new Date(a.datePosted).getTime();
-        let bs =  new Date(b.datePosted).getTime();
-        return bs - as;
-      })
+      // this.posts.sort((a: Post, b: Post) => {
+      //   let as =  new Date(a.datePosted).getTime();
+      //   let bs =  new Date(b.datePosted).getTime();
+      //   return bs - as;
+      // })
     })
   }
   onScroll() {
-    console.log('scrolled!!');
     this.Loading = true;
-    this.getFollowerPosts(this.scrollcount++);
-
-
-
+    this.getFollowerPosts(++this.scrollcount);
   }
 }
