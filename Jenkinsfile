@@ -37,7 +37,7 @@ pipeline {
       }
       stage('Create Image') {
          steps {
-               sh 'docker build -t ${REPO}:${REPO_TAG} -t .'
+               sh 'docker build -t ${REPO}:${REPO_TAG} .'
                discordSend description: ":screwdriver: *Built New Docker Image*", result: currentBuild.currentResult, webhookURL: discordurl
          }
       }
