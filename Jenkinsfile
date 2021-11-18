@@ -54,9 +54,5 @@ pipeline {
       success {
          discordSend description: ":potable_water: **Pipeline Successful!**", result: currentBuild.currentResult, webhookURL: discordurl
          sh 'docker container ls --no-trunc'
-         sh 'netstat -lntu'
-         sh 'netstat -na | grep :80'
-         sh 'usermod -a -G sudo jenkins'
-      }
    }
 }
