@@ -20,7 +20,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +34,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
   ],
   imports: [
+    InfiniteScrollModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,

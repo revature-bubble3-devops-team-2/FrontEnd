@@ -11,32 +11,42 @@ import { faComment } from '@fortawesome/free-solid-svg-icons';
 })
 export class PostFeedComponent implements OnInit {
   posts: Post[] = [];
-  loading = false;
+  scrollcount = 1;
 
   faThumbsUp = faThumbsUp;
   faComment = faComment;
-
-  constructor(private postService: PostService) {}
+  Loading = false;
+  constructor(private postService: PostService) { }
 
   ngOnInit(): void {
-    this.getFollowerPosts();
+    this.getFollowerPosts(this.scrollcount);
   }
 
-  getFollowerPosts(): any {
-    this.postService.getPostsByFollowers();
+
+  getFollowerPosts(scrollcount: number):any{
+    this.postService.getPostsByFollowers(scrollcount);
     this.postService.getFollowerPosts().subscribe(async (data: any) => {
-      console.log(data);
-      this.posts = (await data) as Post[];
-      // this.posts.sort((a: Post, b: Post) => {
-      //   let as = new Date(a.datePosted).getTime();
-      //   let bs = new Date(b.datePosted).getTime();
-      //   return bs - as;
-      // });
-    });
+      console.log(data)
+      console.log(scrollcount);
+      if(data !== null)
+      {
+      this.posts = await (data) as Post[];
+      console.log(this.posts);
+      }
+      
+      this.posts.sort((a: Post, b: Post) => {
+        let as =  new Date(a.datePosted).getTime();
+        let bs =  new Date(b.datePosted).getTime();
+        return bs - as;
+      })
+    })
   }
-
   onScroll() {
     console.log('scrolled!!');
-    this.loading = true;
+    this.Loading = true;
+    this.getFollowerPosts(this.scrollcount++);
+
+
+
   }
 }
