@@ -2,6 +2,16 @@
     border: 2px solid black;
 }
 
-.container {
+.container-fluid {
     background-color: white;
+    min-width: 500px;
+    -webkit-box-align: center;
+}
+
+.img-col {
+    padding: 0 !important;
+}
+
+.modal-dialog{
+    margin: 10rem auto !important;
 }

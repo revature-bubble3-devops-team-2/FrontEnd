@@ -27,6 +27,11 @@ body {
     border: none!important;
 }
 
+.modal-dialog {
+  max-width: 970px !important;
+  margin: 5rem auto !important;
+}
+
 /* html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
 
