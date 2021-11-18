@@ -36,12 +36,11 @@ export class FollowComponent implements OnInit {
             // this would mean we successfully followed?
             this.success = true;
           }
-          else
-          {
-            this.error = true;
-          }
+          else { this.error = true; }
         }
       )
-    } else { this.missing = true; }
+    }
+    else
+    { this.missing = true; }
   }
 }
