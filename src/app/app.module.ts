@@ -17,6 +17,7 @@ import { PostFeedComponent } from './views/post-feed/post-feed.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LikeComponent } from './views/posts/like/like.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 
 
@@ -41,7 +42,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     NgbModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    InfiniteScrollModule
   ],
   entryComponents:[
     PostComponent,

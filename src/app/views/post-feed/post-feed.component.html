@@ -1,4 +1,10 @@
-<div class="container-fluid d-flex flex-column justify-content-between align-items-center m-1" *ngIf="posts">
+<div class="container-fluid d-flex flex-column justify-content-between align-items-center m-1" *ngIf="posts"
+infiniteScroll
+[infiniteScrollDistance]="2"
+[infiniteScrollThrottle]="50"
+(scrolled)="onScroll()"
+[scrollWindow]="false"
+>
   <div class="col mb-4 post-card card shadow-lg" *ngFor="let post of posts">
     <div class="d-flex justify-content-between user-info">
       <div class="d-flex flex-column">
@@ -26,16 +32,21 @@
 
       <div class="card-body">
         <p class="card-text">{{ post.body }}</p>
-        <hr>
-        <div class="d-flex justify-content-between align-items-center">
-          <div class="btn-group">
-            <a href="#"><fa-icon class="like-icon"  [icon]="faThumbsUp"></fa-icon> 5</a>
-              
-          </div>
-          <div class="btn-group">
-            <a href="#"><fa-icon class="comment-icon" [icon]="faComment"></fa-icon>10</a>
-          </div>
+      </div>
+      <hr>
+      <div class="d-flex justify-content-between align-items-center btn-div">
+        <div class="btn-group">
+          <a href="#"><fa-icon class="like-icon"  [icon]="faThumbsUp"></fa-icon> 5</a>
+            
+        </div>
+        <div class="btn-group">
+          <a href="#"><fa-icon class="comment-icon" [icon]="faComment"></fa-icon>10</a>
         </div>
       </div>
+  </div>
+  <div class="d-flex justify-content-center" *ngIf="loading">
+    <div class="spinner-grow text-warning" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
   </div>
 </div>
