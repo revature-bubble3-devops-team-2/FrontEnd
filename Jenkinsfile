@@ -53,7 +53,6 @@ pipeline {
       }
       success {
          discordSend description: ":potable_water: **Pipeline Successful!**", result: currentBuild.currentResult, webhookURL: discordurl
-         sh 'docker push ${REPO}:${REPO_TAG}'
          sh 'docker container ls --no-trunc'
       }
    }
