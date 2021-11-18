@@ -35,6 +35,7 @@ export class PostFeedComponent implements OnInit {
       this.posts = await (data) as Post[];
       console.log(this.posts);
       }
+      this.Loading = false;
       
       this.posts.sort((a: Post, b: Post) => {
         let as =  new Date(a.datePosted).getTime();
@@ -46,7 +47,7 @@ export class PostFeedComponent implements OnInit {
   onScroll() {
     console.log('scrolled!!');
     this.Loading = true;
-    this.getFollowerPosts(this.scrollcount++);
+    this.getFollowerPosts(++this.scrollcount);
 
 
 
