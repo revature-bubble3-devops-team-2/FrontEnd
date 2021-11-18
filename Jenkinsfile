@@ -43,7 +43,7 @@ pipeline {
       }
       stage('Start Container') {
          steps {
-               sh 'docker run -it --rm -p ${PORT}:${PORT} -d --name ${CONTAINER_NAME} ${REPO_TAG}'
+               sh 'docker run -it --rm -p ${PORT}:${PORT} -d --name ${CONTAINER_NAME} ${IMAGE_TAG}'
                discordSend description: ":whale: *Running Docker Container*", result: currentBuild.currentResult, webhookURL: discordurl
          }
       }
@@ -51,7 +51,7 @@ pipeline {
    post {
       failure {
          discordSend description: ":warning: **Pipeline Failure!**", result: currentBuild.currentResult, webhookURL: discordurl
-         sh 'docker container ls'
+         sh 'docker image ls'
       }
       success {
          discordSend description: ":potable_water: **Pipeline Successful!**", result: currentBuild.currentResult, webhookURL: discordurl
