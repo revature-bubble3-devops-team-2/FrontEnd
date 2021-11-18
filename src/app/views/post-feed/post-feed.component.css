@@ -1,6 +1,8 @@
 .container-fluid {
     background-color: #F26925;
     padding: 2rem;
+    overflow: scroll;
+    height: 650px;
 }
 
 .post-card {

@@ -62,9 +62,9 @@ export class PostService implements OnDestroy {
     
   }
 
-  getPostsByFollowers(): any {
+  getPostsByFollowers(id: number): any {
     this.httpClient
-      .get<Post[]>('http://localhost:8082/posts')
+      .get<Post[]>(`http://localhost:8082/posts/page/${id}`)
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe((data) => {
         this.followerPostsSubject.next(data as Post[]);

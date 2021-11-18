@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent},
   { path: 'regiser', component: RegisterComponent},
   {path:'home', component: PostFeedComponent}
+  
 ];
 
 
