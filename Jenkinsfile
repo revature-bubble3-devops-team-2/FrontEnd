@@ -51,7 +51,6 @@ pipeline {
    post {
       failure {
          discordSend description: ":warning: **Pipeline Failure!**", result: currentBuild.currentResult, webhookURL: discordurl
-         sh 'docker rmi -f $(docker images -aq)'
          sh 'docker image ls'
       }
       success {
