@@ -6,6 +6,8 @@ pipeline {
 
    environment {
       PORT = 80
+      REPO = "cpete22/revature-bubble"
+      REPO_TAG= "fe"
       IMAGE_TAG = "bubblefeimg"
       CONTAINER_NAME = "bubblefe"
    }
@@ -35,13 +37,13 @@ pipeline {
       }
       stage('Create Image') {
          steps {
-               sh 'docker build -t ${IMAGE_TAG} .'
+               sh 'docker build -t ${REPO}:${REPO_TAG} .'
                discordSend description: ":screwdriver: *Built New Docker Image*", result: currentBuild.currentResult, webhookURL: discordurl
          }
       }
       stage('Start Container') {
          steps {
-               sh 'docker run -it --rm -p ${PORT}:${PORT} -d --name ${CONTAINER_NAME} ${IMAGE_TAG}'
+               sh 'docker run -it --rm -p ${PORT}:${PORT} -d --name ${CONTAINER_NAME} ${REPO_TAG}'
                discordSend description: ":whale: *Running Docker Container*", result: currentBuild.currentResult, webhookURL: discordurl
          }
       }
@@ -53,6 +55,7 @@ pipeline {
       }
       success {
          discordSend description: ":potable_water: **Pipeline Successful!**", result: currentBuild.currentResult, webhookURL: discordurl
+         sh 'docker push ${REPO}:${REPO_TAG}'
          sh 'docker container ls --no-trunc'
       }
    }
