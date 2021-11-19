@@ -53,7 +53,7 @@ export class RegisterComponent implements OnInit {
             const temp = data.body as Profile;
             sessionStorage.setItem("Authorization", data.headers.get("Authorization"));
             sessionStorage.setItem("profile", JSON.stringify(temp));
-            this.router.navigate(['/profile']);
+            this.router.navigate(['/home']);
           },
           (error: Error) => {
             console.log(error);

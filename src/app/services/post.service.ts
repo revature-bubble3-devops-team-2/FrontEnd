@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Post } from '../models/post';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators'
+import { Profile } from 'app/models/profile';
 
 @Injectable({
   providedIn: 'root',
@@ -53,15 +54,15 @@ export class PostService implements OnDestroy {
     return this.httpClient.get<number>('http://localhost:8082/like', requestOptions).pipe(takeUntil(this._unsubscribeAll));
   }
 
-  postLike(post: Post): Observable<any> {
-    return this.httpClient.post<Post>('http://localhost:8082/like', post).pipe(takeUntil(this._unsubscribeAll));
+  postLike(post: Post): Observable<Profile> {
+    return this.httpClient.post<Profile>('http://localhost:8082/like', post).pipe(takeUntil(this._unsubscribeAll));
   }
 
-  deleteLike(post: Post): Observable<any> {
+  deleteLike(post: Post): Observable<Profile> {
     const options = {
       body: post,
     };
-    return this.httpClient.delete<Post>('http://localhost:8082/like', options).pipe(takeUntil(this._unsubscribeAll));
+    return this.httpClient.delete<Profile>('http://localhost:8082/like', options).pipe(takeUntil(this._unsubscribeAll));
   }
 
   ngOnDestroy(): void {
