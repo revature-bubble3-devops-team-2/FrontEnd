@@ -24,6 +24,7 @@ export class FollowComponent implements OnInit {
     this.error = false;
     this.missing = false;
     this.success = false;
+    this.successUnfollow = false;
 
     // check if the email field is null
     if (this.email != "")
@@ -60,11 +61,9 @@ export class FollowComponent implements OnInit {
       console.log("Email entered: ", this.email);
       this.followService.unfollowUserByEmail(this.email).subscribe
       (
-        r =>
-        {
-          this.successUnfollow = true;
-        }
+        r => { }
       )
+      this.successUnfollow = true;
     }
     else
     { this.missing = true; }
