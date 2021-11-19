@@ -13,6 +13,7 @@ export class FollowComponent implements OnInit {
   error: boolean = false;
   missing: boolean = false;
   success: boolean = false;
+  successUnfollow: boolean = false;
 
   constructor(private followService:FollowService, private router:Router) { }
 
@@ -51,6 +52,7 @@ export class FollowComponent implements OnInit {
     this.error = false;
     this.missing = false;
     this.success = false;
+    this.successUnfollow = false;
 
     // check if the email field is null
     if (this.email != "")
@@ -60,12 +62,7 @@ export class FollowComponent implements OnInit {
       (
         r =>
         {
-          if (r.body !== null)
-          {
-            // this would mean we successfully unfollowed?
-            this.success = true;
-          }
-          else { this.error = true; }
+          this.successUnfollow = true;
         }
       )
     }
