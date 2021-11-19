@@ -1,38 +1,49 @@
 <div class="card-body">
-    <div class="create-comment-container">
-        <form id="create-comment-form" *ngIf="isReply==false">
-            <label for="create-comment">Create a comment: </label>
-            <div class="mb-3">
-                <textarea type="text" class="form-control" [(ngModel)]="comment.cbody" name="create-post" id="create-post" placeholder="create a comment..." required>
-                </textarea>
-            </div>
-            <input type="submit" class="btn btn-dark" (click)="submitComment(comment)"/>
-        </form>
-        <form id="create-comment-form" *ngIf="isReply==true">
-            <label for="create-comment">Reply comment: </label>
-            <div class="mb-3">
-                <textarea type="text" class="form-control" [(ngModel)]="comment.cbody" name="create-post" id="create-post" placeholder="reply comment" required>
-                </textarea>
-            </div>
-            <input type="submit" class="btn btn-dark" (click)="replyComment(comment)"/>
-        </form>
-        <br>
-        <div *ngFor="let commentData of comments" >
-            <div class="card">
-                <div class="card-body" *ngIf="checkWriterForEachComment(commentData)">
-                    <p>{{commentWriter.firstName}}</p>
-                    <p>{{commentData.cbody}}</p>
-                    <p>{{commentLocaleDate}}</p>
-                    <div *ngFor="let reply of replys">
-                        <div class="card">
-                            <p>{{reply.cbody}}</p>
+    <div style=" height: 500px !important; overflow: scroll; ">
+
+        <div class="create-comment-container">
+            <div *ngFor="let commentData of comments" >
+                <div class="card">
+                    <div class="card-body" *ngIf="checkWriterForEachComment(commentData)">
+                        <p>{{commentWriter.firstName}}</p>
+                        <p>{{commentData.cbody}}</p>
+                        <p>{{commentLocaleDate}}</p>
+                        <button class="btn btn-dark" *ngIf="isWriter" (click)="deleteCommentByCid(commentData.cid)">delete</button><br>
+                        <button class="btn btn-dark" (click)="submitCommentOnComment(commentData)">Reply</button>
+                        <br>
+                        <div *ngFor="let reply of replys">
+                            <div *ngIf="commentData.cid==reply.previous?.cid">
+                                <br>
+                                <div class="card">
+                                    <p>{{reply.cbody}}</p>
+                                </div>  
+                            </div>
                         </div>
-                    </div>
-                    <button class="btn btn-dark" *ngIf="isWriter" (click)="deleteCommentByCid(commentData.cid)">delete</button><br>
-                    <button class="btn btn-dark" (click)="submitCommentOnComment(commentData)">Reply</button>
-                </div>      
+                    </div>      
+                </div>
+                <br>
             </div>
-            <br>
         </div>
     </div>
+<p>Post:</p>
+  <div class="card">
+    <p>{{post.body}}</p>
+</div> 
+    <br>
+    <form id="create-comment-form" *ngIf="isReply==false">
+        <label for="create-comment">Create a comment: </label>
+        <div class="mb-3">
+            <textarea type="text" class="form-control" [(ngModel)]="comment.cbody" name="create-post" id="create-post" placeholder="create a comment..." required>
+            </textarea>
+        </div>
+        <input type="submit" class="btn btn-dark" (click)="submitComment(comment)"/>
+    </form>
+    <form id="create-reply-form" *ngIf="isReply==true">
+        <label for="create-comment">Reply comment: </label>
+        <div class="mb-3">
+            <textarea type="text" class="form-control" [(ngModel)]="comment.cbody" name="create-post" id="create-post" placeholder="reply comment" required>
+            </textarea>
+        </div>
+        <input type="submit" class="btn btn-dark" (click)="replyComment(comment)"/>
+    </form>
 </div>

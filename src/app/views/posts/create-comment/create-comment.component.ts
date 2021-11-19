@@ -38,12 +38,10 @@ export class CreateCommentComponent implements OnInit {
     modaled?.setAttribute("style","border-radius:30px;");
 
     this.getOriginCommentsByPsid();
-    this.getReplyCommentsByPsid();
     
     let sessionProfile = sessionStorage.getItem("profile");
     if(sessionProfile!=null){
       this.profile = JSON.parse(sessionProfile);
-      //console.log(this.profile)
     } 
   }
 
@@ -71,7 +69,6 @@ export class CreateCommentComponent implements OnInit {
   }
 
   checkWriterForEachComment(comment: Comment){
-    this.filterReplyOnComment(comment);
     this.isWriter=false;
     this.commentData = comment;
     var temp = this.commentData.dateCreated;
@@ -90,37 +87,27 @@ export class CreateCommentComponent implements OnInit {
       return true;
     }
   }
-
-  filterReplyOnComment(comment: Comment){
-    //this.getReplyCommentsByPsid();
-
-    //this.getCommentsByPsid();
-    
-    //this.replys = this.replys.filter(obj => obj.previous?.cid==comment.cid);
-    console.log(this.replys);
-  }
+  
 
   getOriginCommentsByPsid(){
     if(this.post.psid){
       this.commentService.getCommentsByPsid(this.post.psid).subscribe(
         (result)=>{
           this.comments = result;
-          //sessionStorage.setItem("comments", JSON.stringify(this.comments))
           this.comments = this.comments.filter(obj => obj.previous==null);
+          this.getReplyComments();
         }
       )
     }  
   }
 
-  getReplyCommentsByPsid(){
+  getReplyComments(){
     if(this.post.psid){
       this.commentService.getCommentsByPsid(this.post.psid).subscribe(
         (result)=>{
           this.replys = result;
           this.replys = this.replys.filter(obj => obj.previous!=null)
           console.log(this.replys);
-          //sessionStorage.setItem("comments", JSON.stringify(this.comments))
-          //this.comments = this.comments.filter(obj => obj.previous==null);
         }
       )
     }  
@@ -130,18 +117,12 @@ export class CreateCommentComponent implements OnInit {
     console.log(this.post);
     comment.post = this.post;
     comment.dateCreated = new Date();
-    // let sessionProfile = sessionStorage.getItem("profile");
-    // if(sessionProfile!=null){
-    //   comment.writer = JSON.parse(sessionProfile);
-    // } 
     comment.writer = this.profile;
-    //console.log(comment);
     this.commentService.createComment(comment).subscribe(
       (result)=>{
-        //console.log(result)
         this.isReply = false;
         this.getOriginCommentsByPsid();
-
+        comment.cbody = "";
       }
     )
   }
@@ -163,8 +144,6 @@ export class CreateCommentComponent implements OnInit {
   submitCommentOnComment(comment: Comment){
  
     this.previous = comment;
-    //console.log(comment)
-    //console.log(this.previous)
     this.isReply = true;
     this.getOriginCommentsByPsid();
   }
