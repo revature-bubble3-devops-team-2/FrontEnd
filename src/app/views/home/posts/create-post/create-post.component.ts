@@ -23,7 +23,7 @@ export class CreatePostComponent implements OnInit {
     imgURL: '',
   };
 
- @Input() show: boolean=false;
+  @Input() show: boolean=false;
 
   constructor(
     public postService: PostService, 
