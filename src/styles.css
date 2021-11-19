@@ -20,5 +20,5 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  font-family: Futura;
+  font-family: Futura, sans-serif;
 }
