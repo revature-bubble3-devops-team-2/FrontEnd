@@ -40,12 +40,13 @@ export class LoginComponent implements OnInit {
           {
             //Store the return body into sessionStorage and then redirect to profile page
             var response = JSON.stringify(r.body);
+            sessionStorage.clear();
             sessionStorage.setItem("Authorization", JSON.parse(response).Authorization );
             this.router.navigate(['/profile']); 
           } else {
             //Error in case if something in the backend doesn't give us data for w.e reason.
             console.log("Returned profile but no data");
-          }                  
+          }
         },
         (error) => {
           console.log(error);
