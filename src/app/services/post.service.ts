@@ -53,11 +53,11 @@ export class PostService implements OnDestroy {
     return this.httpClient.get<number>('http://localhost:8082/like', requestOptions).pipe(takeUntil(this._unsubscribeAll));
   }
 
-  postLike(post: Post): Observable<any> {
+  postLike(post: Post): Observable<Post> {
     return this.httpClient.post<Post>('http://localhost:8082/like', post).pipe(takeUntil(this._unsubscribeAll));
   }
 
-  deleteLike(post: Post): Observable<any> {
+  deleteLike(post: Post): Observable<Post> {
     const options = {
       body: post,
     };
