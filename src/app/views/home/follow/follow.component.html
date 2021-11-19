@@ -5,6 +5,7 @@
             <div class="error" *ngIf="error">Unknown Email address.</div>
             <div class="error" *ngIf="missing">The Email is empty.</div>
             <div class="success" *ngIf="success">Successfully followed.</div>
+            <div class="success" *ngIf="successUnfollow">Unfollow request sent.</div>
 
             <input class="form-control" type="text" placeholder="Enter Email" name="email" id="email" [(ngModel)]="email" required>
             <button type="submit" class="onFollowBtn btn" (click)="follow()">Follow</button>
