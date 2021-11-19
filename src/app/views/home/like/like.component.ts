@@ -10,7 +10,7 @@ import { PostService } from 'app/services/post.service';
 export class LikeComponent implements OnInit {
 
   public num!: number;
-  public hasLiked!: Boolean;
+  public hasLiked!: boolean;
   
   @Input()
   postInfo!: Post;
