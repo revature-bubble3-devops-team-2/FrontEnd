@@ -37,7 +37,6 @@ export class FollowService {
                                   'Authorization': `${this.token}`
                                 }),
       }
-      const body = JSON.stringify({'id': id});
       return this.http.post<any>("http://localhost:8082/profile/unfollow", `id=${id}`, httpOptions);
   }
 }
