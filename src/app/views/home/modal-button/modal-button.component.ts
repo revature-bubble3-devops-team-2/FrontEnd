@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Component } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalUpdateFormComponent } from '../modal-update-form/modal-update-form.component';
 
 @Component({
