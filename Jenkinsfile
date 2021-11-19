@@ -6,7 +6,7 @@ pipeline {
 
    environment {
       PORT = 80
-      IMAGE_TAG = "bubblefeimg"
+      IMAGE_TAG = "cpete22/revature-bubble:fe"
       CONTAINER_NAME = "bubblefe"
    }
 
@@ -49,7 +49,7 @@ pipeline {
    post {
       failure {
          discordSend description: ":warning: **Pipeline Failure!**", result: currentBuild.currentResult, webhookURL: discordurl
-         sh 'docker container ls'
+         sh 'docker image ls'
       }
       success {
          discordSend description: ":potable_water: **Pipeline Successful!**", result: currentBuild.currentResult, webhookURL: discordurl
