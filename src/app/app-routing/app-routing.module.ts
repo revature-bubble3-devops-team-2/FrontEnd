@@ -7,7 +7,7 @@ import { AppRoutingRoutingModule } from './app-routing-routing.module';
 
 const routes: Routes = [
   { path: 'profile', component: ProfileComponent},
-  { path: 'regiser', component: RegisterComponent}
+  { path: 'register', component: RegisterComponent}
 ];
 
 
