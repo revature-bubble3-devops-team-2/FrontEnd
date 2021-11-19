@@ -7,6 +7,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PostComponent } from '../profile/posts/post/post.component';
+import { Profile } from 'app/models/profile';
 
 @Component({
   selector: 'app-post-feed',
@@ -16,6 +17,8 @@ import { PostComponent } from '../profile/posts/post/post.component';
 export class PostFeedComponent implements OnInit, OnDestroy {
   posts: Post[] = [];
   scrollcount = 1;
+  profile: Profile = {};
+
 
   faThumbsUp = faThumbsUp;
   faComment = faComment;
@@ -28,18 +31,23 @@ export class PostFeedComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getFollowerPosts(this.scrollcount);
+    
+    var sessionProfile = sessionStorage.getItem("profile");
+    if(sessionProfile!=null){
+      this.profile = JSON.parse(sessionProfile);
+    } 
   }
 
 
   getFollowerPosts(scrollcount: number):any{
-    this.postService.getPostsByFollowers(scrollcount);
-    this.postService.getFollowerPosts()
-    .pipe(takeUntil(this._unsubscribeAll))
-    .subscribe(async (data: any) => {
-      if (data) {
-        this.posts = await (data) as Post[];
-      }
-    })
+      this.postService.getPostsByFollowers(scrollcount, 514459774);
+      this.postService.getFollowerPosts()
+        .pipe(takeUntil(this._unsubscribeAll))
+        .subscribe(async (data: any) => {
+        if (data) {
+          this.posts = await (data) as Post[];
+        }
+        })
   }
 
 
@@ -63,8 +71,4 @@ export class PostFeedComponent implements OnInit, OnDestroy {
 
    // this.endOfContents = true;
       
-      // this.posts.sort((a: Post, b: Post) => {
-      //   let as =  new Date(a.datePosted).getTime();
-      //   let bs =  new Date(b.datePosted).getTime();
-      //   return bs - as;
-      // })
+      

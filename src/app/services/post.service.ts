@@ -13,7 +13,6 @@ export class PostService implements OnDestroy {
   
   private followerPostsSubject = new BehaviorSubject<Post[]>([]);
   private postsSubject = new BehaviorSubject<Post[]>([]);
-
   private _unsubscribeAll = new Subject<any>();
   public numLikes!: number;
 
@@ -65,9 +64,9 @@ export class PostService implements OnDestroy {
     
   }
 
-  getPostsByFollowers(id: number): any {
+  getPostsByFollowers(pageNumber: number, pid: number): any {
     this.httpClient
-      .get<Post[]>(`http://localhost:8082/posts/page/${id}`)
+      .get<Post[]>(`http://localhost:8082/posts/profile/${pid}/${pageNumber}`)
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe((data) => {
         if (data) {
