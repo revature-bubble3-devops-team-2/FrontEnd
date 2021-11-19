@@ -35,6 +35,7 @@ export class FollowComponent implements OnInit {
           if (r.body !== null)
           {
             // this would mean we successfully followed?
+            console.log(r.body);
             this.success = true;
           }
           else { this.error = true; }

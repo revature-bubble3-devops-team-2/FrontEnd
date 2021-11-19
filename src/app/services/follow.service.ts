@@ -12,15 +12,12 @@ export class FollowService {
 
   followUserByEmail(email: string): Observable<any>
   {
-    console.log("this is the auth token");
-    console.log(this.token);
       const httpOptions = {
         headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded',
                                   'Authorization': `${this.token}`
                                 }),
       }
-      const body = JSON.stringify({'email': email});
-      return this.http.post<any>("http://localhost:8082/profile/follow", body, httpOptions);
+      return this.http.post<any>(`http://localhost:8082/profile/follow`, `email=${email}`, httpOptions);
   }
 
   followUserById(id: number): Observable<any>
@@ -30,8 +27,7 @@ export class FollowService {
                                   'Authorization': `${this.token}`
                                 }),
       }
-      const body = JSON.stringify({'id': id});
-      return this.http.post<any>("http://localhost:8082/profile/follow", body, httpOptions);
+      return this.http.post<any>("http://localhost:8082/profile/follow", `id=${id}`, httpOptions);
   }
 
   unfollowUserByEmail(email: string): Observable<any>
@@ -41,8 +37,7 @@ export class FollowService {
                                   'Authorization': `${this.token}`
                                 }),
       }
-      const body = JSON.stringify({'email': email});
-      return this.http.post<any>("http://localhost:8082/profile/unfollow", body, httpOptions);
+      return this.http.post<any>("http://localhost:8082/profile/unfollow", `email=${email}`, httpOptions);
   }
 
   unfollowUserById(id: number): Observable<any>
@@ -53,6 +48,6 @@ export class FollowService {
                                 }),
       }
       const body = JSON.stringify({'id': id});
-      return this.http.post<any>("http://localhost:8082/profile/unfollow", body, httpOptions);
+      return this.http.post<any>("http://localhost:8082/profile/unfollow", `id=${id}`, httpOptions);
   }
 }
