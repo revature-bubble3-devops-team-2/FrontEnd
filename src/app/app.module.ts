@@ -10,13 +10,15 @@ import { RegisterComponent } from './views/register/register/register.component'
 import { LikeComponent } from './views/home/like/like.component';
 import { ModalUpdateFormComponent } from './views/home/modal-update-form/modal-update-form.component';
 import { ModalButtonComponent } from './views/home/modal-button/modal-button.component';
-import { CreatePostComponent } from './views/home/posts/create-post/create-post.component';
-import { PostsContainerComponent } from './views/home/posts/posts-container/posts-container.component';
+import { CreatePostComponent } from './views/posts/create-post/create-post.component';
+import { PostsContainerComponent } from './views/posts/posts-container/posts-container.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './views/home/home/home.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { PostComponent } from './views/posts/post/post.component';
+import { PostFeedComponent } from './views/posts/post-feed/post-feed.component';
 
 
 
@@ -32,7 +34,9 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     CreatePostComponent,
     PostsContainerComponent,
     HomeComponent,
-    LikeComponent
+    LikeComponent,
+    PostComponent,
+    PostFeedComponent
   ],
   imports: [
     BrowserModule,
