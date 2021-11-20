@@ -1,0 +1,67 @@
+.container-fluid {
+    background-color: #F26925;
+    padding: 2rem;
+    height: 100vh;
+    overflow: scroll;
+}
+
+.post-card {
+    max-width: 100mm;
+    border-radius: 20px;
+    padding: 0.5rem 1rem 1rem 1rem;
+    background-color:  #B9B9BA;
+    cursor: pointer;
+}
+
+/* .post-date {
+    font-size: 12px;
+} */
+
+h2, h4 {
+    margin: 0 !important;
+    color: #474C55 !important;
+}
+
+.card-text {
+    text-align: center;
+    max-height: 100px;
+    overflow: hidden;
+    cursor: pointer;
+    mask-image: linear-gradient(180deg, #000 60%, transparent);
+    -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent);
+}
+
+.user-info {
+    margin: 0.8rem 0;
+}
+
+.image-container {
+    max-height: 512px;
+    margin: 0px auto;
+}
+
+.follow-btn{
+    border: none;
+    text-align: center;
+    background-color: #F26925;
+    border-radius: 20px;
+    padding: 6px 20px !important;
+}
+
+
+.like-icon, .comment-icon {
+    margin-right: 4px;
+}
+
+.btn-div {
+    margin: 1rem;
+}
+
+
+a:hover {
+    text-decoration: none;
+}
+
+fa-icon{
+    font-size: 14pt;
+}
