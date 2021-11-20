@@ -9,10 +9,13 @@ import { Profile } from 'app/models/profile';
   providedIn: 'root',
 })
 export class PostService implements OnDestroy {
+
+  private followerPostsSubject = new BehaviorSubject<Post[]>([]);
   private postsSubject = new BehaviorSubject<Post[]>([]);
-  constructor(private httpClient: HttpClient) {}
   private _unsubscribeAll = new Subject<any>();
   public numLikes!: number;
+
+  constructor(private httpClient: HttpClient) {}
 
   public createPost(post: Post) {
     this.httpClient
@@ -36,6 +39,24 @@ export class PostService implements OnDestroy {
 
   getPosts(): Observable<any> {
     return this.postsSubject.asObservable();
+  }
+
+  getFollowerPosts(): Observable<any> {
+    return this.followerPostsSubject.asObservable();
+  }
+
+  getPostsByFollowers(pageNumber: number, pid: number): any {
+    this.httpClient
+      .get<Post[]>(`http://localhost:8082/posts/profile/${pid}/${pageNumber}`)
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe((data) => {
+        if (data) {
+          const currentValue = this.followerPostsSubject.value;
+          const updatedValue = currentValue.concat(data);
+          this.followerPostsSubject.next(updatedValue);
+        }
+        return null;
+      });
   }
 
   getNumLikes(post: Post): Observable<number> {
