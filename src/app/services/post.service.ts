@@ -13,9 +13,10 @@ export class PostService implements OnDestroy {
   
   private followerPostsSubject = new BehaviorSubject<Post[]>([]);
   private postsSubject = new BehaviorSubject<Post[]>([]);
-  constructor(private httpClient: HttpClient) {}
   private _unsubscribeAll = new Subject<any>();
   public numLikes!: number;
+
+  constructor(private httpClient: HttpClient) {}
 
   public createPost(post: Post) {
     console.log(post);
@@ -50,7 +51,8 @@ export class PostService implements OnDestroy {
     console.log("getnumlikes called");
     const headerDict = {'post': `${post.psid}`}
     console.log(post.psid);
-    const requestOptions = {                                                                        headers: new HttpHeaders(headerDict),
+    const requestOptions = {
+      headers: new HttpHeaders(headerDict),
     };
 
     return this.httpClient.get<number>('http://localhost:8082/like', requestOptions).pipe(takeUntil(this._unsubscribeAll));
@@ -62,14 +64,13 @@ export class PostService implements OnDestroy {
     
   }
 
-  getPostsByFollowers(id: number): any {
+  getPostsByFollowers(pageNumber: number, pid: number): any {
     this.httpClient
-      .get<Post[]>(`http://localhost:8082/posts/page/${id}`)
+      .get<Post[]>(`http://localhost:8082/posts/profile/${pid}/${pageNumber}`)
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe((data) => {
         if (data) {
           const currentValue = this.followerPostsSubject.value;
-          console.log(currentValue);
           const updatedValue = currentValue.concat(data);
           this.followerPostsSubject.next(updatedValue);
         }
