@@ -15,6 +15,8 @@ import { PostsContainerComponent } from './views/home/posts/posts-container/post
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './views/home/home/home.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 
 
@@ -39,7 +41,9 @@ import { HomeComponent } from './views/home/home/home.component';
     HttpClientModule,
     NgbModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FontAwesomeModule,
+    InfiniteScrollModule
   ],
   entryComponents:[
     NgbTooltipModule,
