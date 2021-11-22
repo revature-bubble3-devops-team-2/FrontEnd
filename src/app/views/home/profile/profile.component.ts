@@ -18,18 +18,17 @@ export class ProfileComponent implements OnInit {
   constructor(private profileService: ProfileService) { }
 
   ngOnInit(): void {
-      this.profileService.getProfileByToken().subscribe(
-      (result)=>{
-        if(result){
-          console.log(result);
-          sessionStorage.setItem("profile", JSON.stringify(result.body));
-        }
-      }
-    )
+      // this.profileService.getProfileByToken().subscribe(
+      // (result)=>{
+      //   if(result){
+      //     console.log(result);
+      //     sessionStorage.setItem("profile", JSON.stringify(result.body));
+      //   }
+      // }
+    //)
   }
 
- 
-  get profile(){
+ get profile(){
     let sessionProfile = sessionStorage.getItem("profile");
     if(sessionProfile!=null){
      return JSON.parse(sessionProfile);
