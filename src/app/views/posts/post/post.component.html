@@ -1,13 +1,16 @@
 <div class="container-fluid rounded">
-  <div class="row">
-    <div class="col img-col">
+  <div class="row post">
+    <div class="col img-col h-100">
       <ng-container *ngIf="post.imgURL">
-        <img class="img-fluid card-img" [src]="post.imgURL" width="100"  height="100"/>
+        <img class="img-fluid card-img" [src]="post.imgURL" width="100"/>
       </ng-container>
     </div>
-    <div class="col">
+    <div class="col right">
       <div class="modal-header">
-        <h4 class="modal-title">{{ post.creator.firstName }}</h4>
+        <div class="d-flex flex-column">
+          <h4>{{post.creator?.username | titlecase}}</h4>
+          <p class="text-muted post-date">{{post.datePosted | date}}</p>
+        </div>
         <button
           type="button"
           class="close"

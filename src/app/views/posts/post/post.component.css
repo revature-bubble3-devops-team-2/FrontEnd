@@ -1,5 +1,5 @@
 .post {
-    border: 2px solid black;
+    border-radius: 50%;
 }
 
 
@@ -8,13 +8,13 @@
 }
 
 
-.postModal {
-    max-width: 1080px;
-}
-
 .modal-body {
-    max-height: 400px;
-    overflow: scroll;
+    max-height: 380px;
+    overflow: auto;
+}
+.post-date {
+    margin-top: 3px;
+    font-size: 14px;
 }
 /* .container-fluid {
     background-color: white;
@@ -26,12 +26,13 @@
     margin: 10rem auto !important;
 } */
 
-@media screen and (max-width: 600px) {
-    .container {
-      padding: 2rem;
+@media screen and (max-width: 900px) {
+    .row {
+        flex-direction: column;
+        padding: 2rem;
     }
-  
-    .register-form {
-      padding: 2rem;
+
+    .right {
+        margin: 3rem 0;
     }
   }

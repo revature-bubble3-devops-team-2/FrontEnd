@@ -23,3 +23,14 @@ body {
   background-color: transparent!important;
   border: none!important;
 }
+
+.postModal {
+  max-width: 1080px;
+}
+
+@media screen and (max-width: 900px) {
+  .postModal {
+    max-width: 670px;
+    margin: 2rem;
+  }
+}
