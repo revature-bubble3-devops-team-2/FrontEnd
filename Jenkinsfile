@@ -7,6 +7,7 @@ pipeline {
       PORT = 80
       IMAGE_TAG = "cpete22/revature-bubble:fe"
       CONTAINER_NAME = "bubblefe"
+      CRED = "dockerhub"
    }
 
    tools { nodejs "node"}
@@ -43,6 +44,15 @@ pipeline {
          steps {
                sh 'docker run -it --rm -p ${PORT}:${PORT} -d --name ${CONTAINER_NAME} ${IMAGE_TAG}'
                discordSend description: ":whale: *Running Docker Container*", result: currentBuild.currentResult, webhookURL: env.WEBHO_FE
+         }
+      }
+      stage('Push to DockerHub') {
+         steps {
+            script {
+               docker.withRegistry( '', CRED) {
+                  dockerImage.push()
+               }
+            }
          }
       }
    }
