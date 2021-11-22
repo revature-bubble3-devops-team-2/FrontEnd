@@ -33,7 +33,6 @@ pipeline {
          steps {
                sh 'docker stop ${CONTAINER_NAME} || true'
                sh 'docker rmi ${IMAGE_TAG} || true'
-               sh 'docker rmi nginx || true'
                discordSend description: ":axe: *Removed Previous Docker Artifacts*", result: currentBuild.currentResult, webhookURL: env.WEBHO_FE
          }
       }
@@ -52,7 +51,7 @@ pipeline {
       stage('Push to DockerHub') {
          steps {
             script {
-               docker.withRegistry('https://hub.docker.com/repository/docker/cpete22/revature-bubble/general', CRED) {
+               docker.withRegistry('', CRED) {
                   docker.image(IMAGE_TAG).push()
                }
             }
@@ -62,7 +61,6 @@ pipeline {
    post {
       failure {
          discordSend description: ":warning: **Pipeline Failure!**", result: currentBuild.currentResult, webhookURL: env.WEBHO_FE
-         sh 'docker image ls'
       }
       success {
          discordSend description: ":potable_water: **Pipeline Successful!**", result: currentBuild.currentResult, webhookURL: env.WEBHO_FE
