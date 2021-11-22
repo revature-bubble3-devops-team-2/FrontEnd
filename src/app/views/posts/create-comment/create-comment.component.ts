@@ -159,7 +159,7 @@ dateFormatForComment(d: Date) {
     this.commentService.createComment(reply).subscribe(
       (result)=>{
         this.isReply = false;
-        //this.reply.cbody = "";
+        this.reply.cbody = "";
         this.getOriginCommentsByPsid(); 
       }
     )

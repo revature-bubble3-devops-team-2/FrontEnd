@@ -22,7 +22,10 @@
       </div>
       <div class="modal-body">
         <p>{{ post.body }}</p>
+        <app-create-comment [post] = 'post'></app-create-comment>
       </div>
     </div>
   </div>
 </div>
+
+

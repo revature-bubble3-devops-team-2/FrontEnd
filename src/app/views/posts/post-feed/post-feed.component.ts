@@ -8,6 +8,7 @@ import { takeUntil } from 'rxjs/operators';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Profile } from 'app/models/profile';
 import { PostComponent } from '../post/post.component';
+import { CreateCommentComponent } from '../create-comment/create-comment.component';
 
 @Component({
   selector: 'app-post-feed',
@@ -60,7 +61,7 @@ export class PostFeedComponent implements OnInit, OnDestroy {
   }
 
   open(post: Post) {
-    const modalRef = this.modalService.open(PostComponent, {
+    const modalRef = this.modalService.open(CreateCommentComponent, {
       centered: true,
       modalDialogClass: 'postModal',
     });
