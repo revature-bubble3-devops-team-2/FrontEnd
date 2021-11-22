@@ -17,10 +17,6 @@ export class ProfileComponent {
 
   constructor(private profileService: ProfileService) { }
 
-  ngOnInit(): void {
-    
-  }
-
  get profile(){
     let sessionProfile = sessionStorage.getItem("profile");
     if(sessionProfile!=null){

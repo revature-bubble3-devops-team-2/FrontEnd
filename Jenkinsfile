@@ -1,7 +1,10 @@
 pipeline {
    agent any
 
-   options {disableConcurrentBuilds()}
+   options {
+      buildDiscarder(logRotator(daysToKeepStr: '7', numToKeepStr: '1'))
+      disableConcurrentBuilds()
+   }
 
    environment {
       PORT = 80
@@ -49,8 +52,8 @@ pipeline {
       stage('Push to DockerHub') {
          steps {
             script {
-               docker.withRegistry('', CRED) {
-                  dockerImage.push(IMAGE_TAG)
+               docker.withRegistry('https://hub.docker.com/repository/docker/cpete22/revature-bubble/general', CRED) {
+                  docker.image(IMAGE_TAG).push()
                }
             }
          }

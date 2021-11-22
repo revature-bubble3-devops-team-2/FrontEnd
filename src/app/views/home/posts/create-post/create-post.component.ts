@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Post } from 'app/models/post';
 import { PostService } from 'app/services/post.service';
 
@@ -27,7 +27,8 @@ export class CreatePostComponent implements OnInit {
 
   constructor(
     public postService: PostService, 
-    public activeModal: NgbActiveModal
+    public activeModal: NgbActiveModal,
+    private modalService: NgbModal
     ) {}
 
   ngOnInit(): void {}
@@ -39,5 +40,9 @@ export class CreatePostComponent implements OnInit {
     }else{
       this.show=true;
     }
+  }
+
+  closeModal() {
+    this.modalService.dismissAll();
   }
 }
