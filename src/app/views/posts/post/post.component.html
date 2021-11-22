@@ -1,0 +1,31 @@
+<div class="container-fluid rounded">
+  <div class="row post">
+    <div class="col img-col h-100">
+      <ng-container *ngIf="post.imgURL">
+        <img class="img-fluid card-img" [src]="post.imgURL" width="100"/>
+      </ng-container>
+    </div>
+    <div class="col right">
+      <div class="modal-header">
+        <div class="d-flex flex-column">
+          <h4>{{post.creator?.username | titlecase}}</h4>
+          <p class="text-muted post-date">{{post.datePosted | date}}</p>
+        </div>
+        <button
+          type="button"
+          class="close"
+          aria-label="Close"
+          (click)="activeModal.dismiss('Cross click')"
+        >
+        <fa-icon class="close-icon"  [icon]="faTimes"></fa-icon>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>{{ post.body }}</p>
+        <app-create-comment [post] = 'post'></app-create-comment>
+      </div>
+    </div>
+  </div>
+</div>
+
+

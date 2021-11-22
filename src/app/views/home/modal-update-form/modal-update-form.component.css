@@ -1,0 +1,10 @@
+:host .container{
+    padding: 20px;
+    border-radius: 50px;
+}
+:host .modal-content{
+    border-radius: 50px;
+}
+:host body{
+    border-radius: 40px;
+}

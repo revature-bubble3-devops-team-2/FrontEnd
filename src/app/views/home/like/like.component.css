@@ -1,0 +1,18 @@
+.liked-icon {
+    color: red
+}
+
+.like-component-container {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.num-likes {
+    padding-left: .75rem;
+}
+
+.like-icon {
+    margin-right: 4px;
+    font-size: 14pt;
+    color: #007bff;
+}

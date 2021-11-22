@@ -1,15 +1,11 @@
-
-.modal-content{
-    background-color: transparent!important;
-    border: none!important;
-}
 /* You can add global styles to this file, and also import other style files */
 @font-face {
     font-family: Futura;
     src: url("/assets/fonts/Futura-Normal.woff2") format("woff2");
 }
 
-html, body {
+html,
+body {
   height: 100vh;
   width: 100vw;
   overflow: auto;
@@ -20,19 +16,22 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  font-family: Futura !important;
-}
-.modal-content{
-    background-color: transparent!important;
-    border: none!important;
+  font-family: Futura, sans-serif;
 }
 
-.modal-dialog {
-  max-width: 970px !important;
-  margin: 5rem auto !important;
+.createPostModal > .modal-content{
+  background-color: transparent!important;
+  border: none!important;
 }
 
-/* html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
+.postModal {
+  max-width: 1080px;
 
+}
 
+@media screen and (max-width: 900px) {
+  .postModal {
+    max-width: 670px;
+    margin: 2rem;
+  }
+}
