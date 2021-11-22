@@ -27,8 +27,7 @@ export class FollowService {
                                   'Authorization': `${this.token}`
                                 }),
       }
-      const body = JSON.stringify({'email': email});
-      return this.http.post<any>("http://localhost:8082/profile/unfollow", body, httpOptions);
+      return this.http.post<any>("http://localhost:8082/profile/unfollow", `email=${email}`, httpOptions);
   }
 
   unfollowUserById(id: number): Observable<any>
@@ -39,6 +38,6 @@ export class FollowService {
                                 }),
       }
       const body = JSON.stringify({'id': id});
-      return this.http.post<any>("http://localhost:8082/profile/unfollow", body, httpOptions);
+      return this.http.post<any>("http://localhost:8082/profile/unfollow", `id=${id}`, httpOptions);
   }
 }
