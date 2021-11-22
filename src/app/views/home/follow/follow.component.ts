@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FollowService } from 'app/services/follow.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-follow',
@@ -57,11 +57,9 @@ export class FollowComponent {
     if (this.email != "")
     {
       console.log("Email entered: ", this.email);
-      this.followService.unfollowUserByEmail(this.email).subscribe
-      (
+      this.followService.unfollowUserByEmail(this.email).subscribe(
         // at some point we need to check the response status code to
         // give an appropriate text display
-        r => { }
       )
       this.successUnfollow = true;
     }
