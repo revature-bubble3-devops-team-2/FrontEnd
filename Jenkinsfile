@@ -50,7 +50,7 @@ pipeline {
          steps {
             script {
                docker.withRegistry('', CRED) {
-                  dockerImage.push()
+                  dockerImage.push(IMAGE_TAG)
                }
             }
          }
