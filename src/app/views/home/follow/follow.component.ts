@@ -9,13 +9,19 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class FollowComponent implements OnInit {
 
-  email: string = "";
-  error: boolean = false;
-  missing: boolean = false;
-  success: boolean = false;
-  successUnfollow: boolean = false;
+  email: string;
+  error: boolean;
+  missing: boolean;
+  success: boolean;
+  successUnfollow: boolean;
 
-  constructor(private followService:FollowService, private router:Router) { }
+  constructor(private followService:FollowService, private router:Router) {
+    this.email = "";
+    this.error = false;
+    this.missing = false;
+    this.success = false;
+    this.successUnfollow = false;
+  }
 
   ngOnInit(): void { }
 
@@ -61,6 +67,8 @@ export class FollowComponent implements OnInit {
       console.log("Email entered: ", this.email);
       this.followService.unfollowUserByEmail(this.email).subscribe
       (
+        // at some point we need to check the response status code to
+        // give an appropriate text display
         r => { }
       )
       this.successUnfollow = true;
