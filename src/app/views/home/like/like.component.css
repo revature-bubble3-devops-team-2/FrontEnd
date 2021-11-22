@@ -1,0 +1,12 @@
+.liked {
+    background-color: red;
+}
+
+.like-component-container {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.num-likes {
+    padding-left: .75rem;
+}

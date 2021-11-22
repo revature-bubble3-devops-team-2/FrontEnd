@@ -1,5 +1,5 @@
 import { Component, OnInit} from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { Profile } from '../../../models/profile';
 import { ProfileService } from '../../../services/profile.service';
 
@@ -33,7 +33,6 @@ export class LoginComponent implements OnInit {
     //Check both field if there's value
     if(this.username != "" && this.password!= "")
     {
-      //console.log("test", this.username, this.password);
       this.profileService.login(this.username, this.password).subscribe(
         r => {
           if (r.body !== null)

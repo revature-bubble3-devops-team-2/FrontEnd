@@ -21,8 +21,5 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  font-family: Futura;
+  font-family: Futura, sans-serif;
 }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
