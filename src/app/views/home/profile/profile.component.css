@@ -62,12 +62,16 @@ body {
 
 
 
-/* @media  (max-width: 1024px){
+ @media  (max-width: 1345px){
     .bg-white {
         display:flex;
         flex-flow:column nowrap;
     }
-} */
+
+    .profile-head {
+        transform: translateY(.5rem)
+    }
+} 
 
 
 
