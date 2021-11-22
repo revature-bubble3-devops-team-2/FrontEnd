@@ -1,0 +1,8 @@
+.navbar{
+    background-color: #72A4C2 !important;
+}
+
+.home-container{
+    display: grid;
+    grid-template-columns: 25% 75%;
+}

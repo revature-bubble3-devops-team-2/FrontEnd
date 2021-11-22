@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse,HttpHeaders} from '@angular/common/http';
 import { Profile } from '../models/profile';
 import { Observable } from 'rxjs';
+import { environment } from 'environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -24,12 +25,12 @@ export class ProfileService {
   // Sends post request to the profile controller that then responds
   // with httpstatus code
   registerProfile(profile: Profile): Observable<any> {
-    return this.http.post('http://localhost:8082/profile/register', profile,
+    return this.http.post(environment.url+'/profile/register', profile,
     {observe: 'response'});
   }
 
   getProfileByPid(pid: number): Observable<Profile>{
-    return this.http.get(`http://localhost:8082/profile/profiles/${pid}`)
+    return this.http.get(`${environment.url}/profile/profiles/${pid}`)
   }
 
   updateProfile(profile: Profile): Observable<any>{

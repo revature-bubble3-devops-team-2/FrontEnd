@@ -1,6 +1,7 @@
 .container{
     padding: 20px;
     border-radius: 50px;
+    background-color: #ffffff;
 }
 .modal-content{
     border-radius: 50px;

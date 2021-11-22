@@ -4,6 +4,7 @@ import { Post } from '../models/post';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators'
 import { Profile } from 'app/models/profile';
+import { environment } from 'environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -15,8 +16,13 @@ export class PostService implements OnDestroy {
   public numLikes!: number;
 
   public createPost(post: Post) {
+    const requestOptions = {                                                                                                                                                                                 
+      headers: new HttpHeaders({
+        "Authorization": `${sessionStorage.getItem("Authorization")}`
+      })
+    };
     this.httpClient
-      .post<Post>('http://localhost:8082/posts', post)
+      .post<Post>(environment.url+'/posts', post, requestOptions)
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe((data) => {
         const currentValue = this.postsSubject.value;
@@ -26,8 +32,13 @@ export class PostService implements OnDestroy {
   }
 
   public getAllPosts(): void {
+    const requestOptions = {                                                                                                                                                                                 
+      headers: new HttpHeaders({
+        "Authorization": `${sessionStorage.getItem('Authorization')}`
+      })
+    };
     this.httpClient
-      .get<Post[]>('http://localhost:8082/posts')
+      .get<Post[]>(environment.url+'/posts', requestOptions)
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe((data) => {
         this.postsSubject.next(data as Post[]);
@@ -39,30 +50,38 @@ export class PostService implements OnDestroy {
   }
 
   getNumLikes(post: Post): Observable<number> {
-    const headerDict = {'post': `${post.psid}`, "find": "false"}
+    const headerDict = {'post': `${post.psid}`, "find": "false", "Authorization": `${sessionStorage.getItem('Authorization')}`};
     const requestOptions = {                                                                                                                                                                                 
-      headers: new HttpHeaders(headerDict),
+      headers: new HttpHeaders(headerDict)
     };
-    return this.httpClient.get<number>('http://localhost:8082/like', requestOptions).pipe(takeUntil(this._unsubscribeAll));
+    return this.httpClient.get<number>(environment.url+'/like', requestOptions).pipe(takeUntil(this._unsubscribeAll));
   }
 
   getLiked(post: Post): Observable<number> {
-    const headerDict = {'post': `${post.psid}`, "find": "true"}
+    const headerDict = {'post': `${post.psid}`, "find": "true", "Authorization": `${sessionStorage.getItem('Authorization')}`};
     const requestOptions = {                                                                                                                                                                                 
-      headers: new HttpHeaders(headerDict),
+      headers: new HttpHeaders(headerDict)
     };
-    return this.httpClient.get<number>('http://localhost:8082/like', requestOptions).pipe(takeUntil(this._unsubscribeAll));
+    return this.httpClient.get<number>(environment.url+'/like', requestOptions).pipe(takeUntil(this._unsubscribeAll));
   }
 
   postLike(post: Post): Observable<Profile> {
-    return this.httpClient.post<Profile>('http://localhost:8082/like', post).pipe(takeUntil(this._unsubscribeAll));
+    const requestOptions = {                                                                                                                                                                                 
+      headers: new HttpHeaders({
+        "Authorization": `${sessionStorage.getItem('Authorization')}`
+      })
+    };
+    return this.httpClient.post<Profile>(environment.url+'/like', post, requestOptions).pipe(takeUntil(this._unsubscribeAll));
   }
 
   deleteLike(post: Post): Observable<Profile> {
     const options = {
+      headers: new HttpHeaders({
+        "Authorization": `${sessionStorage.getItem('Authorization')}`
+      }),
       body: post,
     };
-    return this.httpClient.delete<Profile>('http://localhost:8082/like', options).pipe(takeUntil(this._unsubscribeAll));
+    return this.httpClient.delete<Profile>(environment.url+'/like', options).pipe(takeUntil(this._unsubscribeAll));
   }
 
   ngOnDestroy(): void {
