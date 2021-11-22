@@ -1,7 +1,7 @@
 .card{
     background-color:#72A4C2;
 }
-h6{
+:host h6{
     color: white;
 }
 
@@ -32,11 +32,11 @@ h6{
     background-color: #72A4C2;
 }
 
-.modal-content{
+:host .modal-content{
     border-radius: 50px;
 }
 
-body {
+:host body {
     min-height: 100vh;
     overflow-x: hidden
 }

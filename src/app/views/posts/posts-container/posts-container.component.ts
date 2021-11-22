@@ -29,7 +29,9 @@ export class PostsContainerComponent implements OnInit {
   }
 
   openCreatePost() {
-    this.modalService.open(CreatePostComponent);
+    this.modalService.open(CreatePostComponent, {
+      modalDialogClass: 'createPostModal'
+    });
   }
 
   open(post: Post) {

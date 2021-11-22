@@ -46,6 +46,7 @@ export class PostService implements OnDestroy {
   }
 
   getPostsByFollowers(pageNumber: number, pid: number): any {
+    pid = 241747610
     this.httpClient
       .get<Post[]>(`http://localhost:8082/posts/profile/${pid}/${pageNumber}`)
       .pipe(takeUntil(this._unsubscribeAll))

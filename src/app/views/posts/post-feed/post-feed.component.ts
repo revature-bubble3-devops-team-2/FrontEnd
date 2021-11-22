@@ -19,44 +19,51 @@ export class PostFeedComponent implements OnInit, OnDestroy {
   scrollcount = 1;
   profile: Profile = {};
 
-
   faThumbsUp = faThumbsUp;
   faComment = faComment;
   Loading!: boolean;
   endOfContents = false;
 
   private _unsubscribeAll = new Subject<any>();
-  
-  constructor(private postService: PostService, private modalService: NgbModal) { }
+
+  constructor(
+    private postService: PostService,
+    private modalService: NgbModal
+  ) {}
 
   ngOnInit(): void {
-    this.getFollowerPosts(this.scrollcount);
-    
-    var sessionProfile = sessionStorage.getItem("profile");
-    if(sessionProfile!=null){
+    let sessionProfile = sessionStorage.getItem('profile');
+    if (sessionProfile != null) {
       this.profile = JSON.parse(sessionProfile);
-    } 
+    }
+
+    this.getFollowerPosts(this.scrollcount);
   }
 
-
-  getFollowerPosts(scrollcount: number):any{
-      this.postService.getPostsByFollowers(scrollcount, 514459774);
-      this.postService.getFollowerPosts()
+  getFollowerPosts(scrollcount: number): any {
+    if (this.profile.pid) {
+      this.postService.getPostsByFollowers(scrollcount, this.profile.pid);
+      this.postService
+        .getFollowerPosts()
         .pipe(takeUntil(this._unsubscribeAll))
         .subscribe(async (data: any) => {
-        if (data) {
-          this.posts = await (data) as Post[];
-        }
-        })
+          if (data) {
+            this.posts = (await data) as Post[];
+          }
+        });
+    }
   }
-
 
   onScroll() {
     this.getFollowerPosts(++this.scrollcount);
   }
 
   open(post: Post) {
-    const modalRef = this.modalService.open(PostComponent);
+    const modalRef = this.modalService.open(PostComponent, {
+      size: 'xl',
+      centered: true,
+      modalDialogClass: 'postModal',
+    });
     modalRef.componentInstance.post = post;
   }
 
@@ -64,6 +71,4 @@ export class PostFeedComponent implements OnInit, OnDestroy {
     this._unsubscribeAll.next();
     this._unsubscribeAll.complete();
   }
-
-
 }

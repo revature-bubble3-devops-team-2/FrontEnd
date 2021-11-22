@@ -17,7 +17,7 @@
     font-size: 12px;
 } */
 
-h2, h4 {
+:host h2, h4 {
     margin: 0 !important;
     color: #474C55 !important;
 }
@@ -58,10 +58,10 @@ h2, h4 {
 }
 
 
-a:hover {
+:host a:hover {
     text-decoration: none;
 }
 
-fa-icon{
+:host fa-icon{
     font-size: 14pt;
 }
