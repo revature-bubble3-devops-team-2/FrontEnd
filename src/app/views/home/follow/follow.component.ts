@@ -9,19 +9,13 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class FollowComponent implements OnInit {
 
-  email: string;
-  error: boolean;
-  missing: boolean;
-  success: boolean;
-  successUnfollow: boolean;
+  email: string = "";
+  error: boolean = false;
+  missing: boolean = false;
+  success: boolean = false;
+  successUnfollow: boolean = false;
 
-  constructor(private followService:FollowService, private router:Router) {
-    this.email = "";
-    this.error = false;
-    this.missing = false;
-    this.success = false;
-    this.successUnfollow = false;
-  }
+  constructor(private followService:FollowService, private router:Router) { }
 
   ngOnInit(): void { }
 
