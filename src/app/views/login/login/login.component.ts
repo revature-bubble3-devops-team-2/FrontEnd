@@ -38,7 +38,10 @@ export class LoginComponent implements OnInit {
           if (r.body !== null && r.headers.get("Authorization") !== null)
           {
             const temp = r.body as Profile;
-            sessionStorage.setItem("Authorization", r.headers.get("Authorization"));
+            const tempAuth = r.headers.get("Authorization");
+            if (tempAuth !== null) {
+              sessionStorage.setItem("Authorization", tempAuth);
+            }
             sessionStorage.setItem("profile", JSON.stringify(temp));
             //Store the return body into sessionStorage and then redirect to profile page
             this.router.navigate(['/home']);  
