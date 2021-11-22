@@ -8,7 +8,7 @@ import { ProfileService } from '../../../services/profile.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   loginProfile: Profile = {};
 
@@ -19,10 +19,6 @@ export class LoginComponent implements OnInit {
   missing: boolean = false;
 
   constructor(private profileService:ProfileService, private router: Router) { 
-  }
-
-  ngOnInit(): void {
-    
   }
 
   login(){
