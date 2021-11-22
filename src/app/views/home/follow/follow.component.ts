@@ -7,7 +7,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './follow.component.html',
   styleUrls: ['./follow.component.css']
 })
-export class FollowComponent implements OnInit {
+export class FollowComponent {
 
   email: string = "";
   error: boolean = false;
@@ -16,8 +16,6 @@ export class FollowComponent implements OnInit {
   successUnfollow: boolean = false;
 
   constructor(private followService:FollowService, private router:Router) { }
-
-  ngOnInit(): void { }
 
   follow()
   {
