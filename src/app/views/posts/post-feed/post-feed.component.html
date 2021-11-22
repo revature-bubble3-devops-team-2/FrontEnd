@@ -47,14 +47,11 @@
     <hr />
     <div class="d-flex justify-content-between align-items-center btn-div">
       <div class="btn-group">
-        <a href="#"
-          ><fa-icon class="like-icon" [icon]="faThumbsUp"></fa-icon> 5</a
-        >
+          <!-- <fa-icon class="like-icon" [icon]="faThumbsUp"></fa-icon> -->
+        <app-like [postInfo]="post"></app-like>
       </div>
-      <div class="btn-group">
-        <a href="#"
-          ><fa-icon class="comment-icon" [icon]="faComment"></fa-icon>10</a
-        >
+      <div class="btn-group" (click)="open(post)">
+        <fa-icon class="comment-icon" [icon]="faComment"></fa-icon>10
       </div>
     </div>
   </div>

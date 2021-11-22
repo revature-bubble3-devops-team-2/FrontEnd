@@ -55,9 +55,9 @@ h4 {
   padding: 6px 20px !important;
 }
 
-.like-icon,
 .comment-icon {
   margin-right: 4px;
+  color:#007bff;
 }
 
 .btn-div {
