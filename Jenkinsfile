@@ -7,6 +7,7 @@ pipeline {
       PORT = 80
       IMAGE_TAG = "cpete22/revature-bubble:fe"
       CONTAINER_NAME = "bubblefe"
+      CRED = "dockerhub"
    }
 
    tools { nodejs "node"}
@@ -15,8 +16,7 @@ pipeline {
       stage('Install Dependencies') {
          steps {
             sh 'npm install'
-            discordSend description: ":construction: *Updated Dependencies*", result: currentBuild.currentResult,
-            webhookURL: env.WEBHO_FE
+            discordSend description: ":construction: *Updated Dependencies*", result: currentBuild.currentResult, webhookURL: env.WEBHO_FE
          }
       }
       stage('Build Angular Files') {
@@ -29,6 +29,7 @@ pipeline {
       stage('Remove Previous Artifacts') {
          steps {
                sh 'docker stop ${CONTAINER_NAME} || true'
+               sh 'docker stop nginx || true'
                sh 'docker rmi ${IMAGE_TAG} || true'
                discordSend description: ":axe: *Removed Previous Docker Artifacts*", result: currentBuild.currentResult, webhookURL: env.WEBHO_FE
          }
@@ -43,6 +44,15 @@ pipeline {
          steps {
                sh 'docker run -it --rm -p ${PORT}:${PORT} -d --name ${CONTAINER_NAME} ${IMAGE_TAG}'
                discordSend description: ":whale: *Running Docker Container*", result: currentBuild.currentResult, webhookURL: env.WEBHO_FE
+         }
+      }
+      stage('Push to DockerHub') {
+         steps {
+            script {
+               docker.withRegistry('', CRED) {
+                  dockerImage.push()
+               }
+            }
          }
       }
    }
