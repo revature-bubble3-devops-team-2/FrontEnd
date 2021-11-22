@@ -10,17 +10,17 @@ export class FollowService {
 
   constructor(private http: HttpClient,) {  }
 
-  followUserByEmail(email: string): Observable<HttpResponse<string>>
+  followUserByEmail(email: string): Observable<any>
   {
     return this.http.post<string>("http://localhost:8082/follow", `token=${this.token}&email=${email}`, { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
   }
 
-  followUserById(id: number): Observable<HttpResponse<string>>
+  followUserById(id: number): Observable<any>
   {
     return this.http.post<string>("http://localhost:8082/follow", `token=${this.token}&id=${id}`, { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
   }
 
-  unfollowUserByEmail(email: string): Observable<HttpResponse<string>>
+  unfollowUserByEmail(email: string): Observable<any>
   {
       const httpOptions = {
         headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded',
@@ -31,7 +31,7 @@ export class FollowService {
       return this.http.post<any>("http://localhost:8082/profile/unfollow", body, httpOptions);
   }
 
-  unfollowUserById(id: number): Observable<HttpResponse<string>>
+  unfollowUserById(id: number): Observable<any>
   {
       const httpOptions = {
         headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded',
