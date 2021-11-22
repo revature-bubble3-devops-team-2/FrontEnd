@@ -35,12 +35,13 @@ export class LoginComponent implements OnInit {
     {
       this.profileService.login(this.username, this.password).subscribe(
         r => {
-          if (r.body !== null)
+          if (r.body !== null && r.headers.get("Authorization") !== null)
           {
+            const temp = r.body as Profile;
+            sessionStorage.setItem("Authorization", r.headers.get("Authorization"));
+            sessionStorage.setItem("profile", JSON.stringify(temp));
             //Store the return body into sessionStorage and then redirect to profile page
-            var response = JSON.stringify(r.body);
-            sessionStorage.setItem("Authorization", JSON.parse(response).Authorization );
-            this.router.navigate(['/home']); 
+            this.router.navigate(['/home']);  
           } else {
             //Error in case if something in the backend doesn't give us data for w.e reason.
             console.log("Returned profile but no data");

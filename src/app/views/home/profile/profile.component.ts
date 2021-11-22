@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ProfileService } from 'app/services/profile.service';
 
 
@@ -7,7 +7,7 @@ import { ProfileService } from 'app/services/profile.service';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent {
 
   firstName: string = "";
   lastName: string = "";
@@ -16,10 +16,6 @@ export class ProfileComponent implements OnInit {
   credential: string = "";
 
   constructor(private profileService: ProfileService) { }
-
-  ngOnInit(): void {
-    
-  }
 
  get profile(){
     let sessionProfile = sessionStorage.getItem("profile");
