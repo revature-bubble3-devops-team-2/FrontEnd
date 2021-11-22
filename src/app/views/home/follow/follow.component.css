@@ -2,7 +2,7 @@
 
 .follow-container
 {
-    width: 20%;
+    max-width: 500px;
     padding: 4px;
 }
 
@@ -47,6 +47,7 @@ input[type=text]:focus, input[type=password]:focus {
 .container {
     padding: 3rem;
     border-radius: 80px;
+    width: 100%;
     max-width: 500px;
     backdrop-filter: blur(40px);
     background: #acacac;
