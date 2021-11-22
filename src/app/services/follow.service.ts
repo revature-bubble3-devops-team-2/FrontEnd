@@ -22,29 +22,21 @@ export class FollowService {
 
   unfollowUserByEmail(email: string): Observable<HttpResponse<string>>
   {
-    let auth = this.token;
-    if (auth == null)
-      auth = "";
-
     return this.http.post<string>
     (
       "http://localhost:8082/profile/unfollow",
       { "id":email },
-      { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': auth}}
+      { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': `${this.token}`}}
     )
   }
 
   unfollowUserById(id: number): Observable<HttpResponse<string>>
   {
-    let auth = this.token;
-    if (auth == null)
-      auth = "";
-
     return this.http.post<string>
     (
       "http://localhost:8082/profile/unfollow",
       { "id":id },
-      { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': auth}}
+      { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': `${this.token}`}}
     )
   }
 }
