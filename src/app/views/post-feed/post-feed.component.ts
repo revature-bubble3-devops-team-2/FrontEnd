@@ -40,7 +40,7 @@ export class PostFeedComponent implements OnInit, OnDestroy {
 
 
   getFollowerPosts(scrollcount: number):any{
-      this.postService.getPostsByFollowers(scrollcount, 514459774);
+      this.postService.getPostsByFollowers(scrollcount, 1011398707);
       this.postService.getFollowerPosts()
         .pipe(takeUntil(this._unsubscribeAll))
         .subscribe(async (data: any) => {
