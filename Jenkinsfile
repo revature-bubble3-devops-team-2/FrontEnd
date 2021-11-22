@@ -16,8 +16,7 @@ pipeline {
       stage('Install Dependencies') {
          steps {
             sh 'npm install'
-            discordSend description: ":construction: *Updated Dependencies*", result: currentBuild.currentResult,
-            webhookURL: env.WEBHO_FE
+            discordSend description: ":construction: *Updated Dependencies*", result: currentBuild.currentResult, webhookURL: env.WEBHO_FE
          }
       }
       stage('Build Angular Files') {
@@ -30,6 +29,7 @@ pipeline {
       stage('Remove Previous Artifacts') {
          steps {
                sh 'docker stop ${CONTAINER_NAME} || true'
+               sh 'docker stop nginx || true'
                sh 'docker rmi ${IMAGE_TAG} || true'
                discordSend description: ":axe: *Removed Previous Docker Artifacts*", result: currentBuild.currentResult, webhookURL: env.WEBHO_FE
          }
@@ -49,7 +49,7 @@ pipeline {
       stage('Push to DockerHub') {
          steps {
             script {
-               docker.withRegistry( '', CRED) {
+               docker.withRegistry('', CRED) {
                   dockerImage.push()
                }
             }
