@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Renderer2 } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { CommentService } from 'app/services/comment.service';
 import { Comment } from 'app/models/comment';
@@ -15,6 +15,7 @@ export class CreateCommentComponent implements OnInit {
   @Input() 
   post!: Post;
   comment: Comment= {};
+  reply: Comment={};
   comments!: Comment[];
   replys!: Comment[];
   replyOnComment!: Comment[];
@@ -25,11 +26,13 @@ export class CreateCommentComponent implements OnInit {
   commentData: Comment = {};
   commentWriter: Profile = {};
   commentLocaleDate: string = "";
+  replyDate: string = "";
   previous: Comment ={};
 
   constructor(
     public commentService: CommentService, 
-    public activeModal: NgbActiveModal
+    public activeModal: NgbActiveModal,
+    private renderer: Renderer2
     ) {}
 
   ngOnInit(): void {
@@ -56,16 +59,36 @@ export class CreateCommentComponent implements OnInit {
     }  
   }
 
-  dateFormat(d: Date){
+dateFormatForComment(d: Date) {
     if(d){
       var formattedDate = (d.getMonth() + 1)  + "-"  +d.getDate()+  "-"+ d.getFullYear() ;
       var hours = (d.getHours() < 10) ? "0" + d.getHours() : d.getHours();
       var minutes = (d.getMinutes() < 10) ? "0" + d.getMinutes() : d.getMinutes();
       var formattedTime = hours + ":" + minutes;
-      formattedDate = formattedDate + " " + formattedTime;
       if(formattedDate)
         this.commentLocaleDate = formattedDate;
+     }
+  }
+
+  dateFormatForReply(d: Date) {
+    if(d){
+      var formattedDate = (d.getMonth() + 1)  + "-"  +d.getDate()+  "-"+ d.getFullYear() ;
+      var hours = (d.getHours() < 10) ? "0" + d.getHours() : d.getHours();
+      var minutes = (d.getMinutes() < 10) ? "0" + d.getMinutes() : d.getMinutes();
+      var formattedTime = hours + ":" + minutes;
+      if(formattedDate)
+        this.replyDate = formattedDate;
+     }
+  }
+
+  formatReplyDate(reply: Comment){
+    var temp = reply.dateCreated;
+    var d;
+    if(temp){
+      d = new Date(temp);
+      this.dateFormatForReply(d);
     }
+    return true;   
   }
 
   checkWriterForEachComment(comment: Comment){
@@ -75,7 +98,7 @@ export class CreateCommentComponent implements OnInit {
     var d;
     if(temp){
       d = new Date(temp);
-      this.dateFormat(d);
+      this.dateFormatForComment(d);
     }   
     if(comment.writer){
       this.commentWriter = comment.writer;
@@ -106,8 +129,9 @@ export class CreateCommentComponent implements OnInit {
       this.commentService.getCommentsByPsid(this.post.psid).subscribe(
         (result)=>{
           this.replys = result;
+          for(let r of this.replys){
+          }
           this.replys = this.replys.filter(obj => obj.previous!=null)
-          console.log(this.replys);
         }
       )
     }  
@@ -121,30 +145,31 @@ export class CreateCommentComponent implements OnInit {
     this.commentService.createComment(comment).subscribe(
       (result)=>{
         this.isReply = false;
+        this.comment.cbody = "";
         this.getOriginCommentsByPsid();
-        comment.cbody = "";
       }
     )
   }
 
-  replyComment(comment: Comment){
-    console.log(this.post);
-    comment.post = this.post;
-    comment.dateCreated = new Date();
-    comment.previous = this.previous;
-    comment.writer = this.profile;
-    this.commentService.createComment(comment).subscribe(
+  submitReply(reply: Comment){
+    reply.post = this.post;
+    reply.dateCreated = new Date();
+    reply.writer = this.profile;
+    reply.previous = this.previous;
+    this.commentService.createComment(reply).subscribe(
       (result)=>{
         this.isReply = false;
-        this.getOriginCommentsByPsid();
+        //this.reply.cbody = "";
+        this.getOriginCommentsByPsid(); 
       }
     )
   }
 
+
   submitCommentOnComment(comment: Comment){
- 
     this.previous = comment;
     this.isReply = true;
     this.getOriginCommentsByPsid();
+    this.renderer.selectRootElement('#create-comment').focus();
   }
 }
