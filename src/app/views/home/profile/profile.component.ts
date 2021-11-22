@@ -18,7 +18,7 @@ export class ProfileComponent implements OnInit {
   constructor(private profileService: ProfileService) { }
 
   ngOnInit(): void {
-    
+    let sessionProfile = sessionStorage.getItem("profile");
   }
 
  get profile(){
