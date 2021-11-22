@@ -2,12 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse,HttpHeaders} from '@angular/common/http';
 import { Profile } from '../models/profile';
 import { Observable } from 'rxjs';
+import { ThrowStmt } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileService {
   private profile: Profile={};
+
+  constructor(private http: HttpClient) { }
 
   setData(profile: Profile){
     this.profile = profile;
@@ -19,10 +22,7 @@ export class ProfileService {
     return temp;
   }
 
-  constructor(private http: HttpClient,) { }
 
-  // Sends post request to the profile controller that then responds
-  // with httpstatus code
   registerProfile(profile: Profile): Observable<any> {
     return this.http.post('http://localhost:8082/profile/register', profile,
     {observe: 'response'});

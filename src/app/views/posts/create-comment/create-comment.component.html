@@ -1,0 +1,74 @@
+<div class="card-body">
+    <h3 style="color: #6b6e80;">Comments</h3>
+    <div style=" height: 500px !important; overflow: scroll; ">
+        <div class="container bootstrap snippets bootdey" >
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="blog-comment">
+                        <hr/>
+                        <ul class="comments">
+                            <div *ngFor="let commentData of comments" >
+                                <div class="card-body" *ngIf="checkWriterForEachComment(commentData)">
+                                    <li class="clearfix">
+                                        <img src="https://pbs.twimg.com/profile_images/738088068800872448/hjSp3OqX_400x400.jpg" class="avatar" alt="">
+                                        <div class="post-comments">
+                                            <p class="meta">
+                                                {{commentLocaleDate}} {{commentWriter.firstName}} says : 
+                                            </p>
+                                            <p>
+                                                {{commentData.cbody}}
+                                            </p>
+                                            <p>
+                                                <i class="pull-right">
+                                                    <button class="btn btn-link" *ngIf="isWriter" (click)="deleteCommentByCid(commentData.cid)"><small>Delete</small></button>
+                                                </i> 
+                                                <i class="pull-right">
+                                                    <button class="btn btn-link" (click)="submitCommentOnComment(commentData)"><small>Reply</small></button>
+                                                </i>
+                                            </p>
+                                        </div>
+                                        <ul class="comments">
+                                            <div *ngFor="let reply of replys">
+                                                <div *ngIf="commentData.cid==reply.previous?.cid">
+                                                    <div *ngIf="formatReplyDate(reply)">
+                                                        <li class="clearfix">
+                                                            <img src="https://pbs.twimg.com/profile_images/738088068800872448/hjSp3OqX_400x400.jpg" class="avatar" alt="">
+                                                            <div class="post-comments">
+                                                                <p class="meta">{{replyDate}} {{reply.writer?.firstName}} says : </p>
+                                                                <p>
+                                                                    {{reply.cbody}}
+                                                                </p>
+                                                                <p>
+                                                                    <i class="pull-right">
+                                                                        <button class="btn btn-link" *ngIf="isWriter" (click)="deleteCommentByCid(commentData.cid)"><small>Delete</small></button>
+                                                                    </i> 
+                                                                </p>
+                                                            </div>
+                                                        </li> 
+                                                    </div>  
+                                                </div>
+                                            </div>  
+                                        </ul>
+                                      </li>
+                                </div> 
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+    
+    <br>
+    <form id="create-comment-form" >
+        <label for="create-comment" *ngIf="isReply==false">Enter comment: </label>
+        <label for="create-comment" *ngIf="isReply==true">Enter reply: </label>
+        <div class="mb-3">
+            <textarea type="text" class="form-control" [(ngModel)]="comment.cbody" name="create-post" id="create-comment" required>
+            </textarea>
+        </div>
+        <button class="btn btn-dark" (click)="submitComment(comment)" *ngIf="isReply==false">Submit</button>
+        <button class="btn btn-dark" (click)="submitReply(reply)" *ngIf="isReply==true">Submit</button>
+    </form>
+</div>
+

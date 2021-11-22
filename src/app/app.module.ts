@@ -3,6 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbTooltipModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
+
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './views/login/login/login.component';
 import { ProfileComponent } from './views/home/profile/profile.component';
@@ -10,6 +15,7 @@ import { RegisterComponent } from './views/register/register/register.component'
 import { LikeComponent } from './views/home/like/like.component';
 import { ModalUpdateFormComponent } from './views/home/modal-update-form/modal-update-form.component';
 import { ModalButtonComponent } from './views/home/modal-button/modal-button.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreatePostComponent } from './views/posts/create-post/create-post.component';
 import { PostsContainerComponent } from './views/posts/posts-container/posts-container.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +28,9 @@ import { PostFeedComponent } from './views/posts/post-feed/post-feed.component';
 import { InterceptorService } from './helper/interceptor.service';
 
 
+import { ModalUpdateFormComponent } from './views/profile/modal-update-form/modal-update-form.component';
+import { ModalButtonComponent } from './views/profile/modal-button/modal-button.component';
+import { CreateCommentComponent } from './views/posts/create-comment/create-comment.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +46,11 @@ import { InterceptorService } from './helper/interceptor.service';
     HomeComponent,
     LikeComponent,
     PostComponent,
+    PostsContainerComponent,
+    RegisterComponent,
+    ModalUpdateFormComponent,
+    ModalButtonComponent,
+    CreateCommentComponent
     PostFeedComponent
   ],
   imports: [
@@ -50,11 +64,17 @@ import { InterceptorService } from './helper/interceptor.service';
     FontAwesomeModule,
     InfiniteScrollModule
   ],
+
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}],
   entryComponents:[
+    PostComponent,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    NgbModule,
     NgbTooltipModule,
     AppRoutingModule
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}],
   bootstrap: [AppComponent]
 
 })

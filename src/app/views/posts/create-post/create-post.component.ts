@@ -26,7 +26,7 @@ export class CreatePostComponent implements OnInit {
   @Input() show: boolean=false;
 
   constructor(
-    public postService: PostService, 
+    public postService: PostService,
     public activeModal: NgbActiveModal
     ) {}
 
