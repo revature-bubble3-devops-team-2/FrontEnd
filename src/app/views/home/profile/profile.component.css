@@ -1,7 +1,13 @@
 .container{
     margin-top: 1rem;
     margin-left: 2rem;
+
+
+
+  
 }
+
+
 
 .card{
     background-color:#72A4C2;
@@ -18,6 +24,8 @@ h6{
     backdrop-filter: blur(40px);
     -webkit-backdrop-filter: blur(40px);
 }
+
+
 
 .bg-white{
     height: 40%;
@@ -47,5 +55,22 @@ h6{
 
 body {
     min-height: 100vh;
-    overflow-x: hidden
+    overflow-x: hidden;
+
+
 }
+
+
+
+/* @media  (max-width: 1024px){
+    .bg-white {
+        display:flex;
+        flex-flow:column nowrap;
+    }
+}  */
+
+
+
+
+
+
