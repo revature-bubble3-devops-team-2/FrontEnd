@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse} from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import { Profile } from '../models/profile';
 import { Observable } from 'rxjs';
 
@@ -32,11 +32,24 @@ export class ProfileService {
     return this.http.get(`http://localhost:8082/profile/profiles/${pid}`)
   }
 
-  updateProfile(profile: Profile): Observable<Profile>{
-    return this.http.put(`http://localhost:8082/profile/profiles/${profile.pid}`, profile);
+  updateProfile(profile: Profile): Observable<any>{
+    let token = sessionStorage.getItem("Authorization");
+    if(token){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': token });
+      let options = { headers: headers };
+      return this.http.put(`http://localhost:8082/profile/profiles/${profile.pid}`, profile, options);
+    }else{
+      return this.http.put(`http://localhost:8082/profile/profiles/${profile.pid}`,profile);
+   }
   }
 
   login(username: string, password: string): Observable<HttpResponse<string>> {
     return this.http.post<string>('http://localhost:8082/profile', `username=${username}&password=${password}`, { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
+  }
+  getProfileByToken(): Observable<HttpResponse<Profile>> {
+    var token = sessionStorage.getItem("Authorization");
+    return this.http.post<Profile>('http://localhost:8082/profile/token', `token=${token}`, { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
   }
 }

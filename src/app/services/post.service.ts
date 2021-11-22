@@ -17,7 +17,7 @@ export class PostService implements OnDestroy {
   public createPost(post: Post) {
     const requestOptions = {                                                                                                                                                                                 
       headers: new HttpHeaders({
-        "Authorization": `${sessionStorage.getItem('Authorization')}`
+        "Authorization": `${sessionStorage.getItem("Authorization")}`
       })
     };
     this.httpClient
