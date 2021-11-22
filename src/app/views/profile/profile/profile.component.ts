@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Profile } from 'app/models/profile';
 import { ProfileService } from 'app/services/profile.service';
-import { FollowComponent } from '../follow/follow.component';
+import { FollowComponent } from '../../home/follow/follow.component';
 
 
 @Component({
