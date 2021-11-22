@@ -29,8 +29,8 @@ pipeline {
       stage('Remove Previous Artifacts') {
          steps {
                sh 'docker stop ${CONTAINER_NAME} || true'
-               sh 'docker stop nginx || true'
                sh 'docker rmi ${IMAGE_TAG} || true'
+               sh 'docker rmi nginx || true'
                discordSend description: ":axe: *Removed Previous Docker Artifacts*", result: currentBuild.currentResult, webhookURL: env.WEBHO_FE
          }
       }
