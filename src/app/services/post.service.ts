@@ -4,6 +4,7 @@ import { Post } from '../models/post';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators'
 import { Profile } from 'app/models/profile';
+import { environment } from 'environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +22,7 @@ export class PostService implements OnDestroy {
       })
     };
     this.httpClient
-      .post<Post>('http://localhost:8082/posts', post, requestOptions)
+      .post<Post>(environment.url+'/posts', post, requestOptions)
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe((data) => {
         const currentValue = this.postsSubject.value;
@@ -37,7 +38,7 @@ export class PostService implements OnDestroy {
       })
     };
     this.httpClient
-      .get<Post[]>('http://localhost:8082/posts', requestOptions)
+      .get<Post[]>(environment.url+'/posts', requestOptions)
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe((data) => {
         this.postsSubject.next(data as Post[]);
@@ -53,7 +54,7 @@ export class PostService implements OnDestroy {
     const requestOptions = {                                                                                                                                                                                 
       headers: new HttpHeaders(headerDict)
     };
-    return this.httpClient.get<number>('http://localhost:8082/like', requestOptions).pipe(takeUntil(this._unsubscribeAll));
+    return this.httpClient.get<number>(environment.url+'/like', requestOptions).pipe(takeUntil(this._unsubscribeAll));
   }
 
   getLiked(post: Post): Observable<number> {
@@ -61,7 +62,7 @@ export class PostService implements OnDestroy {
     const requestOptions = {                                                                                                                                                                                 
       headers: new HttpHeaders(headerDict)
     };
-    return this.httpClient.get<number>('http://localhost:8082/like', requestOptions).pipe(takeUntil(this._unsubscribeAll));
+    return this.httpClient.get<number>(environment.url+'/like', requestOptions).pipe(takeUntil(this._unsubscribeAll));
   }
 
   postLike(post: Post): Observable<Profile> {
@@ -70,7 +71,7 @@ export class PostService implements OnDestroy {
         "Authorization": `${sessionStorage.getItem('Authorization')}`
       })
     };
-    return this.httpClient.post<Profile>('http://localhost:8082/like', post, requestOptions).pipe(takeUntil(this._unsubscribeAll));
+    return this.httpClient.post<Profile>(environment.url+'/like', post, requestOptions).pipe(takeUntil(this._unsubscribeAll));
   }
 
   deleteLike(post: Post): Observable<Profile> {
@@ -80,7 +81,7 @@ export class PostService implements OnDestroy {
       }),
       body: post,
     };
-    return this.httpClient.delete<Profile>('http://localhost:8082/like', options).pipe(takeUntil(this._unsubscribeAll));
+    return this.httpClient.delete<Profile>(environment.url+'/like', options).pipe(takeUntil(this._unsubscribeAll));
   }
 
   ngOnDestroy(): void {
