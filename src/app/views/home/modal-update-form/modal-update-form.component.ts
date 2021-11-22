@@ -44,4 +44,8 @@ export class ModalUpdateFormComponent implements OnInit {
     )
     this.activeModal.close();
   }
+
+  closeModal() {
+    this.modalService.dismissAll();
+  }
 }
