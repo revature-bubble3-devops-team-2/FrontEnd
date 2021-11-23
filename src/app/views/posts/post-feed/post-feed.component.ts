@@ -3,7 +3,6 @@ import { Post } from 'app/models/post';
 import { PostService } from 'app/services/post.service';
 import { faThumbsUp, faComment } from '@fortawesome/free-solid-svg-icons';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Profile } from 'app/models/profile';
 import { CreateCommentComponent } from '../create-comment/create-comment.component';
@@ -37,8 +36,6 @@ export class PostFeedComponent implements OnInit, OnDestroy {
     if (sessionProfile != null) {
       this.profile = JSON.parse(sessionProfile);
     }
-
-    //this.getFollowerPosts(this.scrollcount);
     console.log(this.posts);
   }
 

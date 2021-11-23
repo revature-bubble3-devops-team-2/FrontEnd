@@ -28,19 +28,15 @@ export class FollowComponent {
     if (this.email != "")
     {
       console.log("Email entered: ", this.email);
-      this.followService.followUserByEmail(this.email).subscribe
-      (
-        r =>
+      this.followService.followUserByEmail(this.email).subscribe(r => {
+        if (r.body !== null)
         {
-          if (r.body !== null)
-          {
-            // this would mean we successfully followed?
-            console.log(r.body);
-            this.success = true;
-          }
-          else { this.error = true; }
+          // this would mean we successfully followed?
+          console.log(r.body);
+          this.success = true;
         }
-      )
+        else { this.error = true; }
+      })
     }
     else
     { this.missing = true; }
