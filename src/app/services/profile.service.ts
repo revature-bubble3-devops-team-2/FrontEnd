@@ -41,7 +41,7 @@ export class ProfileService {
       'Authorization': token });
       let options = { headers: headers };
       return this.http.put(`${environment.url}/profile/profiles/${profile.pid}`, profile, options);
-    }else{
+    } else {
       return this.http.put(`${environment.url}/profile/profiles/${profile.pid}`,profile);
    }
   }
