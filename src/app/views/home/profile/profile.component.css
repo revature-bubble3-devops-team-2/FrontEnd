@@ -1,7 +1,18 @@
+.container{
+    margin-top: 1rem;
+    margin-left: 2rem;
+    width:100%;
+
+
+  
+}
+
+
+
 .card{
     background-color:#72A4C2;
 }
-h6{
+:host h6{
     color: white;
 }
 
@@ -14,11 +25,12 @@ h6{
     -webkit-backdrop-filter: blur(40px);
 }
 
+
+
 .bg-white{
     height: 40%;
-    width: 40%;
+    width: 100%;
 }
-
 
 
 .profile-head {
@@ -37,11 +49,39 @@ h6{
     background-color: #72A4C2;
 }
 
-.modal-content{
+:host .modal-content{
     border-radius: 50px;
 }
 
-body {
+:host body {
     min-height: 100vh;
-    overflow-x: hidden
+    overflow-x: hidden;
+
+
 }
+
+
+
+ @media  (max-width: 1024px){
+    
+    .container{
+        margin-left:0rem;
+        width:100%;
+        text-align: center;
+    }
+    .bg-white {
+        display:flex !important;
+        flex-flow:column nowrap !important;
+   
+    }
+
+    .profile-head {
+        transform: translateY(.5rem)
+    }
+} 
+
+
+
+
+
+

@@ -1,4 +1,4 @@
-import { Component, OnInit,EventEmitter, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Profile } from 'app/models/profile';
 import { ProfileService } from 'app/services/profile.service';
@@ -18,14 +18,17 @@ export class ModalUpdateFormComponent implements OnInit {
   lastName: string = "";
   email: string = "";
 
-  @Output() changed = new EventEmitter<any>();
 
   ngOnInit(): void {
-  
+    var modaled = document.querySelector('.modal-content');
+    modaled?.setAttribute("style","border-radius:30px;");
+    
     var sessionProfile = sessionStorage.getItem("profile");
     if(sessionProfile!=null){
       this.profile = JSON.parse(sessionProfile);
-    }   
+    }
+    
+    
 }
 
   updateProfile(){
@@ -41,8 +44,12 @@ export class ModalUpdateFormComponent implements OnInit {
     this.profileService.updateProfile(this.profile).subscribe(
       (result)=>{
         sessionStorage.setItem("profile", JSON.stringify(result));
- }
+      }
     )
     this.activeModal.close();
+  }
+
+  closeModal() {
+    this.modalService.dismissAll();
   }
 }

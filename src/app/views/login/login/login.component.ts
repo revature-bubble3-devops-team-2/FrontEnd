@@ -31,7 +31,7 @@ export class LoginComponent {
     {
       this.profileService.login(this.username, this.password).subscribe(
         r => {
-          if (r.body !== null)
+          if (r.body !== null && r.headers.get("Authorization") !== null)
           {
             const temp = r.body as Profile;
             sessionStorage.clear();

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Post } from 'app/models/post';
 import { PostService } from 'app/services/post.service';
+import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-like',
@@ -11,6 +12,9 @@ export class LikeComponent implements OnInit {
 
   public num!: number;
   public hasLiked!: boolean;
+
+  faThumbsUp = faThumbsUp;
+  faThumbsDown = faThumbsDown;
   
   @Input()
   postInfo!: Post;
@@ -19,7 +23,9 @@ export class LikeComponent implements OnInit {
 
   public getLikes(){
     this.postService.getNumLikes(this.postInfo).subscribe((data) => {
-      this.num = data;});
+      console.log(data);
+      this.num = data;
+    });
   }
 
   public likePost() {
@@ -31,6 +37,7 @@ export class LikeComponent implements OnInit {
           })
         })
         this.hasLiked = !this.hasLiked;
+        console.log(this.hasLiked);
   }
 
 

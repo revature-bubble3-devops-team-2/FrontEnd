@@ -1,4 +1,39 @@
-<div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand"><b>Bubbl(e)</b></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page">Profile</a>
+          </li>
+        </ul> -->
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+            <div class="btn-nav"><a class="btn btn-primary btn-small navbar-btn btn-light" href='/login' (click)="logout()">Logout</a>
+            </div>
+        </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="home-container">
     <app-profile></app-profile>
-    <app-posts-container></app-posts-container>
+
+    <div>
+        <app-posts-container></app-posts-container>
+        
+        <div  class="d-flex flex-column justify-content-center">  
+            <div class="card-body align-self-center">
+                <p>Post feed of all posts here!</p>
+            </div>
+        </div>
+    </div>
+
 </div>

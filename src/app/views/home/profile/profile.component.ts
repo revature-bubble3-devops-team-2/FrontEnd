@@ -17,7 +17,6 @@ export class ProfileComponent {
 
   constructor(private profileService: ProfileService) { }
 
-
  get profile(){
     let sessionProfile = sessionStorage.getItem("profile");
     if(sessionProfile!=null){

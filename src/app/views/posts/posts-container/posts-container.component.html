@@ -1,0 +1,50 @@
+<div class="d-flex flex-column justify-content-center">
+  <div class="card-body align-self-center">
+    <div (click)="openCreatePost()">
+      <input class="rounded" placeholder="Create a post..." />
+    </div>
+  </div>
+</div>
+
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <div class="col mb-4" *ngFor="let post of posts">
+        <div class="card shadow-sm">
+
+          <ng-container>
+            <img
+              class="img-fluid img-thumbnail"
+              alt="Thumbnail"
+              width="100%"
+              height="225"
+              [src]="post.imgURL"
+              aria-label="Placeholder: Thumbnail"
+            />
+          </ng-container>
+
+          <div class="card-body">
+            <p class="card-text">{{ post.body }}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <app-like [postInfo]="post"></app-like>
+
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary" (click)="open(post)">
+                  View
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">
+                  Edit
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" (click)="createComment(post)">
+                  Comment
+                </button>
+              </div>
+
+              <small class="text-muted">9 mins</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-textarea {
+:host textarea {
     outline: none;
     box-shadow:none !important;
     border:1px solid #ccc !important;
@@ -15,7 +15,7 @@ textarea {
 }
 
 .card-body{
-    background-color: #72A4C2;
+    background-color: #F26925;
     overflow: hidden;
 }
 
@@ -23,9 +23,9 @@ textarea {
     text-align: center;
 }
 
-label{
+:host label{
     display: block;
-    color:#fff;
+    color:#474C55;
     font-weight: bold;
     margin-bottom:0;
 }
@@ -34,8 +34,11 @@ label{
     margin: 1rem 0;
     font-size: .80rem;
     color:red;
+    border-radius: 2rem!important;
+    background-color: white;
+    text-align: center;
 }
 
-.btn-light {
-    font-weight: bold;
+.btn-dark {
+    border-radius: 30px;
 }
