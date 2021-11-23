@@ -42,7 +42,6 @@ export class LoginComponent {
             sessionStorage.setItem("profile", JSON.stringify(temp));
             //Store the return body into sessionStorage and then redirect to profile page
             this.router.navigate(['/home']);  
-
           } else {
             //Error in case if something in the backend doesn't give us data for w.e reason.
             console.log("Returned profile but no data");

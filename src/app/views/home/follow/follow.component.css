@@ -20,7 +20,7 @@
 {
     background-color: #F26925;
     color: #FFF;
-    padding: 16px 20px;
+    padding: 12px 12px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
@@ -45,11 +45,11 @@ input[type=text]:focus, input[type=password]:focus {
 }
 
 .container {
-    padding: 3rem;
-    border-radius: 80px;
+    padding: 2rem;
+    border-radius: 60px;
     width: 100%;
     max-width: 500px;
     backdrop-filter: blur(40px);
-    background: #acacac;
+    background: #72A4C2;
     -webkit-backdrop-filter: blur(40px);
 }
