@@ -25,11 +25,11 @@
     <hr />
     <section>
       <div class="card-body" (click)="open(post)">
-        <!-- <app-post [post]="post"></app-post> -->
         <p class="card-text">{{ post.body }}</p>
         <ng-container *ngIf="post.imgURL">
           <div class="image-container">
             <img
+              alt="post image"
               class="img-fluid card-img"
               width="100%"
               [src]="post.imgURL"
@@ -42,7 +42,6 @@
     <hr />
     <div class="d-flex justify-content-between align-items-center btn-div">
       <div class="btn-group">
-          <!-- <fa-icon class="like-icon" [icon]="faThumbsUp"></fa-icon> -->
         <app-like [postInfo]="post"></app-like>
       </div>
       <div class="btn-group" (click)="open(post)">

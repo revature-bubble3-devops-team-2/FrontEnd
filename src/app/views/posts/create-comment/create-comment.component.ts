@@ -101,7 +101,7 @@ dateFormatForComment(d: Date) {
       this.isWriter = true;
       return true;
     }else{
-      return true;
+      return false;
     }
   }
   
