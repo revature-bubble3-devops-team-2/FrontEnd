@@ -32,13 +32,13 @@ pipeline {
          steps {
                sh 'docker stop ${CONTAINER_NAME} || true'
                sh 'docker rmi ${IMAGE_TAG} || true'
-               sh 'netstat -a 80'
                discordSend description: ":axe: *Removed Previous Docker Artifacts*", result: currentBuild.currentResult, webhookURL: env.WEBHO_FE
          }
       }
       stage('Create Image') {
          steps {
                sh 'docker build -t ${IMAGE_TAG} .'
+               sh 'netstat -na | grep "80"'
                discordSend description: ":screwdriver: *Built New Docker Image*", result: currentBuild.currentResult, webhookURL: env.WEBHO_FE
          }
       }
