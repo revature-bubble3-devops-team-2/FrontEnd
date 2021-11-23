@@ -54,7 +54,7 @@ export class RegisterComponent implements OnInit {
             sessionStorage.clear();
             sessionStorage.setItem("Authorization", data.headers.get("Authorization"));
             sessionStorage.setItem("profile", JSON.stringify(temp));
-            this.router.navigate(['/profile']);
+            this.router.navigate(['/home']);
           },
           (error: Error) => {
             console.log(error);
