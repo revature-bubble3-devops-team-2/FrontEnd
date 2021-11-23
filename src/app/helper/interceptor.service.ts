@@ -10,7 +10,7 @@ export class InterceptorService implements HttpInterceptor {
   
 
  
-
+  /**Interceptor class */
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     const profileToken = sessionStorage.getItem('Authorization');
