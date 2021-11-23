@@ -30,7 +30,7 @@ pipeline {
       }
       stage('Remove Previous Artifacts') {
          steps {
-               sh 'docker stop bubblebe || true'
+               sh 'docker stop * || true'
                sh 'docker rmi ${IMAGE_TAG} || true'
                discordSend description: ":axe: *Removed Previous Docker Artifacts*", result: currentBuild.currentResult, webhookURL: env.WEBHO_FE
          }
