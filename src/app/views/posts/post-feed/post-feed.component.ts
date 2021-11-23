@@ -1,13 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Post } from 'app/models/post';
 import { PostService } from 'app/services/post.service';
-import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
-import { faComment } from '@fortawesome/free-solid-svg-icons';
+import { faThumbsUp, faComment } from '@fortawesome/free-solid-svg-icons';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Profile } from 'app/models/profile';
-import { PostComponent } from '../post/post.component';
 import { CreateCommentComponent } from '../create-comment/create-comment.component';
 
 @Component({

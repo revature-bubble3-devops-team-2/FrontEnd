@@ -26,9 +26,9 @@
                                                 {{commentData.cbody}}
                                             </p>
                                             <p>
-                                                <i class="pull-right">
+                                                <em class="pull-right">
                                                     <button class="btn btn-link" (click)="submitCommentOnComment(commentData)"><small>Reply</small></button>
-                                                </i>
+                                                </em>
                                             </p>
                                         </div>
                                         <ul class="comments">
@@ -36,7 +36,7 @@
                                                 <div *ngIf="commentData.cid==reply.previous?.cid">
                                                     <div *ngIf="formatReplyDate(reply)">
                                                         <li class="clearfix">
-                                                            <img src="https://pbs.twimg.com/profile_images/738088068800872448/hjSp3OqX_400x400.jpg" class="avatar" alt="">
+                                                            <img src="https://pbs.twimg.com/profile_images/738088068800872448/hjSp3OqX_400x400.jpg" alt="avatar image" class="avatar" alt="">
                                                             <div class="post-comments">
                                                                 <p class="meta">{{replyDate}} {{reply.writer?.firstName}} says : </p>
                                                                 <p>

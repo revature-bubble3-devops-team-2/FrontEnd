@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input} from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Post } from 'app/models/post'
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -8,7 +8,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.css']
 })
-export class PostComponent implements OnInit {
+export class PostComponent {
 
   @Input() post!: Post;
 
@@ -16,7 +16,5 @@ export class PostComponent implements OnInit {
 
   constructor(public activeModal: NgbActiveModal) { }
 
-  ngOnInit(): void {
-  }
 
 }

@@ -5,7 +5,6 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PostComponent } from '../post/post.component';
 import { CreatePostComponent } from '../create-post/create-post.component';
 import { CreateCommentComponent } from '../create-comment/create-comment.component';
-import { Comment } from 'app/models/comment';
 
 @Component({
   selector: 'app-posts-container',

@@ -4,7 +4,7 @@ import { CommentService } from 'app/services/comment.service';
 import { Comment } from 'app/models/comment';
 import { Post } from 'app/models/post';
 import { Profile } from 'app/models/profile';
-import { DatePipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-create-comment',
@@ -62,9 +62,6 @@ export class CreateCommentComponent implements OnInit {
 dateFormatForComment(d: Date) {
     if(d){
       var formattedDate = (d.getMonth() + 1)  + "-"  +d.getDate()+  "-"+ d.getFullYear() ;
-      var hours = (d.getHours() < 10) ? "0" + d.getHours() : d.getHours();
-      var minutes = (d.getMinutes() < 10) ? "0" + d.getMinutes() : d.getMinutes();
-      var formattedTime = hours + ":" + minutes;
       if(formattedDate)
         this.commentLocaleDate = formattedDate;
      }
@@ -73,9 +70,6 @@ dateFormatForComment(d: Date) {
   dateFormatForReply(d: Date) {
     if(d){
       var formattedDate = (d.getMonth() + 1)  + "-"  +d.getDate()+  "-"+ d.getFullYear() ;
-      var hours = (d.getHours() < 10) ? "0" + d.getHours() : d.getHours();
-      var minutes = (d.getMinutes() < 10) ? "0" + d.getMinutes() : d.getMinutes();
-      var formattedTime = hours + ":" + minutes;
       if(formattedDate)
         this.replyDate = formattedDate;
      }
@@ -129,8 +123,6 @@ dateFormatForComment(d: Date) {
       this.commentService.getCommentsByPsid(this.post.psid).subscribe(
         (result)=>{
           this.replys = result;
-          for(let r of this.replys){
-          }
           this.replys = this.replys.filter(obj => obj.previous!=null)
         }
       )
@@ -138,7 +130,6 @@ dateFormatForComment(d: Date) {
   }
 
   submitComment(comment: Comment){
-    console.log(this.post);
     comment.post = this.post;
     comment.dateCreated = new Date();
     comment.writer = this.profile;
