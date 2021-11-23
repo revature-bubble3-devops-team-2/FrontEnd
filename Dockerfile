@@ -6,3 +6,4 @@ RUN ls /etc/nginx/
 RUN cat /etc/nginx/nginx.conf
 RUN cat /etc/nginx/conf.d/default.conf
 EXPOSE 80
+CMD ["nginx", "-g", "daemon off"]
