@@ -11,3 +11,13 @@
     background-size: cover;
     text-align: center;
 }
+
+@media  (max-width: 1024px){
+    .home-container {
+        display:flex;
+        flex-flow:column nowrap;
+        align-items: center
+    }
+
+
+}  
