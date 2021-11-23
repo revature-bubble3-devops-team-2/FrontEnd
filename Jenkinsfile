@@ -30,7 +30,7 @@ pipeline {
       }
       stage('Remove Previous Artifacts') {
          steps {
-               sh 'docker stop bubblemain || true'
+               sh 'docker stop ${CONTAINER_NAME} || true'
                sh 'docker rmi ${IMAGE_TAG} || true'
                discordSend description: ":axe: *Removed Previous Docker Artifacts*", result: currentBuild.currentResult, webhookURL: env.WEBHO_FE
          }
@@ -43,7 +43,7 @@ pipeline {
       }
       stage('Start Container') {
          steps {
-               sh 'docker run --rm -p 8082:80 --name ${CONTAINER_NAME} ${IMAGE_TAG}'
+               sh 'docker run --rm -p 80:80 --name ${CONTAINER_NAME} ${IMAGE_TAG}'
                discordSend description: ":whale: *Running Docker Container*", result: currentBuild.currentResult, webhookURL: env.WEBHO_FE
          }
       }
