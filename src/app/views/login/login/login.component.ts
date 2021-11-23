@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component} from '@angular/core';
 import { Router } from '@angular/router';
 import { Profile } from '../../../models/profile';
 import { ProfileService } from '../../../services/profile.service';
@@ -8,7 +8,7 @@ import { ProfileService } from '../../../services/profile.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   loginProfile: Profile = {};
 
@@ -19,10 +19,6 @@ export class LoginComponent implements OnInit {
   missing: boolean = false;
 
   constructor(private profileService:ProfileService, private router: Router) { 
-  }
-
-  ngOnInit(): void {
-    
   }
 
   login(){
@@ -38,6 +34,7 @@ export class LoginComponent implements OnInit {
           if (r.body !== null && r.headers.get("Authorization") !== null)
           {
             const temp = r.body as Profile;
+            sessionStorage.clear();
             const tempAuth = r.headers.get("Authorization");
             if (tempAuth !== null) {
               sessionStorage.setItem("Authorization", tempAuth);
@@ -45,10 +42,11 @@ export class LoginComponent implements OnInit {
             sessionStorage.setItem("profile", JSON.stringify(temp));
             //Store the return body into sessionStorage and then redirect to profile page
             this.router.navigate(['/home']);  
+
           } else {
             //Error in case if something in the backend doesn't give us data for w.e reason.
             console.log("Returned profile but no data");
-          }                  
+          }
         },
         (error) => {
           console.log(error);

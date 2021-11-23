@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Profile } from 'app/models/profile';
 import { ProfileService } from 'app/services/profile.service';
+import { FollowComponent } from '../../home/follow/follow.component';
 
 @Component({
   selector: 'app-modal-update-form',

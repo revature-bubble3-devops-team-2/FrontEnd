@@ -24,6 +24,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { PostComponent } from './views/posts/post/post.component';
 import { PostFeedComponent } from './views/posts/post-feed/post-feed.component';
 import { InterceptorService } from './helper/interceptor.service';
+import { FollowComponent } from './views/home/follow/follow.component';
 
 
 
@@ -41,14 +42,15 @@ import { CreateCommentComponent } from './views/posts/create-comment/create-comm
     CreatePostComponent,
     PostsContainerComponent,
     HomeComponent,
-    LikeComponent,
     PostComponent,
     PostsContainerComponent,
     RegisterComponent,
     ModalUpdateFormComponent,
     ModalButtonComponent,
     CreateCommentComponent,
-    PostFeedComponent
+    PostFeedComponent,
+    FollowComponent,
+    LikeComponent
   ],
   imports: [
     BrowserModule,
