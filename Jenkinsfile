@@ -32,7 +32,7 @@ pipeline {
          steps {
                sh 'docker stop ${CONTAINER_NAME} || true'
                sh 'docker rmi ${IMAGE_TAG} || true'
-               sh 'netstat -a'
+               sh 'netstat -s -p tcp'
                discordSend description: ":axe: *Removed Previous Docker Artifacts*", result: currentBuild.currentResult, webhookURL: env.WEBHO_FE
          }
       }
