@@ -25,7 +25,7 @@ export class PostService implements OnDestroy {
       })
     };
     this.httpClient
-      .post<Post>(environment.url+'/posts', post, requestOptions)
+      .post<Post>(environment.url+'/post', post, requestOptions)
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe((data) => {
         const currentValue = this.postsSubject.value;
@@ -34,19 +34,19 @@ export class PostService implements OnDestroy {
       });
   }
 
-  public getAllPosts(): void {
-    const requestOptions = {                                                                                                                                                                                 
-      headers: new HttpHeaders({
-        "Authorization": `${sessionStorage.getItem('Authorization')}`
-      })
-    };
-    this.httpClient
-      .get<Post[]>(environment.url+'/post', requestOptions)
-      .pipe(takeUntil(this._unsubscribeAll))
-      .subscribe((data) => {
-        this.postsSubject.next(data as Post[]);
-      });
-  }
+  // public getAllPosts(): void {
+  //   const requestOptions = {                                                                                                                                                                                 
+  //     headers: new HttpHeaders({
+  //       "Authorization": `${sessionStorage.getItem('Authorization')}`
+  //     })
+  //   };
+  //   this.httpClient
+  //     .get<Post[]>(environment.url+'/post', requestOptions)
+  //     .pipe(takeUntil(this._unsubscribeAll))
+  //     .subscribe((data) => {
+  //       this.postsSubject.next(data as Post[]);
+  //     });
+  // }
 
   getPosts(): Observable<any> {
     return this.postsSubject.asObservable();
@@ -56,9 +56,14 @@ export class PostService implements OnDestroy {
     return this.followerPostsSubject.asObservable();
   }
 
-  getPostsByFollowers(pageNumber: number, pid: number): any {
+  getPostsByFollowers(pageNumber: number): any {
+    const requestOptions = {                                                                                                                                                                                 
+          headers: new HttpHeaders({
+            "Authorization": `${sessionStorage.getItem('Authorization')}`
+          })
+        };
     this.httpClient
-      .get<Post[]>(`${environment.url}/post/profile/${pid}/${pageNumber}`)
+      .get<Post[]>(`${environment.url}/post/page/${pageNumber}`, requestOptions)
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe((data) => {
         if (data) {

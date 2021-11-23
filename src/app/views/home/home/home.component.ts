@@ -25,20 +25,16 @@ export class HomeComponent implements OnInit {
   }
 
   getFollowerPosts(scrollcount: number): any {
-    // if (this.profile !== null) {
-    //   if (this.profile.pid) {
-        this.postService.getPostsByFollowers(scrollcount, 2);
-        this.postService
-          .getFollowerPosts()
-          //.pipe(takeUntil(this._unsubscribeAll))
-          .subscribe(async (data: any) => {
-            if (data) {
-              console.log("Hello: "+data);
-              this.posts = (await data) as Post[];
-            }
-          });
-    //   }
-    // }
+    this.postService.getPostsByFollowers(scrollcount);
+    this.postService
+      .getFollowerPosts()
+      //.pipe(takeUntil(this._unsubscribeAll))
+      .subscribe(async (data: any) => {
+        if (data) {
+          console.log("Hello: "+data);
+          this.posts = (await data) as Post[];
+        }
+      });
   }
 
   onScroll() {

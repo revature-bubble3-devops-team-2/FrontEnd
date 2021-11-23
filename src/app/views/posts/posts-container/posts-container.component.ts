@@ -11,25 +11,8 @@ import { CreateCommentComponent } from '../create-comment/create-comment.compone
   templateUrl: './posts-container.component.html',
   styleUrls: ['./posts-container.component.css']
 })
-export class PostsContainerComponent implements OnInit {
-
-  posts!: Post[];
-
-
-  constructor(public postService: PostService, private modalService: NgbModal) { }
-
-  ngOnInit(): void {
-    this.getAllPosts();
-  }
-
-
-  public getAllPosts() {
-    this.postService.getAllPosts();
-    this.postService.getPosts().subscribe((data: any) => {
-      this.posts = data as Post[];
-    })
-  }
-
+export class PostsContainerComponent {
+  constructor(private modalService: NgbModal) { }
 
   openCreatePost() {
     this.modalService.open(CreatePostComponent, {
