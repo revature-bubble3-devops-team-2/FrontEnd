@@ -14,6 +14,7 @@ import { CreatePostComponent } from './views/home/posts/create-post/create-post.
 import { PostsContainerComponent } from './views/home/posts/posts-container/posts-container.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeComponent } from './views/home/home/home.component';
 import { FollowComponent } from './views/home/follow/follow.component';
 
 
@@ -29,7 +30,9 @@ import { FollowComponent } from './views/home/follow/follow.component';
     RegisterComponent,
     CreatePostComponent,
     PostsContainerComponent,
-    FollowComponent
+    HomeComponent,
+    FollowComponent,
+    LikeComponent
   ],
   imports: [
     BrowserModule,
