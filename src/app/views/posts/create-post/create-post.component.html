@@ -12,7 +12,7 @@
                 <label for="create-post" >Add Text</label>
                 <textarea type="text" class="form-control" [(ngModel)]="addPost.body" name="create-post"
                 id="create-post" placeholder="What's Bubblin?" required></textarea>
-                <p class = "error" *ngIf="show"><b>Please input a text body.</b></p>
+                <p class = "error" *ngIf="show"><strong>Please input a text body.</strong></p>
             </div>
             <div class="submit">
                 <button class="btn btn-dark" type="submit" (click)="createPost()">Submit</button>
