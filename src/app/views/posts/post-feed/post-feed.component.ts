@@ -42,7 +42,6 @@ export class PostFeedComponent implements OnInit, OnDestroy {
   }
 
   getFollowerPosts(scrollcount: number): any {
-    this.profile.pid = 241747610
     if (this.profile.pid) {
       this.postService.getPostsByFollowers(scrollcount, this.profile.pid);
       this.postService

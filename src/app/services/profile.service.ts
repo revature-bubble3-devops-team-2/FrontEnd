@@ -46,7 +46,7 @@ export class ProfileService {
   }
 
   login(username: string, password: string): Observable<any> {
-    return this.http.post('http://localhost:8082/profile', `username=${username}&password=${password}`, { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
+    return this.http.post('http://localhost:8082/profile/login', `username=${username}&password=${password}`, { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
   }
 
   getProfileByToken(): Observable<HttpResponse<Profile>> {
