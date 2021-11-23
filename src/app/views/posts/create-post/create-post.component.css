@@ -1,4 +1,4 @@
-textarea {
+:host textarea {
     outline: none;
     box-shadow:none !important;
     border:1px solid #ccc !important;
@@ -23,7 +23,7 @@ textarea {
     text-align: center;
 }
 
-label{
+:host label{
     display: block;
     color:#474C55;
     font-weight: bold;

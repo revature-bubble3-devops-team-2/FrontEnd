@@ -1,12 +1,12 @@
-.container{
+:host .container{
     padding: 20px;
     border-radius: 50px;
     background-color: #F26925;
 }
-.modal-content{
+:host .modal-content{
     border-radius: 50px;
 }
-body{
+:host body{
     border-radius: 40px;
 }
 

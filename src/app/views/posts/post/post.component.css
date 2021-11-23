@@ -1,0 +1,38 @@
+.post {
+    border-radius: 50%;
+}
+
+
+.img-col {
+    padding: 0 !important;
+}
+
+
+.modal-body {
+    max-height: 380px;
+    overflow: auto;
+}
+.post-date {
+    margin-top: 3px;
+    font-size: 14px;
+}
+/* .container-fluid {
+    background-color: white;
+    min-width: 500px;
+    -webkit-box-align: center;
+} */
+
+/* .modal-dialog{
+    margin: 10rem auto !important;
+} */
+
+@media screen and (max-width: 900px) {
+    .row {
+        flex-direction: column;
+        padding: 2rem;
+    }
+
+    .right {
+        margin: 3rem 0;
+    }
+  }

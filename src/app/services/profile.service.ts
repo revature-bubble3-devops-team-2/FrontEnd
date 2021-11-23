@@ -4,11 +4,14 @@ import { Profile } from '../models/profile';
 import { Observable } from 'rxjs';
 import { environment } from 'environments/environment';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileService {
   private profile: Profile={};
+
+  constructor(private http: HttpClient) { }
 
   setData(profile: Profile){
     this.profile = profile;
@@ -20,10 +23,7 @@ export class ProfileService {
     return temp;
   }
 
-  constructor(private http: HttpClient,) { }
 
-  // Sends post request to the profile controller that then responds
-  // with httpstatus code
   registerProfile(profile: Profile): Observable<any> {
     return this.http.post(environment.url+'/profile/register', profile,
     {observe: 'response'});
