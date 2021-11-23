@@ -9,6 +9,11 @@
 
 .rounded {
     border-radius: 2rem!important;
-    width: 160%;
+    width: 18rem;
     padding: 0.75rem;
+}
+
+input {
+    display: flex;
+    justify-content: center;   
 }

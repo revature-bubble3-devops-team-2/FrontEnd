@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse,HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpHeaders} from '@angular/common/http';
 import { Profile } from '../models/profile';
 import { Observable } from 'rxjs';
+import { environment } from 'environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileService {
   private profile: Profile={};
+
+  constructor(private http: HttpClient) { }
 
   setData(profile: Profile){
     this.profile = profile;
@@ -19,17 +23,14 @@ export class ProfileService {
     return temp;
   }
 
-  constructor(private http: HttpClient,) { }
 
-  // Sends post request to the profile controller that then responds
-  // with httpstatus code
   registerProfile(profile: Profile): Observable<any> {
-    return this.http.post('http://localhost:8082/profile/register', profile,
+    return this.http.post(environment.url+'/profile/register', profile,
     {observe: 'response'});
   }
 
   getProfileByPid(pid: number): Observable<Profile>{
-    return this.http.get(`http://localhost:8082/profile/profiles/${pid}`)
+    return this.http.get(`${environment.url}/profile/profiles/${pid}`)
   }
 
   updateProfile(profile: Profile): Observable<any>{
@@ -39,20 +40,17 @@ export class ProfileService {
       'Content-Type': 'application/json',
       'Authorization': token });
       let options = { headers: headers };
-      return this.http.put(`http://localhost:8082/profile/profiles/${profile.pid}`, profile, options);
+      return this.http.put(`${environment.url}/profile/profiles/${profile.pid}`, profile, options);
     }else{
-      return this.http.put(`http://localhost:8082/profile/profiles/${profile.pid}`,profile);
+      return this.http.put(`${environment.url}/profile/profiles/${profile.pid}`,profile);
    }
   }
 
-  login(username: string, password: string): Observable<any> {
-    return this.http.post('http://localhost:8082/profile', `username=${username}&password=${password}`, { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
+  login(username: string, password: string): Observable<HttpResponse<Profile>>{
+    return this.http.post<Profile>(environment.url+'/profile/login', `username=${username}&password=${password}`, { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
   }
-
   getProfileByToken(): Observable<HttpResponse<Profile>> {
     var token = sessionStorage.getItem("Authorization");
-    return this.http.post<Profile>('http://localhost:8082/profile/token', `token=${token}`, { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
+    return this.http.post<Profile>(environment.url+'/profile/token', `token=${token}`, { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
   }
-
-
 }

@@ -1,8 +1,3 @@
-.modal-content{
-    background-color: transparent!important;
-    border-radius: 30px;
-    border: none!important;
-}
 /* You can add global styles to this file, and also import other style files */
 @font-face {
     font-family: Futura;
@@ -22,4 +17,23 @@ body {
   display: flex;
   flex-direction: column;
   font-family: Futura, sans-serif;
+}
+.createPostModal > .modal-content{
+  background-color: transparent!important;
+  border: none!important;
+} 
+.profilemodal > .modal-content{
+  background-color: transparent!important;
+  border: none!important;
+} 
+.postModal {
+  max-width: 1080px;
+
+}
+
+@media screen and (max-width: 900px) {
+  .postModal {
+    max-width: 670px;
+    margin: 2rem;
+  }
 }

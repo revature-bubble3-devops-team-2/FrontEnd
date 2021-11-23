@@ -1,0 +1,31 @@
+.navbar{
+    background-color: #72A4C2 !important;
+}
+
+.home-container{
+    display: grid;
+    grid-template-columns: 25% 75%;
+    width: 100%;
+    height: 100vh;
+    background: url('https://eskipaper.com/images/bubble-wallpaper-7.jpg');
+    background-size: cover;
+    text-align: center;
+}
+
+.feed-container {
+    overflow-y: scroll;
+    scrollbar-width: 0;
+    height: 650px;
+}
+
+.feed-container::-webkit-scrollbar { 
+    width: 0 !important 
+}
+
+@media  (max-width: 1024px){
+    .home-container {
+        display:flex;
+        flex-flow:column nowrap;
+        align-items: center
+    }
+}  
