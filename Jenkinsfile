@@ -7,7 +7,6 @@ pipeline {
    }
 
    environment {
-      PORT = 80
       IMAGE_TAG = "cpete22/revature-bubble:fe"
       CONTAINER_NAME = "bubblefe"
       CRED = "dockerhub"
@@ -44,7 +43,7 @@ pipeline {
       }
       stage('Start Container') {
          steps {
-               sh 'docker run --rm -p ${PORT}:${PORT} --name ${CONTAINER_NAME} ${IMAGE_TAG}'
+               sh 'docker run --rm -p 80:80 --name ${CONTAINER_NAME} ${IMAGE_TAG}'
                discordSend description: ":whale: *Running Docker Container*", result: currentBuild.currentResult, webhookURL: env.WEBHO_FE
          }
       }
