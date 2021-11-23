@@ -23,14 +23,13 @@ export class ProfileService {
     return temp;
   }
 
-
   registerProfile(profile: Profile): Observable<any> {
     return this.http.post(environment.url+'/profile/register', profile,
     {observe: 'response'});
   }
 
   getProfileByPid(pid: number): Observable<Profile>{
-    return this.http.get(`${environment.url}/profile/profiles/${pid}`)
+    return this.http.get(`${environment.url}/profile/${pid}`)
   }
 
   updateProfile(profile: Profile): Observable<any>{
@@ -40,9 +39,9 @@ export class ProfileService {
       'Content-Type': 'application/json',
       'Authorization': token });
       let options = { headers: headers };
-      return this.http.put(`${environment.url}/profile/profiles/${profile.pid}`, profile, options);
+      return this.http.put(`${environment.url}/profile`, profile, options);
     } else {
-      return this.http.put(`${environment.url}/profile/profiles/${profile.pid}`,profile);
+      return this.http.put(`${environment.url}/profile`, profile);
    }
   }
 
