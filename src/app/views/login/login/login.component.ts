@@ -34,13 +34,10 @@ export class LoginComponent {
           if (r.body !== null)
           {
             const temp = r.body as Profile;
+            sessionStorage.clear();
             sessionStorage.setItem("Authorization", r.headers.get("Authorization"));
             sessionStorage.setItem("profile", JSON.stringify(temp));
-            //Store the return body into sessionStorage and then redirect to profile page
-            var response = JSON.stringify(r.body);
-            sessionStorage.clear();
-            sessionStorage.setItem("Authorization", JSON.parse(response).Authorization );
-            this.router.navigate(['/home']); 
+            this.router.navigate(['/home']);
           } else {
             //Error in case if something in the backend doesn't give us data for w.e reason.
             console.log("Returned profile but no data");
