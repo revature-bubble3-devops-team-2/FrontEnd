@@ -12,7 +12,7 @@ export class ModalButtonComponent{
   constructor(private modalService: NgbModal) { }
 
   open() {
-     this.modalService.open(ModalUpdateFormComponent);
+     this.modalService.open(ModalUpdateFormComponent, {modalDialogClass: "profilemodal"});
   }
 
 }

@@ -1,8 +1,11 @@
 .container-fluid {
   background-color: whitesmoke;
   padding: 2rem;
-  height: 100vh;
-  overflow: scroll;
+  overflow: auto;
+}
+
+.post-feed-container {
+  width: 100%;
 }
 
 .post-card {

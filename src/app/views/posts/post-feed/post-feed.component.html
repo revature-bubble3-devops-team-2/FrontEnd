@@ -1,18 +1,4 @@
-<div
-  class="
-    container-fluid
-    d-flex
-    flex-column
-    justify-content-between
-    align-items-center
-  "
-  *ngIf="posts"
-  infiniteScroll
-  [infiniteScrollDistance]="2"
-  [infiniteScrollThrottle]="50"
-  (scrolled)="onScroll()"
-  [scrollWindow]="false"
->
+<div class="post-feed-container">
   <div class="col mb-4 post-card card shadow-lg" *ngFor="let post of posts">
     <header>
       <div class="d-flex justify-content-between user-info">

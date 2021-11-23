@@ -5,34 +5,36 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/home">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page">Profile</a>
-          </li>
-        </ul> -->
       </div>
       <ul class="nav navbar-nav navbar-right">
         <li>
-            <div class="btn-nav"><a class="btn btn-primary btn-small navbar-btn btn-light" href='/login' (click)="logout()">Logout</a>
+            <div class="btn-nav"><a class="btn btn-primary btn-small navbar-btn btn-dark" style="border-radius: 50px;" href='/login' (click)="logout()">Logout</a>
             </div>
         </li>
         </ul>
     </div>
 </nav>
 
-<div class="home-container">
+<div class="home-container container-fluid">
     <app-profile></app-profile>
 
-    <div>
+    <div style="width: 100%" class="d-flex flex-column align-items-center">
         <app-posts-container></app-posts-container>
-        
-        <div  class="d-flex flex-column justify-content-center">  
-            <div class="card-body align-self-center">
-                <p>Post feed of all posts here!</p>
-            </div>
+        <div
+          class="
+            feed-container
+            container-fluid
+            d-flex
+            flex-column
+            align-items-center
+          "
+          infiniteScroll
+          [infiniteScrollDistance]="2"
+          [infiniteScrollThrottle]="50"
+          (scrolled)="onScroll()"
+          [scrollWindow]="false"
+>
+        <app-post-feed [posts]="posts"></app-post-feed>
         </div>
     </div>
 

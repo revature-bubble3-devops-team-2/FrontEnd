@@ -5,9 +5,11 @@
 }
 :host .modal-content{
     border-radius: 50px;
+    background-color: #F26925;
 }
 :host body{
     border-radius: 40px;
+    background-color: #F26925;
 }
 
 .submit{

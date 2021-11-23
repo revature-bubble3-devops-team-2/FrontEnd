@@ -18,12 +18,14 @@ body {
   flex-direction: column;
   font-family: Futura, sans-serif;
 }
-<!----->
 .createPostModal > .modal-content{
   background-color: transparent!important;
   border: none!important;
-}
-
+} 
+.profilemodal > .modal-content{
+  background-color: transparent!important;
+  border: none!important;
+} 
 .postModal {
   max-width: 1080px;
 

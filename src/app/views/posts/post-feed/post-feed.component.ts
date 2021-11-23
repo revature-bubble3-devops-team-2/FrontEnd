@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Post } from 'app/models/post';
 import { PostService } from 'app/services/post.service';
 import { faThumbsUp, faComment } from '@fortawesome/free-solid-svg-icons';
@@ -14,7 +14,9 @@ import { CreateCommentComponent } from '../create-comment/create-comment.compone
   styleUrls: ['./post-feed.component.css'],
 })
 export class PostFeedComponent implements OnInit, OnDestroy {
-  posts: Post[] = [];
+  @Input()
+    posts: Post[] = [];
+
   scrollcount = 1;
   profile: Profile = {};
 
@@ -36,25 +38,8 @@ export class PostFeedComponent implements OnInit, OnDestroy {
       this.profile = JSON.parse(sessionProfile);
     }
 
-    this.getFollowerPosts(this.scrollcount);
-  }
-
-  getFollowerPosts(scrollcount: number): any {
-    if (this.profile.pid) {
-      this.postService.getPostsByFollowers(scrollcount, this.profile.pid);
-      this.postService
-        .getFollowerPosts()
-        .pipe(takeUntil(this._unsubscribeAll))
-        .subscribe(async (data: any) => {
-          if (data) {
-            this.posts = (await data) as Post[];
-          }
-        });
-    }
-  }
-
-  onScroll() {
-    this.getFollowerPosts(++this.scrollcount);
+    //this.getFollowerPosts(this.scrollcount);
+    console.log(this.posts);
   }
 
   open(post: Post) {

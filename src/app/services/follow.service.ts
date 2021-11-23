@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class FollowService {
                                   'Authorization': `${this.token}`
                                 }),
       }
-      return this.http.post<any>(`http://localhost:8082/profile/follow`, `email=${email}`, httpOptions);
+      return this.http.post<any>(`${environment.url}/profile/follow`, `email=${email}`, httpOptions);
   }
 
   followUserById(id: number): Observable<any>
@@ -27,7 +28,7 @@ export class FollowService {
                                   'Authorization': `${this.token}`
                                 }),
       }
-      return this.http.post<any>("http://localhost:8082/profile/follow", `id=${id}`, httpOptions);
+      return this.http.post<any>(`${environment.url}/profile/follow`, `id=${id}`, httpOptions);
   }
 
   unfollowUserByEmail(email: string): Observable<any>
@@ -37,7 +38,7 @@ export class FollowService {
                                   'Authorization': `${this.token}`
                                 }),
       }
-      return this.http.post<any>("http://localhost:8082/profile/unfollow", `email=${email}`, httpOptions);
+      return this.http.post<any>(`${environment.url}/profile/unfollow`, `email=${email}`, httpOptions);
   }
 
   unfollowUserById(id: number): Observable<any>
@@ -47,6 +48,6 @@ export class FollowService {
                                   'Authorization': `${this.token}`
                                 }),
       }
-      return this.http.post<any>("http://localhost:8082/profile/unfollow", `id=${id}`, httpOptions);
+      return this.http.post<any>(`${environment.url}/profile/unfollow`, `id=${id}`, httpOptions);
   }
 }

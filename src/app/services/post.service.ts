@@ -41,7 +41,7 @@ export class PostService implements OnDestroy {
       })
     };
     this.httpClient
-      .get<Post[]>(environment.url+'/posts', requestOptions)
+      .get<Post[]>(environment.url+'/post', requestOptions)
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe((data) => {
         this.postsSubject.next(data as Post[]);
@@ -58,7 +58,7 @@ export class PostService implements OnDestroy {
 
   getPostsByFollowers(pageNumber: number, pid: number): any {
     this.httpClient
-      .get<Post[]>(`http://localhost:8082/posts/profile/${pid}/${pageNumber}`)
+      .get<Post[]>(`${environment.url}/post/profile/${pid}/${pageNumber}`)
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe((data) => {
         if (data) {

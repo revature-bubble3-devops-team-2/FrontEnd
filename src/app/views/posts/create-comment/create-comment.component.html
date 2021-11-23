@@ -5,9 +5,9 @@
         <ng-container *ngIf="post.imgURL">
           <img class="img-fluid card-img" alt="image" [src]="post.imgURL" width="100"/>
         </ng-container>
-      </div>
-    <h3 style="color: #6b6e80;">Comments</h3>
-    <div style=" height: 500px !important; overflow: auto; ">
+    </div>
+    <div class="p-4" style=" height: 500px !important; overflow: auto; ">
+        <h3 style="color: #6b6e80;">{{post.body}}</h3>
         <div class="container bootstrap snippets bootdey" >
             <div class="row">
                 <div class="col-md-12">
