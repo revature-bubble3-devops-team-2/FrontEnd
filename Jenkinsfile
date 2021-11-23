@@ -55,7 +55,7 @@ pipeline {
                   docker.image(IMAGE_TAG).push()
                }
             }
-            discordSend description: ":face_in_clouds: *Pushed Latest to DockerHub*", result: currentBuild.currentResult, webhookURL: env.WEBHO_BE
+            discordSend description: ":face_in_clouds: *Pushed Latest to DockerHub*", result: currentBuild.currentResult, webhookURL: env.WEBHO_FE
          }
       }
    }
