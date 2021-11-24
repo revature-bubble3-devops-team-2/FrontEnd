@@ -34,20 +34,6 @@ export class PostService implements OnDestroy {
       });
   }
 
-  // public getAllPosts(): void {
-  //   const requestOptions = {                                                                                                                                                                                 
-  //     headers: new HttpHeaders({
-  //       "Authorization": `${sessionStorage.getItem('Authorization')}`
-  //     })
-  //   };
-  //   this.httpClient
-  //     .get<Post[]>(environment.url+'/post', requestOptions)
-  //     .pipe(takeUntil(this._unsubscribeAll))
-  //     .subscribe((data) => {
-  //       this.postsSubject.next(data as Post[]);
-  //     });
-  // }
-
   getPosts(): Observable<any> {
     return this.postsSubject.asObservable();
   }

@@ -1,18 +1,11 @@
-.container-fluid {
-  background-color: whitesmoke;
-  padding: 2rem;
-  overflow: auto;
-}
-
 .post-feed-container {
   width: 100%;
+  margin-left: 2rem;
 }
 
 .post-card {
-  max-width: 140mm;
   border-radius: 20px;
   padding: 0 !important;
-  /* background-color: #b9b9ba; */
   background-color: white;
   cursor: pointer;
 }
@@ -21,18 +14,12 @@
     padding: 1rem;
 }
 
-/* .post-date {
-    font-size: 12px;
-} */
-
-:host h2,
-h4 {
+:host h2, h4 {
   margin: 0 !important;
   color: #474c55 !important;
 }
 
 .card-text {
-  /* text-align: center; */
   max-height: 100px;
   overflow: hidden;
   cursor: pointer;

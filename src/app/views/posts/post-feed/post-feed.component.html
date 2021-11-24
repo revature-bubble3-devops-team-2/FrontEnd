@@ -1,5 +1,5 @@
-<div class="post-feed-container">
-  <div class="col mb-4 post-card card shadow-lg" *ngFor="let post of posts">
+<div class="container">
+  <div class="col post-card mb-4 card shadow-lg" *ngFor="let post of posts">
     <header>
       <div class="d-flex justify-content-between user-info">
         <div class="d-flex flex-column">
@@ -13,15 +13,12 @@
       <div class="card-body" (click)="open(post)">
         <p class="card-text">{{ post.body }}</p>
         <ng-container *ngIf="post.imgURL">
-          <div class="image-container">
             <img
               alt="post image"
-              class="img-fluid card-img"
+              class="img-fluid"
               width="100%"
               [src]="post.imgURL"
-              aria-label="Placeholder: Thumbnail"
-            />
-          </div>
+              aria-label="Placeholder: Thumbnail"/>
         </ng-container>
       </div>
     </section>
@@ -42,8 +39,7 @@
   </div>
   <div
     class="mb-4 post-card card shadow-lg d-flex justify-content-center"
-    *ngIf="endOfContents"
-  >
+    *ngIf="endOfContents">
     No More Contents
   </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Post } from 'app/models/post';
 import { Profile } from 'app/models/profile';
@@ -25,7 +25,7 @@ export class CreatePostComponent implements OnInit {
     imgURL: '',
   };
 
-  @Input() show: boolean=false;
+  @Input() show: boolean = false;
 
   constructor(
     public postService: PostService, 
@@ -37,15 +37,18 @@ export class CreatePostComponent implements OnInit {
     var sessionProfile = sessionStorage.getItem("profile");
     if(sessionProfile!=null){
       this.profile = JSON.parse(sessionProfile);
-      console.log(this.profile)
     }  
   }
 
+  ngOnDestroy(): void {
+    window.location.href = '/home';
+  }
+
   createPost() {
-    if(this.addPost.body!==''){
-    this.postService.createPost(this.addPost);
-    this.activeModal.close();
-    }else{
+    if (this.addPost.body!=='') {
+      this.postService.createPost(this.addPost);
+      this.activeModal.close();
+    } else {
       this.show=true;
     }
   }

@@ -23,7 +23,6 @@ export class LikeComponent implements OnInit {
 
   public getLikes(){
     this.postService.getNumLikes(this.postInfo).subscribe((data) => {
-      console.log(data);
       this.num = data;
     });
   }
@@ -32,12 +31,11 @@ export class LikeComponent implements OnInit {
     this.postService.postLike(this.postInfo).subscribe((data) => {
         this.getLikes();
         }, (err) => {
-          this.postService.deleteLike(this.postInfo).subscribe((data) => {
+            this.postService.deleteLike(this.postInfo).subscribe((data) => {
             this.getLikes();
           })
-        })
+        });
         this.hasLiked = !this.hasLiked;
-        console.log(this.hasLiked);
   }
 
 
@@ -49,7 +47,7 @@ export class LikeComponent implements OnInit {
       } else {
         this.hasLiked = true;
       }
-    })
+    });
   }
 
 }

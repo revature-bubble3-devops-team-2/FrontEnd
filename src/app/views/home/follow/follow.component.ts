@@ -17,45 +17,31 @@ export class FollowComponent {
 
   constructor(private followService:FollowService, private router:Router) { }
 
-  follow()
-  {
+  follow() {
     this.error = false;
     this.missing = false;
     this.success = false;
     this.successUnfollow = false;
 
-    // check if the email field is null
-    if (this.email != "")
-    {
-      console.log("Email entered: ", this.email);
-      this.followService.followUserByEmail(this.email).subscribe(r => {
-        if (r.body !== null)
-        {
-          // this would mean we successfully followed?
-          console.log(r.body);
-          this.success = true;
-        }
-        else { this.error = true; }
-      })
+    if (this.email !== "") {
+      this.followService.followUserByEmail(this.email).subscribe(
+        r => this.success = true, 
+        err => this.error = true
+      );
     }
-    else
-    { this.missing = true; }
+    else { this.missing = true; }
   }
   
-  unfollow()
-  {
+  unfollow() {
     this.error = false;
     this.missing = false;
     this.success = false;
     this.successUnfollow = false;
 
-    // check if the email field is null
     if (this.email != "")
     {
       console.log("Email entered: ", this.email);
       this.followService.unfollowUserByEmail(this.email).subscribe(
-        // at some point we need to check the response status code to
-        // give an appropriate text display
       )
       this.successUnfollow = true;
     }

@@ -7,9 +7,6 @@ import { Observable } from 'rxjs';
 })
 export class InterceptorService implements HttpInterceptor {
 
-  
-
- 
   /**Interceptor class */
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
@@ -17,8 +14,6 @@ export class InterceptorService implements HttpInterceptor {
     const modifiedReq = req.clone({ 
       headers: req.headers.set('Authorization', `${profileToken}`),
     });
-    console.log(modifiedReq);
-    console.log(profileToken);
     return next.handle(modifiedReq);
   }
 }

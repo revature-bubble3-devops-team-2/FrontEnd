@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'environments/environment';
 
@@ -11,22 +11,15 @@ export class FollowService {
 
   constructor(private http: HttpClient,) {  }
 
-  followUserByEmail(email: string): Observable<any>
-  {
-      const httpOptions = {
-        headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded',
-                                  'Authorization': `${this.token}`
-                                }),
-      }
-      return this.http.post<any>(`${environment.url}/profile/follow`, `email=${email}`, httpOptions);
+  followUserByEmail(email: string): Observable<HttpResponse<String>> {
+    const httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': `${this.token}`}),}
+    return this.http.post<HttpResponse<String>>(`${environment.url}/profile/follow`, `email=${email}`, httpOptions);
   }
 
   followUserById(id: number): Observable<any>
   {
       const httpOptions = {
-        headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded',
-                                  'Authorization': `${this.token}`
-                                }),
+        headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': `${this.token}`}),
       }
       return this.http.post<any>(`${environment.url}/profile/follow`, `id=${id}`, httpOptions);
   }

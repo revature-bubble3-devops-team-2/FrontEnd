@@ -28,10 +28,8 @@ export class HomeComponent implements OnInit {
     this.postService.getPostsByFollowers(scrollcount);
     this.postService
       .getFollowerPosts()
-      //.pipe(takeUntil(this._unsubscribeAll))
       .subscribe(async (data: any) => {
         if (data) {
-          console.log("Hello: "+data);
           this.posts = (await data) as Post[];
         }
       });

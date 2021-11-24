@@ -15,7 +15,7 @@ export class CreateCommentComponent implements OnInit {
   @Input() 
   post!: Post;
   comment: Comment= {};
-  reply: Comment={};
+  reply: Comment = {};
   comments!: Comment[];
   replys!: Comment[];
   replyOnComment!: Comment[];
@@ -48,18 +48,7 @@ export class CreateCommentComponent implements OnInit {
     } 
   }
 
-  deleteCommentByCid(cid?: number){
-    if(cid){
-      this.commentService.deleteCommentByCid(cid).subscribe(
-        (result)=>{
-          console.log(result);
-          this.getOriginCommentsByPsid();
-        }
-      )
-    }  
-  }
-
-dateFormatForComment(d: Date) {
+  dateFormatForComment(d: Date) {
     if(d){
       var formattedDate = (d.getMonth() + 1)  + "-"  +d.getDate()+  "-"+ d.getFullYear() ;
       if(formattedDate)
@@ -105,7 +94,6 @@ dateFormatForComment(d: Date) {
     }
   }
   
-
   getOriginCommentsByPsid(){
     if(this.post.psid){
       this.commentService.getCommentsByPsid(this.post.psid).subscribe(
@@ -130,37 +118,43 @@ dateFormatForComment(d: Date) {
   }
 
   submitComment(comment: Comment){
-    comment.post = this.post;
-    comment.dateCreated = new Date();
-    comment.writer = this.profile;
-    this.commentService.createComment(comment).subscribe(
-      (result)=>{
-        this.isReply = false;
-        this.comment.cbody = "";
-        this.getOriginCommentsByPsid();
-      }
-    )
+    if (this.post.body !== " ") {
+      comment.post = this.post;
+      comment.dateCreated = new Date();
+      comment.writer = this.profile;
+      this.commentService.createComment(comment).subscribe(
+        (result)=>{
+          this.isReply = false;
+          this.comment.cbody = "";
+          this.getOriginCommentsByPsid();
+        }
+      );
+    }
   }
 
   submitReply(reply: Comment){
-    reply.post = this.post;
-    reply.dateCreated = new Date();
-    reply.writer = this.profile;
-    reply.previous = this.previous;
-    this.commentService.createComment(reply).subscribe(
-      (result)=>{
-        this.isReply = false;
-        this.reply.cbody = "";
-        this.getOriginCommentsByPsid(); 
-      }
-    )
+    if (this.post.body !== " ") {
+      reply.post = this.post;
+      reply.dateCreated = new Date();
+      reply.writer = this.profile;
+      reply.previous = this.previous;
+      this.commentService.createComment(reply).subscribe(
+        (result)=>{
+          this.isReply = false;
+          this.reply.cbody = "";
+          this.getOriginCommentsByPsid(); 
+        }
+      );
+    }
   }
 
 
   submitCommentOnComment(comment: Comment){
-    this.previous = comment;
-    this.isReply = true;
-    this.getOriginCommentsByPsid();
-    this.renderer.selectRootElement('#create-comment').focus();
+    if (comment.cbody !== " ") {
+      this.previous = comment;
+      this.isReply = true;
+      this.getOriginCommentsByPsid();
+      this.renderer.selectRootElement('#create-comment').focus();
+    }
   }
 }

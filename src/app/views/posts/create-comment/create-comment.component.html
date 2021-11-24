@@ -17,7 +17,7 @@
                             <div *ngFor="let commentData of comments" >
                                 <div class="card-body" *ngIf="checkWriterForEachComment(commentData)">
                                     <li class="clearfix">
-                                        <img src="https://pbs.twimg.com/profile_images/738088068800872448/hjSp3OqX_400x400.jpg" class="avatar" alt="">
+                                        <img src="../../../../assets/favicon.png" class="avatar" alt="">
                                         <div class="post-comments">
                                             <p class="meta">
                                                 {{commentLocaleDate}} {{commentWriter.firstName}} says : 
@@ -36,13 +36,12 @@
                                                 <div *ngIf="commentData.cid==reply.previous?.cid">
                                                     <div *ngIf="formatReplyDate(reply)">
                                                         <li class="clearfix">
-                                                            <img src="https://pbs.twimg.com/profile_images/738088068800872448/hjSp3OqX_400x400.jpg" alt="avatar image" class="avatar" alt="">
+                                                            <img src="../../../../assets/favicon.png" alt="avatar image" class="avatar" alt="">
                                                             <div class="post-comments">
                                                                 <p class="meta">{{replyDate}} {{reply.writer?.firstName}} says : </p>
                                                                 <p>
                                                                     {{reply.cbody}}
                                                                 </p>
-                                                        
                                                             </div>
                                                         </li> 
                                                     </div>  
