@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  url: 'http://localhost:8082'
+  url: 'http://ec2-54-242-69-21.compute-1.amazonaws.com:8082'
 };
 
 /*
