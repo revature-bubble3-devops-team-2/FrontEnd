@@ -1,3 +1,4 @@
+import { FilterService } from './../../../services/filter.service';
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Post } from 'app/models/post';
@@ -28,16 +29,17 @@ export class CreatePostComponent implements OnInit {
   @Input() show: boolean = false;
 
   constructor(
-    public postService: PostService, 
+    public postService: PostService,
     public activeModal: NgbActiveModal,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private filterService: FilterService
     ) {}
 
   ngOnInit(): void {
     var sessionProfile = sessionStorage.getItem("profile");
     if(sessionProfile!=null){
       this.profile = JSON.parse(sessionProfile);
-    }  
+    }
   }
 
   ngOnDestroy(): void {
@@ -46,9 +48,12 @@ export class CreatePostComponent implements OnInit {
 
   createPost() {
     if (this.addPost.body!=='') {
+      //filter body for profanity
+      this.addPost.body = this.filterService.filterProfanity(this.addPost.body);
       this.postService.createPost(this.addPost);
       this.activeModal.close();
-    } else {
+    } else
+    {
       this.show=true;
     }
   }
