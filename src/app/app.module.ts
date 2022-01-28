@@ -29,6 +29,7 @@ import { InterceptorService } from './helper/interceptor.service';
 
 
 import { CreateCommentComponent } from './views/posts/create-comment/create-comment.component';
+import { SearchComponent } from './views/search/search.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { CreateCommentComponent } from './views/posts/create-comment/create-comm
     PostFeedComponent,
     FollowComponent,
     LikeComponent,
-    PostFeedComponent
+    PostFeedComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

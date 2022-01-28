@@ -1,0 +1,19 @@
+<div>
+
+  <form class="form-inline my-2 my-lg-0">
+    <input [(ngModel)] ="username" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" aria-describedby="addon-wrapping" >
+    <button class="btn btn-outline-success my-2 my-sm-0" (click)="searchUser()">Search</button>
+  </form>
+
+</div>
+
+
+<!--<ul *ngIf="pro.pid > 0">-->
+
+  <li class="list-group-item">{{ pro.username }}</li>
+  <li class="list-group-item">{{ pro.email }}</li>
+  <li class="list-group-item">{{ pro.firstName }}</li>
+  <li class="list-group-item">{{ pro.lastName }}</li>
+
+<!--</ul>-->
+
