@@ -20,7 +20,7 @@
                                         <img src="../../../../assets/favicon.png" class="avatar" alt="">
                                         <div class="post-comments">
                                             <p class="meta">
-                                                {{commentLocaleDate}} {{commentWriter.firstName}} says : 
+                                                {{dateFormatForComment(commentData.dateCreated)}} {{commentData.writer?.username}} says : 
                                             </p>
                                             <p>
                                                 {{commentData.cbody}}
