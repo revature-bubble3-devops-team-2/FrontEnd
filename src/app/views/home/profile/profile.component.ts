@@ -42,25 +42,8 @@ export class ProfileComponent implements OnInit {
     this.file = event.target.files[0];
 }
 
-//   onUpload() {
-//     this.loading = !this.loading;
-//     console.log('=================================================')
-//     console.log(this.file);
-//     console.log('=================================================')
-//     this.profileService.upload(this.file).subscribe(
-//         (event: any) => {
-//             if (typeof (event) === 'object') {
 
-//                this.shortLink = event.link;
-//                console.log(this.shortLink )
-//                 this.key = event.key;
-//                 this.shortLink = `https://www.file.io/download/${this.key}`;
 
-//                 this.loading = false; // Flag variable
-//             }
-//         }
-//     );
-// }
 
 
 
@@ -85,10 +68,7 @@ onSelectFile(event : any) {
     const imageFormData = new FormData();
     imageFormData.append('image',event.target.files[0] , "marouane");
 
-
-
       const file = event.target.files[0];
-      const type = file.type;
       this.changeFile(file).then((base64: any): any => {
         this.profileService.setImhg(base64)
         console.log(this.profileService.getProfile());
@@ -100,23 +80,14 @@ onSelectFile(event : any) {
       });
 
 
-    // this.httpClient.post('http://localhost:8082/image/add', imageFormData, { observe: 'response' })
-    // .subscribe((response : any) => {
 
-    //   console.log(response)
-
-    // }
-
-
-
-    // );
 
 
     reader.readAsDataURL(event.target.files[0]); // read file as data url
 
-    reader.onload = (event :any) => { // called once readAsDataURL is completed
-      console.log(event.target.result)
-      this.url = event.target.result;
+    reader.onload = (e:any) => { // called once readAsDataURL is completed
+      console.log(e.target.result)
+      this.url = e.target.result;
     }
   }
 
