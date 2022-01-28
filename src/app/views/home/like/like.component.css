@@ -16,3 +16,12 @@
     font-size: 14pt;
     color: #007bff;
 }
+.button-container{
+  margin: auto 7.5px;
+}
+.disliked-icon{
+  color: #FF0000;
+}
+.dislike-icon{
+  color: #FF0000;
+}

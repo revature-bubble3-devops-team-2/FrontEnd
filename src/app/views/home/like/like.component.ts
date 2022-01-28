@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Post } from 'app/models/post';
 import { PostService } from 'app/services/post.service';
 import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
+import { faThumbsUp as faThumbsOutline, faThumbsDown as faThumbsDownOutline } from '@fortawesome/free-regular-svg-icons';
 
 @Component({
   selector: 'app-like',
@@ -15,7 +16,8 @@ export class LikeComponent implements OnInit {
 
   faThumbsUp = faThumbsUp;
   faThumbsDown = faThumbsDown;
-  
+  faThumbsUpOutline = faThumbsOutline;
+  faThumbsDownOutline = faThumbsDownOutline;
   @Input()
   postInfo!: Post;
 
