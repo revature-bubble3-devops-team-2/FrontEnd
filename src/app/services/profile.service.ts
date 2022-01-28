@@ -66,36 +66,38 @@ export class ProfileService {
   }
 
 
-  baseApiUrl = "https://file.io";
-
-  upload(file : any):Observable<any> {
-
-    // Create form data
-    const formData = new FormData();
-
-    // Store form name as "file" with file data
-    formData.append("file", file, file.name);
-
-    // Make http post request over api
-    // with formData as req
-
-    this.http.post(this.baseApiUrl, formData).subscribe((data : any)=> console.log(data.key) )
-    return this.http.post(this.baseApiUrl, formData)
-}
 
 
-upload2(file : any): any {
+//   baseApiUrl = "https://file.io";
 
-  // Create form data
-  const formData = new FormData();
+//   upload(file : any):Observable<any> {
 
-  // Store form name as "file" with file data
-  formData.append("file", file, file.name);
+//     // Create form data
+//     const formData = new FormData();
 
-  // Make http post request over api
-  // with formData as req
-  this.http.post(this.baseApiUrl, formData).subscribe((data)=> console.log(data) )
-}
+//     // Store form name as "file" with file data
+//     formData.append("file", file, file.name);
+
+//     // Make http post request over api
+//     // with formData as req
+
+//     this.http.post(this.baseApiUrl, formData).subscribe((data : any)=> console.log(data.key) )
+//     return this.http.post(this.baseApiUrl, formData)
+// }
+
+
+// upload2(file : any): any {
+
+//   // Create form data
+//   const formData = new FormData();
+
+//   // Store form name as "file" with file data
+//   formData.append("file", file, file.name);
+
+//   // Make http post request over api
+//   // with formData as req
+//   this.http.post(this.baseApiUrl, formData).subscribe((data)=> console.log(data) )
+// }
 
 
 
