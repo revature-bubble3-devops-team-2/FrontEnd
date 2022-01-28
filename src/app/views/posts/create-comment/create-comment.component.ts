@@ -4,6 +4,7 @@ import { CommentService } from 'app/services/comment.service';
 import { Comment } from 'app/models/comment';
 import { Post } from 'app/models/post';
 import { Profile } from 'app/models/profile';
+import { formatDate } from '@angular/common';
 
 
 @Component({
@@ -48,12 +49,11 @@ export class CreateCommentComponent implements OnInit {
     } 
   }
 
-  dateFormatForComment(d: Date) {
-    if(d){
-      var formattedDate = (d.getMonth() + 1)  + "-"  +d.getDate()+  "-"+ d.getFullYear() ;
-      if(formattedDate)
-        this.commentLocaleDate = formattedDate;
-     }
+  dateFormatForComment(d?: Date) {
+    if(d) {
+      return formatDate(d, 'M-d-yyyy', "en-US")
+    }
+    return "";
   }
 
   dateFormatForReply(d: Date) {
@@ -72,26 +72,6 @@ export class CreateCommentComponent implements OnInit {
       this.dateFormatForReply(d);
     }
     return true;   
-  }
-
-  checkWriterForEachComment(comment: Comment){
-    this.isWriter=false;
-    this.commentData = comment;
-    var temp = this.commentData.dateCreated;
-    var d;
-    if(temp){
-      d = new Date(temp);
-      this.dateFormatForComment(d);
-    }   
-    if(comment.writer){
-      this.commentWriter = comment.writer;
-    }
-    if(this.commentWriter.pid==this.profile.pid){
-      this.isWriter = true;
-      return true;
-    }else{
-      return false;
-    }
   }
   
   getOriginCommentsByPsid(){
