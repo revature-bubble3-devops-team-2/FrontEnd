@@ -22,7 +22,7 @@ export class SearchComponent {
 
   public searchUser(){
     this.profile.getProfileByUsername(this.username)
-      .subscribe(data => this.pro = data)
+      .subscribe(data => {this.pro = data, this.setid(this.pro.pid ?? 0)})
   }
 
 }

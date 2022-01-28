@@ -23,8 +23,8 @@ html {
     height: 60%;
 }
 
-.feed-container::-webkit-scrollbar { 
-    width: 0 !important 
+.feed-container::-webkit-scrollbar {
+    width: 0 !important
 }
 
 .container-fluid {
@@ -37,4 +37,9 @@ html {
         flex-flow:column nowrap;
         align-items: center
     }
-}  
+}
+
+.navbar .navbar-collapse{
+  display: flex;
+  justify-content: center;
+}
