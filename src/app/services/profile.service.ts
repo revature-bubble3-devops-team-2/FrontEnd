@@ -17,6 +17,14 @@ export class ProfileService {
     this.profile = profile;
   }
 
+  getProfile(){
+    return this.profile;
+  }
+
+  setImhg(img : any){
+    this.profile.imgurl = img;
+  }
+
   getData(){
     let temp = this.profile;
     this.profile={};
@@ -45,6 +53,10 @@ export class ProfileService {
    }
   }
 
+
+
+
+
   login(username: string, password: string): Observable<HttpResponse<Profile>>{
     return this.http.post<Profile>(environment.url+'/profile/login', `username=${username}&password=${password}`, { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
   }
@@ -52,4 +64,39 @@ export class ProfileService {
     var token = sessionStorage.getItem("Authorization");
     return this.http.post<Profile>(environment.url+'/profile/token', `token=${token}`, { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
   }
+
+
+  baseApiUrl = "https://file.io";
+
+  upload(file : any):Observable<any> {
+
+    // Create form data
+    const formData = new FormData();
+
+    // Store form name as "file" with file data
+    formData.append("file", file, file.name);
+
+    // Make http post request over api
+    // with formData as req
+
+    this.http.post(this.baseApiUrl, formData).subscribe((data : any)=> console.log(data.key) )
+    return this.http.post(this.baseApiUrl, formData)
+}
+
+
+upload2(file : any): any {
+
+  // Create form data
+  const formData = new FormData();
+
+  // Store form name as "file" with file data
+  formData.append("file", file, file.name);
+
+  // Make http post request over api
+  // with formData as req
+  this.http.post(this.baseApiUrl, formData).subscribe((data)=> console.log(data) )
+}
+
+
+
 }
