@@ -3,12 +3,12 @@
         <div class="px-4 pt-0 pb-4 cover">
 
           <label class="hoverable" for="fileInput">
-            <img [src]="url ? url :shortLink ">
+            <img [src]="url ? url :shortLink " alt="profile image">
             <div class="hover-text">Choose file</div>
             <div class="background"></div>
           </label>
           <br/>
-          <input id="fileInput" type='file' (change)="onSelectFile($event)">
+          <input id="fileInput" type='file' (change)=" onSelectFile($event)  ">
 
 
             <div class="media align-items-end profile-head">
