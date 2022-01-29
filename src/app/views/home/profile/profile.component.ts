@@ -16,15 +16,18 @@ export class ProfileComponent implements OnInit {
   updated: boolean = false;
   credential: string = "";
   key ="";
-  url : any = this.profileService.getProfile().imgurl;
+  url : any = this.profileService.getProfile().imgurl  ?  this.profileService.getProfile().imgurl :  `../../../../assets/favicon.png` ;
+  session : any ;
 
-  shortLink: string =`../../../../assets/favicon.png`;
-  loading: boolean = false; // Flag variable
-  file: File | any = null;
 
 
   ngOnInit(): void {
-      console.log(this.profileService.getProfile())
+
+    let sessionProfile : any = sessionStorage.getItem("profile");
+
+    this.session = JSON.parse(sessionProfile);
+    this.url = this.session.imgurl ? this.session.imgurl : `../../../../assets/favicon.png` ;
+
   }
 
 
@@ -36,11 +39,6 @@ export class ProfileComponent implements OnInit {
      return JSON.parse(sessionProfile);
     }
   }
-
-
-  onChange(event : any) {
-    this.file = event.target.files[0];
-}
 
 
 
@@ -63,32 +61,18 @@ changeFile(file: any) {
 */
 
 onSelectFile(event : any) {
+
   if (event.target.files && event.target.files[0]) {
-    var reader = new FileReader();
-    const imageFormData = new FormData();
-    imageFormData.append('image',event.target.files[0] , "marouane");
 
       const file = event.target.files[0];
-      this.changeFile(file).then((base64: any): any => {
-        this.profileService.setImhg(base64)
-        console.log(this.profileService.getProfile());
-        console.log(base64);
-
+      this.changeFile(file).then((e: any): any => {
+        this.profileService.setImhg(e)
+        this.url = e;
         this.profileService.updateProfile(this.profileService.getProfile()).subscribe(d=> console.log(d))
 
 
       });
 
-
-
-
-
-    reader.readAsDataURL(event.target.files[0]); // read file as data url
-
-    reader.onload = (e:any) => { // called once readAsDataURL is completed
-      console.log(e.target.result)
-      this.url = e.target.result;
-    }
   }
 
 }
@@ -96,11 +80,6 @@ onSelectFile(event : any) {
 public delete(){
   this.url = null;
 }
-
-
-
-
-
 
 
 }
