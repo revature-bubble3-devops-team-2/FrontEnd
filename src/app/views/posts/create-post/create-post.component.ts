@@ -28,7 +28,7 @@ export class CreatePostComponent implements OnInit {
   @Input() show: boolean = false;
 
   constructor(
-    public postService: PostService, 
+    public postService: PostService,
     public activeModal: NgbActiveModal,
     private modalService: NgbModal
     ) {}
@@ -37,7 +37,7 @@ export class CreatePostComponent implements OnInit {
     var sessionProfile = sessionStorage.getItem("profile");
     if(sessionProfile!=null){
       this.profile = JSON.parse(sessionProfile);
-    }  
+    }
   }
 
   ngOnDestroy(): void {
@@ -56,4 +56,30 @@ export class CreatePostComponent implements OnInit {
   closeModal() {
     this.modalService.dismissAll();
   }
-}
+
+
+  changeFile(file: any) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+    });
+  }
+
+
+  onSelectFile(event : any) {
+    if (event.target.files && event.target.files[0]) {
+
+      let file = event.target.files[0] ;
+      console.log(event.target.files[0]);
+
+      this.changeFile(file).then((e : any)=>{ this.addPost.imgURL = e ; console.log(e)}) };
+
+    }
+
+
+  }
+
+
+
