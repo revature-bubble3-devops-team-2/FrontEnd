@@ -1,3 +1,4 @@
+import { TeamsPageComponent } from './views/teams-page/teams-page.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './views/login/login/login.component';
@@ -8,6 +9,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'home', component: HomeComponent},
+  {path: 'teams', component: TeamsPageComponent},
   {path: '', redirectTo: '/login', pathMatch: 'full'},
 ];
 

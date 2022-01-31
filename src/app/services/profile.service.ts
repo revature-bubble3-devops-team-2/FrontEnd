@@ -48,6 +48,7 @@ export class ProfileService {
   login(username: string, password: string): Observable<HttpResponse<Profile>>{
     return this.http.post<Profile>(environment.url+'/profile/login', `username=${username}&password=${password}`, { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
   }
+
   getProfileByToken(): Observable<HttpResponse<Profile>> {
     var token = sessionStorage.getItem("Authorization");
     return this.http.post<Profile>(environment.url+'/profile/token', `token=${token}`, { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
