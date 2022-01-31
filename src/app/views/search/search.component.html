@@ -8,12 +8,16 @@
 </div>
 
 
-<ul *ngIf="id > 0">
+<ul *ngFor="let p of profiles" class="list-group">
+  <li class="list-group-item">{{ p.username }}</li>
+</ul>
+
+<!--<ul *ngIf="id > 0">
 
   <li class="list-group-item">{{ pro.username }}</li>
   <li class="list-group-item">{{ pro.email }}</li>
   <li class="list-group-item">{{ pro.firstName }}</li>
   <li class="list-group-item">{{ pro.lastName }}</li>
 
-</ul>
+</ul>-->
 
