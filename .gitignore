@@ -41,7 +41,7 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
-
+/bubble-s3-access-user_accessKeys.csv
 # System Files
 .DS_Store
 Thumbs.db
