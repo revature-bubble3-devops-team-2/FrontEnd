@@ -65,40 +65,8 @@ export class ProfileService {
     return this.http.post<Profile>(environment.url+'/profile/token', `token=${token}`, { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
   }
 
+  getProfileByUsername(username: string): Observable<Profile>{
+    return this.http.get<Profile>(`${environment.url}/profile/search${username}`)
 
-
-
-//   baseApiUrl = "https://file.io";
-
-//   upload(file : any):Observable<any> {
-
-//     // Create form data
-//     const formData = new FormData();
-
-//     // Store form name as "file" with file data
-//     formData.append("file", file, file.name);
-
-//     // Make http post request over api
-//     // with formData as req
-
-//     this.http.post(this.baseApiUrl, formData).subscribe((data : any)=> console.log(data.key) )
-//     return this.http.post(this.baseApiUrl, formData)
-// }
-
-
-// upload2(file : any): any {
-
-//   // Create form data
-//   const formData = new FormData();
-
-//   // Store form name as "file" with file data
-//   formData.append("file", file, file.name);
-
-//   // Make http post request over api
-//   // with formData as req
-//   this.http.post(this.baseApiUrl, formData).subscribe((data)=> console.log(data) )
-// }
-
-
-
+  }
 }
