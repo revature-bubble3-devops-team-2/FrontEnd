@@ -1,0 +1,25 @@
+<div class="flex-container" id="page-container">
+  <div class="flex-column" id="teams-container">
+
+    <h2>Current Teams:</h2>
+    <ul *ngFor="let mt of myteams">
+      <li>{{this.mt.name}} -- {{this.mt.leader}} <button type="button">Team Page</button> <button type="button" (click)="leaveTeam(mt)">Leave Team</button></li>
+    </ul>
+  </div>
+
+  <div class="flex-column" id="search-container">
+    <div class="input-group flex-row">
+      <div class="form-outline">
+        <input type="search" id="form1" class="form-control" />
+        <label class="form-label" for="form1">Search</label>
+      </div>
+      <button type="button" class="btn btn-primary">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+    <ul *ngFor="let t of teams">
+      <li>{{this.t.name}} -- {{this.t.leader}} <button type="button" (click)="joinTeam(t)">Join Team</button> </li>
+    </ul>
+  </div>
+
+</div>

@@ -1,0 +1,28 @@
+.flex-container{
+background-color: darkolivegreen;
+display: flex;
+justify-content: center;
+
+}
+.flex-row{
+background-color: darkgoldenrod;
+flex-direction: row;
+}
+.flex-column{
+  background-color: cornflowerblue;
+  flex-direction: column;
+}
+#page-container{
+  background-color: antiquewhite;
+  border: 2px solid rgb(240, 161, 58);
+}
+
+#teams-container{
+  background-color: rgb(198, 154, 240);
+  border: 2px solid rgb(204, 74, 74);
+}
+
+#search-container{
+background-color: rgb(168, 211, 125);
+border: 2px solid rgb(20, 63, 52);
+}
