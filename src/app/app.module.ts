@@ -33,6 +33,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CreateCommentComponent } from './views/posts/create-comment/create-comment.component';
 import { ProfileviewComponent } from './views/home/profileview/profileview.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
