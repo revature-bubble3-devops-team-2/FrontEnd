@@ -1,10 +1,21 @@
 <div class="container mh-75">
     <div class="bg-white shadow overflow-hidden" style="border-radius: 50px;">
         <div class="px-4 pt-0 pb-4 cover">
+
+          <label class="hoverable" for="fileInput">
+            <img [src]="url" alt="profile image">
+            <div class="hover-text">Choose file</div>
+            <div class="background"></div>
+          </label>
+          <br/>
+          <input id="fileInput" type='file' (change)=" onSelectFile($event)  ">
+
+
             <div class="media align-items-end profile-head">
-                <div class="profile mr-3"><img
-                        src="../../../../assets/favicon.png" alt="..."
-                        width="130" class="mb-2 img-thumbnail" style="border-radius: 30px;">
+                <div class="profile mr-3">
+
+
+
                     <br>
                     <app-modal-button></app-modal-button>
                 </div>
@@ -17,6 +28,10 @@
         </div>
         <br>
         <br>
+
+
+
+
         <app-follow></app-follow>
     </div>
 </div>
