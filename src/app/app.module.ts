@@ -31,6 +31,7 @@ import { ActivatedRoute } from '@angular/router';
 
 
 import { CreateCommentComponent } from './views/posts/create-comment/create-comment.component';
+import { SearchComponent } from './views/search/search.component';
 import { ProfileviewComponent } from './views/home/profileview/profileview.component';
 
 
@@ -39,26 +40,19 @@ import { ProfileviewComponent } from './views/home/profileview/profileview.compo
     AppComponent,
     LoginComponent,
     ProfileComponent,
-    RegisterComponent,
-    ModalUpdateFormComponent,
-    ModalButtonComponent,
-    RegisterComponent,
     CreatePostComponent,
-    PostsContainerComponent,
     HomeComponent,
-    FollowComponent,
-    LikeComponent,
     PostComponent,
     PostsContainerComponent,
     RegisterComponent,
     ModalUpdateFormComponent,
     ModalButtonComponent,
     CreateCommentComponent,
-    PostFeedComponent,
     FollowComponent,
     LikeComponent,
     PostFeedComponent,
-    ProfileviewComponent
+    SearchComponent,
+    ProfileviewComponent,
   ],
   imports: [
     BrowserModule,
