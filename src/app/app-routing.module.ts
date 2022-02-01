@@ -1,3 +1,4 @@
+import { ProfileviewComponent } from './views/home/profileview/profileview.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './views/login/login/login.component';
@@ -8,6 +9,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'home', component: HomeComponent},
+  {path : "profileview/:id", component: ProfileviewComponent},
   {path: '', redirectTo: '/login', pathMatch: 'full'},
 ];
 

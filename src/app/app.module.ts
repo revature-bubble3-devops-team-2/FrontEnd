@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbTooltipModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HomeComponent } from './views/home/home/home.component';
 
 
 
@@ -18,17 +19,19 @@ import { CreatePostComponent } from './views/posts/create-post/create-post.compo
 import { PostsContainerComponent } from './views/posts/posts-container/posts-container.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HomeComponent } from './views/home/home/home.component';
+
 import { FollowComponent } from './views/home/follow/follow.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { PostComponent } from './views/posts/post/post.component';
 import { PostFeedComponent } from './views/posts/post-feed/post-feed.component';
 import { InterceptorService } from './helper/interceptor.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 
 import { CreateCommentComponent } from './views/posts/create-comment/create-comment.component';
+import { ProfileviewComponent } from './views/home/profileview/profileview.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +56,8 @@ import { CreateCommentComponent } from './views/posts/create-comment/create-comm
     PostFeedComponent,
     FollowComponent,
     LikeComponent,
-    PostFeedComponent
+    PostFeedComponent,
+    ProfileviewComponent
   ],
   imports: [
     BrowserModule,
@@ -64,10 +68,11 @@ import { CreateCommentComponent } from './views/posts/create-comment/create-comm
     AppRoutingModule,
     BrowserAnimationsModule,
     FontAwesomeModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+
   ],
 
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }, HomeComponent],
   entryComponents:[
     PostComponent,
     FormsModule,
