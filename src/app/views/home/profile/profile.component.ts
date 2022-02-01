@@ -1,6 +1,8 @@
+import { PostService } from 'app/services/post.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from 'app/services/profile.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -9,7 +11,7 @@ import { ProfileService } from 'app/services/profile.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-
+  id : number =0;
   firstName: string = "";
   lastName: string = "";
   email: string = "";
@@ -27,11 +29,14 @@ export class ProfileComponent implements OnInit {
 
     this.session = JSON.parse(sessionProfile);
     this.url = this.session.imgurl ? this.session.imgurl : `../../../../assets/favicon.png` ;
+    this.id = this.session.pid;
+    console.log(this.postService.sessionPosts);
 
   }
 
 
-  constructor(private profileService: ProfileService , private httpClient : HttpClient ) { }
+  constructor(private profileService: ProfileService , private httpClient : HttpClient  ,
+    private router: Router  , private postService : PostService ) { }
 
  get profile(){
     let sessionProfile = sessionStorage.getItem("profile");
