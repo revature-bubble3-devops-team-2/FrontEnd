@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'home', component: HomeComponent},
-  {path: 'teams', component: TeamsPageComponent},
+  {path: 'teams-page', component: TeamsPageComponent},
   {path: '', redirectTo: '/login', pathMatch: 'full'},
 ];
 

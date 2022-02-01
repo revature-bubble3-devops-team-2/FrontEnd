@@ -3,7 +3,7 @@
 
     <h2>Current Teams:</h2>
     <ul *ngFor="let mt of myteams">
-      <li>{{this.mt.name}} -- {{this.mt.leader}} <button type="button">Team Page</button> <button type="button" (click)="leaveTeam(mt)">Leave Team</button></li>
+      <li>{{this.mt.groupName}} {{this.mt.members.length}} members <button type="button">Group Page</button> <button type="button" (click)="leaveTeam(mt)">Leave Group</button></li>
     </ul>
   </div>
 
@@ -18,7 +18,7 @@
       </button>
     </div>
     <ul *ngFor="let t of teams">
-      <li>{{this.t.name}} -- {{this.t.leader}} <button type="button" (click)="joinTeam(t)">Join Team</button> </li>
+      <li>{{this.t.groupName}}, {{this.t.members.length}} members <button type="button" (click)="joinTeam(t)">Join Group</button> </li>
     </ul>
   </div>
 
