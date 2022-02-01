@@ -68,6 +68,14 @@ export class ProfileService {
 
 
 
+  // getProfileById( id : number ): any {
+  //   var token = sessionStorage.getItem("Authorization");
+  //    this.http.post<Profile>(environment.url+'/profile/'+ `${id}`, `token=${token}`, { observe: 'response',
+  //     headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
+  //     .subscribe(e=>console.log(e))
+
+  // }
+
 //   baseApiUrl = "https://file.io";
 
 //   upload(file : any):Observable<any> {
