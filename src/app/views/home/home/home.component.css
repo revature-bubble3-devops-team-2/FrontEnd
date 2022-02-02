@@ -1,4 +1,5 @@
 app-profile{
+  border: 1px solid var(--revature-light-gray);
   width: 30%;
 }
 .posts-container{

@@ -2,13 +2,15 @@
   <div class="col post-card mb-4 card shadow-lg" *ngFor="let post of posts">
     <header>
       <div class="d-flex justify-content-between user-info">
-        <div class="d-flex flex-column">
+        <div class="post-feed_author-info">
+          <img
+          src="../../../../assets/favicon.png" alt="..."
+          width="70" />
           <h4>{{ post.creator?.username }}</h4>
           <p class="text-muted post-date">{{ post.datePosted | date }}</p>
         </div>
       </div>
     </header>
-    <hr />
     <section>
       <div class="card-body" (click)="open(post)">
         <p class="card-text">{{ post.body }}</p>
@@ -22,14 +24,9 @@
         </ng-container>
       </div>
     </section>
-    <hr />
-    <div class="d-flex justify-content-between align-items-center btn-div">
-      <div class="btn-group">
+    <div class="post-feed_engagement-buttons">
         <app-like [postInfo]="post"></app-like>
-      </div>
-      <div class="btn-group" (click)="open(post)">
-        <fa-icon class="comment-icon" [icon]="faComment"></fa-icon>
-      </div>
+        <fa-icon class="comment-icon" [icon]="faComment" (click)="open(post)"></fa-icon>
     </div>
   </div>
   <div class="d-flex justify-content-center" *ngIf="Loading">
