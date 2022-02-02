@@ -1,9 +1,7 @@
-import { HomeComponent } from './../home/home.component';
 import { Post } from 'app/models/post';
 import { PostService } from 'app/services/post.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Profile } from 'app/models/profile';
 import { ProfileService } from 'app/services/profile.service';
 @Component({
   selector: 'app-profileview',

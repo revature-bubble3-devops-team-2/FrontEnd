@@ -1,11 +1,10 @@
 import { ProfileviewComponent } from './views/home/profileview/profileview.component';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes, CanActivate } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './views/login/login/login.component';
 import { RegisterComponent } from './views/register/register/register.component';
 import { HomeComponent } from './views/home/home/home.component';
 import { AuthGuard } from './guards/auth.guard';
-import { AuthService } from './guards/auth.service';
 import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
