@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
     this.success = false;
 
     if(this.firstname != "" && this.lastname != "" && this.email != "" && this.psw != "" && this.pswrepeat != "" && this.username != ""){
-      
+
       if(this.psw==this.pswrepeat){
         this.profile.firstName = this.firstname;
         this.profile.lastName = this.lastname;
@@ -51,6 +51,9 @@ export class RegisterComponent implements OnInit {
         this.profileService.registerProfile(this.profile).subscribe(
           (data: any) => {
             const temp = data.body as Profile;
+            // refactor from upload image team
+            this.profileService.setData(data.body)
+            console.log(this.profileService.getProfile())
             sessionStorage.clear();
             sessionStorage.setItem("Authorization", data.headers.get("Authorization"));
             sessionStorage.setItem("profile", JSON.stringify(temp));
@@ -65,7 +68,7 @@ export class RegisterComponent implements OnInit {
       else{
         this.pswMatch = true;
       }
-    } 
+    }
     else{
       this.missing = true;
     }

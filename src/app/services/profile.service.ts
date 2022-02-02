@@ -17,6 +17,14 @@ export class ProfileService {
     this.profile = profile;
   }
 
+  getProfile(){
+    return this.profile;
+  }
+
+  setImhg(img : any){
+    this.profile.imgurl = img;
+  }
+
   getData(){
     let temp = this.profile;
     this.profile={};
@@ -45,11 +53,19 @@ export class ProfileService {
    }
   }
 
+
+
+
+
   login(username: string, password: string): Observable<HttpResponse<Profile>>{
     return this.http.post<Profile>(environment.url+'/profile/login', `username=${username}&password=${password}`, { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
   }
   getProfileByToken(): Observable<HttpResponse<Profile>> {
     var token = sessionStorage.getItem("Authorization");
     return this.http.post<Profile>(environment.url+'/profile/token', `token=${token}`, { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
+  }
+
+  getProfileByUsername(username: string): Observable<Profile>{
+    return this.http.get<Profile>(`${environment.url}/profile/search${username}`)
   }
 }
