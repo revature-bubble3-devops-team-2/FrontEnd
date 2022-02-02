@@ -1,3 +1,15 @@
+app-profile{
+  width: 30%;
+}
+.posts-container{
+  background-color: #FBFBFB;
+  width: 70%;
+}
+
+
+/*
+OLD
+
 html {
     background-color: #1893de;
 }
@@ -23,8 +35,8 @@ html {
     height: 60%;
 }
 
-.feed-container::-webkit-scrollbar { 
-    width: 0 !important 
+.feed-container::-webkit-scrollbar {
+    width: 0 !important
 }
 
 .container-fluid {
@@ -37,4 +49,4 @@ html {
         flex-flow:column nowrap;
         align-items: center
     }
-}  
+}   */

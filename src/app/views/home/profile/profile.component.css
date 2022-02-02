@@ -1,3 +1,25 @@
+.profile-container{
+  background-color: #FFF;
+  height: 100%;
+  z-index: 999;
+}
+.profile_current-user_pfp{
+  padding-top: 25%;
+  width: 100%;
+}
+.profile_current-user_pfp img{
+  border-radius: 50%;
+  display: block;
+  margin: 0px auto;
+}
+.profile_current-user_text{
+  text-align: center;
+  width: 100%;
+}
+
+/*
+OLD CODE
+
 .container {
     margin-top: 1rem;
     margin-left: 2rem;
@@ -56,10 +78,10 @@
     .profile-head {
         transform: translateY(.5rem)
     }
-} 
+}
 
 
 
 
 
-
+ */

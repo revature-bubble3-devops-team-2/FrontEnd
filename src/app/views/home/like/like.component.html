@@ -1,21 +1,12 @@
 <div class="like-component-container">
   <div class="button-container">
     <div *ngIf="!hasLiked" role="button" type="button"  (click)="likePost()">
-        <fa-icon class="like-icon" [icon]="faThumbsUp"></fa-icon>
+        <fa-icon class="like-icon" [icon]="faHeartOutline"></fa-icon>
     </div>
     <div *ngIf="hasLiked" role="button"(click)="likePost()">
-        <fa-icon class="liked-icon" [icon]="faThumbsDown"></fa-icon>
+        <fa-icon class="like-icon" [icon]="faHeartSolid"></fa-icon>
     </div>
     <div class="num-likes" *ngIf="num > 0">{{ num }}</div>
   </div>
-  <div class="button-container">
-    <div *ngIf="!hasLiked" role="button" type="button"  (click)="likePost()">
-      <fa-icon class="dislike-icon" [icon]="faThumbsDownOutline"></fa-icon>
-  </div>
-  <div *ngIf="hasLiked" role="button"(click)="likePost()">
-      <fa-icon class="disliked-icon" [icon]="faThumbsDown"></fa-icon>
-  </div>
-  <div class="num-likes" *ngIf="num > 0">{{ num }}</div>
-</div>
 </div>
 

@@ -1,27 +1,19 @@
-.liked-icon {
-    color: red
+.button-container{
+  display: flex;
 }
 
+/* Like Button */
 .like-component-container {
     display: flex;
     flex-flow: row nowrap;
+    -webkit-user-select: none;
+    user-select: none;
 }
-
-.num-likes {
-    padding-left: .75rem;
-}
-
 .like-icon {
-    margin-right: 4px;
-    font-size: 14pt;
-    color: #007bff;
+  color: var(--revature-orange);
+  font-size: 14pt;
+  margin-right: 4px;
 }
-.button-container{
-  margin: auto 7.5px;
-}
-.disliked-icon{
-  color: #FF0000;
-}
-.dislike-icon{
-  color: #FF0000;
+.num-likes {
+  padding: 3px 0px 0px 3px;
 }

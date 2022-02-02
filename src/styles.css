@@ -3,6 +3,39 @@
     font-family: Futura;
     src: url("/assets/fonts/Futura-Normal.woff2") format("woff2");
 }
+:root{
+  /* Primary Revature Colors */
+  --revature-orange: #F26925;
+  --revature-white: #FFF;
+  --revature-dark-gray: #474C55;
+
+  /* Secondary Revature Colors */
+  --revature-blue: #72A4C2;
+  --revature-yellow: #FCB414;
+  --revature-light-gray: #B9B9BA;
+}
+
+html, body{
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.view-container{
+  display: flex;
+  height: 100%;
+  margin: 0px;
+}
+.posts-container{
+  overflow-y: scroll;
+}
+[type=button], [type=reset], [type=submit], button {
+  -webkit-appearance: none;
+}
+/*
+ * OLD STYLING
 
 html,
 body {
@@ -21,11 +54,11 @@ body {
 .createPostModal > .modal-content{
   background-color: transparent!important;
   border: none!important;
-} 
+}
 .profilemodal > .modal-content{
   background-color: transparent!important;
   border: none!important;
-} 
+}
 .postModal {
   max-width: 1080px;
 
@@ -37,3 +70,4 @@ body {
     margin: 2rem;
   }
 }
+*/
