@@ -3,10 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbTooltipModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
-
-
-
 import { AppComponent } from './app.component';
 import { LoginComponent } from './views/login/login/login.component';
 import { ProfileComponent } from './views/home/profile/profile.component';
