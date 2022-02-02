@@ -26,7 +26,6 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { PostComponent } from './views/posts/post/post.component';
 import { PostFeedComponent } from './views/posts/post-feed/post-feed.component';
 import { InterceptorService } from './helper/interceptor.service';
-import { ActivatedRoute } from '@angular/router';
 
 
 

@@ -1,8 +1,6 @@
 import { Profile } from './../../models/profile';
 import { ProfileService } from 'app/services/profile.service';
-import { Component, OnInit } from '@angular/core';
-import { subscribeOn } from 'rxjs/operators';
-
+import { Component } from '@angular/core';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -19,7 +17,7 @@ export class SearchComponent {
   constructor(private profile: ProfileService) { }
 
   public setid(id: number): void{
-    this.id = this.id
+    this.id = id
   }
 
   public searchUser(){
