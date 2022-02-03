@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from 'app/services/profile.service';
 import { Router } from '@angular/router';
+import { faHome, faUserFriends, faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faIdCard, faComments } from '@fortawesome/free-regular-svg-icons';
 
 
 @Component({
@@ -11,6 +13,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+
+  // Profile Info
   id : number =0;
   firstName: string = "";
   lastName: string = "";
@@ -20,6 +24,13 @@ export class NavbarComponent implements OnInit {
   key ="";
   url : any = this.profileService.getProfile().imgurl  ?  this.profileService.getProfile().imgurl :  `../../../../assets/favicon.png` ;
   session : any ;
+
+    // Icons
+    faHome = faHome;
+    faIdCard = faIdCard;
+    faUserFriends = faUserFriends;
+    faUsers = faUsers;
+    faComments = faComments;
 
 
   ngOnInit(): void {
