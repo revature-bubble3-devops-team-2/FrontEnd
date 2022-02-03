@@ -12,18 +12,23 @@
 
           <div class="media align-items-end profile-head">
               <div class="profile mr-3">
+
+                <br/>
+
               </div>
               <div class="media-body mb-5 text-black">
                   <h4 class="mt-0 mb-0">{{this.profile.firstName}}</h4>
                   <h4 class="mt-0 mb-0">{{this.profile.lastName}}</h4>
                   <p class="small mb-4"> <em class="fas fa-map-marker-alt mr-2"></em> {{this.profile.email}}</p>
-                  <!-- <a  href="['profileview/'+ id]" class="small mb-4"> <em class="fas fa-map-marker-alt mr-2"></em>  </a> -->
-                  <a [routerLink]="['profileview/',this.id]" >go to profile page</a>
+                  <a [href]="'profile/'+ id" >Edit Profile Here!</a>
+                  <br/>
+                  <br/>
+                  <a [href]="'profileview/'+ id" >Go to Profile Page!</a>
               </div>
           </div>
       </div>
       <br>
       <br>
-      <app-follow></app-follow>
+
   </div>
 </div>

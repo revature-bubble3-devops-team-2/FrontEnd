@@ -3,33 +3,29 @@
   <div class="bg-white shadow overflow-hidden" style="border-radius: 50px">
     <div class="px-4 pt-0 pb-4 cover">
       <label class="hoverable" for="fileInput">
+        <img [src]="url" alt="profile image">
+      <div class="hover-text">Choose file</div>
+      <div class="background"></div>
         </label></div>
     <br/>
     <br/>
   </div>
   <div>
-    <label class="hoverable" for="fileInput">
-      <img [src]="url" alt="profile image">
-      <div class="hover-text">Choose file</div>
-      <div class="background"></div>
-    </label>
     <br/>
-    <input id="fileInput" type='file' (change)=" onSelectFile($event)  ">
+    <input id="fileInput" type='file' (change)=" onSelectFile($event) ">
     <div class="media-body mb-5 text-black">
       <h4 class="mt-0 mb-0">{{this.profile.firstName}}</h4>
       <h4 class="mt-0 mb-0">{{this.profile.lastName}}</h4>
       <p class="small mb-4"> <em class="fas fa-map-marker-alt mr-2"></em> {{this.profile.email}}</p>
-      <!-- <a  href="['profileview/'+ id]" class="small mb-4"> <em class="fas fa-map-marker-alt mr-2"></em>  </a> -->
     </div>
   </div>
-  <div class="hoverable">
-    <app-modal-button></app-modal-button>
-  </div>
+
 </fieldset>
-<fieldset class="followering">
+<fieldset class="following">
 <fieldset>
   <ul><h4>Following</h4></ul>
-  <input id="searchbar" type="submit">
+  <input id="searchbar" type="search">
+  <button class="button" type="submit">Search</button>
   <li>Bobby Tabbot</li>
   <li>Tammy Legit</li>
   <li>Leroy Jenkins</li>
@@ -37,7 +33,7 @@
 </fieldset>
 <fieldset class="followers">
   <fieldset>
-    <ul><h4>Following</h4></ul>
+    <ul><h4>Followers</h4></ul>
     <li>Aaron Medlock</li>
     <li>Kyle Crowley</li>
     <li>Jesse Rodriguez</li>

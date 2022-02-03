@@ -66,4 +66,8 @@ export class ProfileComponent implements OnInit {
       reader.onerror = (error) => reject(error);
     });
   }
+
+  goBack(){
+    this.router.navigate(['/home']);
+  }
 }
