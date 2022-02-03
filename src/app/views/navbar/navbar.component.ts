@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from 'app/services/profile.service';
 import { Router } from '@angular/router';
-import { faHome, faUserFriends, faUsers } from '@fortawesome/free-solid-svg-icons';
-import { faIdCard, faComments } from '@fortawesome/free-regular-svg-icons';
+import { faHome, faUserFriends, faUsers, faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faIdCard, faComments, faCalendar } from '@fortawesome/free-regular-svg-icons';
 
 
 @Component({
@@ -31,6 +31,9 @@ export class NavbarComponent implements OnInit {
     faUserFriends = faUserFriends;
     faUsers = faUsers;
     faComments = faComments;
+    faCalendar = faCalendar;
+    faCog = faCog;
+    faSignOutAlt = faSignOutAlt;
 
 
   ngOnInit(): void {

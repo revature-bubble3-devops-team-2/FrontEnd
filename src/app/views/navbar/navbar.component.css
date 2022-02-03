@@ -14,6 +14,7 @@
   margin: 0px auto !important;
 }
 .profile_current-user_text{
+  margin-top: 10px;
   text-align: center;
   width: 100%;
 }
@@ -22,8 +23,19 @@
 }
 #profile_navbar ul{
   list-style-type: none;
-  margin: 10px auto 0px auto;
+  margin: 10% auto 0px auto;
   width: 150px;
+}
+#profile_navbar li{
+  color: var(--revature-dark-gray);
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 15px 0px;
+  transition: 0.33s all;
+}
+#profile_navbar li:hover{
+  color: var(--revature-light-gray);
 }
 fa-icon{
 margin-right: 5px;
