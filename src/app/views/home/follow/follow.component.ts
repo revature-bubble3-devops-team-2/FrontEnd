@@ -25,13 +25,13 @@ export class FollowComponent {
 
     if (this.email !== "") {
       this.followService.followUserByEmail(this.email).subscribe(
-        r => this.success = true, 
+        r => this.success = true,
         err => this.error = true
       );
     }
     else { this.missing = true; }
   }
-  
+
   unfollow() {
     this.error = false;
     this.missing = false;
