@@ -1,5 +1,38 @@
-<div class="container mh-75">
-  <div class="bg-white shadow overflow-hidden" style="border-radius: 50px;">
+<div class="profile-container">
+  <div class="profile_current-user_pfp">
+    <label class="hoverable" for="fileInput">
+      <img [src]="url"
+      alt="Bubble profile photo for {{this.profile.firstName}} {{this.profile.lastName}}">
+      <div class="hover-text">Choose file</div>
+      <div class="background"></div>
+    </label>
+    <input id="fileInput" type='file' (change)=" onSelectFile($event)  ">
+      <!-- <img
+          src="../../../../assets/favicon.png"
+          alt="Bubble profile photo for {{this.profile.firstName}} {{this.profile.lastName}}"
+          width="130"
+        /> -->
+      <!-- <app-modal-button></app-modal-button> -->
+  </div>
+  <div class="profile_current-user_text">
+      <h4>{{this.profile.firstName}} {{this.profile.lastName}}</h4>
+      <!-- <p class="small mb-4"> <em class="fas fa-map-marker-alt mr-2"></em> {{this.profile.email}}</p> -->
+      <nav id="profile_navbar">
+        <ul>
+          <li><fa-icon class="nav-icon" [icon]="faHome"></fa-icon>Home</li>
+          <li><fa-icon class="nav-icon" [icon]="faIdCard"></fa-icon>Profile</li>
+          <li><fa-icon class="nav-icon" [icon]="faUserFriends"></fa-icon>Followers</li>
+          <li><fa-icon class="nav-icon" [icon]="faUsers"></fa-icon>Teams</li>
+          <li><fa-icon class="nav-icon" [icon]="faComments"></fa-icon>Chat</li>
+          <li><fa-icon class="nav-icon" [icon]="faComments"></fa-icon>Events</li>
+          <li><fa-icon class="nav-icon" [icon]="faComments"></fa-icon>Settings</li>
+          <li><fa-icon class="nav-icon" [icon]="faComments"></fa-icon>Logout</li>
+        </ul>
+    </nav>
+    <a [href]="'profile/'+ id" >Edit Profile Here!</a>
+  </div>
+<!-- <app-follow></app-follow> -->
+  <!--<div class="bg-white shadow overflow-hidden" style="border-radius: 50px;">
       <div class="px-4 pt-0 pb-4 cover">
 
         <label class="hoverable" for="fileInput">
@@ -30,5 +63,5 @@
       <br>
       <br>
 
-  </div>
+  </div>-->
 </div>
