@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProfileService } from 'app/services/profile.service';
 import { Profile } from 'app/models/profile';
 import { Router } from '@angular/router';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-register',
@@ -41,6 +42,7 @@ export class RegisterComponent implements OnInit {
     this.missing = false;
     this.pswMatch = false;
     this.success = false;
+    let token = '';
 
     if(this.firstname != "" && this.lastname != "" && this.email != "" && this.psw != "" && this.pswrepeat != "" && this.username != ""){
 
@@ -55,10 +57,22 @@ export class RegisterComponent implements OnInit {
           (data: any) => {
             const temp = data.body as Profile;
             // refactor from upload image team
-            this.profileService.setData(data.body)
-            console.log(this.profileService.getProfile())
+            token = data.headers.get("Authorization");
+            console.log( 'subscriber token: ' + token);
+            this.profileService.setData(data.body);
+            console.log(this.profileService.getProfile());
             sessionStorage.clear();
-            sessionStorage.setItem("Authorization", data.headers.get("Authorization"));
+            this.emailmod.url = this.generateEmailUrl(token);
+            this.emailmod.email = this.email;
+            console.log(this.emailmod);
+            this.profileService.verifyEmail(this.emailmod).subscribe(
+              (data: any) => {
+                console.log(data)
+              },(error: Error) => {
+                console.log(error);
+              }
+            );
+            sessionStorage.setItem("Authorization", token);
             sessionStorage.setItem("profile", JSON.stringify(temp));
             this.router.navigate(['/home']);
           },
@@ -68,15 +82,6 @@ export class RegisterComponent implements OnInit {
           }
        
           )
-
-          this.profileService.setEmailMod(this.email);
-          this.profileService.verifyEmail(this.emailmod).subscribe(
-            (data: any) => {
-              console.log(data)
-            },(error: Error) => {
-              console.log(error);
-            }
-          );
       }
       else{
         this.pswMatch = true;
@@ -85,5 +90,19 @@ export class RegisterComponent implements OnInit {
     else{
       this.missing = true;
     }
+  }
+  generateEmailUrl(token: string): any {
+    let tk = token;
+    let randCode= '';
+    console.log('token: '+tk)
+    if(tk){
+      for(var i =0; i < 15; i++){
+     randCode+= tk.charAt(Math.floor(Math.random() * tk.length))
+    }
+    localStorage.setItem('randomCode',randCode);
+    console.log(this.email)
+    return `${environment.angUrl}/verify/email?randomCode=${randCode}&email=${this.email}`;
+    }
+  
   }
 }

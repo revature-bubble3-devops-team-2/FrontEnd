@@ -75,19 +75,9 @@ getEmailMod(){
   }
 
   verifyEmail(emailModel:EmailModel): Observable<any>{
-    this.generateEmailUrl(emailModel);
-    return this.http.post(environment.url+'/verify/email', emailModel, {observe: 'response'})
+    return this.http.post(environment.url+'/verfied/email', emailModel, {observe: 'response'})
   }
-
-  generateEmailUrl(emailModel:EmailModel): any {
-    let tk = sessionStorage.getItem("Authorization");
-    let randCode= '';
-    if(tk){
-      for(var i =0; i < 15; i++){
-     randCode+= tk.charAt(Math.floor(Math.random() * tk.length))
-    }
-    localStorage.setItem('randomCode',randCode);
-    emailModel.url = 'http://localhost:4200/verify/email?randomCode='+randCode;
-    }
+  verifyUser(email:string): Observable<any>{
+    return this.http.post(environment.url+'/validate', email, {observe: 'response'})
   }
 }

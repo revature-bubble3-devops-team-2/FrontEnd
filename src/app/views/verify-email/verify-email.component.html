@@ -1,8 +1,7 @@
-<div>
-    <ng-template [ngIf]= "confirmed == true">
-        <h2> Your Email has been verified</h2>
-    </ng-template>
-    <ng-template [ngIf]= "confirmed == false">
-        <h2> is not a valid url</h2>
-    </ng-template>
+<div *ngIf= "confirmed; else elseBlock">
+    <h2> Your account has been verified</h2>
+    <button class="btn btn-primary" routerLink="/login">Log In</button>
 </div>
+<ng-template #elseBlock>
+    <h2> is not a valid url</h2>
+</ng-template>

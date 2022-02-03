@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ProfileService } from 'app/services/profile.service';
 
 @Component({
   selector: 'app-verify-email',
@@ -10,20 +11,42 @@ export class VerifyEmailComponent implements OnInit {
 
    confirmed?: boolean;
    randomCode ?: string;
-  constructor(private route: ActivatedRoute) { }
+   email ?: string;
+  constructor(private profileService: ProfileService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.route.queryParams
       .subscribe(params => {
-        console.log(params); // { orderby: "price" }
+        console.log(params);
         this.randomCode = params.randomCode;
-        console.log(this.randomCode); // price
-      }
-    );
-  if(this.randomCode == localStorage.getItem('randomCode')){
-    this.confirmed = true;
-  }else{
-    this.confirmed = false;
+        this.email = params.email;
+        console.log(this.randomCode);
+
+        if (this.randomCode == localStorage.getItem('randomCode')){
+          this.confirmed = true;
+          this.verifyUser(params.email);
+          //localStorage.removeItem('randomCode');
+          setTimeout(() => {
+            this.router.navigate(['/login']);
+          }, 5000);
+        } else {
+          this.confirmed = false;
+          setTimeout(() => {
+            this.router.navigate(['/login']);
+          }, 5000);
+        }
+
+      });
   }
+
+  verifyUser(mail: string): void {
+    console.log("in verifyUser   " + mail)
+    this.profileService.verifyUser(mail ?? "").subscribe(
+      (data) => {
+        if (data) {
+          console.log(data)
+        }
+      
+    }, error => console.log(error))
   }
-  }
+}

@@ -6,6 +6,7 @@ import { RegisterComponent } from './views/register/register/register.component'
 import { HomeComponent } from './views/home/home/home.component';
 import { AuthGuard } from './guards/auth.guard';
 import { LoginGuard } from './guards/login.guard';
+import { VerifyEmailComponent } from './views/verify-email/verify-email.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent, canActivate:[LoginGuard]},
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
   {path : "profileview/:id", component: ProfileviewComponent},
   {path: '', redirectTo: '/login', pathMatch: 'full'},
+  {path: 'verify/email', component: VerifyEmailComponent}
 ];
 
 @NgModule({
