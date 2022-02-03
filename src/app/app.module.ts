@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbTooltipModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HomeComponent } from './views/home/home/home.component';
 
 
 
@@ -18,7 +19,7 @@ import { CreatePostComponent } from './views/posts/create-post/create-post.compo
 import { PostsContainerComponent } from './views/posts/posts-container/posts-container.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HomeComponent } from './views/home/home/home.component';
+
 import { FollowComponent } from './views/home/follow/follow.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
@@ -30,6 +31,8 @@ import { InterceptorService } from './helper/interceptor.service';
 
 import { CreateCommentComponent } from './views/posts/create-comment/create-comment.component';
 import { TeamsPageComponent } from './views/teams-page/teams-page.component';
+import { SearchComponent } from './views/search/search.component';
+import { ProfileviewComponent } from './views/home/profileview/profileview.component';
 
 
 @NgModule({
@@ -37,26 +40,23 @@ import { TeamsPageComponent } from './views/teams-page/teams-page.component';
     AppComponent,
     LoginComponent,
     ProfileComponent,
-    RegisterComponent,
-    ModalUpdateFormComponent,
-    ModalButtonComponent,
-    RegisterComponent,
     CreatePostComponent,
-    PostsContainerComponent,
     HomeComponent,
-    FollowComponent,
-    LikeComponent,
     PostComponent,
     PostsContainerComponent,
     RegisterComponent,
     ModalUpdateFormComponent,
     ModalButtonComponent,
     CreateCommentComponent,
-    PostFeedComponent,
     FollowComponent,
     LikeComponent,
     PostFeedComponent,
+<<<<<<< HEAD
     TeamsPageComponent
+=======
+    SearchComponent,
+    ProfileviewComponent,
+>>>>>>> 0a0e611e0036d0dfcbe7f1b00f521fd390713ac5
   ],
   imports: [
     BrowserModule,
@@ -67,10 +67,11 @@ import { TeamsPageComponent } from './views/teams-page/teams-page.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     FontAwesomeModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+
   ],
 
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }, HomeComponent],
   entryComponents:[
     PostComponent,
     FormsModule,
