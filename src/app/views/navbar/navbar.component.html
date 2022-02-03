@@ -1,0 +1,34 @@
+<div class="container mh-75">
+  <div class="bg-white shadow overflow-hidden" style="border-radius: 50px;">
+      <div class="px-4 pt-0 pb-4 cover">
+
+        <label class="hoverable" for="fileInput">
+          <img [src]="url" alt="profile image">
+          <div class="hover-text">Choose file</div>
+          <div class="background"></div>
+        </label>
+        <br/>
+        <input id="fileInput" type='file' (change)=" onSelectFile($event)  ">
+
+          <div class="media align-items-end profile-head">
+              <div class="profile mr-3">
+
+                <br/>
+
+              </div>
+              <div class="media-body mb-5 text-black">
+                  <h4 class="mt-0 mb-0">{{this.profile.firstName}}</h4>
+                  <h4 class="mt-0 mb-0">{{this.profile.lastName}}</h4>
+                  <p class="small mb-4"> <em class="fas fa-map-marker-alt mr-2"></em> {{this.profile.email}}</p>
+                  <a [href]="'profile/'+ id" >Edit Profile Here!</a>
+                  <br/>
+                  <br/>
+                  <a [href]="'profileview/'+ id" >Go to Profile Page!</a>
+              </div>
+          </div>
+      </div>
+      <br>
+      <br>
+
+  </div>
+</div>
