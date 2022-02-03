@@ -1,22 +1,19 @@
-<div class="card-body rounded">
-    <div class="create-post-container">
-        <form class="create-post-form" >
-            <button type="button" class="close" (click)="closeModal()">&times;</button>
-            <label class="header" for="create-post"><h2>Create a New Post</h2></label>
-            <hr/>
-            <div class="mb-3">
-              <label for="imgURL" >Add an Image URL</label>
-              <input type="text" name="imgURL" class="form-control" [(ngModel)]="this.addPost.imgURL">
-            </div>
-            <div class="mb-3">
-                <label for="create-post" >Add Text</label>
-                <textarea type="text" class="form-control" [(ngModel)]="addPost.body" name="create-post"
-                id="create-post" placeholder="What's Bubblin?" required></textarea>
-                <p class = "error" *ngIf="show"><strong>Please input a text body.</strong></p>
-            </div>
-            <div class="submit">
-                <button class="btn btn-dark" type="submit" (click)="createPost()">Submit</button>
-            </div>
-        </form>
-    </div>
-</div>      
+<div class="create-post-container">
+    <form>
+        <!-- <button type="button" class="close" (click)="closeModal()">&times;</button> -->
+        <label class="header" for="create-post"><h2>Create a New Post</h2></label>
+        <div class="mb-3">
+          <label for="imgURL" >Add an Image URL</label>
+          <input type="text" name="imgURL" class="form-control" [(ngModel)]="this.addPost.imgURL">
+        </div>
+        <div class="create-post_body">
+            <label for="create-post" id="create-post-label" >Add Text</label>
+            <textarea type="text" class="" [(ngModel)]="addPost.body" name="create-post"
+            id="create-post" placeholder="What's Bubblin?" required></textarea>
+            <p class = "error" *ngIf="show"><strong>Please input a text body.</strong></p>
+        </div>
+        <div class="submit create-post_submit-btn">
+            <button id="create-post-btn" class="btn-rounded" type="submit" (click)="createPost()">Post</button>
+        </div>
+    </form>
+</div>

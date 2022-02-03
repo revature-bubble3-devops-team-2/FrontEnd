@@ -1,4 +1,25 @@
-:host textarea {
+.create-post-container{
+  background-color: #FFF;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: 20px;
+  margin: 20px 45px;
+  padding: 10px 20px;
+}
+#create-post{
+  border: 0px;
+  width: 100%;
+}
+#create-post-label{
+  display: none;
+}
+.create-post_submit-btn{
+  height: 35px;
+  margin: 10px 0px 0px 0px;
+}
+#create-post-btn{
+  float: right;
+}
+/* :host textarea {
     outline: none;
     box-shadow:none !important;
     border:1px solid #ccc !important;
@@ -41,4 +62,4 @@
 
 .btn-dark {
     border-radius: 30px;
-}
+} */

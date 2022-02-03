@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   posts!: Post[];
   scrollcount: number = 1;
   profile = sessionStorage.getItem("profile") as Profile;
-  
+
   logout(): void {
     sessionStorage.clear();
   }

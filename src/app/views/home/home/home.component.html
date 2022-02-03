@@ -17,7 +17,7 @@
     <app-profile></app-profile>
 
     <div class="posts-container">
-        <app-posts-container></app-posts-container>
+      <app-create-post></app-create-post>
         <div
           class="
             feed-container
@@ -30,8 +30,7 @@
           [infiniteScrollDistance]="2"
           [infiniteScrollThrottle]="50"
           (scrolled)="onScroll()"
-          [scrollWindow]="false"
->
+          [scrollWindow]="false">
         <app-post-feed [posts]="posts" class="col"></app-post-feed>
         </div>
     </div>

@@ -28,8 +28,8 @@ export class CreatePostComponent implements OnInit {
   @Input() show: boolean = false;
 
   constructor(
-    public postService: PostService, 
-    public activeModal: NgbActiveModal,
+    public postService: PostService,
+    //public activeModal: NgbActiveModal,
     private modalService: NgbModal
     ) {}
 
@@ -37,7 +37,8 @@ export class CreatePostComponent implements OnInit {
     var sessionProfile = sessionStorage.getItem("profile");
     if(sessionProfile!=null){
       this.profile = JSON.parse(sessionProfile);
-    }  
+    }
+
   }
 
   ngOnDestroy(): void {
@@ -47,7 +48,7 @@ export class CreatePostComponent implements OnInit {
   createPost() {
     if (this.addPost.body!=='') {
       this.postService.createPost(this.addPost);
-      this.activeModal.close();
+      //this.activeModal.close();
     } else {
       this.show=true;
     }

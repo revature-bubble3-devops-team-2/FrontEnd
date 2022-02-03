@@ -1,9 +1,9 @@
 app-profile{
-  border: 1px solid var(--revature-light-gray);
+  /* border: 1px solid var(--revature-light-gray); */
   width: 30%;
 }
 .posts-container{
-  background-color: #FBFBFB;
+  background-color: #f0f2f5;
   width: 70%;
 }
 

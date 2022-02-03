@@ -16,6 +16,18 @@
   text-align: center;
   width: 100%;
 }
+#profile_navbar{
+  text-align: left;
+}
+#profile_navbar ul{
+  list-style-type: none;
+  margin: 10px auto 0px auto;
+  width: 150px;
+}
+fa-icon{
+margin-right: 5px;
+width: 10px;
+}
 
 /*
 OLD CODE

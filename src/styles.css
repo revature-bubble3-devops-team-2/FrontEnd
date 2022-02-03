@@ -34,6 +34,32 @@ html, body{
 [type=button], [type=reset], [type=submit], button {
   -webkit-appearance: none;
 }
+
+.btn-rounded{
+  background-color: var(--revature-dark-gray);
+  border: 0px;
+  border-radius: 50px;
+  color: var(--revature-white);
+  cursor: pointer;
+  padding: 5px 25px;
+  transition: 0.33s all;
+
+  /* Not sure of buttons that'd be on page,
+     so using a little CSS hack to force
+     hardware acceleration (uses GPU).   */
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+	-webkit-perspective: 1000;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000;
+}
+.btn-rounded:hover{
+  background-color: var(--revature-light-gray);
+  color: var(--revature-dark-gray);
+}
+
+
 /*
  * OLD STYLING
 

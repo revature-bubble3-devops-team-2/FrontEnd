@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ProfileService } from 'app/services/profile.service';
+import { faHome, faUserFriends, faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faIdCard, faComments } from '@fortawesome/free-regular-svg-icons';
 
 
 @Component({
@@ -14,6 +16,13 @@ export class ProfileComponent {
   email: string = "";
   updated: boolean = false;
   credential: string = "";
+
+  // Icons
+  faHome = faHome;
+  faIdCard = faIdCard;
+  faUserFriends = faUserFriends;
+  faUsers = faUsers;
+  faComments = faComments;
 
   constructor(private profileService: ProfileService) { }
 
