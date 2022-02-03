@@ -3,6 +3,9 @@ import { PostService } from 'app/services/post.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProfileService } from 'app/services/profile.service';
+import { FollowService } from 'app/services/follow.service';
+
+
 @Component({
   selector: 'app-profileview',
   templateUrl: './profileview.component.html',
@@ -11,7 +14,7 @@ import { ProfileService } from 'app/services/profile.service';
 export class ProfileviewComponent implements OnInit {
 
   constructor(private profileService: ProfileService , private route: ActivatedRoute ,
-    private  postService : PostService , private router: Router) { }
+    private  postService : PostService , private router: Router  , private followService:FollowService) { }
 
 
   profile : any;
@@ -28,6 +31,12 @@ export class ProfileviewComponent implements OnInit {
   profilePosts : Post[] =[];
 
 
+  failed: boolean = false;
+  success: boolean = false;
+  followed : boolean = false;
+  // successUnfollow: boolean = false;
+
+
 
   async ngOnInit(): Promise<void>  {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -41,9 +50,12 @@ export class ProfileviewComponent implements OnInit {
     this.username = e.username;
     this.getFollowerPosts(1);
 
+    // console.log("===========================================")
+    // this.profileService.getPosts(e.pid).subscribe(e=> console.log(e))
+    // console.log("===========================================")
+
+
     });
-
-
 
 
 
@@ -67,6 +79,27 @@ export class ProfileviewComponent implements OnInit {
 }
 goBack(){
   this.router.navigate(['/home']);
+}
+
+
+follow() {
+
+  console.log(this.email , this.followed )
+
+    this.followService.followUserByEmail("chrismar@gmail.com").subscribe(
+      r => { this.success = true  ; this.followed = true},
+      err => this.failed = true
+    );
+}
+
+
+unfollow() {
+    console.log("Email entered: ", this.email);
+    this.followed = false;
+    this.followService.unfollowUserByEmail("chrismar@gmail.com").subscribe(
+      e => this.followed = false,
+      err => console.log(err)
+    )
 }
 
 
