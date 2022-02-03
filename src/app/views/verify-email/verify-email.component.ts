@@ -8,13 +8,22 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class VerifyEmailComponent implements OnInit {
 
-   confirmed: boolean = false;
-  constructor() { }
+   confirmed?: boolean;
+   randomCode ?: string;
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    localStorage.getItem('randomCode');
-
-    
+    this.route.queryParams
+      .subscribe(params => {
+        console.log(params); // { orderby: "price" }
+        this.randomCode = params.randomCode;
+        console.log(this.randomCode); // price
+      }
+    );
+  if(this.randomCode == localStorage.getItem('randomCode')){
+    this.confirmed = true;
+  }else{
+    this.confirmed = false;
   }
-
-}
+  }
+  }

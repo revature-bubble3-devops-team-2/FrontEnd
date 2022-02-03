@@ -1,3 +1,4 @@
+import { EmailModel } from './../../../models/email-mod';
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from 'app/services/profile.service';
 import { Profile } from 'app/models/profile';
@@ -17,6 +18,8 @@ export class RegisterComponent implements OnInit {
   username: string = "";
   psw: string = "";
   pswrepeat: string = "";
+
+  emailmod:EmailModel= {};
 
   taken: boolean = false;
   missing: boolean = false;
@@ -63,7 +66,17 @@ export class RegisterComponent implements OnInit {
             console.log(error);
             this.taken = true;
           }
-        )
+       
+          )
+
+          this.profileService.setEmailMod(this.email);
+          this.profileService.verifyEmail(this.emailmod).subscribe(
+            (data: any) => {
+              console.log(data)
+            },(error: Error) => {
+              console.log(error);
+            }
+          );
       }
       else{
         this.pswMatch = true;

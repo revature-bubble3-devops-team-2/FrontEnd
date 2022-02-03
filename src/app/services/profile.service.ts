@@ -18,8 +18,8 @@ export class ProfileService {
   setData(profile: Profile){
     this.profile = profile;
   }
-  setEmailMod(emailModel: EmailModel){
-    this.emailModel = emailModel;
+  setEmailMod(email: string){
+    this.emailModel.email = email;
   }
 getEmailMod(){
   let temp2 = this.emailModel;
@@ -87,7 +87,7 @@ getEmailMod(){
      randCode+= tk.charAt(Math.floor(Math.random() * tk.length))
     }
     localStorage.setItem('randomCode',randCode);
-    emailModel.url = 'http://localhost:4200/verify/email? randomCode='+randCode;
+    emailModel.url = 'http://localhost:4200/verify/email?randomCode='+randCode;
     }
   }
 }
