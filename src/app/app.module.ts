@@ -5,9 +5,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbTooltipModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './views/home/home/home.component';
 
-
-
-
 import { AppComponent } from './app.component';
 import { LoginComponent } from './views/login/login/login.component';
 import { ProfileComponent } from './views/home/profile/profile.component';
@@ -26,8 +23,6 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { PostComponent } from './views/posts/post/post.component';
 import { PostFeedComponent } from './views/posts/post-feed/post-feed.component';
 import { InterceptorService } from './helper/interceptor.service';
-
-
 
 import { CreateCommentComponent } from './views/posts/create-comment/create-comment.component';
 import { TeamsPageComponent } from './views/teams-page/teams-page.component';
@@ -51,12 +46,9 @@ import { ProfileviewComponent } from './views/home/profileview/profileview.compo
     FollowComponent,
     LikeComponent,
     PostFeedComponent,
-<<<<<<< HEAD
-    TeamsPageComponent
-=======
+    TeamsPageComponent,
     SearchComponent,
     ProfileviewComponent,
->>>>>>> 0a0e611e0036d0dfcbe7f1b00f521fd390713ac5
   ],
   imports: [
     BrowserModule,
