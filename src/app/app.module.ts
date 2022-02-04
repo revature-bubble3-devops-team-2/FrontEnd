@@ -28,6 +28,7 @@ import { CreateCommentComponent } from './views/posts/create-comment/create-comm
 import { TeamsPageComponent } from './views/teams-page/teams-page.component';
 import { SearchComponent } from './views/search/search.component';
 import { ProfileviewComponent } from './views/home/profileview/profileview.component';
+import { GroupHomeComponent } from './group-home/group-home.component';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { ProfileviewComponent } from './views/home/profileview/profileview.compo
     TeamsPageComponent,
     SearchComponent,
     ProfileviewComponent,
+    GroupHomeComponent,
   ],
   imports: [
     BrowserModule,

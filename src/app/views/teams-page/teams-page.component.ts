@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Group } from 'app/models/group';
+import { GroupService } from 'app/services/group.service';
 
 @Component({
   selector: 'app-teams-page',
@@ -7,19 +8,15 @@ import { Group } from 'app/models/group';
   styleUrls: ['./teams-page.component.css'],
 })
 export class TeamsPageComponent implements OnInit {
-  myteams: Team[] = [];
-  teams: Team[] = [];
-  temp: Team = new Team(0,'Baddest Babies',1257, [1257,2304,4525]);
-  temp1: Team = new Team(1,'Yay Me', 3412, [1000,2000,3000,4000,5000,1234,1235,1236,1237,1238]);
-  temp2: Team = new Team(2,'North Shore Weather', 3925, [2500, 4582,4294]);
-  temp3: Team = new Team(3,'Curses...', 8240, [8240,1452,9744,8842,9586,1154,3866]);
+  myGroups: Group[] = [];
+  allGroups: Group[] = [];
+
+  constructor(public service: GroupService){}
 
   ngOnInit(): void {
-    this.teams.push(this.temp);
-    this.teams.push(this.temp1);
-    this.teams.push(this.temp2);
-    this.teams.push(this.temp3);
+    this.allGroups = this.service.getAllGroups();
   }
+
 
   public joinTeam(temp: Team) {
     if (this.myteams.includes(temp))
