@@ -96,7 +96,7 @@ export class RegisterComponent implements OnInit {
     let randCode= '';
     console.log('token: '+tk)
     if(tk){
-      for(var i =0; i < 15; i++){
+      for(var i =0; i < 40; i++){
      randCode+= tk.charAt(Math.floor(Math.random() * tk.length))
     }
     localStorage.setItem('randomCode',randCode);

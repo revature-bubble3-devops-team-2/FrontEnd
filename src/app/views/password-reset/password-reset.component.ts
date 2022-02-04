@@ -1,4 +1,8 @@
+import { ProfileService } from 'app/services/profile.service';
+import { RegisterComponent } from './../register/register/register.component';
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'environments/environment';
+import { EmailModel } from 'app/models/email-mod';
 
 @Component({
   selector: 'app-password-reset',
@@ -7,9 +11,79 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PasswordResetComponent implements OnInit {
 
-  constructor() { }
+
+  //profile: Profile = {};
+  firstname: string = "";
+  lastname: string = "";
+  email: string = "";
+  username: string = "";
+  psw: string = "";
+  pswrepeat: string = "";
+  emailmod:EmailModel= {};
+
+
+  emailSent: boolean = false;
+  taken: boolean = true;
+  missing: boolean = false;
+  pswMatch: boolean = false;
+  success: boolean = false;
+  emailVerified: boolean = false;
+
+  constructor(private profileService: ProfileService) { }
 
   ngOnInit(): void {
+
+
+  }
+
+
+  updatePassword(){
+
+  }
+
+  verifyEmail(){
+
+    if(this.email == ""){
+      this.missing = true;
+    }
+    else{
+
+
+      this.emailmod.url = this.generateEmailUrl("email");
+      this.emailmod.email = this.email;
+      console.log(this.emailmod);
+      this.profileService.verifyEmailForPasswordUpdate(this.emailmod).subscribe(
+        (data: any) => {
+          console.log(data)
+          this.emailSent = true;
+        },(error: Error) => {
+          console.log(error);
+        }
+      );
+
+    }
+
+  }
+
+  routeToResetPassword(){
+
+  }
+
+
+
+  generateEmailUrl(token: string): any {
+    let tk = token;
+    let randCode= '';
+    console.log('token: '+tk)
+    if(tk){
+      for(var i =0; i < 40; i++){
+     randCode+= tk.charAt(Math.floor(Math.random() * tk.length))
+    }
+    localStorage.setItem('randomCode',randCode);
+    console.log(this.email)
+    return `${environment.angUrl}/verify/email?randomCode=${randCode}&email=${this.email}`;
+    }
+
   }
 
 }

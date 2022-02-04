@@ -20,7 +20,6 @@ export class LoginComponent {
 
   constructor(private profileService:ProfileService, private router: Router) {
   }
-
   login(){
     //Resetting all the error divs
     this.error = false;
@@ -81,5 +80,4 @@ export class LoginComponent {
       this.missing = true;
     }
   }
-
 }
