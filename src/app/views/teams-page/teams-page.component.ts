@@ -14,19 +14,19 @@ export class TeamsPageComponent implements OnInit {
   constructor(public service: GroupService){}
 
   ngOnInit(): void {
-    this.allGroups = this.service.getAllGroups();
+    // this.allGroups = this.service.getAllGroups();
   }
 
 
   public joinTeam(temp: Team) {
-    if (this.myteams.includes(temp))
+    if (this.myGroups.includes(temp))
     alert("Already in this group");
     else
-    this.myteams.push(temp);
+    this.myGroups.push(temp);
   }
   public leaveTeam(temp: Team) {
-    this.myteams.forEach((value, index) => {
-      if (value == temp) this.myteams.splice(index, 1);
+    this.myGroups.forEach((value, index) => {
+      if (value == temp) this.myGroups.splice(index, 1);
     });
   }
 }

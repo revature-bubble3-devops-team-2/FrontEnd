@@ -28,7 +28,8 @@ import { CreateCommentComponent } from './views/posts/create-comment/create-comm
 import { TeamsPageComponent } from './views/teams-page/teams-page.component';
 import { SearchComponent } from './views/search/search.component';
 import { ProfileviewComponent } from './views/home/profileview/profileview.component';
-import { GroupHomeComponent } from './group-home/group-home.component';
+import { GroupHomeComponent } from './views/group-home/group-home.component';
+import { NavbarComponent } from './views/navbar/navbar.component';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { GroupHomeComponent } from './group-home/group-home.component';
     SearchComponent,
     ProfileviewComponent,
     GroupHomeComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
