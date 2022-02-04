@@ -18,29 +18,16 @@ export class TeamsPageComponent implements OnInit {
   }
 
 
-  public joinTeam(temp: Team) {
+  public joinGroup(temp: Group) {
     if (this.myGroups.includes(temp))
     alert("Already in this group");
     else
     this.myGroups.push(temp);
   }
-  public leaveTeam(temp: Team) {
+  public leaveGroup(temp: Group) {
     this.myGroups.forEach((value, index) => {
       if (value == temp) this.myGroups.splice(index, 1);
     });
   }
 }
 
-class Team {
-  public gid: number;
-  public groupName: string;
-  public owner: number;
-  public members: number[];
-
-  constructor(gid: number, groupName: string, owner: number, members: number[]) {
-    this.gid = gid;
-    this.groupName = groupName;
-    this.owner = owner;
-    this.members = members;
-  }
-}

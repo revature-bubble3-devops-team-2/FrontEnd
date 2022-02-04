@@ -1,3 +1,4 @@
+import { GroupHomeComponent } from './views/group-home/group-home.component';
 import { TeamsPageComponent } from './views/teams-page/teams-page.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
   {path : "profile/:id", component: ProfileComponent},
   {path : "profileview/:id", component: ProfileviewComponent},
+  {path: "group/:id", component: GroupHomeComponent},
   {path: 'teams-page', component: TeamsPageComponent},
   {path: '', redirectTo: '/login', pathMatch: 'full'},
 ];

@@ -1,25 +1,25 @@
-<div class="flex-container" id="page-container">
-  <div class="flex-column" id="teams-container">
+<nav-bar></nav-bar>
+<div id="teams-container">
+  <h2>Your Groups</h2>
+  <ul *ngFor="let mg of myGroups">
+    <li><a routerLink="">{{this.mg.groupName}}</a> {{this.mg.members.length}} members <button type="button">Group
+        Page</button> <button type="button" (click)="leaveGroup(mg)">Leave Group</button></li>
+  </ul>
+</div>
 
-    <h2>Current Teams:</h2>
-    <ul *ngFor="let mt of myteams">
-      <li>{{this.mt.groupName}} {{this.mt.members.length}} members <button type="button">Group Page</button> <button type="button" (click)="leaveTeam(mt)">Leave Group</button></li>
-    </ul>
-  </div>
+<div class="flex-column" id="search-container">
 
-  <div class="flex-column" id="search-container">
-    <div class="input-group flex-row">
-      <div class="form-outline">
-        <input type="search" id="form1" class="form-control" />
-        <label class="form-label" for="form1">Search</label>
-      </div>
-      <button type="button" class="btn btn-primary">
-        <i class="fas fa-search"></i>
-      </button>
+  <div class="input-group flex-row">
+    <div class="form-outline">
+      <input type="search" id="form1" class="form-control" />
     </div>
-    <ul *ngFor="let t of teams">
-      <li>{{this.t.groupName}}, {{this.t.members.length}} members <button type="button" (click)="joinTeam(t)">Join Group</button> </li>
-    </ul>
+    <button type="button" class="btn btn-primary">
+      <i class="fas fa-search"></i>
+    </button>
   </div>
 
+  <ul *ngFor="let g of allGroups">
+    <li>{{this.g.groupName}}, {{this.g.members.length}} members <button type="button" (click)="joinGroup(g)">Join
+        Group</button> </li>
+  </ul>
 </div>

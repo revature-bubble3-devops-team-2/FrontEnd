@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Group } from 'app/models/group';
-import { url } from 'inspector';
+// import { url } from 'inspector';
 import { Observable } from 'rxjs';
 
-const baseurl= `${url}/`;
+// const baseurl= `${url}/`;
 
 @Injectable({
   providedIn: 'root'
