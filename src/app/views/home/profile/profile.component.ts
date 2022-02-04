@@ -2,8 +2,8 @@ import { PostService } from 'app/services/post.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from 'app/services/profile.service';
-import { Router } from '@angular/router';
-
+import { ActivatedRoute, Router } from '@angular/router';
+import {Routes , RouterModule  } from '@angular/router';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -67,7 +67,7 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  goBack(){
-    this.router.navigate(['/home']);
-  }
+  // goBack(){
+  //   this.router.navigate(['/home']);
+  // }
 }

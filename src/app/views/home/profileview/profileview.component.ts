@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProfileService } from 'app/services/profile.service';
 import { FollowService } from 'app/services/follow.service';
+import {Routes , RouterModule  } from '@angular/router';
 
 
 @Component({
@@ -38,10 +39,16 @@ export class ProfileviewComponent implements OnInit {
 
 
 
+
   async ngOnInit(): Promise<void>  {
     this.id = this.route.snapshot.paramMap.get('id');
+    let sessionProfile : any = sessionStorage.getItem("profile");
+
+    console.log(sessionProfile);
+
 
    this.profile = this.profileService.getProfileByPid(this.id).subscribe( (e : any) =>{
+     console.log(e);
     this.id = e.pid;
     this.firstName =e.firstName;
     this.lastName = e.lastName;
@@ -86,7 +93,7 @@ follow() {
 
   console.log(this.email , this.followed )
 
-    this.followService.followUserByEmail("chrismar@gmail.com").subscribe(
+    this.followService.followUserByEmail(this.email).subscribe(
       r => { this.success = true  ; this.followed = true},
       err => this.failed = true
     );
@@ -96,7 +103,7 @@ follow() {
 unfollow() {
     console.log("Email entered: ", this.email);
     this.followed = false;
-    this.followService.unfollowUserByEmail("chrismar@gmail.com").subscribe(
+    this.followService.unfollowUserByEmail(this.email).subscribe(
       e => this.followed = false,
       err => console.log(err)
     )

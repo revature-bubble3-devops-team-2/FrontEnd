@@ -5,7 +5,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbTooltipModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './views/home/home/home.component';
 
-
+import { RouterModule } from '@angular/router';
 
 
 import { AppComponent } from './app.component';
@@ -67,6 +67,7 @@ import { VerifyEmailComponent } from './views/verify-email/verify-email.componen
     BrowserAnimationsModule,
     FontAwesomeModule,
     InfiniteScrollModule,
+    RouterModule
 
   ],
 

@@ -32,6 +32,8 @@ export class NavbarComponent implements OnInit {
     faUsers = faUsers;
     faComments = faComments;
 
+    profileUrl = "/profileview/"+ this.id
+
 
 
 
