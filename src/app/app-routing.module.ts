@@ -1,3 +1,4 @@
+import { PasswordResetComponent } from './views/password-reset/password-reset.component';
 import { CheckEmailComponent } from './views/check-email/check-email.component';
 import { ProfileviewComponent } from './views/home/profileview/profileview.component';
 import { NgModule } from '@angular/core';
@@ -10,11 +11,12 @@ import { LoginGuard } from './guards/login.guard';
 import { VerifyEmailComponent } from './views/verify-email/verify-email.component';
 
 const routes: Routes = [
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent, canActivate:[LoginGuard]},
   {path: 'register', component: RegisterComponent, canActivate:[LoginGuard]},
+  {path: 'passwordreset', component: PasswordResetComponent},
   {path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
   {path : "profileview/:id", component: ProfileviewComponent},
-  {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'check-email', component: CheckEmailComponent},
   {path: 'verify/email', component: VerifyEmailComponent}
 ];
