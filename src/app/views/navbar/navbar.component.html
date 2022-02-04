@@ -26,7 +26,7 @@
           <li><fa-icon class="nav-icon" [icon]="faComments"></fa-icon>Chat</li>
           <li><fa-icon class="nav-icon" [icon]="faComments"></fa-icon>Events</li>
           <li><fa-icon class="nav-icon" [icon]="faComments"></fa-icon>Settings</li>
-          <li><fa-icon class="nav-icon" [icon]="faComments"></fa-icon>Logout</li>
+          <li><fa-icon class="nav-icon" [icon]="faComments" (click)=" logout()"></fa-icon>Logout</li>
         </ul>
     </nav>
     <a [href]="'profile/'+ id" >Edit Profile Here!</a>

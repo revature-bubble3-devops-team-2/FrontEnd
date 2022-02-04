@@ -38,6 +38,7 @@ export class NavbarComponent implements OnInit {
     let sessionProfile : any = sessionStorage.getItem("profile");
 
     this.session = JSON.parse(sessionProfile);
+    console.log(this.session);
     this.url = this.session.imgurl ? this.session.imgurl : `../../../../assets/favicon.png` ;
     this.id = this.session.pid;
   }
@@ -79,6 +80,12 @@ onSelectFile(event : any) {
 
 public delete(){
   this.url = null;
+}
+
+public logout(){
+  console.log("clicked");
+  sessionStorage.clear();
+  this.router.navigate(["/login"]);
 }
 
 }
