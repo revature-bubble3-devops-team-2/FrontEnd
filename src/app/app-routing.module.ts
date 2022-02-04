@@ -9,6 +9,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { LoginGuard } from './guards/login.guard';
 import { ProfileComponent } from './views/home/profile/profile.component';
 import { ProfileviewComponent } from './views/home/profileview/profileview.component';
+import { VerifyEmailComponent } from './views/verify-email/verify-email.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent, canActivate:[LoginGuard]},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: "group/:id", component: GroupHomeComponent},
   {path: 'teams-page', component: TeamsPageComponent},
   {path: '', redirectTo: '/login', pathMatch: 'full'},
+  {path: 'verify/email', component: VerifyEmailComponent}
 ];
 
 @NgModule({

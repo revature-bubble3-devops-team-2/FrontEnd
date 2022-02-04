@@ -30,6 +30,8 @@ import { SearchComponent } from './views/search/search.component';
 import { ProfileviewComponent } from './views/home/profileview/profileview.component';
 import { GroupHomeComponent } from './views/group-home/group-home.component';
 import { NavbarComponent } from './views/navbar/navbar.component';
+import { PasswordResetComponent } from './views/password-reset/password-reset.component';
+import { VerifyEmailComponent } from './views/verify-email/verify-email.component';
 
 
 @NgModule({
@@ -53,6 +55,8 @@ import { NavbarComponent } from './views/navbar/navbar.component';
     ProfileviewComponent,
     GroupHomeComponent,
     NavbarComponent,
+    PasswordResetComponent,
+    VerifyEmailComponent,
   ],
   imports: [
     BrowserModule,
