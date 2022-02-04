@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Group } from 'app/models/group';
 import { Profile } from 'app/models/profile';
 import { environment } from 'environments/environment';
-import { url } from 'inspector';
 import { BehaviorSubject, Observable, Subject, throwError } from 'rxjs';
 import { catchError, takeUntil } from 'rxjs/operators';
 
@@ -93,6 +92,23 @@ export class GroupService {
       })
     };
     return this.httpClient.post<Profile[]>(`${groupUrl}/${gId}/members`, requestOptions)
+    .pipe(catchError(this.handleError))
+  }
+
+  createGroup(owner:Profile, groupName:string): Observable<Group>{
+    let initialMember:Profile[] = [];
+    initialMember.push(owner);
+    let newGroup = {
+      groupName: groupName,
+      owner: owner,
+      members: initialMember
+    };
+    const requestOptions = {
+      headers: new HttpHeaders({
+        "Authorization": `${sessionStorage.getItem('Authorization')}`
+      })
+    };
+    return this.httpClient.post<Group>(`${groupUrl}/save`, newGroup, requestOptions)
     .pipe(catchError(this.handleError))
   }
 
