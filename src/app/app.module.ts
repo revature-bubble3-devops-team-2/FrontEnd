@@ -32,6 +32,8 @@ import { InterceptorService } from './helper/interceptor.service';
 import { CreateCommentComponent } from './views/posts/create-comment/create-comment.component';
 import { SearchComponent } from './views/search/search.component';
 import { ProfileviewComponent } from './views/home/profileview/profileview.component';
+import { PasswordResetComponent } from './views/password-reset/password-reset.component';
+import { VerifyEmailComponent } from './views/verify-email/verify-email.component';
 
 
 @NgModule({
@@ -52,6 +54,8 @@ import { ProfileviewComponent } from './views/home/profileview/profileview.compo
     PostFeedComponent,
     SearchComponent,
     ProfileviewComponent,
+    PasswordResetComponent,
+    VerifyEmailComponent,
   ],
   imports: [
     BrowserModule,
