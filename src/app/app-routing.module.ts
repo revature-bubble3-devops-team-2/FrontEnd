@@ -1,3 +1,4 @@
+import { CheckEmailComponent } from './views/check-email/check-email.component';
 import { ProfileviewComponent } from './views/home/profileview/profileview.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
   {path : "profileview/:id", component: ProfileviewComponent},
   {path: '', redirectTo: '/login', pathMatch: 'full'},
+  {path: 'check-email', component: CheckEmailComponent},
   {path: 'verify/email', component: VerifyEmailComponent}
 ];
 

@@ -34,6 +34,7 @@ import { SearchComponent } from './views/search/search.component';
 import { ProfileviewComponent } from './views/home/profileview/profileview.component';
 import { PasswordResetComponent } from './views/password-reset/password-reset.component';
 import { VerifyEmailComponent } from './views/verify-email/verify-email.component';
+import { CheckEmailComponent } from './views/check-email/check-email.component';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import { VerifyEmailComponent } from './views/verify-email/verify-email.componen
     ProfileviewComponent,
     PasswordResetComponent,
     VerifyEmailComponent,
+    CheckEmailComponent,
   ],
   imports: [
     BrowserModule,

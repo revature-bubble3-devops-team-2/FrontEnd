@@ -10,7 +10,7 @@ export class SearchComponent {
 
 
   username = '';
-  public pro = new Profile(0,'', '', '', '', '')
+  public pro = new Profile(0,'', '', '', '', '', false)
   id = 0;
   public profiles: Profile[] = []
 
