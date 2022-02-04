@@ -2,10 +2,10 @@ import { PostService } from 'app/services/post.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from 'app/services/profile.service';
-import { Router } from '@angular/router';
+import { Router  } from '@angular/router';
 import { faHome, faUserFriends, faUsers } from '@fortawesome/free-solid-svg-icons';
 import { faIdCard, faComments } from '@fortawesome/free-regular-svg-icons';
-
+import {Routes , RouterModule  } from '@angular/router';
 
 @Component({
   selector: 'nav-bar',
@@ -31,6 +31,8 @@ export class NavbarComponent implements OnInit {
     faUserFriends = faUserFriends;
     faUsers = faUsers;
     faComments = faComments;
+
+
 
 
   ngOnInit(): void {
@@ -83,9 +85,14 @@ public delete(){
 }
 
 public logout(){
-  console.log("clicked");
+
   sessionStorage.clear();
   this.router.navigate(["/login"]);
 }
+
+goToprofile(){
+  this.router.navigate(["/profileview/", this.id ]);
+}
+
 
 }
