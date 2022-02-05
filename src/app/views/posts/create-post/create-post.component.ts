@@ -48,6 +48,7 @@ export class CreatePostComponent implements OnInit {
     if (this.addPost.body!=='') {
       this.postService.createPost(this.addPost);
       //this.activeModal.close();
+      window.location.reload();
     } else {
       this.show=true;
     }
