@@ -1,0 +1,149 @@
+.profile-container{
+  background-color: #FFF;
+  height: 100%;
+  z-index: 999;
+}
+.profile_current-user_pfp{
+  padding-top: 25%;
+  width: 100%;
+}
+.hoverable{
+  border: 0px !important;
+  border-radius: 50% !important;
+  display: block !important;
+  margin: 0px auto !important;
+}
+.profile_current-user_text{
+  margin-top: 10px;
+  text-align: center;
+  width: 100%;
+}
+#profile_navbar{
+  text-align: left;
+}
+#profile_navbar ul{
+  list-style-type: none;
+  margin: 10% auto 0px auto;
+  width: 150px;
+}
+#profile_navbar li, #profile_navbar a{
+  color: var(--revature-dark-gray);
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 15px 0px;
+  transition: 0.33s all;
+}
+#profile_navbar li:hover, #profile_navbar a:hover{
+  color: var(--revature-light-gray);
+}
+fa-icon{
+margin-right: 5px;
+width: 10px;
+}
+
+
+/* .container {
+    margin-top: 1rem;
+    margin-left: 2rem;
+    width:100%;
+} */
+
+/* .card{
+    background-color:#72A4C2;
+} */
+
+/* :host h6{
+    color: white;
+} */
+
+/* .col-sm-3 {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: #474C55;
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+} */
+/*
+.bg-white{
+    height: 40%;
+    width: 100%;
+}
+.profile-head {
+    transform: translateY(5rem)
+} */
+
+.col-md-7{
+  background-color: #474C55;
+}
+
+.cover {
+  background-color: #72A4C2;
+}
+
+:host .modal-content{
+  border-radius: 50px;
+}
+
+/* @media  (max-width: 1024px){
+  .container{
+      margin-left:0rem;
+      width:100%;
+      text-align: center;
+  }
+  .bg-white {
+      display:flex !important;
+      flex-flow:column nowrap !important;
+  }
+  .profile-head {
+      transform: translateY(.5rem)
+  }
+} */
+
+img {
+height: 100%;
+width: 100%;
+border-radius: 50%;
+}
+
+.hoverable{
+position: relative;
+display: block;
+cursor: pointer;
+height: 200px;
+width: 200px;
+border: 5px solid #000;
+border-radius: 50%;
+}
+.hoverable .hover-text{
+position: absolute;
+display: none;
+top: 50%;
+left:  50%;
+transform: translate(-50%,-50%);
+z-index: 2;
+}
+
+.hoverable .background{
+position: absolute;
+display: none;
+top: 0;
+left:  0;
+bottom: 0;
+right: 0;
+background-color:rgba(255, 255, 255, 0.5);
+pointer-events: none;
+border-radius: 50%;
+z-index: 1;
+}
+.hoverable:hover .hover-text{
+display: block;
+}
+.hoverable:hover .background{
+display: block;
+}
+
+#fileInput{
+display: none;
+}

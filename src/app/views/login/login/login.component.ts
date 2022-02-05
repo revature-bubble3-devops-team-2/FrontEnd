@@ -18,7 +18,7 @@ export class LoginComponent {
   error: boolean = false;
   missing: boolean = false;
 
-  constructor(private profileService:ProfileService, private router: Router) { 
+  constructor(private profileService:ProfileService, private router: Router) {
   }
 
   login(){
@@ -31,9 +31,26 @@ export class LoginComponent {
     {
       this.profileService.login(this.username, this.password).subscribe(
         r => {
+
+          console.log(r);
+          console.log(r.headers.get("Authorization"));
+
           if (r.body !== null && r.headers.get("Authorization") !== null)
           {
+
             const temp = r.body as Profile;
+
+            this.loginProfile = r.body;
+
+            console.log(this.loginProfile)
+
+            this.profileService.setData(r.body);
+
+            console.log(this.profileService.getProfile());
+
+
+
+
             sessionStorage.clear();
             const tempAuth = r.headers.get("Authorization");
             if (tempAuth !== null) {
@@ -41,7 +58,7 @@ export class LoginComponent {
             }
             sessionStorage.setItem("profile", JSON.stringify(temp));
             //Store the return body into sessionStorage and then redirect to profile page
-            this.router.navigate(['/home']);  
+            this.router.navigate(['/home']);
           } else {
             //Error in case if something in the backend doesn't give us data for w.e reason.
             console.log("Returned profile but no data");

@@ -1,8 +1,9 @@
-<!-- <div class="position-fixed min-vw-100">
+<!--<div class="position-fixed min-vw-100">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand"><img src="../../../../assets/our-logo.png" width="150" height="60px" alt="Bubble Social Media Logo"/></a>
+      <a class="navbar-brand"><img src="../../../../assets/our-logo.png" width="150" height="60px"/></a>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <app-search></app-search>
       </div>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -12,12 +13,21 @@
         </ul>
     </div>
 </nav>
-</div> -->
+</div>-->
+
 <div class="view-container">
-    <app-profile></app-profile>
+    <nav-bar></nav-bar>
 
     <div class="posts-container">
-      <app-create-post></app-create-post>
+      <app-profile-header></app-profile-header>
+      <div class="
+            feed-container
+            container-fluid
+            d-flex
+            flex-column
+            align-items-center">
+          <app-create-post class="col"></app-create-post>
+        </div>
         <div
           class="
             feed-container

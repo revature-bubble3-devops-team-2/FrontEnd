@@ -1,9 +1,5 @@
 .create-post-container{
-  background-color: #FFF;
-  border: 1px solid rgba(0,0,0,.125);
-  border-radius: 20px;
-  margin: 20px 45px;
-  padding: 10px 20px;
+  margin-top: 30px;
 }
 #create-post{
   border: 0px;
@@ -19,38 +15,35 @@
 #create-post-btn{
   float: right;
 }
+
+
+/* OLD */
 /* :host textarea {
     outline: none;
     box-shadow:none !important;
     border:1px solid #ccc !important;
     }
-
 .rounded{
    border-radius: 2rem!important;
     padding: 0.75rem;
 }
-
 .header{
     padding-top: 10px;
     text-align: center;
 }
-
 .card-body{
     background-color: #F26925;
     overflow: hidden;
 }
-
 .submit{
     text-align: center;
 }
-
 :host label{
     display: block;
     color:#474C55;
     font-weight: bold;
     margin-bottom:0;
 }
-
 .error{
     margin: 1rem 0;
     font-size: .80rem;
@@ -59,7 +52,81 @@
     background-color: white;
     text-align: center;
 }
-
 .btn-dark {
     border-radius: 30px;
 } */
+
+/* OLD */
+.post-feed-container {
+  width: 100%;
+  margin-left: 2rem;
+}
+
+.post-card {
+  border-radius: 20px;
+  padding: 0 !important;
+  background-color: white;
+  cursor: pointer;
+}
+
+:host header {
+    padding: 1rem;
+}
+
+:host h2, h4 {
+  margin: 0 !important;
+  color: #474c55 !important;
+}
+
+.card-text {
+  max-height: 100px;
+  overflow: hidden;
+  cursor: pointer;
+  mask-image: linear-gradient(180deg, #000 60%, transparent);
+  -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent);
+  margin-bottom: 2rem;
+}
+
+.user-info {
+  margin: 0.8rem 0;
+}
+
+.image-container {
+  max-height: 512px;
+  margin: 0px auto;
+}
+
+.follow-btn {
+  border: none;
+  text-align: center;
+  background-color: #f26925;
+  border-radius: 20px;
+  padding: 6px 20px !important;
+}
+
+.comment-icon {
+  margin-right: 4px;
+  color:#007bff;
+}
+
+.btn-div {
+  margin: 1rem;
+  padding: 1rem;
+}
+
+:host a:hover {
+  text-decoration: none;
+}
+
+:host fa-icon {
+  font-size: 14pt;
+}
+
+.post-date {
+  margin-top: 3px;
+  font-size: 14px;
+}
+
+:host hr {
+  margin: 0 1rem !important;
+}

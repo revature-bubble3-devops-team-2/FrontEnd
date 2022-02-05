@@ -25,9 +25,9 @@
       </div>
     </section>
     <div class="post-feed_engagement-buttons">
-        <fa-icon class="comment-icon" [icon]="faComment" (click)="open(post)"></fa-icon>
-        <app-like [postInfo]="post"></app-like>
-    </div>
+      <fa-icon class="comment-icon" [icon]="faComment" (click)="open(post)"></fa-icon>
+      <app-like [postInfo]="post"></app-like>
+  </div>
   </div>
   <div class="d-flex justify-content-center" *ngIf="Loading">
     <div class="spinner-border" role="status">

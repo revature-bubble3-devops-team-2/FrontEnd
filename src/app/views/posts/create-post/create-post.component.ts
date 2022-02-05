@@ -38,7 +38,6 @@ export class CreatePostComponent implements OnInit {
     if(sessionProfile!=null){
       this.profile = JSON.parse(sessionProfile);
     }
-
   }
 
   ngOnDestroy(): void {
@@ -57,4 +56,29 @@ export class CreatePostComponent implements OnInit {
   closeModal() {
     this.modalService.dismissAll();
   }
-}
+
+
+  changeFile(file: any) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+    });
+  }
+
+
+  onSelectFile(event : any) {
+    if (event.target.files && event.target.files[0]) {
+
+      let file = event.target.files[0] ;
+
+      this.changeFile(file).then((e : any)=>{ this.addPost.imgURL = e ; console.log(e)}) }
+
+    }
+
+
+  }
+
+
+
