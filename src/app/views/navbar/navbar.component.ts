@@ -5,7 +5,7 @@ import { ProfileService } from 'app/services/profile.service';
 import { Router  } from '@angular/router';
 import { faHome, faUserFriends, faUsers } from '@fortawesome/free-solid-svg-icons';
 import { faIdCard, faComments } from '@fortawesome/free-regular-svg-icons';
-import {Routes , RouterModule  } from '@angular/router';
+
 
 @Component({
   selector: 'nav-bar',
@@ -45,7 +45,6 @@ export class NavbarComponent implements OnInit {
     let sessionProfile : any = sessionStorage.getItem("profile");
 
     this.session = JSON.parse(sessionProfile);
-    // this.url = this.session.imgurl ? this.session.imgurl : `../../../../assets/favicon.png` ;
     this.id = this.session.pid;
      this.profileService.getProfileByPid(this.id).subscribe( (e : any) =>{
       this.url  = e.imgurl ?  e.imgurl : `../../../../assets/favicon.png` ;

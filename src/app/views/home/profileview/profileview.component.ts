@@ -5,7 +5,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProfileService } from 'app/services/profile.service';
 import { FollowService } from 'app/services/follow.service';
-import {Routes , RouterModule  } from '@angular/router';
 
 
 @Component({
@@ -27,7 +26,7 @@ export class ProfileviewComponent implements OnInit {
   lastName: any ;
   email: any ;
   username : any;
-  url : any ;
+  url : any  =  `../../../../assets/favicon.png`;
   posts :any[] =[] ;
   profilePosts : Post[] =[];
 
@@ -60,11 +59,6 @@ export class ProfileviewComponent implements OnInit {
     this.url  = e.imgurl ?  e.imgurl : `../../../../assets/favicon.png` ;
     this.username = e.username;
     this.getFollowerPosts(1);
-
-    // console.log("===========================================")
-    // this.profileService.getPosts(e.pid).subscribe(e=> console.log(e))
-    // console.log("===========================================")
-
 
     });
 

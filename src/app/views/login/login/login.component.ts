@@ -32,9 +32,6 @@ export class LoginComponent {
       this.profileService.login(this.username, this.password).subscribe(
         r => {
 
-          // console.log(r);
-          // console.log(r.headers.get("Authorization"));
-
           if (r.body !== null && r.headers.get("Authorization") !== null)
           {
 
