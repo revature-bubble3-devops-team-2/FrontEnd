@@ -1,8 +1,8 @@
 <div class="view-container">
   <nav-bar></nav-bar>
 
-
-<div class="container d-flex justify-content-center align-items-center posts-container">
+<!-- align-items-center  -->
+<div class="container d-flex justify-content-center posts-container " style="padding-top: 30px;">
 
     <div class="card">
         <div class="upper"> <img src="https://i.imgur.com/Qtrsrk5.jpg" alt="image-loading" class="img-fluid"> </div>
@@ -19,15 +19,22 @@
         />
       </div>
     </div>
+
+
     <div class="mt-5 text-center">
+
       <h4 class="mb-0">{{ firstName + " " + lastName }}</h4>
       <span class="text-muted d-block mb-2">{{ username }}</span>
       <span class="text-muted d-block mb-2">{{ email }}</span>
       <app-modal-button *ngIf=" id ==  sessionId"></app-modal-button>
+
+
       <button  *ngIf=" ! followed &&   id !=  sessionId " type="submit" class="btn btn-primary btn-sm follow" (click)="follow()">Follow</button>
       <button *ngIf="  followed &&   id !=  sessionId " type="submit" class="btn btn-primary btn-sm follow" (click)="unfollow()">Unfollow</button>
-      <app-follow *ngIf=" id ==  sessionId" ></app-follow>
+
     </div>
+
+    <app-follow *ngIf=" id ==  sessionId"  style="padding-top: 80px"></app-follow>
 
     <app-post-feed [posts]="profilePosts" class="col"></app-post-feed>
 
