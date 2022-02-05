@@ -1,3 +1,4 @@
+import { Profile } from './../../../models/profile';
 import { Post } from 'app/models/post';
 import { PostService } from 'app/services/post.service';
 import { Component, OnInit } from '@angular/core';
@@ -18,16 +19,15 @@ export class ProfileviewComponent implements OnInit {
     private  postService : PostService , private router: Router  , private followService:FollowService) { }
 
 
-  profile : any;
+  profile : Profile | any;
+  followersProfiles : Profile[] | any;
   id : any ;
+  sessionId : any;
   firstName: any ;
   lastName: any ;
   email: any ;
   username : any;
-
-
   url : any ;
-
   posts :any[] =[] ;
   profilePosts : Post[] =[];
 
@@ -35,7 +35,7 @@ export class ProfileviewComponent implements OnInit {
   failed: boolean = false;
   success: boolean = false;
   followed : boolean = false;
-  // successUnfollow: boolean = false;
+
 
 
 
@@ -43,12 +43,16 @@ export class ProfileviewComponent implements OnInit {
   async ngOnInit(): Promise<void>  {
     this.id = this.route.snapshot.paramMap.get('id');
     let sessionProfile : any = sessionStorage.getItem("profile");
+    sessionProfile = JSON.parse(sessionProfile);
+    this.sessionId = sessionProfile.pid;
 
-    console.log(sessionProfile);
+    console.log(this.sessionId );
+    console.log(this.id)
 
-
+    console.log(this.id ==this.sessionId )
    this.profile = this.profileService.getProfileByPid(this.id).subscribe( (e : any) =>{
-     console.log(e);
+    this.followersProfiles = e.following;
+    console.log(this.followersProfiles);
     this.id = e.pid;
     this.firstName =e.firstName;
     this.lastName = e.lastName;
@@ -94,7 +98,11 @@ follow() {
   console.log(this.email , this.followed )
 
     this.followService.followUserByEmail(this.email).subscribe(
-      r => { this.success = true  ; this.followed = true},
+      r => { this.success = true  ;
+        console.log(this.email);
+        console.log(r);
+
+        this.followed = true},
       err => this.failed = true
     );
 }
