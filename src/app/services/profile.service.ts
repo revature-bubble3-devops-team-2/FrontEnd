@@ -78,7 +78,7 @@ export class ProfileService {
   }
 
   getProfileByUsername(username: string): Observable<Profile>{
-    return this.http.get<Profile>(`${environment.url}/profile/search${username}`)
+    return this.http.get<Profile>(`${environment.url}/profile/search/${username}`)
   }
 
 
