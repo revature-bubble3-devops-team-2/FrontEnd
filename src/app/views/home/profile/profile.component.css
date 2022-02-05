@@ -104,3 +104,15 @@ img {
 #fileInput{
   display: none;
 }
+
+#user-info
+{
+  margin:5px;
+  padding-left: 5px;
+}
+
+#user-title
+{
+  margin: 5px;
+  padding: 5px;
+}

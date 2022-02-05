@@ -1,14 +1,16 @@
 <div>
 
   <form class="form-inline my-2 my-lg-0">
-    <input [(ngModel)] ="username" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" aria-describedby="addon-wrapping" >
-    <button class="btn btn-outline-success my-2 my-sm-0" (click)="searchUser()">Search</button>
+    <input name="username" type="text" placeholder="Search" #username>
+    <button class="" (click)="searchUser(username.value)">Search</button>
   </form>
-
+  <div class="card" id="search-results">
+    <datalist *ngFor="let p of profiles" class="list-group">
+      <option>{{ p.username }}</option>
+    </datalist>
+  </div>
 </div>
 
 
-<ul *ngFor="let p of profiles" class="list-group">
-  <li class="list-group-item">{{ p.username }}</li>
-</ul>
+
 

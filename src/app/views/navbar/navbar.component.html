@@ -15,7 +15,7 @@
       <!-- <app-modal-button></app-modal-button> -->
   </div>
   <div class="profile_current-user_text">
-      <h4>{{this.profile.firstName}} {{this.profile.lastName}}</h4>
+      <h4><a routerLink="/profileview/{{this.profile.pid}}">{{this.profile.firstName}} {{this.profile.lastName}}</a></h4>
       <!-- <p class="small mb-4"> <em class="fas fa-map-marker-alt mr-2"></em> {{this.profile.email}}</p> -->
       <nav id="profile_navbar">
         <ul>
@@ -26,7 +26,8 @@
           <li><fa-icon class="nav-icon" [icon]="faComments"></fa-icon>Chat</li>
           <li><fa-icon class="nav-icon" [icon]="faCalendar"></fa-icon>Events</li>
           <li><fa-icon class="nav-icon" [icon]="faCog"></fa-icon>Settings</li>
-          <li><fa-icon class="nav-icon" [icon]="faSignOutAlt"></fa-icon>Logout</li>
+          <li><fa-icon class="nav-icon" [icon]="faSignOutAlt"></fa-icon><a routerLink="/profileview/{{this.profile.pid}}">
+            Logout</a></li>
         </ul>
     </nav>
   </div>
