@@ -3,9 +3,9 @@
     <header>
       <div class="d-flex justify-content-between user-info">
         <div class="post-feed_author-info">
-          <img
-          src="../../../../assets/favicon.png" alt="..."
-          width="70" />
+     <a [href]="'/profileview/' + post.creator.pid">   <img
+          [src]=" (post.creator?.imgurl )? post.creator?.imgurl :  '../../../../assets/favicon.png'" alt="..."
+          width="70" /> </a>
           <h4>{{ post.creator?.username }}</h4>
           <p class="text-muted post-date">{{ post.datePosted | date }}</p>
         </div>
