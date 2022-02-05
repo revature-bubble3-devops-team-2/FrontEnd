@@ -3,6 +3,7 @@ import { RegisterComponent } from './../register/register/register.component';
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'environments/environment';
 import { EmailModel } from 'app/models/email-mod';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-password-reset',
@@ -29,11 +30,11 @@ export class PasswordResetComponent implements OnInit {
   success: boolean = false;
   emailVerified: boolean = false;
 
-  constructor(private profileService: ProfileService) { }
+  constructor(private profileService: ProfileService, private router: Router) { }
 
   ngOnInit(): void {
 
-
+    console.log(this.router.url);
   }
 
 
@@ -81,7 +82,7 @@ export class PasswordResetComponent implements OnInit {
     }
     localStorage.setItem('randomCode',randCode);
     console.log(this.email)
-    return `${environment.angUrl}/verify/email?randomCode=${randCode}&email=${this.email}`;
+    return `${environment.angUrl}/email/verified/updatepassword?randomCode=${randCode}&email=${this.email}`;
     }
 
   }
