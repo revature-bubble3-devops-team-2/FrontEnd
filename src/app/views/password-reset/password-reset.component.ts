@@ -3,7 +3,7 @@ import { RegisterComponent } from './../register/register/register.component';
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'environments/environment';
 import { EmailModel } from 'app/models/email-mod';
-import { Route, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-password-reset',
@@ -14,8 +14,6 @@ export class PasswordResetComponent implements OnInit {
 
 
   //profile: Profile = {};
-  firstname: string = "";
-  lastname: string = "";
   email: string = "";
   username: string = "";
   psw: string = "";
@@ -30,16 +28,55 @@ export class PasswordResetComponent implements OnInit {
   success: boolean = false;
   emailVerified: boolean = false;
 
-  constructor(private profileService: ProfileService, private router: Router) { }
+  constructor(private profileService: ProfileService, private route: ActivatedRoute, private router: Router) { }
 
+  randomCode?: string;
   ngOnInit(): void {
 
-    console.log(this.router.url);
-  }
+    this.route.queryParams
+    .subscribe(params => {
+      console.log(params);
+      this.randomCode = params.randomCode;
+      this.email = params.email;
+      console.log(this.randomCode);
+
+      if(!!this.randomCode){
+        if( localStorage.getItem("randomCode") == this.randomCode){
+          this.emailVerified = true;
+          //localStorage.removeItem('randomCode');
+          this.updatePassword();
+        }
+      }
+
+    console.log(this.route.url);
+  })
+ }
 
 
   updatePassword(){
 
+    if(this.psw == "" || this.pswrepeat == ""){
+      this.missing = true;
+    }
+    else if(this.psw !== this.pswrepeat){
+      this.missing = false;
+      this.pswMatch = true;
+    }
+    else{
+      this.missing = false;
+      this.profileService.getProfileByEmailAndUpdatePassword(this.email, this.psw).subscribe(
+        (data) => {
+          console.log(data.body);
+          this.success = true;
+
+          setTimeout(() => {
+            this.router.navigate(['/login']);
+          }, 2000);
+        }
+      );
+
+    }
+    
   }
 
   verifyEmail(){
@@ -82,7 +119,7 @@ export class PasswordResetComponent implements OnInit {
     }
     localStorage.setItem('randomCode',randCode);
     console.log(this.email)
-    return `${environment.angUrl}/email/verified/updatepassword?randomCode=${randCode}&email=${this.email}`;
+    return `${environment.angUrl}/email/verify/password?randomCode=${randCode}&email=${this.email}`;
     }
 
   }

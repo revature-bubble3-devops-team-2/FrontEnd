@@ -80,6 +80,9 @@ getEmailMod(){
   verifyUser(email:string): Observable<any>{
     return this.http.post(environment.url+'/validate', email, {observe: 'response'})
   }
+  getProfileByEmailAndUpdatePassword(email:string, password: string):  Observable<HttpResponse<Profile>>{
+    return this.http.post(environment.url+'/email/verify/password', {email, password}, {observe: 'response'})
+  }
 
   verifyEmailForPasswordUpdate(emailModel:EmailModel): Observable<any>{
     return this.http.post(environment.url+'/email/verify/passwordupdate', emailModel, {observe: 'response'})
