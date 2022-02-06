@@ -1,7 +1,7 @@
 <div class="profile-container">
   <div class="profile_current-user_pfp">
     <label class="hoverable" for="fileInput">
-      <img [src]="url"
+      <img [(src)]="url"
       alt="Bubble profile photo for {{this.profile.firstName}} {{this.profile.lastName}}">
       <div class="hover-text">Choose file</div>
       <div class="background"></div>
@@ -19,9 +19,9 @@
       <!-- <p class="small mb-4"> <em class="fas fa-map-marker-alt mr-2"></em> {{this.profile.email}}</p> -->
       <nav id="profile_navbar">
         <ul>
-          <li><fa-icon class="nav-icon" [icon]="faHome"></fa-icon>Home</li>
+          <li><a [href]="['/home']"><fa-icon class="nav-icon" [icon]="faHome"></fa-icon>Home</a></li>
           <!-- <li [routerLink]="['profile']"><fa-icon class="nav-icon" [icon]="faIdCard"></fa-icon>Profile</li> -->
-          <li><a href='{{profilePage}}'><fa-icon class="nav-icon" [icon]="faIdCard"></fa-icon>Profile</a></li>
+          <li><a [href]="['/profileview/'+ id]"><fa-icon class="nav-icon" [icon]="faIdCard"></fa-icon>Profile</a></li>
           <li><fa-icon class="nav-icon" [icon]="faUserFriends"></fa-icon>Followers</li>
           <li><fa-icon class="nav-icon" [icon]="faUsers"></fa-icon>Group</li>
           <li><fa-icon class="nav-icon" [icon]="faComments"></fa-icon>Chat</li>

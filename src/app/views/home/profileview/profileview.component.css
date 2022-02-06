@@ -1,5 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap");
 
+nav-bar , app-following-list{
+  /* border: 1px solid var(--revature-light-gray); */
+  width: 30%;
+}
+.posts-container{
+  background-color: #f0f2f5;
+  width: 70%;
+}
 
 .container {
     height: 100vh

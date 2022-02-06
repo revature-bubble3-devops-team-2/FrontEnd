@@ -13,17 +13,20 @@ import { faIdCard, faComments, faCalendar } from '@fortawesome/free-regular-svg-
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  constructor(private profileService: ProfileService , private httpClient : HttpClient  ,
+    private router: Router  , private postService : PostService ) { }
 
   // Profile Info
-  id = 0;
+  id : number =0;
   firstName: string = "";
   lastName: string = "";
   email: string = "";
   updated: boolean = false;
   credential: string = "";
   key ="";
-  url : any = this.profileService.getProfile().imgurl  ?  this.profileService.getProfile().imgurl :  `../../../../assets/favicon.png` ;
-  session : any ;
+  session : any = {};
+  url : any = this.session.imgurl ? this.session.imgurl : `../../../../assets/favicon.png`
+
 
     // Icons
     faHome = faHome;
@@ -38,57 +41,76 @@ export class NavbarComponent implements OnInit {
     // Links
     public profilePage: string = "../profile/123" + this.id;
 
+    profileUrl = "/profileview/"+ this.id
+
+
+
 
   ngOnInit(): void {
 
     let sessionProfile : any = sessionStorage.getItem("profile");
 
     this.session = JSON.parse(sessionProfile);
-    this.url = this.session.imgurl ? this.session.imgurl : `../../../../assets/favicon.png` ;
     this.id = this.session.pid;
+     this.profileService.getProfileByPid(this.id).subscribe( (e : any) =>{
+      this.url  = e.imgurl ?  e.imgurl : `../../../../assets/favicon.png` ;
+      this.profileService.getProfile().imgurl =  e.imgurl;
+      });
+
   }
 
-  constructor(private profileService: ProfileService , private httpClient : HttpClient  ,
-    private router: Router  , private postService : PostService ) { }
 
-  get profile(){
-      let sessionProfile = sessionStorage.getItem("profile");
-      if(sessionProfile!=null){
-      return JSON.parse(sessionProfile);
-      }
-  }
 
-  changeFile(file: any) {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = error => reject(error);
-    });
-  }
-
-  /*
-  @autor update image team
-  */
-
-  onSelectFile(event : any) {
-
-    if (event.target.files && event.target.files[0]) {
-        const file = event.target.files[0];
-        this.changeFile(file).then((e: any): any => {
-          this.profileService.setImhg(e)
-          this.url = e;
-          this.profileService.updateProfile(this.profileService.getProfile()).subscribe(d=> console.log(d))
-        });
+ get profile(){
+    let sessionProfile = sessionStorage.getItem("profile");
+    if(sessionProfile!=null){
+     return JSON.parse(sessionProfile);
     }
   }
 
-  public delete(){
-    this.url = null;
-  }
+changeFile(file: any) {
+  return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = error => reject(error);
+  });
+}
 
-  public logout(): void {
-    window.sessionStorage.clear();
-    window.location.reload();
+/*
+@autor update image team
+*/
+
+onSelectFile(event : any) {
+
+  if (event.target.files && event.target.files[0]) {
+      const file = event.target.files[0];
+      this.changeFile(file).then((e: any): any => {
+        this.profileService.setImhg(e)
+        this.url = e;
+        this.profileService.updateProfile(this.profileService.getProfile()).subscribe(d=> {
+          this.profileService.getProfile().imgurl = d.imgurl ;
+          this.url = d.imgurl;
+          window.location.reload();
+        });
+
+      });
   }
+}
+
+public delete(){
+  this.url = null;
+}
+
+public logout(){
+
+  sessionStorage.clear();
+  this.router.navigate(["/login"]);
+}
+
+goToprofile(){
+  this.router.navigate(["/profileview/", this.id ]);
+}
+
+
 }

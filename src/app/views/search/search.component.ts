@@ -12,7 +12,7 @@ export class SearchComponent {
   username = '';
   public pro = new Profile(0,'', '', '', '', '')
   id = 0;
-  public profiles: Profile[] = []
+  public profiles: any
 
   constructor(private profile: ProfileService) { }
 
@@ -20,10 +20,13 @@ export class SearchComponent {
     this.id = id
   }
 
-  public searchUser(){
-    this.profile.getProfileByUsername(this.username)
-      //.subscribe(data => {this.pro = data, this.setid(this.pro.pid ?? 0)})
-      .subscribe(data => this.profiles.push(data))
+  public searchUser(username:string){
+    console.log(username)
+    this.profile.getProfileByUsername(username)
+      .subscribe(data => this.profiles = data)
+
+    //TODO: change "search-results" to visibility = visible
   }
+
 
 }

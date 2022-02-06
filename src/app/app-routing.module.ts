@@ -7,13 +7,15 @@ import { AuthGuard } from './guards/auth.guard';
 import { LoginGuard } from './guards/login.guard';
 import { ProfileComponent } from './views/home/profile/profile.component';
 import { ProfileviewComponent } from './views/home/profileview/profileview.component';
+import { VerifyEmailComponent } from './views/verify-email/verify-email.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent, canActivate:[LoginGuard]},
   {path: 'register', component: RegisterComponent, canActivate:[LoginGuard]},
   {path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
-  {path : "profile/:id", component: ProfileComponent},
-  {path : "profileview/:id", component: ProfileviewComponent},
+  {path : "profile/:id", component: ProfileComponent , canActivate:[AuthGuard],pathMatch: 'full'},
+  {path : "profileview/:id", component: ProfileviewComponent, pathMatch: 'full' },
+  {path: 'verify/email', component: VerifyEmailComponent},
   {path: '', redirectTo: '/login', pathMatch: 'full'},
 ];
 

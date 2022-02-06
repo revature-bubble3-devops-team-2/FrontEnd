@@ -1,12 +1,33 @@
 .create-post-container{
   margin-top: 30px;
 }
+.create-post-form{
+  padding: 15px 10px 10px 10px;
+}
 #create-post{
   border: 0px;
   width: 100%;
 }
 #create-post-label{
   display: none;
+}
+#fileInput, #imgURL{
+  display: none;
+}
+.create-post_ui-icon{
+  color: var(--revature-blue);
+  font-size: 15px !important;
+  margin: 5px 5px 5px 0px;
+}
+#create-post_image-upload{
+  color: var(--revature-dark-gray);
+  cursor: pointer;
+  float: right;
+  margin: 2.5px 25px;
+  transition: 0.33s all;
+}
+#create-post_image-upload:hover{
+  color: var(--revature-light-gray);
 }
 .create-post_submit-btn{
   height: 35px;

@@ -21,7 +21,7 @@ export class ModalUpdateFormComponent implements OnInit {
   ngOnInit(): void {
     var modaled = document.querySelector('.modal-content');
     modaled?.setAttribute("style","border-radius:30px;");
-    
+
     var sessionProfile = sessionStorage.getItem("profile");
     if(sessionProfile!=null){
       this.profile = JSON.parse(sessionProfile);
@@ -34,7 +34,7 @@ export class ModalUpdateFormComponent implements OnInit {
     }
     if(this.firstName!=""){
       this.profile.firstName = this.firstName;
-    }  
+    }
     if(this.lastName!=""){
       this.profile.lastName = this.lastName;
     }
