@@ -39,7 +39,6 @@ export class NavbarComponent implements OnInit {
     faSignOutAlt = faSignOutAlt;
 
     // Links
-    public profilePage: string = "../profile/123" + this.id;
     profileUrl = "/profileview/"+ this.id
 
 

@@ -12,8 +12,7 @@ export class SearchComponent {
   username:string = 'defaultQuery';
   public pro = new Profile(0,'', '', '', '', '')
   id = 0;
-
-  profiles:any;
+  public profiles: any
 
   constructor(private profile: ProfileService) { }
 

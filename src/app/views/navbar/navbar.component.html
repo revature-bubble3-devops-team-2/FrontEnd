@@ -15,15 +15,14 @@
       <!-- <app-modal-button></app-modal-button> -->
   </div>
   <div class="profile_current-user_text">
-      <h4><a routerLink="/profileview/{{this.profile.pid}}">{{this.profile.firstName}} {{this.profile.lastName}}</a></h4>
-      <h4>{{this.profile.firstName}} {{this.profile.lastName}}</h4>
-
-
+      <h4><a [href]="['/profileview/'+ id]">{{this.profile.firstName}} {{this.profile.lastName}}</a></h4>
+      <!-- <p class="small mb-4"> <em class="fas fa-map-marker-alt mr-2"></em> {{this.profile.email}}</p> -->
       <nav id="profile_navbar">
         <ul>
+
           <li><a [href]="['/home']"><fa-icon class="nav-icon" [icon]="faHome"></fa-icon>Home</a></li>
-          <!-- <li [routerLink]="['profile']"><fa-icon class="nav-icon" [icon]="faIdCard"></fa-icon>Profile</li> -->
           <li><a [href]="['/profileview/'+ id]"><fa-icon class="nav-icon" [icon]="faIdCard"></fa-icon>Profile</a></li>
+          <!-- <a [href]="['/profileview/'+ id]"><fa-icon class="nav-icon" [icon]="faIdCard"></fa-icon>Profile</a> -->
           <li><fa-icon class="nav-icon" [icon]="faUserFriends"></fa-icon>Followers</li>
           <li><fa-icon class="nav-icon" [icon]="faUsers"></fa-icon>Group</li>
           <li><fa-icon class="nav-icon" [icon]="faComments"></fa-icon>Chat</li>

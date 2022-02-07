@@ -7,7 +7,7 @@
   <div class="card" id="search-results">
     <datalist *ngFor="let p of profiles" class="list-group">
       <option>{{ p.username }}</option>
-      <a routerLink="/profile/{{p.pid}}">{{ p.username }}</a>
+      <a [href]="'/profileview/' + p.pid">{{ p.username }}</a>
     </datalist>
   </div>
 </div>
