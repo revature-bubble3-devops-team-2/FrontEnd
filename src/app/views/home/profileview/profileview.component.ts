@@ -68,20 +68,35 @@ export class ProfileviewComponent implements OnInit {
 
 
   getFollowerPosts(scrollcount: number): any {
-    this.postService.getPostsByFollowers(scrollcount);
-    this.postService
-      .getFollowerPosts()
+    // this.postService.getPostsByFollowers(scrollcount);
+    // this.postService
+    //   .getFollowerPosts()
+    //   .subscribe( (data: any) => {
+    //     if (data) {
+    //       this.posts = data;
+
+    //       this.profilePosts =this.posts.filter((p:Post)=> p.creator.pid == this.id);
+    //     }
+    //   });
+
+      this.postService
+      .getAllPosts()
       .subscribe( (data: any) => {
+
+
+
         if (data) {
           this.posts = data;
-
-          this.profilePosts =this.posts.filter((p:Post)=> p.creator.pid == this.id);
+          console.log( this.posts)
+          this.profilePosts =this.posts.filter((p:Post)=>{
+           return  p.creator.pid == this.id });
         }
       });
 
-
-
 }
+
+
+
 goBack(){
   this.router.navigate(['/home']);
 }
@@ -91,7 +106,7 @@ follow() {
 
   console.log(this.email , this.followed )
 
-    this.followService.followUserByEmail(this.email).subscribe(
+    this.followService.followUserByEmail(this.email , this.sessionId).subscribe(
       r => { this.success = true  ;
         console.log(this.email);
         console.log(r);
