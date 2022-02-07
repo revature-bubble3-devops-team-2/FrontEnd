@@ -5,7 +5,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbTooltipModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './views/home/home/home.component';
 
-
+import { RouterModule } from '@angular/router';
 
 
 import { AppComponent } from './app.component';
@@ -32,10 +32,12 @@ import { InterceptorService } from './helper/interceptor.service';
 import { CreateCommentComponent } from './views/posts/create-comment/create-comment.component';
 import { SearchComponent } from './views/search/search.component';
 import { ProfileviewComponent } from './views/home/profileview/profileview.component';
+import { NavbarComponent } from './views/navbar/navbar.component';
 import { PasswordResetComponent } from './views/password-reset/password-reset.component';
 import { VerifyEmailComponent } from './views/verify-email/verify-email.component';
+import { FollowingListComponent } from './views/home/following-list/following-list.component';
 
-
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,8 +56,11 @@ import { VerifyEmailComponent } from './views/verify-email/verify-email.componen
     PostFeedComponent,
     SearchComponent,
     ProfileviewComponent,
+    NavbarComponent,
+    FollowingListComponent,
     PasswordResetComponent,
     VerifyEmailComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -67,10 +72,11 @@ import { VerifyEmailComponent } from './views/verify-email/verify-email.componen
     BrowserAnimationsModule,
     FontAwesomeModule,
     InfiniteScrollModule,
+    RouterModule
 
   ],
 
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }, HomeComponent],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }, HomeComponent,NgbActiveModal],
   entryComponents:[
     PostComponent,
     FormsModule,

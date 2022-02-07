@@ -11,9 +11,9 @@ export class FollowService {
 
   constructor(private http: HttpClient,) {  }
 
-  followUserByEmail(email: string): Observable<HttpResponse<String>> {
+  followUserByEmail(email: string , id:number): Observable<HttpResponse<String>> {
     const httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': `${this.token}`}),}
-    return this.http.post<HttpResponse<String>>(`${environment.url}/profile/follow`, `email=${email}`, httpOptions);
+    return this.http.post<HttpResponse<String>>(`${environment.url}/profile/follow`, `email=${email}&id=${id}`, httpOptions);
   }
 
   followUserById(id: number): Observable<any>
