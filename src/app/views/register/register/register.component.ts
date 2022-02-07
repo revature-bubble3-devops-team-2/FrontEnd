@@ -94,14 +94,13 @@ export class RegisterComponent implements OnInit {
     let tk = token;
     let randCode= '';
     console.log('token: '+tk)
-    if(tk){
-      for(var i =0; i < 40; i++){
-     randCode+= tk.charAt(Math.floor(Math.random() * tk.length))
+    const crypto = window.crypto;
+    let array = new Uint32Array(1);
+    crypto.getRandomValues(array);
+    var enc = new TextDecoder("utf-8");
+    enc.decode(array);
+    console.log(`this is the array ${array}`)
+    localStorage.setItem('randomCode',`${array}`);
+    return `${environment.angUrl}/verify/email?randomCode=${array}&email=${this.email}`;
     }
-    localStorage.setItem('randomCode',randCode);
-    console.log(this.email)
-    return `${environment.angUrl}/verify/email?randomCode=${randCode}&email=${this.email}`;
-    }
-
   }
-}

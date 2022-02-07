@@ -103,18 +103,12 @@ export class PasswordResetComponent implements OnInit {
   }
 
   generateEmailUrl(token: string): any {
-    let tk = token;
-    let randCode= '';
-    console.log('token: '+tk)
-    if(tk){
-      for(var i =0; i < 40; i++){
-     randCode+= tk.charAt(Math.floor(Math.random() * tk.length))
+    const crypto = window.crypto;
+    let array = new Uint32Array(1);
+    crypto.getRandomValues(array);
+    var enc = new TextDecoder("utf-8");
+    enc.decode(array);
+    localStorage.setItem('randomCode',`${array}`);
+    return `${environment.angUrl}/email/verify/password?randomCode=${array}&email=${this.email}`;
     }
-    localStorage.setItem('randomCode',randCode);
-    console.log(this.email)
-    return `${environment.angUrl}/email/verify/password?randomCode=${randCode}&email=${this.email}`;
-    }
-
-  }
-
 }
