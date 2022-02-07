@@ -1,3 +1,4 @@
+import { ProfileHeaderComponent } from './views/home/profile-header/profile-header.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -6,8 +7,6 @@ import { NgbTooltipModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './views/home/home/home.component';
 
 import { RouterModule } from '@angular/router';
-
-
 import { AppComponent } from './app.component';
 import { LoginComponent } from './views/login/login/login.component';
 import { ProfileComponent } from './views/home/profile/profile.component';
@@ -27,17 +26,17 @@ import { PostComponent } from './views/posts/post/post.component';
 import { PostFeedComponent } from './views/posts/post-feed/post-feed.component';
 import { InterceptorService } from './helper/interceptor.service';
 
-
-
 import { CreateCommentComponent } from './views/posts/create-comment/create-comment.component';
+import { GroupPageComponent } from './views/group-page/group-page.component';
 import { SearchComponent } from './views/search/search.component';
 import { ProfileviewComponent } from './views/home/profileview/profileview.component';
+import { GroupHomeComponent } from './views/group-home/group-home.component';
 import { NavbarComponent } from './views/navbar/navbar.component';
 import { PasswordResetComponent } from './views/password-reset/password-reset.component';
 import { VerifyEmailComponent } from './views/verify-email/verify-email.component';
 import { FollowingListComponent } from './views/home/following-list/following-list.component';
-
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { GroupSearchComponent } from './views/group-search/group-search.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,13 +53,16 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
     FollowComponent,
     LikeComponent,
     PostFeedComponent,
+    GroupPageComponent,
     SearchComponent,
     ProfileviewComponent,
+    GroupHomeComponent,
     NavbarComponent,
-    FollowingListComponent,
     PasswordResetComponent,
     VerifyEmailComponent,
-
+    FollowingListComponent,
+    ProfileHeaderComponent,
+    GroupSearchComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +75,6 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
     FontAwesomeModule,
     InfiniteScrollModule,
     RouterModule
-
   ],
 
   providers: [{provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }, HomeComponent,NgbActiveModal],

@@ -24,6 +24,8 @@ export class SearchComponent {
     console.log(username)
     this.profile.getProfileByUsername(username)
       .subscribe(data => this.profiles = data)
+
+    //TODO: change "search-results" to visibility = visible
   }
 
 

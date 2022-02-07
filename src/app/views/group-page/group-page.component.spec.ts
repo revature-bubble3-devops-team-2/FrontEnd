@@ -1,19 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NavbarComponent } from '../navbar/navbar.component';
 
-describe('NavbarComponent', () => {
-  let component: NavbarComponent;
-  let fixture: ComponentFixture<NavbarComponent>;
+import { GroupPageComponent } from './group-page.component';
+
+describe('GroupPageComponent', () => {
+  let component: GroupPageComponent;
+  let fixture: ComponentFixture<GroupPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NavbarComponent ]
+      declarations: [ GroupPageComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NavbarComponent);
+    fixture = TestBed.createComponent(GroupPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

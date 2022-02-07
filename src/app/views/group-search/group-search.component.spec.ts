@@ -1,19 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NavbarComponent } from '../navbar/navbar.component';
 
-describe('NavbarComponent', () => {
-  let component: NavbarComponent;
-  let fixture: ComponentFixture<NavbarComponent>;
+import { GroupSearchComponent } from './group-search.component';
+
+describe('GroupSearchComponent', () => {
+  let component: GroupSearchComponent;
+  let fixture: ComponentFixture<GroupSearchComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NavbarComponent ]
+      declarations: [ GroupSearchComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NavbarComponent);
+    fixture = TestBed.createComponent(GroupSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
