@@ -1,18 +1,14 @@
 <div class="profile-container">
-  <div class="profile_current-user_pfp">
+  <div class="profile_current-user_pfp" id="profile-header_edit-pfp">
     <label class="hoverable" for="fileInput">
       <img [(src)]="url"
-      alt="Bubble profile photo for {{this.profile.firstName}} {{this.profile.lastName}}">
-      <div class="hover-text">Choose file</div>
-      <div class="background"></div>
+      alt="Bubble profile photo for {{this.profile.firstName}} {{this.profile.lastName}}"
+      class="bubble-avatar_xl">
+      <div class="hover-text">
+        <fa-icon class="camera-icon" [icon]="faCameraRetro"></fa-icon>
+      </div>
     </label>
     <input id="fileInput" type='file' (change)=" onSelectFile($event)  ">
-      <!-- <img
-          src="../../../../assets/favicon.png"
-          alt="Bubble profile photo for {{this.profile.firstName}} {{this.profile.lastName}}"
-          width="130"
-        /> -->
-      <!-- <app-modal-button></app-modal-button> -->
   </div>
   <div class="profile_current-user_text">
       <h4><a [href]="['/profileview/'+ id]">{{this.profile.firstName}} {{this.profile.lastName}}</a></h4>

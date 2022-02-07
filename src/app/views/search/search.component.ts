@@ -12,7 +12,8 @@ export class SearchComponent {
   username:string = 'defaultQuery';
   public pro = new Profile(0,'', '', '', '', '')
   id = 0;
-  public profiles: any
+  public profiles: any;
+  displayingResults = false;
 
   constructor(private profile: ProfileService) { }
 
@@ -24,6 +25,8 @@ export class SearchComponent {
     console.log(username)
     this.profile.getProfileByUsername(username)
       .subscribe(data => this.profiles = data)
+
+      this.displayingResults = true;
   }
 
 

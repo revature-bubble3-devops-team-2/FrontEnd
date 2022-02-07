@@ -29,6 +29,12 @@
   text-align: center;
   width: 100%;
 }
+#profile-header_username{
+  color: var(--revature-light-gray);
+  display: block;
+  text-align: center;
+  width: 100%;
+}
 .hoverable{
   position: relative;
   transition: 0.33s all;
@@ -85,4 +91,9 @@
 }
 .profile-header_btn:hover > p{
   color: var(--revature-light-gray);
+}
+button{
+  background: none;
+  border: 0px;
+  color: var(--revature-white);
 }

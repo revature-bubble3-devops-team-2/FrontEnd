@@ -1,34 +1,32 @@
-body{
-  margin-top:20px;
-  background:#FAFAFA;
+#follow-list-text{
+  height: 50px;
+  padding: 10px 5px;
+  text-align: center;
 }
-/*==================================================
-Nearby People CSS
-==================================================*/
-
-.people-nearby .google-maps{
-background: #f8f8f8;
-border-radius: 4px;
-border: 1px solid #f1f2f2;
-padding: 20px;
-margin-bottom: 20px;
+.follow-list-container{
+  height: calc(100% - 70px);
+  overflow-y: scroll !important;
+  overflow-x: hidden !important;
 }
-
-.people-nearby .google-maps .map{
-height: 300px;
-width: 100%;
-border: none;
+.listed-user{
+  cursor: pointer;
+  display: inline-block;
+  margin: 15px 10px;
+  width: 250px;
 }
-
-.people-nearby .nearby-user{
-padding: 20px 0;
-border-top: 1px solid #f1f2f2;
-border-bottom: 1px solid #f1f2f2;
-margin-bottom: 20px;
+.listed-user_avatar{
+  display: inline-block;
+  width: calc(var(--revature-sm-avatar) + 10px);
 }
-
-img.profile-photo-lg{
-height: 80px;
-width: 80px;
-border-radius: 50%;
+.listed-user:hover > a > .listed-user_avatar img{
+  filter: brightness(110%);
+}
+.listed-user_info{
+  color: var(--revature-dark-gray);
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 500;
+}
+.listed-user:hover > a > .listed-user_info{
+  color: var(--revature-light-gray);
 }

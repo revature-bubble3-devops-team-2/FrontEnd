@@ -89,11 +89,10 @@ getEmailMod(){
   getProfileByUsername(username: string): Observable<Profile>{
     return this.http.get<Profile>(`${environment.url}/profile/search/${username}`)
   }
-  ///followers/{id}
+///followers/{id}
   getFollowers(pid: number): Observable<any>{
     return this.http.get(`${environment.url}/profile/followers/${pid}`)
   }
-
 
 
 

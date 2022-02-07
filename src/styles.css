@@ -15,7 +15,14 @@
 --revature-light-gray: #B9B9BA;
 
 /* Additional colors */
---revature-cool-gray: #f0f2f5;;
+--revature-cool-gray: #f0f2f5;
+
+/* Avatar Sizes */
+--revature-sm-avatar: 70px;
+--revature-md-avatar: 100px;
+--revature-lg-avatar: 150px;
+--revature-xl-avatar: 200px;
+
 }
 
 html, body{
@@ -62,6 +69,30 @@ background-color: var(--revature-light-gray);
 color: var(--revature-dark-gray);
 }
 
+.bubble-avatar_sm{
+  border-radius: 50%;
+  height: var(--revature-sm-avatar);
+  object-fit: cover !important;
+  width: var(--revature-sm-avatar);
+}
+.bubble-avatar_md{
+  border-radius: 50%;
+  height: var(--revature-md-avatar);
+  object-fit: cover !important;
+  width: var(--revature-md-avatar);
+}
+.bubble-avatar_lg{
+  border-radius: 50%;
+  height: var(--revature-lg-avatar);
+  object-fit: cover !important;
+  width: var(--revature-lg-avatar);
+}
+.bubble-avatar_xl{
+  border-radius: 50%;
+  height: var(--revature-xl-avatar);
+  object-fit: cover !important;
+  width: var(--revature-xl-avatar);
+}
 
 .animate-el{
   transition: 0.33s all;
