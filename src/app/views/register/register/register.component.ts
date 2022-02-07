@@ -72,15 +72,14 @@ export class RegisterComponent implements OnInit {
                 console.log(error);
               }
             );
-            sessionStorage.setItem("Authorization", token);
-            sessionStorage.setItem("profile", JSON.stringify(temp));
-            this.router.navigate(['/home']);
+            
+            this.router.navigate(['/login']);
           },
           (error: Error) => {
             console.log(error);
             this.taken = true;
           }
-       
+
           )
       }
       else{
@@ -96,13 +95,13 @@ export class RegisterComponent implements OnInit {
     let randCode= '';
     console.log('token: '+tk)
     if(tk){
-      for(var i =0; i < 15; i++){
+      for(var i =0; i < 40; i++){
      randCode+= tk.charAt(Math.floor(Math.random() * tk.length))
     }
     localStorage.setItem('randomCode',randCode);
     console.log(this.email)
     return `${environment.angUrl}/verify/email?randomCode=${randCode}&email=${this.email}`;
     }
-  
+
   }
 }
