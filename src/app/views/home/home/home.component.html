@@ -14,13 +14,13 @@
     </div>
 </nav>
 </div>-->
-
 <div class="view-container">
     <nav-bar></nav-bar>
 
     <div class="posts-container">
-      <app-create-post></app-create-post>
-        <div
+      <app-search></app-search>
+      <app-profile-header></app-profile-header>
+      <div
           class="
             feed-container
             container-fluid
@@ -33,7 +33,8 @@
           [infiniteScrollThrottle]="50"
           (scrolled)="onScroll()"
           [scrollWindow]="false">
-        <app-post-feed [posts]="posts" class="col"></app-post-feed>
+          <app-create-post class="col"></app-create-post>
+          <app-post-feed [posts]="posts" class="col"></app-post-feed>
         </div>
     </div>
 </div>

@@ -1,0 +1,24 @@
+#bubble-search > form{
+  margin-bottom: 5px;
+}
+#bubble-search > form > input{
+  border: 2px solid var(--revature-dark-gray);
+  border-right: 0px;
+  border-radius: 20px 0px 0px 20px;
+  padding: 3px 25px;
+  transition: 0.33s all;
+  margin-left: calc(50% - 22px);
+  width: calc(50% - 100px);
+}
+#bubble-search > form > input:focus{
+  outline: 0px;
+  margin-left: 0px;
+  width: calc(100% - 100px);
+}
+#bubble-search > form > button{
+  border-radius: 0px 20px 20px 0px;
+  width: 100px;
+}
+#search-results{
+  visibility: hidden;
+}

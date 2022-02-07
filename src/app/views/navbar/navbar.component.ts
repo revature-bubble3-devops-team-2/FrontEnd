@@ -13,6 +13,8 @@ import { faIdCard, faComments, faCalendar } from '@fortawesome/free-regular-svg-
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  constructor(private profileService: ProfileService , private httpClient : HttpClient  ,
+    private router: Router  , private postService : PostService ) { }
 
   // Profile Info
   id : number =0;
@@ -22,8 +24,9 @@ export class NavbarComponent implements OnInit {
   updated: boolean = false;
   credential: string = "";
   key ="";
-  url : any = this.profileService.getProfile().imgurl  ?  this.profileService.getProfile().imgurl :  `../../../../assets/favicon.png` ;
-  session : any ;
+  session : any = {};
+  url : any = this.session.imgurl ? this.session.imgurl : `../../../../assets/favicon.png`
+
 
     // Icons
     faHome = faHome;
@@ -34,6 +37,16 @@ export class NavbarComponent implements OnInit {
     faCalendar = faCalendar;
     faCog = faCog;
     faSignOutAlt = faSignOutAlt;
+<<<<<<< HEAD
+=======
+
+    // Links
+    public profilePage: string = "../profile/123" + this.id;
+
+    profileUrl = "/profileview/"+ this.id
+
+
+>>>>>>> d10189a5aa973271a56ad86773bbc4cacac97889
 
 
   ngOnInit(): void {
@@ -41,12 +54,15 @@ export class NavbarComponent implements OnInit {
     let sessionProfile : any = sessionStorage.getItem("profile");
 
     this.session = JSON.parse(sessionProfile);
-    this.url = this.session.imgurl ? this.session.imgurl : `../../../../assets/favicon.png` ;
     this.id = this.session.pid;
+     this.profileService.getProfileByPid(this.id).subscribe( (e : any) =>{
+      this.url  = e.imgurl ?  e.imgurl : `../../../../assets/favicon.png` ;
+      this.profileService.getProfile().imgurl =  e.imgurl;
+      });
+
   }
 
-  constructor(private profileService: ProfileService , private httpClient : HttpClient  ,
-    private router: Router  , private postService : PostService ) { }
+
 
  get profile(){
     let sessionProfile = sessionStorage.getItem("profile");
@@ -75,7 +91,12 @@ onSelectFile(event : any) {
       this.changeFile(file).then((e: any): any => {
         this.profileService.setImhg(e)
         this.url = e;
-        this.profileService.updateProfile(this.profileService.getProfile()).subscribe(d=> console.log(d))
+        this.profileService.updateProfile(this.profileService.getProfile()).subscribe(d=> {
+          this.profileService.getProfile().imgurl = d.imgurl ;
+          this.url = d.imgurl;
+          window.location.reload();
+        });
+
       });
   }
 }
@@ -83,5 +104,16 @@ onSelectFile(event : any) {
 public delete(){
   this.url = null;
 }
+
+public logout(){
+
+  sessionStorage.clear();
+  this.router.navigate(["/login"]);
+}
+
+goToprofile(){
+  this.router.navigate(["/profileview/", this.id ]);
+}
+
 
 }

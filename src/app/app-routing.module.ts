@@ -15,12 +15,19 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent, canActivate:[LoginGuard]},
   {path: 'register', component: RegisterComponent, canActivate:[LoginGuard]},
   {path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
+<<<<<<< HEAD
   {path : "profile/:id", component: ProfileComponent},
   {path : "profileview/:id", component: ProfileviewComponent},
   {path: "group/:id", component: GroupHomeComponent},
   {path: 'teams-page', component: TeamsPageComponent},
   {path: 'verify/email', component: VerifyEmailComponent},
   {path: '', redirectTo: '/login', pathMatch: 'full'}
+=======
+  {path : "profile/:id", component: ProfileComponent , canActivate:[AuthGuard],pathMatch: 'full'},
+  {path : "profileview/:id", component: ProfileviewComponent, pathMatch: 'full' },
+  {path: 'verify/email', component: VerifyEmailComponent},
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
+>>>>>>> d10189a5aa973271a56ad86773bbc4cacac97889
 ];
 
 @NgModule({

@@ -1,14 +1,11 @@
-<div>
-
-  <form class="form-inline my-2 my-lg-0">
-    <input [(ngModel)] ="username" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" aria-describedby="addon-wrapping" >
-    <button class="btn btn-outline-success my-2 my-sm-0" (click)="searchUser()">Search</button>
+<div id="bubble-search">
+  <form>
+    <input name="username" type="text" placeholder="Search" #username>
+    <button class="btn-rounded" (click)="searchUser(username.value)">Search</button>
   </form>
-
+  <div class="card" id="search-results">
+    <datalist *ngFor="let p of profiles" class="list-group">
+      <a routerLink="/profile/{{p.pid}}">{{ p.username }}</a>
+    </datalist>
+  </div>
 </div>
-
-
-<ul *ngFor="let p of profiles" class="list-group">
-  <li class="list-group-item">{{ p.username }}</li>
-</ul>
-

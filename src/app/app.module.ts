@@ -1,3 +1,4 @@
+import { ProfileHeaderComponent } from './views/home/profile-header/profile-header.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -5,6 +6,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbTooltipModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './views/home/home/home.component';
 
+import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './views/login/login/login.component';
 import { ProfileComponent } from './views/home/profile/profile.component';
@@ -32,8 +34,8 @@ import { GroupHomeComponent } from './views/group-home/group-home.component';
 import { NavbarComponent } from './views/navbar/navbar.component';
 import { PasswordResetComponent } from './views/password-reset/password-reset.component';
 import { VerifyEmailComponent } from './views/verify-email/verify-email.component';
-
-
+import { FollowingListComponent } from './views/home/following-list/following-list.component';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,6 +59,8 @@ import { VerifyEmailComponent } from './views/verify-email/verify-email.componen
     NavbarComponent,
     PasswordResetComponent,
     VerifyEmailComponent,
+    FollowingListComponent,
+    ProfileHeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -68,10 +72,11 @@ import { VerifyEmailComponent } from './views/verify-email/verify-email.componen
     BrowserAnimationsModule,
     FontAwesomeModule,
     InfiniteScrollModule,
+    RouterModule
 
   ],
 
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }, HomeComponent],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }, HomeComponent,NgbActiveModal],
   entryComponents:[
     PostComponent,
     FormsModule,
