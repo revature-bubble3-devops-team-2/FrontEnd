@@ -72,8 +72,7 @@ export class RegisterComponent implements OnInit {
                 console.log(error);
               }
             );
-            //sessionStorage.setItem("Authorization", token);
-            //sessionStorage.setItem("profile", JSON.stringify(temp));
+            
             this.router.navigate(['/login']);
           },
           (error: Error) => {

@@ -1,5 +1,4 @@
 import { ProfileService } from 'app/services/profile.service';
-import { RegisterComponent } from './../register/register/register.component';
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'environments/environment';
 import { EmailModel } from 'app/models/email-mod';
@@ -43,7 +42,7 @@ export class PasswordResetComponent implements OnInit {
       if(!!this.randomCode){
         if( localStorage.getItem("randomCode") == this.randomCode){
           this.emailVerified = true;
-          //localStorage.removeItem('randomCode');
+          localStorage.removeItem('randomCode');
           this.updatePassword();
         }
       }
@@ -102,12 +101,6 @@ export class PasswordResetComponent implements OnInit {
     }
 
   }
-
-  routeToResetPassword(){
-
-  }
-
-
 
   generateEmailUrl(token: string): any {
     let tk = token;
