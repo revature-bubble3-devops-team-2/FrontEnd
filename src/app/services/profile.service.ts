@@ -1,3 +1,4 @@
+import { EmailModel } from './../models/email-mod';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse, HttpHeaders} from '@angular/common/http';
 import { Profile } from '../models/profile';
@@ -10,13 +11,21 @@ import { environment } from 'environments/environment';
 })
 export class ProfileService {
   private profile: Profile={};
+  private emailModel: EmailModel ={};
 
   constructor(private http: HttpClient) { }
 
   setData(profile: Profile){
     this.profile = profile;
   }
-
+  setEmailMod(email: string){
+    this.emailModel.email = email;
+  }
+getEmailMod(){
+  let temp2 = this.emailModel;
+  this.emailModel={};
+  return temp2;
+}
   getProfile(){
     return this.profile;
   }
@@ -51,8 +60,20 @@ export class ProfileService {
     } else {
       return this.http.put(`${environment.url}/profile`, profile);
    }
+
   }
 
+  getPosts(id : number) :Observable<any> {
+    let token : string | any= sessionStorage.getItem("Authorization");
+    let headers = new HttpHeaders({
+      'Authorization': token,
+      'Content-Type': 'application/json'
+    });
+
+      let options = { headers: headers };
+      return this.http.get(environment.url+'/post/' +id , options );
+
+    }
 
 
 
@@ -66,6 +87,24 @@ export class ProfileService {
   }
 
   getProfileByUsername(username: string): Observable<Profile>{
-    return this.http.get<Profile>(`${environment.url}/profile/search${username}`)
+    return this.http.get<Profile>(`${environment.url}/profile/search/${username}`)
+  }
+
+
+
+
+
+  verifyEmail(emailModel:EmailModel): Observable<any>{
+    return this.http.post(environment.url+'/verfied/email', emailModel, {observe: 'response'})
+  }
+  verifyUser(email:string): Observable<any>{
+    return this.http.post(environment.url+'/validate', email, {observe: 'response'})
+  }
+  getProfileByEmailAndUpdatePassword(email:string, password: string):  Observable<HttpResponse<Profile>>{
+    return this.http.post(environment.url+'/email/verify/password', {email, password}, {observe: 'response'})
+  }
+
+  verifyEmailForPasswordUpdate(emailModel:EmailModel): Observable<any>{
+    return this.http.post(environment.url+'/email/verify/passwordupdate', emailModel, {observe: 'response'})
   }
 }
