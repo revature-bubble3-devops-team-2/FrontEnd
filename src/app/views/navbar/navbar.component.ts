@@ -38,6 +38,7 @@ export class NavbarComponent implements OnInit {
     faCog = faCog;
     faSignOutAlt = faSignOutAlt;
 
+    // Links
     profileUrl = "/profileview/"+ this.id
 
 

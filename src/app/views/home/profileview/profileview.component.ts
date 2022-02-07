@@ -20,6 +20,7 @@ export class ProfileviewComponent implements OnInit {
 
   profile : Profile | any;
   followersProfiles : Profile[] | any;
+  followersOfThisUser : Profile[] | any;
   id : any ;
   sessionId : any;
   firstName: any ;
@@ -45,10 +46,13 @@ export class ProfileviewComponent implements OnInit {
     sessionProfile = JSON.parse(sessionProfile);
     this.sessionId = sessionProfile.pid;
 
-    console.log(this.sessionId );
-    console.log(this.id)
 
-    console.log(this.id ==this.sessionId )
+
+    this.profileService.getFollowers(this.id).subscribe(e => {
+      this.followersOfThisUser = e;
+    })
+
+
    this.profile = this.profileService.getProfileByPid(this.id).subscribe( (e : any) =>{
     this.followersProfiles = e.following;
     console.log(this.followersProfiles);
@@ -59,25 +63,21 @@ export class ProfileviewComponent implements OnInit {
     this.url  = e.imgurl ?  e.imgurl : `../../../../assets/favicon.png` ;
     this.username = e.username;
     this.getFollowerPosts(1);
+    sessionProfile.following.forEach((e : Profile) => {
+
+        if(  e.pid == this.id){
+      this.followed = true
+     }
 
     });
 
 
+    });
 
   }
 
 
   getFollowerPosts(scrollcount: number): any {
-    // this.postService.getPostsByFollowers(scrollcount);
-    // this.postService
-    //   .getFollowerPosts()
-    //   .subscribe( (data: any) => {
-    //     if (data) {
-    //       this.posts = data;
-
-    //       this.profilePosts =this.posts.filter((p:Post)=> p.creator.pid == this.id);
-    //     }
-    //   });
 
       this.postService
       .getAllPosts()
@@ -111,9 +111,11 @@ follow() {
         console.log(this.email);
         console.log(r);
 
-        this.followed = true},
+        this.followed = true  },
       err => this.failed = true
     );
+
+
 }
 
 

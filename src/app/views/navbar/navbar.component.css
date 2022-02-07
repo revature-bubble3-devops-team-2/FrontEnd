@@ -26,16 +26,22 @@
   margin: 10% auto 0px auto;
   width: 150px;
 }
-#profile_navbar li{
+#profile_navbar li, #profile_navbar a,
+.profile_current-user_text a{
   color: var(--revature-dark-gray);
   cursor: pointer;
   font-size: 18px;
   font-weight: 500;
   margin: 15px 0px;
+  text-decoration: none;
   transition: 0.33s all;
 }
-#profile_navbar li:hover{
+#profile_navbar li:hover, #profile_navbar a:hover,
+.profile_current-user_text a:hover{
   color: var(--revature-light-gray);
+}
+.profile_current-user_text a{
+  font-size: 25px;
 }
 fa-icon{
 margin-right: 5px;
