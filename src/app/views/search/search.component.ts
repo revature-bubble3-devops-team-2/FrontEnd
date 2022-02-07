@@ -12,7 +12,11 @@ export class SearchComponent {
   username:string = 'defaultQuery';
   public pro = new Profile(0,'', '', '', '', '')
   id = 0;
+<<<<<<< HEAD
   profiles:any;
+=======
+  public profiles: any
+>>>>>>> theme
 
   constructor(private profile: ProfileService) { }
 
@@ -25,5 +29,6 @@ export class SearchComponent {
     this.profile.getProfileByUsername(username)
       .subscribe(data => this.profiles = data)
   }
+
 
 }
