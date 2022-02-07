@@ -14,13 +14,15 @@
         /> -->
       <!-- <app-modal-button></app-modal-button> -->
   </div>
+  <a routerLink="/teams-page">Groups</a>
   <div class="profile_current-user_text">
       <h4>{{this.profile.firstName}} {{this.profile.lastName}}</h4>
       <!-- <p class="small mb-4"> <em class="fas fa-map-marker-alt mr-2"></em> {{this.profile.email}}</p> -->
       <nav id="profile_navbar">
         <ul>
+          <li><a href='profile/999'><fa-icon class="nav-icon" [icon]="faIdCard"></fa-icon>Profile</a></li>
           <li><fa-icon class="nav-icon" [icon]="faHome"></fa-icon>Home</li>
-          <li routerLink="/profile:id"><fa-icon class="nav-icon" [icon]="faIdCard"></fa-icon>Profile</li>
+          <li routerLink="/profile/:id"><fa-icon class="nav-icon" [icon]="faIdCard"></fa-icon>Profile</li>
           <li><fa-icon class="nav-icon" [icon]="faUserFriends"></fa-icon>Followers</li>
           <li routerLink="/teams-page"><fa-icon class="nav-icon" [icon]="faUsers"></fa-icon>Group</li>
           <li><fa-icon class="nav-icon" [icon]="faComments"></fa-icon>Chat</li>

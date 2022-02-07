@@ -1,3 +1,11 @@
+.test-container {
+width: 30%;
+height: 30%;
+padding: 10px;
+background-color: cadetblue;
+border: 2px solid white;
+}
+
 #teams-container{
   background-color: rgb(198, 154, 240);
   border: 2px solid rgb(204, 74, 74);

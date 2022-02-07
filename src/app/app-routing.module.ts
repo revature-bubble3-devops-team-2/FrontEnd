@@ -19,8 +19,8 @@ const routes: Routes = [
   {path : "profileview/:id", component: ProfileviewComponent},
   {path: "group/:id", component: GroupHomeComponent},
   {path: 'teams-page', component: TeamsPageComponent},
-  {path: '', redirectTo: '/login', pathMatch: 'full'},
-  {path: 'verify/email', component: VerifyEmailComponent}
+  {path: 'verify/email', component: VerifyEmailComponent},
+  {path: '', redirectTo: '/login', pathMatch: 'full'}
 ];
 
 @NgModule({

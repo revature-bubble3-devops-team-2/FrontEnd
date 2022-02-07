@@ -1,3 +1,4 @@
+import { Profile } from 'app/models/profile';
 import { Component, OnInit } from '@angular/core';
 import { Group } from 'app/models/group';
 import { GroupService } from 'app/services/group.service';
@@ -8,15 +9,24 @@ import { GroupService } from 'app/services/group.service';
   styleUrls: ['./teams-page.component.css'],
 })
 export class TeamsPageComponent implements OnInit {
+  // profile: Profile = sessionStorage.getItem('profile');
+  search: any;
   myGroups: Group[] = [];
-  allGroups: Group[] = [];
+  groups: Group[] = [];
+  sGroup?: Group;
 
-  constructor(public service: GroupService){}
+  constructor(public groupService: GroupService){}
 
   ngOnInit(): void {
-    // this.allGroups = this.service.getAllGroups();
+
   }
 
+  public searchGroup(num: number){
+    this.groupService.getGroupByID(num).subscribe((data) => {
+      console.log(data);
+    })
+
+  }
 
   public joinGroup(temp: Group) {
     if (this.myGroups.includes(temp))
@@ -24,6 +34,7 @@ export class TeamsPageComponent implements OnInit {
     else
     this.myGroups.push(temp);
   }
+
   public leaveGroup(temp: Group) {
     this.myGroups.forEach((value, index) => {
       if (value == temp) this.myGroups.splice(index, 1);
