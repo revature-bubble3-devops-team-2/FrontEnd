@@ -9,10 +9,11 @@ import { Component } from '@angular/core';
 export class SearchComponent {
 
 
-  username = '';
+  username:string = 'defaultQuery';
   public pro = new Profile(0,'', '', '', '', '')
   id = 0;
-  public profiles: any
+
+  profiles:any;
 
   constructor(private profile: ProfileService) { }
 
@@ -24,8 +25,6 @@ export class SearchComponent {
     console.log(username)
     this.profile.getProfileByUsername(username)
       .subscribe(data => this.profiles = data)
-
-    //TODO: change "search-results" to visibility = visible
   }
 
 
