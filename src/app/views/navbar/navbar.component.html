@@ -6,7 +6,7 @@
       <div class="hover-text">Choose file</div>
       <div class="background"></div>
     </label>
-    <input id="fileInput" type='file' (change)=" onSelectFile($event)  ">
+    <input id="fileInput" type='file' (change)=" onSelectFile($event) ">
       <!-- <img
           src="../../../../assets/favicon.png"
           alt="Bubble profile photo for {{this.profile.firstName}} {{this.profile.lastName}}"
@@ -24,7 +24,7 @@
           <!-- <li [routerLink]="['profile']"><fa-icon class="nav-icon" [icon]="faIdCard"></fa-icon>Profile</li> -->
           <li><a [href]="['/profileview/'+ id]"><fa-icon class="nav-icon" [icon]="faIdCard"></fa-icon>Profile</a></li>
           <li><fa-icon class="nav-icon" [icon]="faUserFriends"></fa-icon>Followers</li>
-          <li><a [href]="['/manage-groups']"><fa-icon class="nav-icon" [icon]="faUsers"></fa-icon>Group</a></li>
+          <li><a [href]="['/group-page']"><fa-icon class="nav-icon" [icon]="faUsers"></fa-icon>Group</a></li>
           <li><fa-icon class="nav-icon" [icon]="faComments"></fa-icon>Chat</li>
           <li><fa-icon class="nav-icon" [icon]="faCalendar"></fa-icon>Events</li>
           <li><fa-icon class="nav-icon" [icon]="faCog"></fa-icon>Settings</li>

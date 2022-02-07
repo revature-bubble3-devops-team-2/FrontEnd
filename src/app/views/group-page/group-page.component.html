@@ -1,6 +1,19 @@
 <div class="view-container">
-  <nav-bar></nav-bar>
-  <div class="test-container" id="all-groups-container">
+  <!-- <nav-bar></nav-bar> -->
+  <div id="groups-container">
+    <app-group-search></app-group-search>
+    <div id="my-groups">
+    </div>
+    <div class="test-container" id="create-group-container">
+      <h2>Create a Group</h2>
+      <form #userForm="ngForm">
+        <label for="group-name">Group Name</label>
+        <input type="text" name="groupName" class="form-control" ngModel>
+        <button type="button" (click)="createGroup(userForm.value.groupName)">Submit</button>
+      </form>
+    </div>
+  </div>
+  <!-- <div class="test-container" id="all-groups-container">
     <h4>Getting all groups</h4>
     <ul *ngFor="let mg of myGroups">
       <li>{{this.mg.groupName}} members <button type="button">Group
@@ -43,13 +56,6 @@
     </ul>
   </div>
 
-  <div class="test-container" id="create-group-container">
-    <h2>Create a Group</h2>
-    <form #userForm="ngForm">
-      <label for="group-name">Group Name</label>
-      <input type="text" name="groupName" class="form-control" ngModel>
-      <button type="button">Submit</button>
-    </form>
-  </div>
+   -->
   <!-- (click)="createGroup( ,userForm.value.groupName)" -->
 </div>

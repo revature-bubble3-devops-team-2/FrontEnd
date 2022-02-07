@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GroupPageComponent } from './group-page.component';
+import { GroupSearchComponent } from './group-search.component';
 
-describe('GroupPageComponent', () => {
-  let component: GroupPageComponent;
-  let fixture: ComponentFixture<GroupPageComponent>;
+describe('GroupSearchComponent', () => {
+  let component: GroupSearchComponent;
+  let fixture: ComponentFixture<GroupSearchComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GroupPageComponent ]
+      declarations: [ GroupSearchComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GroupPageComponent);
+    fixture = TestBed.createComponent(GroupSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,11 @@
+<div id="group-search">
+  <form>
+    <input name="groupName" type="text" placeholder="Search" [(ngModel)]="groupName"/>
+    <button class="btn-rounded" (click)="searchGroup(groupName)">Search</button>
+  </form>
+  <div class="card" id="search-results">
+    <datalist *ngFor="let g of groups" class="list-group">
+      <a routerLink="/group/{{g.gid}}">{{ g.groupName }}</a>
+    </datalist>
+  </div>
+</div>
