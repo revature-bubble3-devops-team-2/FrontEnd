@@ -22,7 +22,6 @@ export class HomeComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     await this.getFollowerPosts(this.scrollcount);
-    console.log(this.profile);
   }
 
   getFollowerPosts(scrollcount: number): any {

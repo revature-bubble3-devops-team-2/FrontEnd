@@ -31,11 +31,15 @@ export class LoginComponent {
       this.profileService.login(this.username, this.password).subscribe(
         r => {
 
+<<<<<<< HEAD
 
           console.log(r);
           console.log(r.headers.get("Authorization"));
 
           if (r.body !== null && r.headers.get("Authorization") !== null && r.body.verification)
+=======
+          if (r.body !== null && r.headers.get("Authorization") !== null)
+>>>>>>> f89a8c0b2b7a7041060c4ba320b96bc18d8405d6
           {
 
             const temp = r.body as Profile;

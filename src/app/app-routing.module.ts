@@ -8,6 +8,7 @@ import { RegisterComponent } from './views/register/register/register.component'
 import { HomeComponent } from './views/home/home/home.component';
 import { AuthGuard } from './guards/auth.guard';
 import { LoginGuard } from './guards/login.guard';
+import { ProfileComponent } from './views/home/profile/profile.component';
 import { VerifyEmailComponent } from './views/verify-email/verify-email.component';
 
 const routes: Routes = [
@@ -17,9 +18,11 @@ const routes: Routes = [
   {path: 'passwordreset', component: PasswordResetComponent},
   {path: 'email/verify/password', component: PasswordResetComponent},
   {path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
-  {path : "profileview/:id", component: ProfileviewComponent},
-  {path: 'check-email', component: CheckEmailComponent},
-  {path: 'verify/email', component: VerifyEmailComponent}
+  {path : "profile/:id", component: ProfileComponent , canActivate:[AuthGuard],pathMatch: 'full'},
+  {path : "profileview/:id", component: ProfileviewComponent, pathMatch: 'full' },
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
+  {path: 'verify/email', component: VerifyEmailComponent},
+  {path: 'check-email', component: CheckEmailComponent}
 ];
 
 @NgModule({
