@@ -59,6 +59,24 @@ export class ProfileviewComponent implements OnInit {
     this.url  = e.imgurl ?  e.imgurl : `../../../../assets/favicon.png` ;
     this.username = e.username;
     this.getFollowerPosts(1);
+    sessionProfile.following.forEach((e : Profile) => {
+   //   console.log
+        if(  e.pid == this.id){
+      this.followed = true
+     }
+
+    });
+
+    // this.followersProfiles.array.forEach((e: Profile) => {
+    //  if(  e.pid == this.sessionId){
+    //   this.followed = true
+    //  }
+    // });
+
+    // if(e.pid == this.sessionId){
+
+    // }
+
 
     });
 
@@ -111,7 +129,7 @@ follow() {
         console.log(this.email);
         console.log(r);
 
-        this.followed = true},
+        this.followed = true  },
       err => this.failed = true
     );
 }
