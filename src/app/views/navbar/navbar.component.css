@@ -26,11 +26,7 @@
   margin: 10% auto 0px auto;
   width: 150px;
 }
-<<<<<<< HEAD
-#profile_navbar li{
-=======
 #profile_navbar li, #profile_navbar a{
->>>>>>> d10189a5aa973271a56ad86773bbc4cacac97889
   color: var(--revature-dark-gray);
   cursor: pointer;
   font-size: 18px;
@@ -38,11 +34,7 @@
   margin: 15px 0px;
   transition: 0.33s all;
 }
-<<<<<<< HEAD
-#profile_navbar li:hover{
-=======
 #profile_navbar li:hover, #profile_navbar a:hover{
->>>>>>> d10189a5aa973271a56ad86773bbc4cacac97889
   color: var(--revature-light-gray);
 }
 fa-icon{

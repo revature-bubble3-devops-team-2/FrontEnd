@@ -14,7 +14,6 @@ export class GroupPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.profile = JSON.parse("sessionStorage.getItem('profile'")
-
   }
 
   public createGroup(gname: string){
