@@ -5,8 +5,8 @@ import { GroupService } from 'app/services/group.service';
 
 @Component({
   selector: 'app-teams-page',
-  templateUrl: './teams-page.component.html',
-  styleUrls: ['./teams-page.component.css'],
+  templateUrl: './group-page.component.html',
+  styleUrls: ['./group-page.component.css'],
 })
 export class TeamsPageComponent implements OnInit {
   // profile: Profile = sessionStorage.getItem('profile');

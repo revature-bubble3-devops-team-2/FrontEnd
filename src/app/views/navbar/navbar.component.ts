@@ -37,8 +37,6 @@ export class NavbarComponent implements OnInit {
     faCalendar = faCalendar;
     faCog = faCog;
     faSignOutAlt = faSignOutAlt;
-<<<<<<< HEAD
-=======
 
     // Links
     public profilePage: string = "../profile/123" + this.id;
@@ -46,7 +44,6 @@ export class NavbarComponent implements OnInit {
     profileUrl = "/profileview/"+ this.id
 
 
->>>>>>> d10189a5aa973271a56ad86773bbc4cacac97889
 
 
   ngOnInit(): void {

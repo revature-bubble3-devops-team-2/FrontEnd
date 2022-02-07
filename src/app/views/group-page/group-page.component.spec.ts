@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TeamsPageComponent } from './teams-page.component';
+import { TeamsPageComponent } from './group-page.component';
 
 describe('TeamsPageComponent', () => {
   let component: TeamsPageComponent;

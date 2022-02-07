@@ -1,5 +1,5 @@
 import { GroupHomeComponent } from './views/group-home/group-home.component';
-import { TeamsPageComponent } from './views/teams-page/teams-page.component';
+import { TeamsPageComponent } from './views/group-page/group-page.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './views/login/login/login.component';
@@ -15,19 +15,14 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent, canActivate:[LoginGuard]},
   {path: 'register', component: RegisterComponent, canActivate:[LoginGuard]},
   {path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
-<<<<<<< HEAD
-  {path : "profile/:id", component: ProfileComponent},
-  {path : "profileview/:id", component: ProfileviewComponent},
-  {path: "group/:id", component: GroupHomeComponent},
-  {path: 'teams-page', component: TeamsPageComponent},
-  {path: 'verify/email', component: VerifyEmailComponent},
-  {path: '', redirectTo: '/login', pathMatch: 'full'}
-=======
   {path : "profile/:id", component: ProfileComponent , canActivate:[AuthGuard],pathMatch: 'full'},
   {path : "profileview/:id", component: ProfileviewComponent, pathMatch: 'full' },
+  {path: "group/:id", component: GroupHomeComponent},
+  {path: 'group-page', component: TeamsPageComponent},
   {path: 'verify/email', component: VerifyEmailComponent},
   {path: '', redirectTo: '/login', pathMatch: 'full'},
->>>>>>> d10189a5aa973271a56ad86773bbc4cacac97889
+  {path: 'verify/email', component: VerifyEmailComponent},
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
 ];
 
 @NgModule({

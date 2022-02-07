@@ -27,7 +27,7 @@ import { PostFeedComponent } from './views/posts/post-feed/post-feed.component';
 import { InterceptorService } from './helper/interceptor.service';
 
 import { CreateCommentComponent } from './views/posts/create-comment/create-comment.component';
-import { TeamsPageComponent } from './views/teams-page/teams-page.component';
+import { TeamsPageComponent } from './views/group-page/group-page.component';
 import { SearchComponent } from './views/search/search.component';
 import { ProfileviewComponent } from './views/home/profileview/profileview.component';
 import { GroupHomeComponent } from './views/group-home/group-home.component';
