@@ -24,10 +24,10 @@ export class GroupSearchComponent {
     this.id = id
   }
 
-  public searchGroup(groupName:string){
-    console.log(groupName)
-    this.groupService.SearchGroupbyName(this.groupName)
-      .subscribe(data => this.groups = data)
+  public searchGroup(){
+    console.log(`${this.groupName}`)
+    // this.groupService.SearchGroupbyName(this.groupName)
+    //   .subscribe(data => this.groups = data)
   }
 
 }

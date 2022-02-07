@@ -8,20 +8,22 @@
       <h2>Create a Group</h2>
       <form #userForm="ngForm">
         <label for="group-name">Group Name: {{userForm.value.groupName}}</label>
-        <input type="text" name="groupName" class="form-control" ngModel>
-        <button type="button" (click)="createGroup(userForm.value.groupName)">Submit</button>
+        <input type="text" name="groupName" class="form-control" [(ngModel)]="groupName">
+        <button type="button" (click)="createGroup()">Submit</button>
       </form>
     </div>
     <div class="test-container" id="search-groups-container">
       <h4>Searching for groups</h4>
       <form #userForm="ngForm">
           <label for="group-search">Group Search: {{userForm.value.searchName}}</label>
-          <input type="text" name="searchName" class="form-control" ngModel>
-          <button type="button" (click)="searchByName(userForm.value.groupName)">Submit</button>
+          <input type="text" name="searchName" class="form-control" [(ngModel)]="searchName">
+          <button type="button" (click)="searchByName()">Submit</button>
         </form>
+        <div *ngIf="groups.length > 0">
       <ul>
-        <li *ngFor="let g of groups">{{g.groupName}}</li>
+        <li *ngFor="let g of groups; index as i">Result: {{getGroupName(i)}} <input type="button" name="join" (click)="joinGroup(i)"></li>
       </ul>
+    </div>
     </div>
 
   </div>

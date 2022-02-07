@@ -10,12 +10,11 @@ import { GroupService } from 'app/services/group.service';
   styleUrls: ['./group-page.component.css'],
 })
 export class GroupPageComponent implements OnInit {
-
   public profile: Profile | any;
   public group: Group | any;
   public groups: Group[] = [];
-  public gname: string = "";
-
+  public groupName: string = '';
+  public searchName: string = '';
 
   constructor(
     public groupService: GroupService,
@@ -28,8 +27,14 @@ export class GroupPageComponent implements OnInit {
     let prof: any = sessionStorage.getItem('profile');
     prof = JSON.parse(prof);
 
-    this.profile = new Profile(prof.pid, prof.firstName, prof.lastName, prof.passkey, prof.email, prof.username)
-    console.log(this.profile);
+    this.profile = new Profile(
+      prof.pid,
+      prof.firstName,
+      prof.lastName,
+      prof.passkey,
+      prof.email,
+      prof.username
+    );
 
     // this.profileService.getProfileByPid(prof.pid).subscribe((data:any) => {
     //   this.profile.email = data.email;
@@ -42,27 +47,54 @@ export class GroupPageComponent implements OnInit {
     // });
   }
 
-  public createGroup(gn: string) {
-    this.groupService.createGroup(this.profile, gn)
+  public createGroup() {
+    this.groupService.createGroup(this.profile, this.groupName);
   }
 
-  public searchByName(gn: string){
-    this.groupService.SearchGroupbyName(gn).subscribe((data:any) => {
-      console.log(data);
-      this.groups.push(data);
-    })
+  public searchByName() {
+    if (this.searchName == '') {
+      return;
+    } else {
+      this.groups = [];
+      this.groupService
+        .SearchGroupbyName(this.searchName)
+        .subscribe((data: any) => {
+          for (let g of data) {
+            this.groups.push(g);
+          }
+        });
+    }
   }
 
-  // public joinGroup(temp: Group) {
-  //   if (this.myGroups.includes(temp))
-  //   alert("Already in this group");
-  //   else
-  //   this.myGroups.push(temp);
-  // }
+  public getGroupName(target: number) {
+    let result = this.groups[target].groupName;
+    return result;
+  }
 
-  // public leaveGroup(temp: Group) {
-  //   this.myGroups.forEach((value, index) => {
-  //     if (value == temp) this.myGroups.splice(index, 1);
-  //   });
-  // }
+  public joinGroup(targetGroup: number) {
+    let result = this.groups[targetGroup].gid;
+    if (!result) {
+      return;
+    } else {
+      if (this.profile.myGroups.includes(this.groups[targetGroup])) {
+        alert('Already in this group');
+      } else {
+          this.groupService.joinGroup(result, this.profile.pid);
+      }
+    }
+  }
+
+  public leaveGroup(targetGroup: number) {
+    let result = this.groups[targetGroup].gid;
+    if (!result) {
+      return;
+    } else {
+      if (this.profile.myGroups.includes(this.groups[targetGroup])) {
+        alert('Already in this group');
+      } else {
+          this.groupService.leaveGroup(result, this.profile.pid);
+      }
+    }
+
+  }
 }
