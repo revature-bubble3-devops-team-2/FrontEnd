@@ -51,8 +51,20 @@ export class ProfileService {
     } else {
       return this.http.put(`${environment.url}/profile`, profile);
    }
+
   }
 
+  getPosts(id : number) :Observable<any> {
+    let token : string | any= sessionStorage.getItem("Authorization");
+    let headers = new HttpHeaders({
+      'Authorization': token,
+      'Content-Type': 'application/json'
+    });
+
+      let options = { headers: headers };
+      return this.http.get(environment.url+'/post/' +id , options );
+
+    }
 
 
 
@@ -66,6 +78,11 @@ export class ProfileService {
   }
 
   getProfileByUsername(username: string): Observable<Profile>{
-    return this.http.get<Profile>(`${environment.url}/profile/search${username}`)
+    return this.http.get<Profile>(`${environment.url}/profile/search/${username}`)
   }
+
+
+
+
+
 }
