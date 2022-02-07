@@ -1,5 +1,5 @@
 import { GroupHomeComponent } from './views/group-home/group-home.component';
-import { TeamsPageComponent } from './views/group-page/group-page.component';
+import { GroupPageComponent } from './views/group-page/group-page.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './views/login/login/login.component';
@@ -18,11 +18,11 @@ const routes: Routes = [
   {path : "profile/:id", component: ProfileComponent , canActivate:[AuthGuard],pathMatch: 'full'},
   {path : "profileview/:id", component: ProfileviewComponent, pathMatch: 'full' },
   {path: "group/:id", component: GroupHomeComponent},
-  {path: 'group-page', component: TeamsPageComponent},
+  {path: 'group-page', component: GroupPageComponent},
   {path: 'verify/email', component: VerifyEmailComponent},
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'verify/email', component: VerifyEmailComponent},
-  {path: '', redirectTo: '/login', pathMatch: 'full'},
+  {path: '', redirectTo: '/login', pathMatch: 'full'}
 ];
 
 @NgModule({

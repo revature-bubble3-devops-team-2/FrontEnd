@@ -27,7 +27,7 @@ import { PostFeedComponent } from './views/posts/post-feed/post-feed.component';
 import { InterceptorService } from './helper/interceptor.service';
 
 import { CreateCommentComponent } from './views/posts/create-comment/create-comment.component';
-import { TeamsPageComponent } from './views/group-page/group-page.component';
+import { GroupPageComponent } from './views/group-page/group-page.component';
 import { SearchComponent } from './views/search/search.component';
 import { ProfileviewComponent } from './views/home/profileview/profileview.component';
 import { GroupHomeComponent } from './views/group-home/group-home.component';
@@ -36,6 +36,7 @@ import { PasswordResetComponent } from './views/password-reset/password-reset.co
 import { VerifyEmailComponent } from './views/verify-email/verify-email.component';
 import { FollowingListComponent } from './views/home/following-list/following-list.component';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { GroupSearchComponent } from './views/group-search/group-search.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +53,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
     FollowComponent,
     LikeComponent,
     PostFeedComponent,
-    TeamsPageComponent,
+    GroupPageComponent,
     SearchComponent,
     ProfileviewComponent,
     GroupHomeComponent,
@@ -60,7 +61,8 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
     PasswordResetComponent,
     VerifyEmailComponent,
     FollowingListComponent,
-    ProfileHeaderComponent
+    ProfileHeaderComponent,
+    GroupSearchComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +75,6 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
     FontAwesomeModule,
     InfiniteScrollModule,
     RouterModule
-
   ],
 
   providers: [{provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }, HomeComponent,NgbActiveModal],

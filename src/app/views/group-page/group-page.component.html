@@ -1,5 +1,5 @@
 <div class="view-container">
-  <!-- <nav-bar></nav-bar> -->
+  <nav-bar></nav-bar>
   <div id="groups-container">
     <app-group-search></app-group-search>
     <div id="my-groups">
@@ -7,12 +7,25 @@
     <div class="test-container" id="create-group-container">
       <h2>Create a Group</h2>
       <form #userForm="ngForm">
-        <label for="group-name">Group Name</label>
+        <label for="group-name">Group Name: {{userForm.value.groupName}}</label>
         <input type="text" name="groupName" class="form-control" ngModel>
         <button type="button" (click)="createGroup(userForm.value.groupName)">Submit</button>
       </form>
     </div>
+    <div class="test-container" id="search-groups-container">
+      <h4>Searching for groups</h4>
+      <form #userForm="ngForm">
+          <label for="group-search">Group Search: {{userForm.value.searchName}}</label>
+          <input type="text" name="searchName" class="form-control" ngModel>
+          <button type="button" (click)="searchByName(userForm.value.groupName)">Submit</button>
+        </form>
+      <ul>
+        <li *ngFor="let g of groups">{{g.groupName}}</li>
+      </ul>
+    </div>
+
   </div>
+
   <!-- <div class="test-container" id="all-groups-container">
     <h4>Getting all groups</h4>
     <ul *ngFor="let mg of myGroups">
@@ -21,6 +34,7 @@
     </ul>
   </div>
 
+  // Update profile model to include groups
   <div class="test-container" id="my-groups-container">
     <h4>My groups</h4>
     <ul *ngFor="let mg of myGroups">
@@ -29,14 +43,7 @@
     </ul>
   </div>
 
-  <div class="test-container" id="search-groups-container">
-    <h4>Searching for groups</h4>
-    <input type="text" placeholder="Search" [(ngModel)]="search" />
-    <button type="button" (click)="this.searchGroup(search)">Search</button>
-    <ul>
-      <li>Group {{this.sGroup}}</li>
-    </ul>
-  </div>
+
 
   <div class="test-container" id="paginated-groups-container">
     <h4>Paginated Groups</h4>
@@ -57,5 +64,4 @@
   </div>
 
    -->
-  <!-- (click)="createGroup( ,userForm.value.groupName)" -->
 </div>
