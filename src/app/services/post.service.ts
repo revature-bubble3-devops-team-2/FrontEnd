@@ -17,11 +17,24 @@ export class PostService implements OnDestroy {
   public numLikes!: number;
   public  sessionPosts: any[] = [];
 
+
   constructor(private httpClient: HttpClient) {}
 
 
 setPosts(posts : any){
   this.sessionPosts = posts;
+}
+
+getAllPosts(): Observable<any> {
+  const requestOptions = {
+        headers: new HttpHeaders({
+          "Authorization": `${sessionStorage.getItem('Authorization')}`
+        })
+      };
+
+
+  return this.httpClient
+    .get<Post[]>(`${environment.url}/post/page/all`, requestOptions);
 }
 
 
