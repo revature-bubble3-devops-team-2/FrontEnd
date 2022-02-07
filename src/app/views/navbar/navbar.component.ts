@@ -81,12 +81,26 @@ onSelectFile(event : any) {
       const file = event.target.files[0];
       this.changeFile(file).then((e: any): any => {
         this.profileService.setImhg(e)
+        this.session.imgurl = e;
         this.url = e;
-        this.profileService.updateProfile(this.profileService.getProfile()).subscribe(d=> {
+
+        // this.profileService.updateProfile(this.profileService.getProfile()).subscribe(d=> {
+        //   this.profileService.getProfile().imgurl = d.imgurl ;
+        //   this.url = d.imgurl;
+        //   window.location.reload();
+        // });
+
+        // console.log(this.session);
+        // console.log(this.profileService.getProfile())
+
+
+        this.profileService.updateProfile(this.session).subscribe(d=> {
+          this.session.imgurl = e;
           this.profileService.getProfile().imgurl = d.imgurl ;
-          this.url = d.imgurl;
+          this.url = e;
           window.location.reload();
         });
+
 
       });
   }
