@@ -58,7 +58,10 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
     ProfileviewComponent,
     NavbarComponent,
     FollowingListComponent,
-    ProfileHeaderComponent
+    ProfileHeaderComponent,
+    PasswordResetComponent,
+    VerifyEmailComponent,
+
   ],
   imports: [
     BrowserModule,

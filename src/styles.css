@@ -13,6 +13,9 @@
 --revature-blue: #72A4C2;
 --revature-yellow: #FCB414;
 --revature-light-gray: #B9B9BA;
+
+/* Additional colors */
+--revature-cool-gray: #f0f2f5;;
 }
 
 html, body{
@@ -103,3 +106,8 @@ max-width: 1080px;
 }
 }
 */
+
+/* BOOTSTRAP OVERRIDES */
+.modal-dialog{
+  max-width: 1140px !important;
+}

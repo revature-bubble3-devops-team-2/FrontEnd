@@ -1,4 +1,63 @@
-body{
+.card-post-popup{
+  display: block;
+}
+.card-post-popup section:nth-of-type(1){
+  width: 70%;
+}
+.card-post-popup section:nth-of-type(2){
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 30%;
+}
+#create-comment_post-img{
+  display: block;
+  margin: 10px auto 0px auto;
+  max-width: 100%;
+}
+.post-feed_author-info img{
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0px 10px 0px 0px;
+}
+.post-feed_author-info h4{
+  display: inline-block;
+}
+.post-feed_engagement-buttons{
+  display: flex;
+  padding: 10px 15px 20px 15px;
+  margin-left: calc(100% - var(--post-feed-total-width));
+  text-align: right;
+  width: var(--post-feed-total-width);
+
+  /* The total width allotted for each button.  */
+  /* This is aimed at promoting uniformity.     */
+  --post-feed-button-width: 45px;
+
+  /* There are TWO buttons with FOUR sides of */
+  /* padding as per the box model.            */
+  --post-feed-total-width: calc( (var(--post-feed-button-width) * 2) + (5px * 4) );
+  /*  Calculation = (Button width * number of buttons) + (4 sides of padding)  */
+
+}
+.post-feed_engagement-buttons > *{
+  padding: 0px 5px;
+  width: var(--post-feed-button-width);
+}
+.bubble-post_bodycopy{
+  font-size: 1.15em;
+  line-height: 1.69em;
+}
+.comments{
+  list-style-type: none;
+}
+.comment-pfp{
+  border-radius: 50%;
+  float: left;
+  height: 50px;
+  width: 50px;
+}
+
+/* body{
     background:#eee;
 }
 
@@ -16,15 +75,9 @@ a {
 .blog-comment::after,
 .blog-comment-form::before,
 .blog-comment-form::after{
-    /* content: ""; */
 	display: table;
 	clear: both;
 }
-
-/* .blog-comment{
-    padding-left: 15%;
-	padding-right: 15%;
-} */
 
 .blog-comment ul{
 	list-style-type: none;
@@ -57,7 +110,7 @@ a {
 	margin-right: 0px;
     padding: 10px 20px;
     border-radius: 30px;
-    position: relative;  		
+    position: relative;
 	background: #fff;
 	color: #6b6e80;
 }
@@ -68,7 +121,7 @@ a {
 	padding-bottom: 8px;
 	margin-bottom: 10px !important;
 	border-bottom: 1px solid #eee;
-    
+
 }
 
 .blog-comment ul.comments ul{
@@ -89,4 +142,4 @@ a {
 	font-size: 26px;
 	line-height: 30px;
 	font-weight: 800;
-}
+} */
