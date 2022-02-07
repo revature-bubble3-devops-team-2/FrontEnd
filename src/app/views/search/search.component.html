@@ -1,15 +1,17 @@
 <div>
 
   <form class="form-inline my-2 my-lg-0">
-    <input name="username" type="text" placeholder="Search" #username>
-    <button class="" (click)="searchUser(username.value)">Search</button>
-  </form>
-  <div class="card" id="search-results">
-    <datalist *ngFor="let p of profiles" class="list-group">
-      <a routerLink="/profile/{{p.pid}}">{{ p.username }}</a>
-    </datalist>
-  </div>
-</div>
+    <div>
 
+      <form class="form-inline my-2 my-lg-0">
+        <input name="username" type="text" placeholder="Search" #username>
+        <button class="" (click)="searchUser(username.value)">Search</button>
+      </form>
+      <div class="card" id="search-results">
+        <datalist *ngFor="let p of profiles" class="list-group">
+          <a [href]="['/profileview/' + p.pid]">{{ p.username }}</a>
+        </datalist>
+      </div>
+    </div>
 
 
