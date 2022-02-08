@@ -44,4 +44,7 @@ export class HomeComponent implements OnInit {
   onScroll() {
     this.getFollowerPosts(++this.scrollcount);
   }
+  showMore(){
+    this.getFollowerPosts(++this.scrollcount);
+  }
 }
