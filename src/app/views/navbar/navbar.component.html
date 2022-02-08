@@ -6,30 +6,29 @@
       <div class="hover-text">Choose file</div>
       <div class="background"></div>
     </label>
-    <input id="fileInput" type='file' (change)=" onSelectFile($event)  ">
-
+    <input id="fileInput" type='file' (change)=" onSelectFile($event) ">
+      <!-- <img
+          src="../../../../assets/favicon.png"
+          alt="Bubble profile photo for {{this.profile.firstName}} {{this.profile.lastName}}"
+          width="130"
+        /> -->
+      <!-- <app-modal-button></app-modal-button> -->
   </div>
   <div class="profile_current-user_text">
-
       <h4>{{this.profile.firstName}} {{this.profile.lastName}}</h4>
-
-
+      <!-- <p class="small mb-4"> <em class="fas fa-map-marker-alt mr-2"></em> {{this.profile.email}}</p> -->
       <nav id="profile_navbar">
         <ul>
-
-          <li [routerLink]="['/home']"><fa-icon class="nav-icon" [icon]="faHome"></fa-icon>Home</li>
-
-          <a [href]="['/profileview/'+ id]"><fa-icon class="nav-icon" [icon]="faIdCard"></fa-icon>Profile</a>
+          <li><a [href]="['/home']"><fa-icon class="nav-icon" [icon]="faHome"></fa-icon>Home</a></li>
+          <!-- <li [routerLink]="['profile']"><fa-icon class="nav-icon" [icon]="faIdCard"></fa-icon>Profile</li> -->
+          <li><a [href]="['/profileview/'+ id]"><fa-icon class="nav-icon" [icon]="faIdCard"></fa-icon>Profile</a></li>
           <li><fa-icon class="nav-icon" [icon]="faUserFriends"></fa-icon>Followers</li>
-          <li><fa-icon class="nav-icon" [icon]="faUsers"></fa-icon>Teams</li>
+          <li><a [href]="['/group-page']"><fa-icon class="nav-icon" [icon]="faUsers"></fa-icon>Group</a></li>
           <li><fa-icon class="nav-icon" [icon]="faComments"></fa-icon>Chat</li>
-          <li><fa-icon class="nav-icon" [icon]="faComments"></fa-icon>Events</li>
-          <li><fa-icon class="nav-icon" [icon]="faComments"></fa-icon>Settings</li>
-          <li><fa-icon class="nav-icon" [icon]="faComments" (click)=" logout()"></fa-icon>Logout</li>
-
+          <li><fa-icon class="nav-icon" [icon]="faCalendar"></fa-icon>Events</li>
+          <li><fa-icon class="nav-icon" [icon]="faCog"></fa-icon>Settings</li>
+          <li (click)="logout()"><fa-icon class="nav-icon" [icon]="faSignOutAlt"></fa-icon>Logout</li>
         </ul>
     </nav>
-
   </div>
-
 </div>

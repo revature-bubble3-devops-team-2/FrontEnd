@@ -8,7 +8,7 @@
     </div>
     <div class="p-4" style=" height: 500px !important; overflow: auto; ">
         <h3 style="color: #6b6e80;">{{post.body}}</h3>
-        <div class="container bootstrap snippets bootdey" >
+        <div class="container bootstrap snippets bootdey">
             <div class="row">
                 <div class="col-md-12">
                     <div class="blog-comment">
@@ -20,7 +20,8 @@
                                         <img src="../../../../assets/favicon.png" class="avatar" alt="">
                                         <div class="post-comments">
                                             <p class="meta">
-                                                {{dateFormatForComment(commentData.dateCreated)}} {{commentData.writer?.username}} says : 
+                                                {{commentLocaleDate}} {{commentWriter.firstName}} says :
+                                                {{dateFormatForComment(commentData.dateCreated)}} {{commentData.writer?.username}} says :
                                             </p>
                                             <p>
                                                 {{commentData.cbody}}
@@ -43,13 +44,13 @@
                                                                     {{reply.cbody}}
                                                                 </p>
                                                             </div>
-                                                        </li> 
-                                                    </div>  
+                                                        </li>
+                                                    </div>
                                                 </div>
-                                            </div>  
+                                            </div>
                                         </ul>
                                       </li>
-                                </div> 
+                                </div>
                             </div>
                         </ul>
                     </div>
@@ -70,7 +71,7 @@
         </div>
         <button class="btn btn-dark" (click)="submitComment(comment)" *ngIf="isReply==false">Submit</button>
         <button class="btn btn-dark" (click)="submitReply(reply)" *ngIf="isReply==true">Submit</button>
-        
+
     </form>
 </div>
 

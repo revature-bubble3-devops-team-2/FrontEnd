@@ -1,8 +1,11 @@
+import { FilterService } from './../../../services/filter.service';
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Post } from 'app/models/post';
 import { Profile } from 'app/models/profile';
 import { PostService } from 'app/services/post.service';
+import { faImage} from '@fortawesome/free-regular-svg-icons';
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-create-post',
@@ -24,13 +27,18 @@ export class CreatePostComponent implements OnInit {
     datePosted: new Date(),
     imgURL: '',
   };
+  faImage = faImage;
+  faCheckCircle = faCheckCircle;
+  uploadDesired = false;
 
   @Input() show: boolean = false;
 
   constructor(
     public postService: PostService,
+    public activeModal: NgbActiveModal,
+    private modalService: NgbModal,
+    private filterService: FilterService
     //public activeModal: NgbActiveModal,
-    private modalService: NgbModal
     ) {}
 
   ngOnInit(): void {
@@ -46,6 +54,8 @@ export class CreatePostComponent implements OnInit {
 
   createPost() {
     if (this.addPost.body!=='') {
+      //filter body for profanity
+      this.addPost.body = this.filterService.filterProfanity(this.addPost.body);
       this.postService.createPost(this.addPost);
       window.location.reload();
     } else {
@@ -74,7 +84,7 @@ export class CreatePostComponent implements OnInit {
       let file = event.target.files[0] ;
 
       this.changeFile(file).then((e : any)=>{ this.addPost.imgURL = e ; console.log(e)}) }
-
+      this.uploadDesired = true;
     }
 
 

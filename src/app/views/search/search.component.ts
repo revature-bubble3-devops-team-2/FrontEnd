@@ -8,8 +8,9 @@ import { Component } from '@angular/core';
 })
 export class SearchComponent {
 
+
   username:string = 'defaultQuery';
-  public pro = new Profile(0,'', '', '', '', '')
+  public pro = new Profile(0,'', '', '', '', '', false, [])
   id = 0;
   profiles:any;
 
@@ -23,6 +24,8 @@ export class SearchComponent {
     console.log(username)
     this.profile.getProfileByUsername(username)
       .subscribe(data => this.profiles = data)
+
+    //TODO: change "search-results" to visibility = visible
   }
 
 
