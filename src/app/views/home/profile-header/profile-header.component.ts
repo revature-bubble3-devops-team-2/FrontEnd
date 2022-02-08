@@ -48,69 +48,27 @@ export class ProfileHeaderComponent implements OnInit {
   async ngOnInit(): Promise<void>  {
     this.id = this.route.snapshot.paramMap.get('id');
     let sessionProfile : any = sessionStorage.getItem("profile");
+
     sessionProfile = JSON.parse(sessionProfile);
     this.sessionId = sessionProfile.pid;
 
-    console.log(this.sessionId );
-    console.log(this.id)
-
-    console.log(this.id ==this.sessionId )
    this.profile = this.profileService.getProfileByPid(this.id).subscribe( (e : any) =>{
     this.followersProfiles = e.following;
-    console.log(this.followersProfiles);
     this.id = e.pid;
     this.firstName =e.firstName;
     this.lastName = e.lastName;
     this.email= e.email;
     this.url  = e.imgurl ?  e.imgurl : `../../../../assets/favicon.png` ;
     this.username = e.username;
-    this.getFollowerPosts(1);
+
 
     });
-
-
 
   }
 
 
-  getFollowerPosts(scrollcount: number): any {
-    // this.postService.getPostsByFollowers(scrollcount);
-    // this.postService
-    //   .getFollowerPosts()
-    //   .subscribe( (data: any) => {
-    //     if (data) {
-    //       this.posts = data;
-
-    //       this.profilePosts =this.posts.filter((p:Post)=> p.creator.pid == this.id);
-    //     }
-    //   });
-
-      this.postService
-      .getAllPosts()
-      .subscribe( (data: any) => {
-
-
-
-        if (data) {
-          this.posts = data;
-          console.log( this.posts)
-          this.profilePosts =this.posts.filter((p:Post)=>{
-           return  p.creator.pid == this.id });
-        }
-      });
-
-}
-
-
-
-goBack(){
-  this.router.navigate(['/home']);
-}
-
 
 follow() {
-
-  console.log(this.email , this.followed )
 
     this.followService.followUserByEmail(this.email , this.sessionId).subscribe(
       r => { this.success = true  ;
