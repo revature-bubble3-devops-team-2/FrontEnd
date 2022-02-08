@@ -9,10 +9,10 @@ import { Component } from '@angular/core';
 export class SearchComponent {
 
 
-  username = '';
+  username:string = 'defaultQuery';
   public pro = new Profile(0,'', '', '', '', '', false, [])
   id = 0;
-  public profiles: any
+  profiles:any;
 
   constructor(private profile: ProfileService) { }
 
