@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
     await this.getFollowerPosts(this.scrollcount);
   }
 
+
   getFollowerPosts(scrollcount: number): any {
     this.postService.getPostsByFollowers(scrollcount);
     this.postService
