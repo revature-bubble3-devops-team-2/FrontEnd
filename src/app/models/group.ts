@@ -2,13 +2,13 @@ import { Profile } from "./profile";
 
 //ZA a class to generate a group object
 export class Group {
-  gid?: number;
+  groupId?: number;
   groupName?: string;
   owner?: Profile;
   members?: Profile[] = [];
 
-  constructor(gid: number, groupName: string, owner: Profile, members: Profile[]) {
-    this.gid = gid;
+  constructor(groupId: number, groupName: string, owner: Profile, members: Profile[]) {
+    this.groupId = groupId;
     this.groupName = groupName;
     this.owner = owner;
     for (let m in members) {
@@ -16,3 +16,5 @@ export class Group {
     }
   }
 }
+
+
