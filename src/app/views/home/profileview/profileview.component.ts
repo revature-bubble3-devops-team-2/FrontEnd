@@ -46,6 +46,9 @@ export class ProfileviewComponent implements OnInit {
   async ngOnInit(): Promise<void>  {
     this.id = this.route.snapshot.paramMap.get('id');
     let sessionProfile : any = sessionStorage.getItem("profile");
+
+
+
     sessionProfile = JSON.parse(sessionProfile);
     this.sessionId = sessionProfile.pid;
 
@@ -58,7 +61,7 @@ export class ProfileviewComponent implements OnInit {
 
    this.profile = this.profileService.getProfileByPid(this.id).subscribe( (e : any) =>{
     this.followersProfiles = e.following;
-    console.log(this.followersProfiles);
+
     this.id = e.pid;
     this.firstName =e.firstName;
     this.lastName = e.lastName;
@@ -75,6 +78,7 @@ export class ProfileviewComponent implements OnInit {
     });
 
 
+
     });
 
   }
@@ -82,15 +86,14 @@ export class ProfileviewComponent implements OnInit {
 
   getFollowerPosts(scrollcount: number): any {
 
+
       this.postService
       .getAllPosts()
       .subscribe( (data: any) => {
 
-
-
         if (data) {
           this.posts = data;
-          console.log( this.posts)
+
           this.profilePosts =this.posts.filter((p:Post)=>{
            return  p.creator.pid == this.id });
         }
@@ -100,36 +103,7 @@ export class ProfileviewComponent implements OnInit {
 
 
 
-goBack(){
-  this.router.navigate(['/home']);
-}
 
-
-follow() {
-
-  console.log(this.email , this.followed )
-
-    this.followService.followUserByEmail(this.email , this.sessionId).subscribe(
-      r => { this.success = true  ;
-        console.log(this.email);
-        console.log(r);
-
-        this.followed = true  },
-      err => this.failed = true
-    );
-
-
-}
-
-
-unfollow() {
-    console.log("Email entered: ", this.email);
-    this.followed = false;
-    this.followService.unfollowUserByEmail(this.email).subscribe(
-      e => this.followed = false,
-      err => console.log(err)
-    )
-}
 
 toggleViewTabs(){
   if(this.showPosts){

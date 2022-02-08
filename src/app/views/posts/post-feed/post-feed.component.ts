@@ -40,7 +40,7 @@ export class PostFeedComponent implements OnInit, OnDestroy {
     if (sessionProfile != null) {
       this.profile = JSON.parse(sessionProfile);
     }
-    console.log(this.posts);
+
   }
 
   open(post: Post) {
