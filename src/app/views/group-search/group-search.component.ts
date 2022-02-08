@@ -1,5 +1,5 @@
 import { GroupService } from 'app/services/group.service';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Group } from 'app/models/group';
 import { Profile } from './../../models/profile';
 

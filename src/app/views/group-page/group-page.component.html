@@ -1,7 +1,6 @@
 <div class="view-container">
   <nav-bar></nav-bar>
   <div id="groups-container">
-    <app-group-search></app-group-search>
     <div id="my-groups">
     <div class="test-container" id="create-group-container">
       <h2>Create a Group</h2>
@@ -32,43 +31,4 @@
     </div>
 
   </div>
-
-  <!-- <div class="test-container" id="all-groups-container">
-    <h4>Getting all groups</h4>
-    <ul *ngFor="let mg of myGroups">
-      <li>{{this.mg.groupName}} members <button type="button">Group
-          Page</button> <button type="button" (click)="leaveGroup(mg)">Leave Group</button></li>
-    </ul>
-  </div>
-
-  // Update profile model to include groups
-  <div class="test-container" id="my-groups-container">
-    <h4>My groups</h4>
-    <ul *ngFor="let mg of myGroups">
-      <li>{{this.mg.groupName}}<button type="button">Group Page</button> <button type="button"
-          (click)="leaveGroup(mg)">Leave Group</button></li>
-    </ul>
-  </div>
-
-
-
-  <div class="test-container" id="paginated-groups-container">
-    <h4>Paginated Groups</h4>
-    <ul *ngFor="">
-      <li></li>
-    </ul>
-  </div>
-
-  <div class="test-container" id="group-members-container">
-    <h2>Listing Group Members</h2>
-    <select >
-      <option>Which Group?</option>
-      <option *ngFor="let g of groups">{{g.groupName}}</option>
-    </select>
-    <ul *ngFor="let g of groups">
-      <li></li>
-    </ul>
-  </div>
-
-   -->
 </div>

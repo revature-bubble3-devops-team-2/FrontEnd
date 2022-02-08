@@ -5,13 +5,6 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './group-home.component.html',
   styleUrls: ['./group-home.component.css']
 })
-export class GroupHomeComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-
+export class GroupHomeComponent {
 
 }
