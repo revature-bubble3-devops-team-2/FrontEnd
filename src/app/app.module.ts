@@ -36,7 +36,7 @@ import { PasswordResetComponent } from './views/password-reset/password-reset.co
 import { VerifyEmailComponent } from './views/verify-email/verify-email.component';
 import { FollowingListComponent } from './views/home/following-list/following-list.component';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { GroupSearchComponent } from './views/group-search/group-search.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,11 +58,11 @@ import { GroupSearchComponent } from './views/group-search/group-search.componen
     ProfileviewComponent,
     GroupHomeComponent,
     NavbarComponent,
-    PasswordResetComponent,
-    VerifyEmailComponent,
     FollowingListComponent,
     ProfileHeaderComponent,
-    GroupSearchComponent
+    PasswordResetComponent,
+    VerifyEmailComponent,
+
   ],
   imports: [
     BrowserModule,

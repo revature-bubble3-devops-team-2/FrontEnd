@@ -11,8 +11,19 @@
 #create-post-label{
   display: none;
 }
+/* Here, the input field is taken out of
+the normal flow so that it is instead placed
+OVER the "Add Image" button. So essentially,
+the user is actually clicking the input tag
+instead of the visible button. Going forward,
+be aware of this hack as displaying none or
+altering the structure may break the ability
+to upload images. */
 #fileInput, #imgURL{
-  display: none;
+  cursor: pointer;
+  opacity:0;
+  position: absolute;
+  width: 100px;
 }
 .create-post_ui-icon{
   color: var(--revature-blue);

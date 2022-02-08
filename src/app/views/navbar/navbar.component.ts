@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from 'app/services/profile.service';
 import { Router } from '@angular/router';
-import { faHome, faUserFriends, faUsers, faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faUserFriends, faUsers, faCog, faSignOutAlt,faCameraRetro, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { faIdCard, faComments, faCalendar } from '@fortawesome/free-regular-svg-icons';
 
 
@@ -37,10 +37,10 @@ export class NavbarComponent implements OnInit {
     faCalendar = faCalendar;
     faCog = faCog;
     faSignOutAlt = faSignOutAlt;
+    faCameraRetro = faCameraRetro;
+    faUserPlus = faUserPlus;
 
     // Links
-    public profilePage: string = "../profile/123" + this.id;
-
     profileUrl = "/profileview/"+ this.id
 
 

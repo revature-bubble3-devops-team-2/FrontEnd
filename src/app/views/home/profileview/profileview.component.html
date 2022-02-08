@@ -1,7 +1,38 @@
 <div class="view-container">
   <nav-bar></nav-bar>
 
-<!-- align-items-center  -->
+  <div class="posts-container">
+    <app-search></app-search>
+    <app-profile-header></app-profile-header>
+    <div
+        id="profileview_user-posts"
+        class="
+          feed-container
+          container-fluid
+          d-flex
+          flex-column
+          align-items-center
+        "
+        infiniteScroll
+        [infiniteScrollDistance]="2"
+        [infiniteScrollThrottle]="50"
+        [scrollWindow]="false">
+          <app-create-post class="col" *ngIf=" id ==  sessionId"></app-create-post>
+          <app-post-feed [posts]="profilePosts" class="col"></app-post-feed>
+      </div>
+      <div id="profileview_user-follow">
+        <app-following-list [profiles]="followersProfiles"  [text]="'Following'"></app-following-list>
+      </div>
+  </div>
+
+</div>
+
+
+<!--
+<div class="view-container">
+  <nav-bar></nav-bar>
+
+  align-items-center  --
 <div class="container d-flex justify-content-center posts-container " style="padding-top: 30px">
 
     <div class="card">
@@ -26,13 +57,22 @@
       <h4 class="mb-0">{{ firstName + " " + lastName }}</h4>
       <span class="text-muted d-block mb-2">{{ username }}</span>
       <span class="text-muted d-block mb-2">{{ email }}</span>
+
+
+
+
+
       <app-modal-button *ngIf=" id ==  sessionId"></app-modal-button>
 
 
       <button  *ngIf=" ! followed &&   id !=  sessionId " type="submit" class="btn btn-primary btn-sm follow" (click)="follow()">Follow</button>
       <button *ngIf="  followed &&   id !=  sessionId " type="submit" class="btn btn-primary btn-sm follow" (click)="unfollow()">Unfollow</button>
 
+
+
     </div>
+
+
 
     <app-follow *ngIf=" id ==  sessionId"  style="padding-top: 80px"></app-follow>
 
@@ -42,6 +82,7 @@
 
 </div>
 
-<app-following-list [profiles]="followersProfiles" ></app-following-list>
+<app-following-list [profiles]="followersProfiles"  [text]="'Following'"></app-following-list>
+<app-following-list [profiles]="followersOfThisUser "  [text]="'Followers'"></app-following-list>
 
-</div>
+</div> -->

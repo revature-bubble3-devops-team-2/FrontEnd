@@ -10,13 +10,13 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class FollowingListComponent implements OnInit {
   @Input() profiles! : Profile[];
+  @Input() text : string | any;
 
   constructor(public activeModal: NgbActiveModal) { }
 
 
 
   ngOnInit(): void {
-    console.log(this.profiles);
   }
 
 }

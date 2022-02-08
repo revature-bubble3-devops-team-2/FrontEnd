@@ -12,7 +12,8 @@ export class SearchComponent {
   username = '';
   public pro = new Profile(0,'', '', '', '', '', [])
   id = 0;
-  public profiles: any
+  public profiles: any;
+  displayingResults = false;
 
   constructor(private profile: ProfileService) { }
 
@@ -25,7 +26,7 @@ export class SearchComponent {
     this.profile.getProfileByUsername(username)
       .subscribe(data => this.profiles = data)
 
-    //TODO: change "search-results" to visibility = visible
+      this.displayingResults = true;
   }
 
 

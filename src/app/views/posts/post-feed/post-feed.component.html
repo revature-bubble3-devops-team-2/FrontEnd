@@ -5,7 +5,7 @@
         <div class="post-feed_author-info">
      <a [href]="'/profileview/' + post.creator.pid">   <img
           [src]=" (post.creator?.imgurl )? post.creator?.imgurl :  '../../../../assets/favicon.png'" alt="..."
-          width="70" /> </a>
+          class="bubble-avatar_sm" /> </a>
           <h4>{{ post.creator?.username }}</h4>
           <p class="text-muted post-date">{{ post.datePosted | date }}</p>
         </div>

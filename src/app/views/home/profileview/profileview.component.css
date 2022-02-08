@@ -1,15 +1,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap");
 
-nav-bar , app-following-list{
+
+
+
+
+
+nav-bar{
   /* border: 1px solid var(--revature-light-gray); */
   width: 30%;
 }
+app-search{
+  float: right;
+  margin: 10px 25px 0px 0px;
+  max-width: 500px;
+  width: 50%;
+}
 .posts-container{
-  background-color: #f0f2f5;
+  background-color: var(--revature-cool-gray);
   width: 70%;
 }
 
-.container {
+/* .container {
     height: 100vh
 }
 
@@ -62,4 +73,4 @@ nav-bar , app-following-list{
 
 .stats span {
     font-size: 29px
-}
+} */

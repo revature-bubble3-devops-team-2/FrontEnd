@@ -17,16 +17,6 @@ export class GroupHomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    let prof: any = sessionStorage.getItem('profile');
-    prof = JSON.parse(prof);
 
-    this.profile = new Profile(
-      prof.pid,
-      prof.firstName,
-      prof.lastName,
-      prof.passkey,
-      prof.email,
-      prof.username
-    );
   }
 }

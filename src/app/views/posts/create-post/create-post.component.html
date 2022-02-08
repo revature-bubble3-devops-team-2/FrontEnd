@@ -9,9 +9,10 @@
 
             <div class="submit create-post_submit-btn">
               <button id="create-post-btn" class="btn-rounded" type="submit" (click)="createPost()">Post</button>
+
               <label for="imgURL" id="create-post_image-upload">
-                <fa-icon class="nav-icon" [icon]="faImage"></fa-icon> Add Image
                 <input id="imgURL" name="imgURL" type='file' (change)="onSelectFile($event)">
+                <fa-icon class="nav-icon" [icon]="faImage"></fa-icon> Add Image
                 <fa-icon class="create-post_ui-icon" [icon]="faCheckCircle" *ngIf="uploadDesired"></fa-icon>
               </label>
           </div>
