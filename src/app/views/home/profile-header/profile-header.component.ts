@@ -64,6 +64,15 @@ export class ProfileHeaderComponent implements OnInit {
 
     });
 
+
+    sessionProfile.following.forEach((e : Profile) => {
+
+      if(  e.pid == this.id){
+    this.followed = true
+   }
+
+  });
+
   }
 
 

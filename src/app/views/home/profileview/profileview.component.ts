@@ -70,13 +70,6 @@ export class ProfileviewComponent implements OnInit {
     this.username = e.username;
     this.getFollowerPosts(1);
 
-    sessionProfile.following.forEach((e : Profile) => {
-
-        if(  e.pid == this.id){
-      this.followed = true
-     }
-
-    });
 
 
     });
@@ -102,10 +95,6 @@ export class ProfileviewComponent implements OnInit {
 }
 
 
-
-goBack(){
-  this.router.navigate(['/home']);
-}
 
 
 
