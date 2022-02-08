@@ -39,12 +39,16 @@ export class ProfileviewComponent implements OnInit {
   //Tabs
   showPosts: boolean = true;
   showFollowers: boolean = false;
+  showFollowing : boolean = false;
 
 
 
   async ngOnInit(): Promise<void>  {
     this.id = this.route.snapshot.paramMap.get('id');
     let sessionProfile : any = sessionStorage.getItem("profile");
+
+
+
     sessionProfile = JSON.parse(sessionProfile);
     this.sessionId = sessionProfile.pid;
 
@@ -57,7 +61,7 @@ export class ProfileviewComponent implements OnInit {
 
    this.profile = this.profileService.getProfileByPid(this.id).subscribe( (e : any) =>{
     this.followersProfiles = e.following;
-    console.log(this.followersProfiles);
+
     this.id = e.pid;
     this.firstName =e.firstName;
     this.lastName = e.lastName;
@@ -65,13 +69,14 @@ export class ProfileviewComponent implements OnInit {
     this.url  = e.imgurl ?  e.imgurl : `../../../../assets/favicon.png` ;
     this.username = e.username;
     this.getFollowerPosts(1);
-    sessionProfile.following.forEach((e : Profile) => {
+    sessionProfile.following.forEach((p : Profile) => {
 
-        if(  e.pid == this.id){
+        if(  p.pid == this.id){
       this.followed = true
      }
 
     });
+
 
 
     });
@@ -81,15 +86,14 @@ export class ProfileviewComponent implements OnInit {
 
   getFollowerPosts(scrollcount: number): any {
 
+
       this.postService
       .getAllPosts()
       .subscribe( (data: any) => {
 
-
-
         if (data) {
           this.posts = data;
-          console.log( this.posts)
+
           this.profilePosts =this.posts.filter((p:Post)=>{
            return  p.creator.pid == this.id });
         }
@@ -99,36 +103,7 @@ export class ProfileviewComponent implements OnInit {
 
 
 
-goBack(){
-  this.router.navigate(['/home']);
-}
 
-
-follow() {
-
-  console.log(this.email , this.followed )
-
-    this.followService.followUserByEmail(this.email , this.sessionId).subscribe(
-      r => { this.success = true  ;
-        console.log(this.email);
-        console.log(r);
-
-        this.followed = true  },
-      err => this.failed = true
-    );
-
-
-}
-
-
-unfollow() {
-    console.log("Email entered: ", this.email);
-    this.followed = false;
-    this.followService.unfollowUserByEmail(this.email).subscribe(
-      e => this.followed = false,
-      err => console.log(err)
-    )
-}
 
 toggleViewTabs(){
   if(this.showPosts){
