@@ -1,35 +1,65 @@
 <div class="profile-container">
-  <div class="profile_current-user_pfp">
+  <div class="profile_current-user_pfp" id="profile-header_edit-pfp">
     <label class="hoverable" for="fileInput">
       <img [(src)]="url"
-      alt="Bubble profile photo for {{this.profile.firstName}} {{this.profile.lastName}}">
-      <div class="hover-text">Choose file</div>
-      <div class="background"></div>
+      alt="Bubble profile photo for {{this.profile.firstName}} {{this.profile.lastName}}"
+      class="bubble-avatar_xl">
+      <div class="hover-text">
+        <fa-icon class="camera-icon" [icon]="faCameraRetro"></fa-icon>
+      </div>
     </label>
     <input id="fileInput" type='file' (change)=" onSelectFile($event)  ">
-
   </div>
   <div class="profile_current-user_text">
-
-      <h4>{{this.profile.firstName}} {{this.profile.lastName}}</h4>
-
-
+      <h4><a [href]="['/profileview/'+ id]">{{this.profile.firstName}} {{this.profile.lastName}}</a></h4>
+      <!-- <p class="small mb-4"> <em class="fas fa-map-marker-alt mr-2"></em> {{this.profile.email}}</p> -->
       <nav id="profile_navbar">
         <ul>
 
-          <li [routerLink]="['/home']"><fa-icon class="nav-icon" [icon]="faHome"></fa-icon>Home</li>
-
-          <a [href]="['/profileview/'+ id]"><fa-icon class="nav-icon" [icon]="faIdCard"></fa-icon>Profile</a>
+          <li><a [href]="['/home']"><fa-icon class="nav-icon" [icon]="faHome"></fa-icon>Home</a></li>
+          <li><a [href]="['/profileview/'+ id]"><fa-icon class="nav-icon" [icon]="faIdCard"></fa-icon>My Profile</a></li>
+          <!-- <a [href]="['/profileview/'+ id]"><fa-icon class="nav-icon" [icon]="faIdCard"></fa-icon>Profile</a> -->
           <li><fa-icon class="nav-icon" [icon]="faUserFriends"></fa-icon>Followers</li>
-          <li><fa-icon class="nav-icon" [icon]="faUsers"></fa-icon>Teams</li>
+          <li><fa-icon class="nav-icon" [icon]="faUsers"></fa-icon>Group</li>
           <li><fa-icon class="nav-icon" [icon]="faComments"></fa-icon>Chat</li>
-          <li><fa-icon class="nav-icon" [icon]="faComments"></fa-icon>Events</li>
-          <li><fa-icon class="nav-icon" [icon]="faComments"></fa-icon>Settings</li>
-          <li><fa-icon class="nav-icon" [icon]="faComments" (click)=" logout()"></fa-icon>Logout</li>
-
+          <li><fa-icon class="nav-icon" [icon]="faCalendar"></fa-icon>Events</li>
+          <li><fa-icon class="nav-icon" [icon]="faCog"></fa-icon>Settings</li>
+          <li (click)="logout()"><fa-icon class="nav-icon" [icon]="faSignOutAlt"></fa-icon>Logout</li>
         </ul>
     </nav>
-
   </div>
+<!-- <app-follow></app-follow> -->
+  <!--<div class="bg-white shadow overflow-hidden" style="border-radius: 50px;">
+      <div class="px-4 pt-0 pb-4 cover">
 
+        <label class="hoverable" for="fileInput">
+          <img [src]="url" alt="profile image">
+          <div class="hover-text">Choose file</div>
+          <div class="background"></div>
+        </label>
+        <br/>
+        <input id="fileInput" type='file' (change)=" onSelectFile($event)  ">
+
+          <div class="media align-items-end profile-head">
+              <div class="profile mr-3">
+
+                <br/>
+
+              </div>
+              <div class="media-body mb-5 text-black">
+                  <h4 class="mt-0 mb-0">{{this.profile.firstName}}</h4>
+                  <h4 class="mt-0 mb-0">{{this.profile.lastName}}</h4>
+                  <p class="small mb-4"> <em class="fas fa-map-marker-alt mr-2"></em> {{this.profile.email}}</p>
+                  <a [href]="'profile/'+ id" >Edit Profile Here!</a>
+                  <br/>
+                  <br/>
+                  <a [href]="'profileview/'+ id" >Go to Profile Page!</a>
+              </div>
+          </div>
+      </div>
+      <br>
+      <br>
+
+  </div>-->
+  <img src="../../../assets/images/bubble-logo.png" alt="Bubble Logo" id="nav-logo" />
 </div>

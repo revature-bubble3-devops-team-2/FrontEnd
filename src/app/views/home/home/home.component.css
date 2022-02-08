@@ -2,8 +2,14 @@ nav-bar{
   /* border: 1px solid var(--revature-light-gray); */
   width: 30%;
 }
+app-search{
+  display: block;
+  margin: 10px auto 0px auto;
+  max-width: 1140px;
+  width: 95%;
+}
 .posts-container{
-  background-color: #f0f2f5;
+  background-color: var(--revature-bg-gray);
   width: 70%;
 }
 

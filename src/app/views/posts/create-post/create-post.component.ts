@@ -3,6 +3,8 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Post } from 'app/models/post';
 import { Profile } from 'app/models/profile';
 import { PostService } from 'app/services/post.service';
+import { faImage} from '@fortawesome/free-regular-svg-icons';
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-create-post',
@@ -24,6 +26,9 @@ export class CreatePostComponent implements OnInit {
     datePosted: new Date(),
     imgURL: '',
   };
+  faImage = faImage;
+  faCheckCircle = faCheckCircle;
+  uploadDesired = false;
 
   @Input() show: boolean = false;
 
@@ -72,9 +77,9 @@ export class CreatePostComponent implements OnInit {
     if (event.target.files && event.target.files[0]) {
 
       let file = event.target.files[0] ;
-
+      console.log(file);
       this.changeFile(file).then((e : any)=>{ this.addPost.imgURL = e ; console.log(e)}) }
-
+      this.uploadDesired = true;
     }
 
 

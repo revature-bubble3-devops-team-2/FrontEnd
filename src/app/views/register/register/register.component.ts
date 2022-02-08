@@ -80,7 +80,7 @@ export class RegisterComponent implements OnInit {
             console.log(error);
             this.taken = true;
           }
-       
+
           )
       }
       else{
@@ -103,6 +103,6 @@ export class RegisterComponent implements OnInit {
     console.log(this.email)
     return `${environment.angUrl}/verify/email?randomCode=${randCode}&email=${this.email}`;
     }
-  
+
   }
 }

@@ -5,14 +5,20 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProfileService } from 'app/services/profile.service';
 import { FollowService } from 'app/services/follow.service';
-
+import { faCameraRetro, faUserPlus, faUserMinus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-profileview',
-  templateUrl: './profileview.component.html',
-  styleUrls: ['./profileview.component.css']
+  selector: 'app-profile-header',
+  templateUrl: './profile-header.component.html',
+  styleUrls: ['./profile-header.component.css']
 })
-export class ProfileviewComponent implements OnInit {
+export class ProfileHeaderComponent implements OnInit {
+
+  // Font Awesome Icons
+  faCameraRetro = faCameraRetro;
+  faUserPlus = faUserPlus;
+  faUserMinus = faUserMinus;
+
 
   constructor(private profileService: ProfileService , private route: ActivatedRoute ,
     private  postService : PostService , private router: Router  , private followService:FollowService) { }
@@ -20,7 +26,6 @@ export class ProfileviewComponent implements OnInit {
 
   profile : Profile | any;
   followersProfiles : Profile[] | any;
-  followersOfThisUser : Profile[] | any;
   id : any ;
   sessionId : any;
   firstName: any ;
@@ -36,9 +41,7 @@ export class ProfileviewComponent implements OnInit {
   success: boolean = false;
   followed : boolean = false;
 
-  //Tabs
-  showPosts: boolean = true;
-  showFollowers: boolean = false;
+
 
 
 
@@ -48,13 +51,10 @@ export class ProfileviewComponent implements OnInit {
     sessionProfile = JSON.parse(sessionProfile);
     this.sessionId = sessionProfile.pid;
 
+    console.log(this.sessionId );
+    console.log(this.id)
 
-
-    this.profileService.getFollowers(this.id).subscribe(e => {
-      this.followersOfThisUser = e;
-    })
-
-
+    console.log(this.id ==this.sessionId )
    this.profile = this.profileService.getProfileByPid(this.id).subscribe( (e : any) =>{
     this.followersProfiles = e.following;
     console.log(this.followersProfiles);
@@ -65,21 +65,25 @@ export class ProfileviewComponent implements OnInit {
     this.url  = e.imgurl ?  e.imgurl : `../../../../assets/favicon.png` ;
     this.username = e.username;
     this.getFollowerPosts(1);
-    sessionProfile.following.forEach((e : Profile) => {
-
-        if(  e.pid == this.id){
-      this.followed = true
-     }
 
     });
 
 
-    });
 
   }
 
 
   getFollowerPosts(scrollcount: number): any {
+    // this.postService.getPostsByFollowers(scrollcount);
+    // this.postService
+    //   .getFollowerPosts()
+    //   .subscribe( (data: any) => {
+    //     if (data) {
+    //       this.posts = data;
+
+    //       this.profilePosts =this.posts.filter((p:Post)=> p.creator.pid == this.id);
+    //     }
+    //   });
 
       this.postService
       .getAllPosts()
@@ -113,11 +117,9 @@ follow() {
         console.log(this.email);
         console.log(r);
 
-        this.followed = true  },
+        this.followed = true},
       err => this.failed = true
     );
-
-
 }
 
 
@@ -130,14 +132,5 @@ unfollow() {
     )
 }
 
-toggleViewTabs(){
-  if(this.showPosts){
-    this.showPosts = false;
-    this.showFollowers = true;
-  } else {
-    this.showPosts = true;
-    this.showFollowers = false;
-  }
-}
 
 }

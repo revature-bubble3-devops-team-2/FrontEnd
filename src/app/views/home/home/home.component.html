@@ -3,8 +3,7 @@
 
     <div class="posts-container">
       <app-search></app-search>
-      <app-create-post></app-create-post>
-        <div
+      <div
           class="
             feed-container
             container-fluid
@@ -17,7 +16,8 @@
           [infiniteScrollThrottle]="50"
           (scrolled)="onScroll()"
           [scrollWindow]="false">
-        <app-post-feed [posts]="posts" class="col"></app-post-feed>
+          <app-create-post class="col"></app-create-post>
+          <app-post-feed [posts]="posts" class="col"></app-post-feed>
         </div>
     </div>
 </div>

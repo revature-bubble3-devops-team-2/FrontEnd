@@ -1,3 +1,4 @@
+import { ProfileHeaderComponent } from './views/home/profile-header/profile-header.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -36,7 +37,6 @@ import { NavbarComponent } from './views/navbar/navbar.component';
 import { PasswordResetComponent } from './views/password-reset/password-reset.component';
 import { VerifyEmailComponent } from './views/verify-email/verify-email.component';
 import { FollowingListComponent } from './views/home/following-list/following-list.component';
-
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
@@ -58,6 +58,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
     ProfileviewComponent,
     NavbarComponent,
     FollowingListComponent,
+    ProfileHeaderComponent,
     PasswordResetComponent,
     VerifyEmailComponent,
 
