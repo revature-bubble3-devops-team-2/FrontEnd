@@ -1,8 +1,9 @@
-<div class="position-fixed min-vw-100">
+<!--<div class="position-fixed min-vw-100">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand"><img src="../../../../assets/our-logo.png" width="150" height="60px"/></a>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <app-search></app-search>
       </div>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -12,13 +13,14 @@
         </ul>
     </div>
 </nav>
-</div>
-<div class="home-container container-fluid" style="margin-top: 80px; padding-top: 2rem;">
-    <app-profile></app-profile>
+</div>-->
+<div class="view-container">
+    <nav-bar></nav-bar>
 
-    <div class="d-flex flex-column align-items-center" style="height: 65%;">
-        <app-posts-container></app-posts-container>
-        <div
+    <div class="posts-container">
+      <app-search></app-search>
+      <app-profile-header></app-profile-header>
+      <div
           class="
             feed-container
             container-fluid
@@ -30,9 +32,9 @@
           [infiniteScrollDistance]="2"
           [infiniteScrollThrottle]="50"
           (scrolled)="onScroll()"
-          [scrollWindow]="false"
->
-        <app-post-feed [posts]="posts" class="col"></app-post-feed>
+          [scrollWindow]="false">
+          <app-create-post class="col"></app-create-post>
+          <app-post-feed [posts]="posts" class="col"></app-post-feed>
         </div>
     </div>
 </div>

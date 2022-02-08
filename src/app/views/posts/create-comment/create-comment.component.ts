@@ -4,6 +4,7 @@ import { CommentService } from 'app/services/comment.service';
 import { Comment } from 'app/models/comment';
 import { Post } from 'app/models/post';
 import { Profile } from 'app/models/profile';
+import { formatDate } from '@angular/common';
 
 
 @Component({
@@ -48,12 +49,11 @@ export class CreateCommentComponent implements OnInit {
     }
   }
 
-  dateFormatForComment(d: Date) {
-    if(d){
-      var formattedDate = (d.getMonth() + 1)  + "-"  +d.getDate()+  "-"+ d.getFullYear() ;
-      if(formattedDate)
-        this.commentLocaleDate = formattedDate;
-     }
+  dateFormatForComment(d?: Date) {
+    if(d) {
+      return formatDate(d, 'M-d-yyyy', "en-US")
+    }
+    return "";
   }
 
   dateFormatForReply(d: Date) {

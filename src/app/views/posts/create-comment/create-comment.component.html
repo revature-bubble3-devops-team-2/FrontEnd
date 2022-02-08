@@ -15,12 +15,13 @@
                         <hr/>
                         <ul class="comments">
                             <div *ngFor="let commentData of comments" >
-                                <div class="card-body" *ngIf="checkWriterForEachComment(commentData)">
+                                <div class="card-body">
                                     <li class="clearfix">
                                         <img src="../../../../assets/favicon.png" class="avatar" alt="">
                                         <div class="post-comments">
                                             <p class="meta">
                                                 {{commentLocaleDate}} {{commentWriter.firstName}} says :
+                                                {{dateFormatForComment(commentData.dateCreated)}} {{commentData.writer?.username}} says :
                                             </p>
                                             <p>
                                                 {{commentData.cbody}}

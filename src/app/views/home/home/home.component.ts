@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Post } from 'app/models/post';
 import { Profile } from 'app/models/profile';
 import { PostService } from 'app/services/post.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,19 +10,18 @@ import { PostService } from 'app/services/post.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  constructor(public postService: PostService) { }
+  constructor(public postService: PostService , private router: Router) { }
 
   posts!: Post[];
   scrollcount: number = 1;
   profile = sessionStorage.getItem("profile") as Profile;
-  
+
   logout(): void {
     sessionStorage.clear();
   }
 
   async ngOnInit(): Promise<void> {
     await this.getFollowerPosts(this.scrollcount);
-    console.log(this.profile);
   }
 
   getFollowerPosts(scrollcount: number): any {
@@ -31,9 +31,15 @@ export class HomeComponent implements OnInit {
       .subscribe(async (data: any) => {
         if (data) {
           this.posts = (await data) as Post[];
+          console.log(data);
+          this.postService.setPosts(data)
+          console.log( this.postService.sessionPosts);
+
         }
       });
   }
+
+
 
   onScroll() {
     this.getFollowerPosts(++this.scrollcount);

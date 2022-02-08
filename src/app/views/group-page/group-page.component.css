@@ -1,0 +1,22 @@
+#groups-container {
+ width:100%;
+}
+.test-container {
+  width: 50%;
+  height: 50%;
+  padding: 10px;
+  background-color: cadetblue;
+  border: 2px solid white;
+  }
+
+  #teams-container{
+    background-color: rgb(198, 154, 240);
+    border: 2px solid rgb(204, 74, 74);
+    width: 40%;
+  }
+
+  #search-container{
+  background-color: rgb(168, 211, 125);
+  border: 2px solid rgb(20, 63, 52);
+  width: 40%;
+  }

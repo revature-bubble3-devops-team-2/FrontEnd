@@ -1,3 +1,38 @@
+.post-feed_author-info img{
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0px 10px 0px 0px;
+}
+.post-feed_author-info h4{
+  display: inline-block;
+}
+.post-feed_engagement-buttons{
+  display: flex;
+  padding: 10px 15px 20px 15px;
+  margin-left: calc(100% - var(--post-feed-total-width));
+  text-align: right;
+  width: var(--post-feed-total-width);
+
+  /* The total width allotted for each button.  */
+  /* This is aimed at promoting uniformity.     */
+  --post-feed-button-width: 45px;
+
+  /* There are TWO buttons with FOUR sides of */
+  /* padding as per the box model.            */
+  --post-feed-total-width: calc( (var(--post-feed-button-width) * 2) + (5px * 4) );
+  /*  Calculation = (Button width * number of buttons) + (4 sides of padding)  */
+
+}
+.post-feed_engagement-buttons > *{
+  padding: 0px 5px;
+  width: var(--post-feed-button-width);
+}
+.bubble-post_bodycopy{
+  font-size: 1.15em;
+  line-height: 1.69em;
+}
+
+/* OLD */
 .post-feed-container {
   width: 100%;
   margin-left: 2rem;
