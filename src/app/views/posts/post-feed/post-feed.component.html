@@ -3,10 +3,10 @@
     <header>
       <div class="d-flex justify-content-between user-info">
         <div class="post-feed_author-info">
-     <a [href]="'/profileview/' + post.creator.pid">   <img
+     <a [href]="'/profileview/' + post.creator.pid" class="post-feed_author-link">   <img
           [src]=" (post.creator?.imgurl )? post.creator?.imgurl :  '../../../../assets/favicon.png'" alt="..."
-          class="bubble-avatar_sm" /> </a>
-          <h4>{{ post.creator?.username }}</h4>
+          class="bubble-avatar_sm" />
+          <h4>{{ post.creator?.username }}</h4></a>
           <p class="text-muted post-date">{{ post.datePosted | date }}</p>
         </div>
       </div>
@@ -37,7 +37,7 @@
   <div
     class="" style="margin-top: 5%; text-align: center;"
     *ngIf="posts.length == 0">
-    Nothing to display just yet.
+    Nothing to display just yet...
   </div>
   <div
     class="mb-4 post-card card shadow-lg d-flex justify-content-center"

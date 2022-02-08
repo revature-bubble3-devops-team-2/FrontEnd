@@ -13,7 +13,7 @@ export class LoginGuard implements CanActivate {
 }
   canActivate() {
     if(this.auth.IsLoggedIn()){
-      alert("You are already Logged In.")
+      //alert("You are already Logged In.")
 
 
       this.router.navigate(['home']);

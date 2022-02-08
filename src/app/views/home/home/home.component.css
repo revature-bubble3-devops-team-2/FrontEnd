@@ -3,10 +3,10 @@ nav-bar{
   width: 30%;
 }
 app-search{
-  float: right;
-  margin: 10px 25px 0px 0px;
-  max-width: 500px;
-  width: 50%;
+  display: block;
+  margin: 10px auto 0px auto;
+  max-width: 1140px;
+  width: 95%;
 }
 .posts-container{
   background-color: var(--revature-bg-gray);
