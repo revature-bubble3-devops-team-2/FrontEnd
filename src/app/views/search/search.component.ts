@@ -10,7 +10,7 @@ export class SearchComponent {
 
 
   username = '';
-  public pro = new Profile(0,'', '', '', '', '', false)
+  public pro = new Profile(0,'', '', '', '', '', false, [])
   id = 0;
   public profiles: any
 
@@ -24,6 +24,8 @@ export class SearchComponent {
     console.log(username)
     this.profile.getProfileByUsername(username)
       .subscribe(data => this.profiles = data)
+
+    //TODO: change "search-results" to visibility = visible
   }
 
 

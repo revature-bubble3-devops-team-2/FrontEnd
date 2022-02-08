@@ -72,7 +72,7 @@ export class RegisterComponent implements OnInit {
                 console.log(error);
               }
             );
-            
+
             this.router.navigate(['/login']);
           },
           (error: Error) => {

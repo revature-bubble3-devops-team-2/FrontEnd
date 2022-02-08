@@ -1,8 +1,7 @@
-<div>
-
-  <form class="form-inline my-2 my-lg-0">
+<div id="bubble-search">
+  <form>
     <input name="username" type="text" placeholder="Search" #username>
-    <button class="" (click)="searchUser(username.value)">Search</button>
+    <button class="btn-rounded" (click)="searchUser(username.value)">Search</button>
   </form>
   <div class="card" id="search-results">
     <datalist *ngFor="let p of profiles" class="list-group">
@@ -10,6 +9,3 @@
     </datalist>
   </div>
 </div>
-
-
-
