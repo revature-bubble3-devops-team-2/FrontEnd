@@ -4,32 +4,32 @@
   padding: 0px 0px 10px 0px;
 }
 #group-header_cover-photo{
-  background: var(--revature-blue) url("../../../../assets/images/test0.jpg") no-repeat bottom center;
+  /* background: var(--revature-blue) url("../../../../assets/images/test0.jpg") no-repeat bottom center; */
   background-size: cover;
   height: 350px;
 }
-#group-header_user-info{
+#group-header_group-info{
   display: block;
   margin: 0px auto;
   max-width: 1140px;
   width: 90%;
 }
-.profile-header_pfp{
+.group-header_pfp{
   display: block;
   margin: -95px auto 0px auto;
   width: 200px;
 }
-.profile-header_pfp img{
+.group-header_pfp img{
   border-radius: 50%;
   transition: 0.33s all;
   width: 200px;
 }
-#group-header_container h3{
+#group-header_container h3, h6, #description{
   position: relative;
   text-align: center;
   width: 100%;
 }
-#profile-header_username{
+#group-header_username{
   color: var(--revature-light-gray);
   display: block;
   text-align: center;
@@ -66,9 +66,10 @@
 .hoverable img{
   cursor: pointer;
 }
-#profile-header_buttons{
+#group-header_buttons{
   cursor: pointer;
-  display: block;
+  display: flex;
+  justify-content: right;
   margin: 10px 25px 0px auto;
   position: relative;
   text-align: center;
@@ -76,7 +77,7 @@
   width: 100px;
 
 }
-.profile-header_btn > fa-icon{
+.group-header_btn > fa-icon{
   background-color: var(--revature-white);
   border-radius: 50%;
   color: var(--revature-dark-gray);
@@ -86,10 +87,10 @@
   padding: 10px;
   width: 57.5px;
 }
-.profile-header_btn:hover > fa-icon{
+.group-header_btn:hover > fa-icon{
   background-color: var(--revature-light-gray);
 }
-.profile-header_btn:hover > p{
+.group-header_btn:hover > p{
   color: var(--revature-light-gray);
 }
 button{

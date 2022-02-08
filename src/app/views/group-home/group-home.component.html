@@ -3,10 +3,7 @@
 
   <div class="posts-container">
     <app-search></app-search>
-    <!-- <app-profile-header></app-profile-header> -->
-
-
-
+    <app-group-header></app-group-header>
 
     <div id="profileview_user-posts" class="
           feed-container
@@ -24,7 +21,7 @@
       <p id="follow-list-text">
         Members: {{groupMembers.length}}<br/>
       </p>
-      <div class="follow-list-container">
+      <div class="member-list-container">
         <ng-container *ngFor="let g of groupMembers">
           <div class="listed-user">
             <a [href]="'/profileview/'+ g.pid" class="profile-link">
@@ -41,9 +38,8 @@
       </div>
     </div>
 
-  </div>
-
-</div>
+  </div><!-- /posts-container -->
+</div><!-- /view-container -->
 
 
 <!--

@@ -12,7 +12,10 @@
       align-items-center
     ">
       <div class="test-container" id="create-group-container">
-        <h2>Create a Group</h2>
+        <span id="banner">
+          <h2>Welcome to Bubbl(e) Groups</h2>
+        </span>
+
         <form>
           <label for="group-name">Group Name:</label>
           <input type="text" name="groupName" class="form-control" [(ngModel)]="groupName">
@@ -21,10 +24,12 @@
         <div *ngIf="mGroups.length > 0">
           <ul *ngFor="let g of mGroups; index as i">
             <li><a [href]="['/groups/'+g.groupId]">{{getJoinedGroupName(i)}} </a><button name="leave"
-                (click)="leaveGroup(i)">Leave</button></li>
+                (click)="leaveGroup(i)">Leave</button>
+            </li>
           </ul>
         </div>
       </div>
+
       <div class="test-container" id="search-groups-container">
         <h4>Searching for groups</h4>
         <form #userForm="ngForm">
@@ -38,45 +43,9 @@
           </ul>
         </div>
       </div>
+
     </div>
   </div>
 
-  <!-- <div class="test-container" id="all-groups-container">
-    <h4>Getting all groups</h4>
-    <ul *ngFor="let mg of myGroups">
-      <li>{{this.mg.groupName}} members <button type="button">Group
-          Page</button> <button type="button" (click)="leaveGroup(mg)">Leave Group</button></li>
-    </ul>
-  </div>
 
-  // Update profile model to include groups
-  <div class="test-container" id="my-groups-container">
-    <h4>My groups</h4>
-    <ul *ngFor="let mg of myGroups">
-      <li>{{this.mg.groupName}}<button type="button">Group Page</button> <button type="button"
-          (click)="leaveGroup(mg)">Leave Group</button></li>
-    </ul>
-  </div>
-
-
-
-  <div class="test-container" id="paginated-groups-container">
-    <h4>Paginated Groups</h4>
-    <ul *ngFor="">
-      <li></li>
-    </ul>
-  </div>
-
-  <div class="test-container" id="group-members-container">
-    <h2>Listing Group Members</h2>
-    <select >
-      <option>Which Group?</option>
-      <option *ngFor="let g of groups">{{g.groupName}}</option>
-    </select>
-    <ul *ngFor="let g of groups">
-      <li></li>
-    </ul>
-  </div>
-
-   -->
 </div>
