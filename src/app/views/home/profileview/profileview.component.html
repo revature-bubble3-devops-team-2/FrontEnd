@@ -4,6 +4,12 @@
   <div class="posts-container">
     <app-search></app-search>
     <app-profile-header></app-profile-header>
+    <div id="profile-view_tab-btns">
+      <span [ngClass]="showPosts ? 'activeProfileTab' : ''"
+      (click)="toggleViewTabs()">Posts</span>
+      <span [ngClass]="showFollowers ? 'activeProfileTab' : ''"
+      (click)="toggleViewTabs()">Followers</span>
+    </div>
     <div
         id="profileview_user-posts"
         class="
@@ -16,11 +22,12 @@
         infiniteScroll
         [infiniteScrollDistance]="2"
         [infiniteScrollThrottle]="50"
-        [scrollWindow]="false">
+        [scrollWindow]="false"
+        [ngClass]="showPosts ? '' : 'hideTab'">
           <app-create-post class="col" *ngIf=" id ==  sessionId"></app-create-post>
-          <app-post-feed [posts]="profilePosts" class="col"></app-post-feed>
+          <app-post-feed [posts]="profilePosts" class="col" [ngClass]="id !=  sessionId ? 'profile-view_other' : ''"></app-post-feed>
       </div>
-      <div id="profileview_user-follow">
+      <div id="profile-view_user-follow" [ngClass]="showFollowers ? '' : 'hideTab'">
         <app-following-list [profiles]="followersProfiles"  [text]="'Following'"></app-following-list>
       </div>
   </div>

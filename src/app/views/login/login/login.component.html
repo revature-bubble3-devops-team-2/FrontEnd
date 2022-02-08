@@ -1,4 +1,25 @@
-<div class="login-container">
+<div class="login-page-container">
+  <div class="login-deco-container login-deco-pic{{loginPic}}">
+
+  </div>
+  <div class="login-form-container">
+    <form class = "login-form">
+          <img src="../../../../assets/images/bubble-logo.png" alt="Logo">
+          <div class="error" *ngIf="error">Username or password is incorrect.</div>
+          <div class="error" *ngIf="missing">Must enter both username and password.</div>
+          <input class="form-control" type="text" placeholder="Enter Username" name="username" id="username" [(ngModel)]="username" required>
+
+          <input class="form-control" type="password" placeholder="Enter Password" name="password" id="password" [(ngModel)]="password" required>
+
+          <button type="submit" class="onLoginBtn btn btn-rounded" (click)="login()">Login</button>
+
+          <div class="sign-up">
+              <p>Create New Account <a routerLink="/register">Click Here</a>.</p>
+          </div>
+    </form>
+  </div>
+</div>
+<!-- <div class="login-container">
     <form class = "login-form">
         <div class = "container">
             <h1 class="text-center">Bubbl(e)</h1>
@@ -22,4 +43,4 @@
 
         </div>
     </form>
-</div>
+</div> -->

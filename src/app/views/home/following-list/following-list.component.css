@@ -1,4 +1,5 @@
 #follow-list-text{
+  display: block;
   height: 50px;
   padding: 10px 5px;
   text-align: center;
@@ -12,6 +13,7 @@
   cursor: pointer;
   display: inline-block;
   margin: 15px 10px;
+  overflow-wrap: break-word;
   width: 250px;
 }
 .listed-user_avatar{
@@ -26,6 +28,7 @@
   display: inline-block;
   font-size: 18px;
   font-weight: 500;
+  width: calc(100% - (var(--revature-sm-avatar) + 10px));
 }
 .listed-user:hover > a > .listed-user_info{
   color: var(--revature-light-gray);

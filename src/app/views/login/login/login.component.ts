@@ -17,6 +17,7 @@ export class LoginComponent {
 
   error: boolean = false;
   missing: boolean = false;
+  loginPic: number = Math.floor(Math.random() * 3);
 
   constructor(private profileService:ProfileService, private router: Router) {
   }
