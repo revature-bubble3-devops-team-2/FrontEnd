@@ -3,19 +3,24 @@
   </div>
   <div id="profile-header_user-info">
       <div class = "profile-header_pfp" id="profile-header_edit-pfp">
-        <label class="hoverable" for="fileInput">
-          <img [src]="url" alt="profile image">
-          <div class="hover-text">
-            <fa-icon class="camera-icon" [icon]="faCameraRetro"></fa-icon>
-          </div>
-        </label>
+          <img [src]="url" alt="profile image" class="bubble-avatar_xl">
       </div>
-    <h3>{{this.profile.firstName}} {{this.profile.lastName}}</h3>
+    <h3>{{firstName}} {{lastName}}</h3>
+    <small id="profile-header_username">@{{ username }}</small>
     <div id="profile-header_buttons">
-      <div class="profile-header_btn">
-        <fa-icon [icon]="faUserPlus"></fa-icon>
-        <p>Follow</p>
+      <app-modal-button *ngIf=" id ==  sessionId"></app-modal-button>
+      <button  *ngIf=" ! followed &&   id !=  sessionId " type="submit" (click)="follow()">
+        <div class="profile-header_btn">
+          <fa-icon [icon]="faUserPlus"></fa-icon>
+          <p>Follow</p>
+        </div>
+      </button>
+      <button *ngIf="  followed &&   id !=  sessionId " type="submit" (click)="unfollow()">
+        <div class="profile-header_btn">
+        <fa-icon [icon]="faUserMinus"></fa-icon>
+        <p>Unfollow</p>
       </div>
+      </button>
     </div>
   </div>
 </header>

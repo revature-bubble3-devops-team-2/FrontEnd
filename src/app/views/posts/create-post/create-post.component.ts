@@ -82,7 +82,7 @@ export class CreatePostComponent implements OnInit {
     if (event.target.files && event.target.files[0]) {
 
       let file = event.target.files[0] ;
-
+      console.log(file);
       this.changeFile(file).then((e : any)=>{ this.addPost.imgURL = e ; console.log(e)}) }
       this.uploadDesired = true;
     }

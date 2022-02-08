@@ -1,25 +1,8 @@
-<!--<div class="position-fixed min-vw-100">
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand"><img src="../../../../assets/our-logo.png" width="150" height="60px"/></a>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <app-search></app-search>
-      </div>
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-            <div class="btn-nav"><a class="btn btn-primary btn-small navbar-btn btn-dark" style="border-radius: 50px;" href='/login' (click)="logout()">Logout</a>
-            </div>
-        </li>
-        </ul>
-    </div>
-</nav>
-</div>-->
 <div class="view-container">
     <nav-bar></nav-bar>
 
     <div class="posts-container">
       <app-search></app-search>
-      <app-profile-header></app-profile-header>
       <div
           class="
             feed-container
@@ -35,6 +18,7 @@
           [scrollWindow]="false">
           <app-create-post class="col"></app-create-post>
           <app-post-feed [posts]="posts" class="col"></app-post-feed>
+          <button (click)="showMore()">show more</button >
         </div>
     </div>
 </div>

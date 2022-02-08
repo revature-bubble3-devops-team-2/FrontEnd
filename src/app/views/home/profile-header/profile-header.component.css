@@ -4,7 +4,7 @@
   padding: 0px 0px 10px 0px;
 }
 #profile-header_cover-photo{
-  background: var(--revature-blue) url("../../../../assets/images/test0.jpg") no-repeat bottom center;
+  background: var(--revature-light-gray)/* url("../../../../assets/images/test0.jpg") no-repeat bottom center*/;
   background-size: cover;
   height: 350px;
 }
@@ -26,6 +26,12 @@
 }
 #profile-header_container h3{
   position: relative;
+  text-align: center;
+  width: 100%;
+}
+#profile-header_username{
+  color: var(--revature-light-gray);
+  display: block;
   text-align: center;
   width: 100%;
 }
@@ -85,4 +91,9 @@
 }
 .profile-header_btn:hover > p{
   color: var(--revature-light-gray);
+}
+button{
+  background: none;
+  border: 0px;
+  color: var(--revature-white);
 }

@@ -14,6 +14,8 @@ export class SearchComponent {
   id = 0;
   profiles:any;
 
+  displayingResults = false;
+
   constructor(private profile: ProfileService) { }
 
   public setid(id: number): void{
@@ -26,6 +28,7 @@ export class SearchComponent {
       .subscribe(data => this.profiles = data)
 
     //TODO: change "search-results" to visibility = visible
+      this.displayingResults = true;
   }
 
 
