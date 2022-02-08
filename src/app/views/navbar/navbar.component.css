@@ -1,5 +1,7 @@
 .profile-container{
   background-color: #FFF;
+  display: flex;
+  flex-direction: column;
   height: 100%;
   z-index: 999;
 }
@@ -12,8 +14,11 @@
   border-radius: 50% !important;
   display: block !important;
   margin: 0px auto !important;
+  position: relative !important;
+  transition: 0.33s all !important;
 }
 .profile_current-user_text{
+  margin-top: 10px;
   text-align: center;
   width: 100%;
 }
@@ -22,45 +27,82 @@
 }
 #profile_navbar ul{
   list-style-type: none;
-  margin: 10px auto 0px auto;
+  margin: 10% auto 0px auto;
   width: 150px;
+}
+#profile_navbar li, #profile_navbar a{
+  color: var(--revature-dark-gray);
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 15px 0px;
+  text-decoration: none;
+  transition: 0.33s all;
+}
+#profile_navbar li:hover, #profile_navbar a:hover{
+  color: var(--revature-light-gray);
+}
+.profile_current-user_text a{
+  font-size: 25px;
 }
 fa-icon{
 margin-right: 5px;
 width: 10px;
 }
+.hover-text{
+  /* Use this variable to set     */
+  /* the size of the font awesome */
+  /* icon inside the image        */
+  --profile-icon-size: 60px;
 
-
-/* .container {
-    margin-top: 1rem;
-    margin-left: 2rem;
-    width:100%;
-} */
-
-/* .card{
-    background-color:#72A4C2;
-} */
-
-/* :host h6{
-    color: white;
-} */
-
-/* .col-sm-3 {
-    margin: 10px;
-    padding: 10px;
-    border-radius: 20px;
-    background-color: #474C55;
-    backdrop-filter: blur(40px);
-    -webkit-backdrop-filter: blur(40px);
-} */
-/*
-.bg-white{
-    height: 40%;
-    width: 100%;
+  background-color: rgb(255,255,255, 0.69);
+  border: 2px solid var(--revature-dark-gray);
+  border-radius: 50%;
+  color: var(--revature-dark-gray);
+  cursor: pointer;
+  display: block;
+  font-size: var(--profile-icon-size); /* <-- change using variable */
+  height: 200px;
+  opacity: 0;
+  padding: calc(50% - (var(--profile-icon-size) / 2) - 4px);
+  position: absolute;
+  top: 0px;
+  text-align: center;
+  transition: 0.33s all !important;
+  width: 200px;
 }
-.profile-head {
-    transform: translateY(5rem)
-} */
+.hoverable img:hover + .hover-text, .hover-text:hover{
+  opacity: 1;
+}
+.hoverable img{
+  cursor: pointer;
+}
+#profile-header_buttons{
+  cursor: pointer;
+  display: block;
+  margin: 10px 25px 0px auto;
+  position: relative;
+  text-align: center;
+  transition: 0.3s all;
+  width: 100px;
+
+}
+.profile-header_btn > fa-icon{
+  background-color: var(--revature-white);
+  border-radius: 50%;
+  color: var(--revature-dark-gray);
+  display: block;
+  font-size: 25px;
+  margin: 0px auto 2.5px auto;
+  padding: 10px;
+  width: 57.5px;
+}
+.profile-header_btn:hover > fa-icon{
+  background-color: var(--revature-light-gray);
+}
+.profile-header_btn:hover > p{
+  color: var(--revature-light-gray);
+}
 
 .col-md-7{
   background-color: #474C55;
@@ -73,21 +115,6 @@ width: 10px;
 :host .modal-content{
   border-radius: 50px;
 }
-
-/* @media  (max-width: 1024px){
-  .container{
-      margin-left:0rem;
-      width:100%;
-      text-align: center;
-  }
-  .bg-white {
-      display:flex !important;
-      flex-flow:column nowrap !important;
-  }
-  .profile-head {
-      transform: translateY(.5rem)
-  }
-} */
 
 img {
 height: 100%;
@@ -134,4 +161,12 @@ display: block;
 
 #fileInput{
 display: none;
+}
+#nav-logo{
+  align-self: flex-start;
+  border-radius: 0px;
+  border: 0px;
+  height: auto;
+  margin: auto auto 20px auto;
+  width: 25%;
 }

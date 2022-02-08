@@ -1,12 +1,13 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Post } from 'app/models/post';
 import { PostService } from 'app/services/post.service';
-import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
-import { faComment} from '@fortawesome/free-regular-svg-icons';
+import { faSpinner, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
+import { faComment, faFrown} from '@fortawesome/free-regular-svg-icons';
 import { Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Profile } from 'app/models/profile';
 import { CreateCommentComponent } from '../create-comment/create-comment.component';
+
 
 @Component({
   selector: 'app-post-feed',
@@ -22,6 +23,8 @@ export class PostFeedComponent implements OnInit, OnDestroy {
 
   faThumbsUp = faThumbsUp;
   faComment = faComment;
+  faFrown = faFrown;
+  faSpinner = faSpinner;
   Loading!: boolean;
   endOfContents = false;
 
@@ -37,7 +40,7 @@ export class PostFeedComponent implements OnInit, OnDestroy {
     if (sessionProfile != null) {
       this.profile = JSON.parse(sessionProfile);
     }
-    console.log(this.posts);
+
   }
 
   open(post: Post) {

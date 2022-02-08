@@ -5,7 +5,6 @@ import { Profile } from '../models/profile';
 import { Observable } from 'rxjs';
 import { environment } from 'environments/environment';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -81,6 +80,7 @@ getEmailMod(){
   login(username: string, password: string): Observable<HttpResponse<Profile>>{
     return this.http.post<Profile>(environment.url+'/profile/login', `username=${username}&password=${password}`, { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
   }
+
   getProfileByToken(): Observable<HttpResponse<Profile>> {
     var token = sessionStorage.getItem("Authorization");
     return this.http.post<Profile>(environment.url+'/profile/token', `token=${token}`, { observe: 'response', headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
@@ -89,8 +89,10 @@ getEmailMod(){
   getProfileByUsername(username: string): Observable<Profile>{
     return this.http.get<Profile>(`${environment.url}/profile/search/${username}`)
   }
-
-
+///followers/{id}
+  getFollowers(pid: number): Observable<any>{
+    return this.http.get(`${environment.url}/profile/followers/${pid}`)
+  }
 
 
 

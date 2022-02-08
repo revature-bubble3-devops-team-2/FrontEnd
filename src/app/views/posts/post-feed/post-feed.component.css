@@ -27,8 +27,16 @@
   padding: 0px 5px;
   width: var(--post-feed-button-width);
 }
-
-
+.bubble-post_bodycopy{
+  font-size: 1.15em;
+  line-height: 1.69em;
+}
+.post-feed_author-link:hover img{
+  filter: brightness(110%);
+}
+.post-feed_author-link:hover h4{
+  color: var(--revature-light-gray) !important;
+}
 /* OLD */
 .post-feed-container {
   width: 100%;

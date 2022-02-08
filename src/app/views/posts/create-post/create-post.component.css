@@ -1,9 +1,8 @@
 .create-post-container{
-  background-color: #FFF;
-  border: 1px solid rgba(0,0,0,.125);
-  border-radius: 20px;
-  margin: 20px 22px;
-  padding: 10px 20px;
+  margin-top: 30px;
+}
+.create-post-form{
+  padding: 15px 10px 10px 10px;
 }
 #create-post{
   border: 0px;
@@ -12,6 +11,35 @@
 #create-post-label{
   display: none;
 }
+/* Here, the input field is taken out of
+the normal flow so that it is instead placed
+OVER the "Add Image" button. So essentially,
+the user is actually clicking the input tag
+instead of the visible button. Going forward,
+be aware of this hack as displaying none or
+altering the structure may break the ability
+to upload images. */
+#fileInput, #imgURL{
+  cursor: pointer;
+  opacity:0;
+  position: absolute;
+  width: 100px;
+}
+.create-post_ui-icon{
+  color: var(--revature-blue);
+  font-size: 15px !important;
+  margin: 5px 5px 5px 0px;
+}
+#create-post_image-upload{
+  color: var(--revature-dark-gray);
+  cursor: pointer;
+  float: right;
+  margin: 2.5px 25px;
+  transition: 0.33s all;
+}
+#create-post_image-upload:hover{
+  color: var(--revature-light-gray);
+}
 .create-post_submit-btn{
   height: 35px;
   margin: 10px 0px 0px 0px;
@@ -19,6 +47,8 @@
 #create-post-btn{
   float: right;
 }
+
+/* OLD */
 /* :host textarea {
     outline: none;
     box-shadow:none !important;
@@ -56,3 +86,78 @@
 .btn-dark {
     border-radius: 30px;
 } */
+
+/* OLD */
+.post-feed-container {
+  width: 100%;
+  margin-left: 2rem;
+}
+
+.post-card {
+  border-radius: 20px;
+  padding: 0 !important;
+  background-color: white;
+  cursor: pointer;
+}
+
+:host header {
+    padding: 1rem;
+}
+
+:host h2, h4 {
+  margin: 0 !important;
+  color: #474c55 !important;
+}
+
+.card-text {
+  max-height: 100px;
+  overflow: hidden;
+  cursor: pointer;
+  mask-image: linear-gradient(180deg, #000 60%, transparent);
+  -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent);
+  margin-bottom: 2rem;
+}
+
+.user-info {
+  margin: 0.8rem 0;
+}
+
+.image-container {
+  max-height: 512px;
+  margin: 0px auto;
+}
+
+.follow-btn {
+  border: none;
+  text-align: center;
+  background-color: #f26925;
+  border-radius: 20px;
+  padding: 6px 20px !important;
+}
+
+.comment-icon {
+  margin-right: 4px;
+  color:#007bff;
+}
+
+.btn-div {
+  margin: 1rem;
+  padding: 1rem;
+}
+
+:host a:hover {
+  text-decoration: none;
+}
+
+:host fa-icon {
+  font-size: 14pt;
+}
+
+.post-date {
+  margin-top: 3px;
+  font-size: 14px;
+}
+
+:host hr {
+  margin: 0 1rem !important;
+}

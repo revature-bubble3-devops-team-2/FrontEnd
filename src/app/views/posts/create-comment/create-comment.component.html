@@ -1,76 +1,95 @@
-<div class="card-body ">
-    <div class="row ">
-    <div class="col img-col h-100" >
-
-        <ng-container *ngIf="post.imgURL">
-          <img class="img-fluid card-img" alt="image" [src]="post.imgURL" width="100"/>
-        </ng-container>
+<div class="card-body card-post-popup">
+  <section id="original-post">
+    <header>
+      <div class="d-flex justify-content-between user-info">
+        <div class="post-feed_author-info">
+     <a [href]="'/profileview/' + post.creator.pid">   <img
+          [src]=" (post.creator?.imgurl )? post.creator?.imgurl :  '../../../../assets/favicon.png'" alt="..."
+          class="bubble-avatar_sm"/> </a>
+          <h4>{{ post.creator?.username }}</h4>
+          <p class="text-muted post-date">{{ post.datePosted | date }}</p>
+        </div>
+      </div>
+    </header>
+    <ng-container *ngIf="post.imgURL" id="create-comment_post-img-container">
+      <p>{{post.body}}</p>
+      <img class="img-fluid card-img" alt="image" [src]="post.imgURL" id="create-comment_post-img" />
+    </ng-container>
+    <div class="comment-social-interaction post-feed_engagement-buttons">
+      <app-like [postInfo]="post"></app-like>
+      <fa-icon class="comment-icon" [icon]="faComment"></fa-icon> {{comments.length}}
     </div>
-    <div class="p-4" style=" height: 500px !important; overflow: auto; ">
-        <h3 style="color: #6b6e80;">{{post.body}}</h3>
-        <div class="container bootstrap snippets bootdey" >
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="blog-comment">
-                        <hr/>
-                        <ul class="comments">
-                            <div *ngFor="let commentData of comments" >
-                                <div class="card-body">
-                                    <li class="clearfix">
-                                        <img src="../../../../assets/favicon.png" class="avatar" alt="">
-                                        <div class="post-comments">
-                                            <p class="meta">
-                                                {{dateFormatForComment(commentData.dateCreated)}} {{commentData.writer?.username}} says : 
-                                            </p>
-                                            <p>
-                                                {{commentData.cbody}}
-                                            </p>
-                                            <p>
-                                                <em class="pull-right">
-                                                    <button class="btn btn-link" (click)="submitCommentOnComment(commentData)"><small>Reply</small></button>
-                                                </em>
-                                            </p>
-                                        </div>
-                                        <ul class="comments">
-                                            <div *ngFor="let reply of replys">
-                                                <div *ngIf="commentData.cid==reply.previous?.cid">
-                                                    <div *ngIf="formatReplyDate(reply)">
-                                                        <li class="clearfix">
-                                                            <img src="../../../../assets/favicon.png" alt="avatar image" class="avatar" alt="">
-                                                            <div class="post-comments">
-                                                                <p class="meta">{{replyDate}} {{reply.writer?.firstName}} says : </p>
-                                                                <p>
-                                                                    {{reply.cbody}}
-                                                                </p>
-                                                            </div>
-                                                        </li> 
-                                                    </div>  
-                                                </div>
-                                            </div>  
-                                        </ul>
-                                      </li>
-                                </div> 
-                            </div>
-                        </ul>
+  </section>
+  <section id="original-post-comments">
+    <ul class="comments">
+      <div *ngFor="let commentData of comments" >
+              <li class="clearfix post-feed_author-info first-level-comment">
+                  <div class="post-feed-comment_container">
+                    <div class="post-feed-comment_profile-pic">
+                    <img [src]=" (commentData.writer?.imgurl )? commentData.writer?.imgurl :  '../../../../assets/favicon.png'" alt="..." class="bubble-avatar_sm comment-pfp">
                     </div>
-                </div>
-            </div>
-        </div>
-</div>
-</div>
-    <br>
-    <form id="create-comment-form align-items-center" >
-        <label for="create-comment" *ngIf="isReply==false">Enter comment: </label>
-        <label for="create-comment" *ngIf="isReply==true">Enter reply: </label>
-        <div class="mb-3">
-            <textarea type="text" *ngIf="isReply==false" class="form-control" [(ngModel)]="comment.cbody" name="create-post" id="create-comment" required>
-            </textarea>
-            <textarea *ngIf="isReply==true" type="text" class="form-control" [(ngModel)]="reply.cbody" name="create-reply" id="create-reply" required>
-            </textarea>
-        </div>
-        <button class="btn btn-dark" (click)="submitComment(comment)" *ngIf="isReply==false">Submit</button>
-        <button class="btn btn-dark" (click)="submitReply(reply)" *ngIf="isReply==true">Submit</button>
-        
-    </form>
-</div>
+                    <div class="post-comments post-feed-comment_body-copy">
+                        <small>{{dateFormatForComment(commentData.dateCreated)}}</small>
+                        <p class="meta">
 
+                            {{commentData.writer?.username}} says :
+                        </p>
+                        <p>
+                            {{commentData.cbody}}
+                        </p>
+                        <p>
+                          <em class="pull-right">
+                              <button class="btn btn-link bubble_create-reply-btn" (click)="submitCommentOnComment(commentData)"><small>Reply</small></button>
+                          </em>
+                        </p>
+                    </div>
+                  </div>
+                  <ul class="comments">
+                      <div *ngFor="let reply of replys">
+                          <div *ngIf="commentData.cid==reply.previous?.cid">
+                              <div *ngIf="formatReplyDate(reply)">
+                                  <li class="clearfix">
+                                    <div class="post-feed-comment_container">
+                                      <div class="post-feed-comment_profile-pic">
+                                      <img [src]=" (reply.writer?.imgurl )? reply.writer?.imgurl :  '../../../../assets/favicon.png'" alt="..." class="bubble-avatar_sm comment-pfp">
+                                    </div>
+                                    <div class="post-comments post-feed-comment_body-copy">
+                                        <small>{{dateFormatForComment(reply.dateCreated)}}</small>
+                                        <p class="meta">
+                                            {{reply.writer?.username}} says :
+                                        </p>
+                                        <p>
+                                            {{reply.cbody}}
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </li>
+                              </div>
+                          </div>
+                      </div>
+                  </ul>
+                </li>
+          </div>
+  </ul>
+  <form id="create-comment-form align-items-center" >
+    <label for="create-comment" *ngIf="isReply==false">Enter your comment: </label>
+    <label for="create-comment" *ngIf="isReply==true">Enter your reply: </label>
+    <div class="post-feed-comment_container">
+      <div class="bubble-create-comment-self-avatar">
+        <img [(src)]="url"
+        alt="Bubble profile photo for {{this.profile.firstName}} {{this.profile.lastName}}"
+        class="bubble-avatar_sm">
+      </div>
+      <div class="bubble-create-comment-textarea">
+          <textarea type="text" *ngIf="isReply==false" class="form-control" [(ngModel)]="comment.cbody" name="create-post" id="create-comment" required>
+          </textarea>
+          <textarea *ngIf="isReply==true" type="text" class="form-control" [(ngModel)]="reply.cbody" name="create-reply" id="create-reply" required>
+          </textarea>
+    </div>
+    </div>
+    <button class="btn-rounded create-comment-btn bubble_create-comment-btn" (click)="submitComment(comment)" *ngIf="isReply==false">Post</button>
+    <button class="btn btn-dark bubble_create-comment-btn" (click)="submitReply(reply)" *ngIf="isReply==true">Post</button>
+
+  </form>
+  </section>
+</div>

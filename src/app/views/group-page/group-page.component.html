@@ -1,0 +1,34 @@
+<div class="view-container">
+  <nav-bar></nav-bar>
+  <div id="groups-container">
+    <div id="my-groups">
+    <div class="test-container" id="create-group-container">
+      <h2>Create a Group</h2>
+      <form>
+        <label for="group-name">Group Name:</label>
+        <input type="text" name="groupName" class="form-control" [(ngModel)]="groupName">
+        <button type="button" (click)="createGroup()">Submit</button>
+      </form>
+      <div *ngIf="mGroups.length > 0">
+        <ul *ngFor="let g of mGroups; index as i">
+          <li>{{getJoinedGroupName(i)}}  <button  name="leave" (click)="leaveGroup(i)">Leave</button></li>
+        </ul>
+        </div>
+    </div>
+    </div>
+    <div class="test-container" id="search-groups-container">
+      <h4>Searching for groups</h4>
+      <form #userForm="ngForm">
+          <label for="group-search">Group Search: {{userForm.value.searchName}}</label>
+          <input type="text" name="searchName" class="form-control" [(ngModel)]="searchName">
+          <button type="button" (click)="searchByName()">Submit</button>
+        </form>
+        <div *ngIf="sGroups.length > 0">
+      <ul *ngFor="let g of sGroups; index as i">
+        <li>{{getSearchGroupName(i)}} <button  name="join" (click)="joinGroup(i)">Join</button> </li>
+      </ul>
+    </div>
+    </div>
+
+  </div>
+</div>

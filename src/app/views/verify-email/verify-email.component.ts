@@ -28,12 +28,12 @@ export class VerifyEmailComponent implements OnInit {
           localStorage.removeItem('randomCode');
           setTimeout(() => {
             this.router.navigate(['/login']);
-          }, 5000);
+          }, 3000);
         } else {
           this.confirmed = false;
           setTimeout(() => {
             this.router.navigate(['/login']);
-          }, 5000);
+          }, 3000);
         }
 
       });
@@ -46,7 +46,7 @@ export class VerifyEmailComponent implements OnInit {
         if (data) {
           console.log(data)
         }
-      
+
     }, error => console.log(error))
   }
 }

@@ -1,5 +1,5 @@
 import { Profile } from './../../../models/profile';
-import { Component, OnInit, Input  } from '@angular/core';
+import { Component, Input  } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -8,15 +8,10 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './following-list.component.html',
   styleUrls: ['./following-list.component.css']
 })
-export class FollowingListComponent implements OnInit {
+export class FollowingListComponent {
   @Input() profiles! : Profile[];
+  @Input() text : string | any;
 
   constructor(public activeModal: NgbActiveModal) { }
-
-
-
-  ngOnInit(): void {
-    console.log(this.profiles);
-  }
 
 }
