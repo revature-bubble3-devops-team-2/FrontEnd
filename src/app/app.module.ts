@@ -35,6 +35,8 @@ import { NavbarComponent } from './views/navbar/navbar.component';
 import { PasswordResetComponent } from './views/password-reset/password-reset.component';
 import { VerifyEmailComponent } from './views/verify-email/verify-email.component';
 import { FollowingListComponent } from './views/home/following-list/following-list.component';
+import { CheckEmailComponent } from './views/check-email/check-email.component';
+
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -62,7 +64,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
     ProfileHeaderComponent,
     PasswordResetComponent,
     VerifyEmailComponent,
-
+    CheckEmailComponent
   ],
   imports: [
     BrowserModule,
