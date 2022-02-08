@@ -12,7 +12,8 @@ import { GroupService } from 'app/services/group.service';
 export class GroupPageComponent implements OnInit {
   public profile: Profile | any;
   public group: Group | any;
-  public groups: Group[] = [];
+  public mGroups: Group[] = [];
+  public sGroups: Group[] = [];
   public groupName: string = '';
   public searchName: string = '';
 
@@ -24,6 +25,8 @@ export class GroupPageComponent implements OnInit {
   // Need a way to assign current profile to the Profile obj.
   // Below doesn't work
   ngOnInit(): void {
+    this.updateProfile();
+
     let prof: any = sessionStorage.getItem('profile');
     prof = JSON.parse(prof);
 
@@ -33,9 +36,10 @@ export class GroupPageComponent implements OnInit {
       prof.lastName,
       prof.passkey,
       prof.email,
-      prof.username
+      prof.username,
+      prof.groups
     );
-
+    this.updateJoinedGroups();
     // this.profileService.getProfileByPid(prof.pid).subscribe((data:any) => {
     //   this.profile.email = data.email;
     //   this.profile.firstName = data.firstName;
@@ -47,54 +51,124 @@ export class GroupPageComponent implements OnInit {
     // });
   }
 
+  public updateProfile() {
+    this.profile = this.profileService.getProfile();
+  }
+
+  public updateSession() {
+    sessionStorage.setItem('profile', JSON.stringify(this.profile));
+  }
+
+  public updateJoinedGroups() {
+    this.mGroups = [];
+    for (let g of this.profile.groups) {
+      this.mGroups.push(g);
+    }
+  }
+
+  public updateProfileServiceProfile() {
+    this.profileService
+      .getProfileByPid(this.profile.pid)
+      .subscribe((data: any) => {
+        this.profileService.setData(data);
+        this.updateProfile();
+        this.updateJoinedGroups();
+        this.updateSession();
+      });
+  }
+
   public createGroup() {
-    this.groupService.createGroup(this.profile, this.groupName);
+    if (this.groupName == '') {
+      alert("Please enter a GROUP NAME to create a new group")
+      return;
+    }
+    this.groupService
+      .createGroup(this.profile, this.groupName)
+      .subscribe((data: any) => {
+        this.updateProfileServiceProfile();
+        this.groupName = '';
+      });
   }
 
   public searchByName() {
     if (this.searchName == '') {
+      alert("please enter something to search by")
       return;
     } else {
-      this.groups = [];
+      this.sGroups = [];
       this.groupService
         .SearchGroupbyName(this.searchName)
         .subscribe((data: any) => {
           for (let g of data) {
-            this.groups.push(g);
+            this.sGroups.push(g);
           }
         });
     }
   }
 
-  public getGroupName(target: number) {
-    let result = this.groups[target].groupName;
+  public getSearchGroupName(target: number) {
+    let result = this.sGroups[target].groupName;
+    return result;
+  }
+
+  public getJoinedGroupName(target: number) {
+    let result = this.mGroups[target].groupName;
     return result;
   }
 
   public joinGroup(targetGroup: number) {
-    let result = this.groups[targetGroup].gid;
-    if (!result) {
+    let targetId = this.sGroups[targetGroup].groupId;
+    let userId = this.profile.pid;
+
+    if (!targetId) {
       return;
     } else {
-      if (this.profile.myGroups.includes(this.groups[targetGroup])) {
-        alert('Already in this group');
-      } else {
-          this.groupService.joinGroup(result, this.profile.pid);
+      for (let g of this.profile.groups) {
+        let gId = this.groupService.getGroupId(g);
+        if (targetId == gId) {
+          alert('Already in this group');
+          return;
+        }
       }
+      this.groupService.joinGroup(targetId, userId).subscribe((data: any) => {
+        this.profileService.getProfileByPid(userId).subscribe((data: any) => {
+          this.profileService.setData(data);
+
+          this.updateProfile();
+          this.updateJoinedGroups();
+          this.updateSession();
+          this.searchName = '';
+          this.sGroups = [];
+        });
+      });
     }
   }
 
   public leaveGroup(targetGroup: number) {
-    let result = this.groups[targetGroup].gid;
-    if (!result) {
+    let targetId = this.mGroups[targetGroup].groupId;
+    let userId = this.profile.pid;
+
+    if (!targetId) {
       return;
     } else {
-      if (this.profile.myGroups.includes(this.groups[targetGroup])) {
-        alert('Already in this group');
-      } else {
-          this.groupService.leaveGroup(result, this.profile.pid);
+      for (let g of this.profile.groups) {
+        let gId = this.groupService.getGroupId(g);
+        if (targetId == gId) {
+          this.groupService
+            .leaveGroup(targetId, userId)
+            .subscribe((data: any) => {
+              this.profileService
+                .getProfileByPid(userId)
+                .subscribe((data: any) => {
+                  this.profileService.setData(data);
+                  this.updateProfile();
+                  this.updateJoinedGroups();
+                  this.updateSession();
+                  alert('Left the Group');
+                });
+            });
+        }
       }
     }
-
   }
 }

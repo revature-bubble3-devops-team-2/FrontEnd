@@ -126,6 +126,10 @@ export class GroupService {
       .pipe(catchError(this.handleError));
   }
 
+  getGroupId(group: Group){
+    return group.groupId;
+  }
+
   private handleError(httpError: HttpErrorResponse) {
     if (httpError.error instanceof ErrorEvent) {
       console.log('An error occurred: ', httpError.error.message);
@@ -141,4 +145,7 @@ export class GroupService {
       () => new Error('Something really bad happened, please try again later')
     );
   }
+
+
+
 }
