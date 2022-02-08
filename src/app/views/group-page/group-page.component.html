@@ -20,8 +20,8 @@
           <button type="button" (click)="searchByName()">Submit</button>
         </form>
         <div *ngIf="groups.length > 0">
-      <ul>
-        <li *ngFor="let g of groups; index as i">Result: {{getGroupName(i)}} <input type="button" name="join" (click)="joinGroup(i)"></li>
+      <ul *ngFor="let g of groups; index as i">
+        <li>Result: {{getGroupName(i)}} <input type="button" name="join" (click)="joinGroup(i)"></li>
       </ul>
     </div>
     </div>
