@@ -38,17 +38,7 @@ export class LoginComponent {
 
             this.loginProfile = r.body;
 
-            console.log(this.loginProfile)
-
-            console.log(r.body);
-            console.log(`islogged in ${this.loginProfile.verification}`);
-
-
-
             this.profileService.setData(r.body);
-
-            console.log(this.profileService.getProfile());
-
 
             sessionStorage.clear();
             const tempAuth = r.headers.get("Authorization");
