@@ -66,9 +66,9 @@ export class ProfileviewComponent implements OnInit {
     this.url  = e.imgurl ?  e.imgurl : `../../../../assets/favicon.png` ;
     this.username = e.username;
     this.getFollowerPosts(1);
-    sessionProfile.following.forEach((e : Profile) => {
+    sessionProfile.following.forEach((p : Profile) => {
 
-        if(  e.pid == this.id){
+        if(  p.pid == this.id){
       this.followed = true
      }
 

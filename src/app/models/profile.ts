@@ -1,4 +1,3 @@
-import { StringDecoder } from "string_decoder";
 import { Group } from "./group";
 
 export class Profile {
