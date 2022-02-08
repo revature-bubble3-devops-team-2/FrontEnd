@@ -5,6 +5,8 @@ import { Comment } from 'app/models/comment';
 import { Post } from 'app/models/post';
 import { Profile } from 'app/models/profile';
 import { formatDate } from '@angular/common';
+import { faComment} from '@fortawesome/free-regular-svg-icons';
+import { ProfileService } from 'app/services/profile.service';
 
 
 @Component({
@@ -30,10 +32,19 @@ export class CreateCommentComponent implements OnInit {
   replyDate: string = "";
   previous: Comment ={};
 
+  // Icons
+  faComment = faComment;
+
+  // Session
+  id : number =0;
+  session : any = {};
+  url : any = this.profile.imgurl ? this.profile.imgurl : `../../../../assets/favicon.png`
+
   constructor(
     public commentService: CommentService,
     public activeModal: NgbActiveModal,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private profileService: ProfileService
     ) {}
 
   ngOnInit(): void {
@@ -47,6 +58,13 @@ export class CreateCommentComponent implements OnInit {
     if(sessionProfile!=null){
       this.profile = JSON.parse(sessionProfile);
     }
+
+    this.id = this.session.pid;
+     this.profileService.getProfileByPid(this.id).subscribe( (e : any) =>{
+      this.url  = e.imgurl ?  e.imgurl : `../../../../assets/favicon.png` ;
+      this.profileService.getProfile().imgurl =  e.imgurl;
+      });
+
   }
 
   dateFormatForComment(d?: Date) {

@@ -1,11 +1,16 @@
-<div>
-  <form class="form-inline my-2 my-lg-0">
-    <input name="username" type="text" placeholder="Search" #username>
-    <button class="" (click)="searchUser(username.value)">Search</button>
+<div id="bubble-search">
+
+  <form>
+    <input name="username" type="text" placeholder="Search" #username [ngClass]="{'showResults': displayingResults}">
+    <button class="btn-rounded" (click)="searchUser(username.value)">Search</button>
   </form>
-  <div class="card" id="search-results">
+  <div class="card" id="search-results" [ngClass]="{'showResults': displayingResults}">
     <datalist *ngFor="let p of profiles" class="list-group">
-      <a [href]="['/profileview/' + p.pid]">{{ p.username }}</a>
+      <a [href]="'/profileview/' + p.pid">{{ p.username }}</a>
     </datalist>
   </div>
 </div>
+
+
+
+

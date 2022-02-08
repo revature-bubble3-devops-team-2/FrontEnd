@@ -1,8 +1,7 @@
 * {box-sizing: border-box}
 
 .login-container {
-    /* background-image: url("/assets/images/login-register-background.jpg"); */
-    background-color: #ededed;
+    background-image: url("/assets/images/login-bg.png");
     background-size: cover;
     background-attachment: fixed;
     height: 100vh;
