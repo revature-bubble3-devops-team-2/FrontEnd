@@ -12,7 +12,7 @@ import { Profile } from './../../models/profile';
 export class GroupSearchComponent {
 
   groupName = '';
-  public pro = new Profile(0,'', '', '', '', '');
+  public pro = new Profile(0,'', '', '', '', '', []);
   public pros: Profile[] = [];
   public group = new Group(0,"",this.pro,this.pros);
   id = 0;
