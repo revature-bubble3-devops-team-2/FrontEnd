@@ -11,9 +11,9 @@
         </div>
       </div>
     </header>
-    <ng-container *ngIf="post.imgURL" id="create-comment_post-img-container">
-      <p>{{post.body}}</p>
-      <img class="img-fluid card-img" alt="image" [src]="post.imgURL" id="create-comment_post-img" />
+    <ng-container id="create-comment_post-img-container">
+      <p>{{ post.body }}</p>
+      <img *ngIf="post.imgURL" class="img-fluid card-img" alt="image" [src]="post.imgURL" id="create-comment_post-img" />
     </ng-container>
     <div class="comment-social-interaction post-feed_engagement-buttons">
       <app-like [postInfo]="post"></app-like>
