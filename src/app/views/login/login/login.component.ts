@@ -20,7 +20,6 @@ export class LoginComponent {
 
   constructor(private profileService:ProfileService, private router: Router) {
   }
-
   login(){
     //Resetting all the error divs
     this.error = false;
@@ -32,7 +31,7 @@ export class LoginComponent {
       this.profileService.login(this.username, this.password).subscribe(
         r => {
 
-          if (r.body !== null && r.headers.get("Authorization") !== null)
+          if (r.body !== null && r.headers.get("Authorization") !== null && r.body.verification)
           {
 
             const temp = r.body as Profile;
@@ -41,11 +40,14 @@ export class LoginComponent {
 
             console.log(this.loginProfile)
 
+            console.log(r.body);
+            console.log(`islogged in ${this.loginProfile.verification}`);
+
+
+
             this.profileService.setData(r.body);
 
             console.log(this.profileService.getProfile());
-
-
 
 
             sessionStorage.clear();
@@ -56,7 +58,11 @@ export class LoginComponent {
             sessionStorage.setItem("profile", JSON.stringify(temp));
             //Store the return body into sessionStorage and then redirect to profile page
             this.router.navigate(['/home']);
-          } else {
+          }
+          else if(!r.body?.verification){
+            this.router.navigate(['/check-email']);
+          }
+           else {
             //Error in case if something in the backend doesn't give us data for w.e reason.
             console.log("Returned profile but no data");
           }
@@ -70,5 +76,4 @@ export class LoginComponent {
       this.missing = true;
     }
   }
-
 }

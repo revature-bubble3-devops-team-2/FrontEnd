@@ -25,7 +25,7 @@ export class VerifyEmailComponent implements OnInit {
         if (this.randomCode == localStorage.getItem('randomCode')){
           this.confirmed = true;
           this.verifyUser(params.email);
-          //localStorage.removeItem('randomCode');
+          localStorage.removeItem('randomCode');
           setTimeout(() => {
             //this.router.navigate(['/login']);
           }, 5000);

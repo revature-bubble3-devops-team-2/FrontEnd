@@ -35,6 +35,8 @@ import { NavbarComponent } from './views/navbar/navbar.component';
 import { PasswordResetComponent } from './views/password-reset/password-reset.component';
 import { VerifyEmailComponent } from './views/verify-email/verify-email.component';
 import { FollowingListComponent } from './views/home/following-list/following-list.component';
+import { CheckEmailComponent } from './views/check-email/check-email.component';
+
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { GroupSearchComponent } from './views/group-search/group-search.component';
 @NgModule({
@@ -62,7 +64,8 @@ import { GroupSearchComponent } from './views/group-search/group-search.componen
     VerifyEmailComponent,
     FollowingListComponent,
     ProfileHeaderComponent,
-    GroupSearchComponent
+    GroupSearchComponent,
+    CheckEmailComponent
   ],
   imports: [
     BrowserModule,
