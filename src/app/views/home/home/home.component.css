@@ -9,7 +9,7 @@ app-search{
   width: 50%;
 }
 .posts-container{
-  background-color: var(--revature-cool-gray);
+  background-color: var(--revature-bg-gray);
   width: 70%;
 }
 

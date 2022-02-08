@@ -15,7 +15,8 @@
 --revature-light-gray: #B9B9BA;
 
 /* Additional colors */
---revature-cool-gray: #f0f2f5;
+--revature-bg-gray: #f0f2f5;
+--revature-ink: #252525;
 
 /* Avatar Sizes */
 --revature-sm-avatar: 70px;
@@ -102,6 +103,9 @@ color: var(--revature-dark-gray);
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   perspective: 1000;
+}
+.hideTab{
+  display: none !important;
 }
 /*
 * OLD STYLING

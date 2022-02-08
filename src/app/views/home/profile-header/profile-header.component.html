@@ -6,7 +6,7 @@
           <img [src]="url" alt="profile image" class="bubble-avatar_xl">
       </div>
     <h3>{{firstName}} {{lastName}}</h3>
-    <small id="profile-header_username">{{ username }}</small>
+    <small id="profile-header_username">@{{ username }}</small>
     <div id="profile-header_buttons">
       <app-modal-button *ngIf=" id ==  sessionId"></app-modal-button>
       <button  *ngIf=" ! followed &&   id !=  sessionId " type="submit" (click)="follow()">

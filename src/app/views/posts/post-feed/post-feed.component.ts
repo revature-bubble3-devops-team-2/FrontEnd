@@ -7,6 +7,8 @@ import { Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Profile } from 'app/models/profile';
 import { CreateCommentComponent } from '../create-comment/create-comment.component';
+import { faFrown } from '@fortawesome/free-regular-svg-icons';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-post-feed',
@@ -22,6 +24,8 @@ export class PostFeedComponent implements OnInit, OnDestroy {
 
   faThumbsUp = faThumbsUp;
   faComment = faComment;
+  faFrown = faFrown;
+  faSpinner = faSpinner;
   Loading!: boolean;
   endOfContents = false;
 

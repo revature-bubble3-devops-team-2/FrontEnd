@@ -35,6 +35,11 @@
     </div>
   </div>
   <div
+    class="" style="margin-top: 5%; text-align: center;"
+    *ngIf="posts.length == 0">
+    Nothing to display just yet.
+  </div>
+  <div
     class="mb-4 post-card card shadow-lg d-flex justify-content-center"
     *ngIf="endOfContents">
     No More Contents
