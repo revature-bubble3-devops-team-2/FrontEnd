@@ -13,7 +13,7 @@ export class Profile {
     groups?:Group[];
     verification?: boolean;
 
-    constructor(pid:number, firstName:string, lastName:string, passkey:string, email:string, username:string, verification: boolean, groups:Group[]){
+    constructor(pid:number, firstName:string, lastName:string, passkey:string, email:string, username:string, verification:boolean, groups:Group[]){
 
         this.pid = pid;
         this.firstName = firstName;

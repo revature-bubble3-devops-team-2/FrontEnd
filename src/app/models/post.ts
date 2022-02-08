@@ -5,7 +5,7 @@ export class Post {
 
     psid?:number;
     creator:Profile;
-    body?:string;
+    body:string;
     imgURL?:string;
     datePosted?:Date;
     group?:Group;

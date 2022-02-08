@@ -1,3 +1,4 @@
+import { FilterService } from './../../../services/filter.service';
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Post } from 'app/models/post';
@@ -34,8 +35,10 @@ export class CreatePostComponent implements OnInit {
 
   constructor(
     public postService: PostService,
+    public activeModal: NgbActiveModal,
+    private modalService: NgbModal,
+    private filterService: FilterService
     //public activeModal: NgbActiveModal,
-    private modalService: NgbModal
     ) {}
 
   ngOnInit(): void {
@@ -51,6 +54,8 @@ export class CreatePostComponent implements OnInit {
 
   createPost() {
     if (this.addPost.body!=='') {
+      //filter body for profanity
+      this.addPost.body = this.filterService.filterProfanity(this.addPost.body);
       this.postService.createPost(this.addPost);
       window.location.reload();
     } else {

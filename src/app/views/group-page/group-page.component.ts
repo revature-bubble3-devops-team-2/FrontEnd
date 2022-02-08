@@ -37,6 +37,7 @@ export class GroupPageComponent implements OnInit {
       prof.passkey,
       prof.email,
       prof.username,
+      prof.verification,
       prof.groups
     );
     this.updateJoinedGroups();
