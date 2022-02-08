@@ -110,8 +110,7 @@ export class GroupPageComponent implements OnInit {
     let targetId = this.sGroups[targetGroup].groupId;
     let userId = this.profile.pid;
 
-    if (!targetId) {
-    } else {
+    if (!!targetId) {
       for (let g of this.profile.groups) {
         let gId = this.groupService.getGroupId(g);
         if (targetId == gId) {
@@ -137,8 +136,7 @@ export class GroupPageComponent implements OnInit {
     let targetId = this.mGroups[targetGroup].groupId;
     let userId = this.profile.pid;
 
-    if (!targetId) {
-    } else {
+    if (!!targetId) {
       for (let g of this.profile.groups) {
         let gId = this.groupService.getGroupId(g);
         if (targetId == gId) {
