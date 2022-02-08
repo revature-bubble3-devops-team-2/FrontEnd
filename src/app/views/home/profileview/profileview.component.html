@@ -9,7 +9,12 @@
       (click)="toggleViewTabs()">Posts</span>
       <span [ngClass]="showFollowers ? 'activeProfileTab' : ''"
       (click)="toggleViewTabs()">Followers</span>
+      <!-- <span [ngClass]="showFollowers ? 'activeProfileTab' : ''"
+      (click)="toggleViewTabs()">Following</span> -->
     </div>
+
+
+
     <div
         id="profileview_user-posts"
         class="
@@ -30,6 +35,11 @@
       <div id="profile-view_user-follow" [ngClass]="showFollowers ? '' : 'hideTab'">
         <app-following-list [profiles]="followersProfiles"  [text]="'Following'"></app-following-list>
       </div>
+
+      <div id="profile-view_user-follow" [ngClass]="showFollowing ? '' : 'hideTab'">
+        <app-following-list [profiles]="followersOfThisUser"  [text]="'Followers'"></app-following-list>
+      </div>
+
   </div>
 
 </div>

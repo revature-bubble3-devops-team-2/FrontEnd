@@ -1,34 +1,19 @@
-<div class="container scroll">
-
-  <div class="row">
-      <div class="col-md-6">
-
-        <h3 style="text-align: center;">{{text + " " + profiles.length}} </h3>
-          <div class="people-nearby">
-
-            <ng-container   *ngFor="let p of profiles">
-            <div class="nearby-user">
-
-              <div class="row">
-
-
-                <div class="col-md-2 col-sm-2">
-                  <img [src]="[ (p.imgurl) ? p.imgurl : '../../../../assets/favicon.png']" alt="user" class="profile-photo-lg">
-                </div>
-
-              </div>
-
-              <div class="col-md-12 col-sm-7">
-              <a [href]="'/profileview/'+ p.pid" class="profile-link">{{p.firstName + " " + p.lastName}}</a>
-              </div>
-            </div>
-
-    </ng-container>
-
-
-
-
+<div class="container">
+  <p id="follow-list-text">
+    Following: {{profiles.length}}
+  </p>
+  <div class="follow-list-container">
+    <ng-container   *ngFor="let p of profiles">
+      <div class="listed-user">
+        <a [href]="'/profileview/'+ p.pid" class="profile-link">
+          <div class="listed-user_avatar">
+            <img [src]="[ (p.imgurl) ? p.imgurl : '../../../../assets/favicon.png']" alt="user" class="bubble-avatar_sm">
           </div>
-    </div>
-</div>
+          <div class="listed-user_info">
+            <p>{{p.firstName + " " + p.lastName}}</p>
+          </div>
+        </a>
+      </div>
+    </ng-container>
+  </div>
 </div>

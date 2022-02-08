@@ -39,6 +39,7 @@ export class ProfileviewComponent implements OnInit {
   //Tabs
   showPosts: boolean = true;
   showFollowers: boolean = false;
+  showFollowing : boolean = false;
 
 
 
@@ -133,10 +134,17 @@ unfollow() {
 toggleViewTabs(){
   if(this.showPosts){
     this.showPosts = false;
+    this.showFollowing = false;
     this.showFollowers = true;
-  } else {
+  } else if(this.showFollowing){
+    this.showPosts = true;
+    this.showFollowers = true;
+    this.showFollowing = false;
+  }
+  else {
     this.showPosts = true;
     this.showFollowers = false;
+    this.showFollowing = false;
   }
 }
 
