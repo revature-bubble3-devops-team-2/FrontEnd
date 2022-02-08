@@ -22,8 +22,6 @@ export class GroupPageComponent implements OnInit {
     public profileService: ProfileService
   ) {}
 
-  // Need a way to assign current profile to the Profile obj.
-  // Below doesn't work
   ngOnInit(): void {
     this.updateProfile();
 
@@ -37,7 +35,9 @@ export class GroupPageComponent implements OnInit {
       prof.passkey,
       prof.email,
       prof.username,
-      prof.groups
+      prof.verification,
+      prof.groups,
+
     );
     this.updateJoinedGroups();
     // this.profileService.getProfileByPid(prof.pid).subscribe((data:any) => {
