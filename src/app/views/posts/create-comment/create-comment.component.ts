@@ -92,6 +92,26 @@ export class CreateCommentComponent implements OnInit {
     return true;
   }
 
+  checkWriterForEachComment(comment: Comment){
+    this.isWriter=false;
+    this.commentData = comment;
+    var temp = this.commentData.dateCreated;
+    var d;
+    if(temp){
+      d = new Date(temp);
+      this.dateFormatForComment(d);
+    }
+    if(comment.writer){
+      this.commentWriter = comment.writer;
+    }
+    if(this.commentWriter.pid==this.profile.pid){
+      this.isWriter = true;
+      return true;
+    }else{
+      return false;
+    }
+  }
+
   getOriginCommentsByPsid(){
     if(this.post.psid){
       this.commentService.getCommentsByPsid(this.post.psid).subscribe(

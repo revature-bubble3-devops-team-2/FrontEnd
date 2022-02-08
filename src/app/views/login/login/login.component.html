@@ -12,10 +12,12 @@
           <input class="form-control" type="password" placeholder="Enter Password" name="password" id="password" [(ngModel)]="password" required>
 
           <button type="submit" class="onLoginBtn btn btn-rounded" (click)="login()">Login</button>
-
-          <div class="sign-up">
-              <p>Create New Account <a routerLink="/register">Click Here</a></p>
+            <div class="forgot-password">
+              <p> <a routerLink="/passwordreset">Forgot Password?</a></p>
           </div>
+          <div class="sign-up">
+            <p>Create New Account <a routerLink="/register">Click Here</a></p>
+        </div>
     </form>
   </div>
 </div>

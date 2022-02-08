@@ -10,9 +10,10 @@ export class SearchComponent {
 
 
   username:string = 'defaultQuery';
-  public pro = new Profile(0,'', '', '', '', '')
+  public pro = new Profile(0,'', '', '', '', '', false, [])
   id = 0;
-  public profiles: any;
+  profiles:any;
+
   displayingResults = false;
 
   constructor(private profile: ProfileService) { }
@@ -24,7 +25,10 @@ export class SearchComponent {
   public searchUser(username:string){
     console.log(username)
     this.profile.getProfileByUsername(username)
-      .subscribe(data => this.profiles = data)
+      .subscribe(data => {
+        this.profiles = data
+        console.log(data);
+      })
 
       this.displayingResults = true;
   }

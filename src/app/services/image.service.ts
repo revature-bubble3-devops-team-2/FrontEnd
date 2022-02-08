@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,7 @@ export class ImageService {
     imageFormData.append('image', this.uploadedImage, this.uploadedImage.name);
 
 
-    this.httpClient.post('http://localhost:8082/image/add', imageFormData, { observe: 'response' })
+    this.httpClient.post(`${environment.url}/image/add`, imageFormData, { observe: 'response' })
       .subscribe((response) => {
         if (response.status === 200) {
           console.log(response)
@@ -41,7 +42,7 @@ export class ImageService {
 
 
     viewImage() {
-      this.httpClient.get('http://localhost:8080/get/image/info/' + this.image)
+      this.httpClient.get(`${environment.url}/get/image/info/` + this.image)
         .subscribe(
           res => {
             this.postResponse = res;

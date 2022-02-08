@@ -8,7 +8,7 @@
         <fa-icon class="camera-icon" [icon]="faCameraRetro"></fa-icon>
       </div>
     </label>
-    <input id="fileInput" type='file' (change)=" onSelectFile($event)  ">
+    <input id="fileInput" type='file' (change)=" onSelectFile($event) ">
   </div>
   <div class="profile_current-user_text">
       <h4><a [href]="['/profileview/'+ id]">{{this.profile.firstName}} {{this.profile.lastName}}</a></h4>
@@ -19,7 +19,7 @@
           <li><a [href]="['/profileview/'+ id]"><fa-icon class="nav-icon" [icon]="faIdCard"></fa-icon>My Profile</a></li>
           <!--
           <li><fa-icon class="nav-icon" [icon]="faUserFriends"></fa-icon>Followers</li>-->
-          <li><fa-icon class="nav-icon" [icon]="faUsers"></fa-icon>Group</li>
+          <li><fa-icon class="nav-icon" [icon]="faUsers"></fa-icon>Groups</li>
          <!--
           <li><fa-icon class="nav-icon" [icon]="faComments"></fa-icon>Chat</li>
           <li><fa-icon class="nav-icon" [icon]="faCalendar"></fa-icon>Events</li>

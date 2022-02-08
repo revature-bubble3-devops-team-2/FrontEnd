@@ -1,3 +1,5 @@
+import { Group } from "./group";
+
 export class Profile {
 
     pid?:number;
@@ -6,10 +8,11 @@ export class Profile {
     passkey?:string;
     email?:string;
     username?:string;
-    imgurl?: string
+    imgurl?: string;
+    groups?:Group[];
+    verification?: boolean;
 
-
-    constructor(pid:number, firstName:string, lastName:string, passkey:string, email:string, username:string){
+    constructor(pid:number, firstName:string, lastName:string, passkey:string, email:string, username:string, verification:boolean, groups:Group[]){
 
         this.pid = pid;
         this.firstName = firstName;
@@ -17,5 +20,8 @@ export class Profile {
         this.passkey = passkey;
         this.email = email;
         this.username = username;
+        this.groups= groups;
+        this.verification = verification;
+
     }
 }
