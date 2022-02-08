@@ -38,6 +38,7 @@ import { FollowingListComponent } from './views/home/following-list/following-li
 import { CheckEmailComponent } from './views/check-email/check-email.component';
 
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { GroupHeaderComponent } from './views/group-header/group-header.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
     ProfileHeaderComponent,
     PasswordResetComponent,
     VerifyEmailComponent,
-    CheckEmailComponent
+    CheckEmailComponent,
+    GroupHeaderComponent
   ],
   imports: [
     BrowserModule,

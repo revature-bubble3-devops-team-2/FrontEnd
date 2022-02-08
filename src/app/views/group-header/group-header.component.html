@@ -1,0 +1,28 @@
+<header id="group-header_container">
+  <div id="group-header_cover-photo" #profileHeaderCoverPhoto>
+  </div>
+  <div id="group-header_group-info">
+      <div class = "profile-header_pfp" id="profile-header_edit-pfp">
+          <img [src]="url" alt="profile image" class="bubble-avatar_xl">
+      </div>
+    <h3>{{groupName}} {{ownerName}}</h3>
+    <p>Description goes here...</p>
+
+    <div id="profile-header_buttons">
+      <app-modal-button *ngIf=" id ==  sessionId"></app-modal-button>
+      <button  *ngIf=" ! followed &&   id !=  sessionId " type="submit" (click)="follow()">
+        <div class="profile-header_btn">
+          <fa-icon [icon]="faUserPlus"></fa-icon>
+          <p>Follow</p>
+        </div>
+      </button>
+      <button *ngIf="  followed &&   id !=  sessionId " type="submit" (click)="unfollow()">
+        <div class="profile-header_btn">
+        <fa-icon [icon]="faUserMinus"></fa-icon>
+        <p>Unfollow</p>
+      </div>
+      </button>
+    </div>
+
+  </div>
+</header>
