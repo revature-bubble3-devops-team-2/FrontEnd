@@ -53,12 +53,13 @@ export class CreateGroupPostComponent implements OnInit {
   createPost() {
     if (this.addPost.body!=='') {
       this.postService.createPost(this.addPost);
+      setTimeout(() => {
+        window.location.reload();
+      }, 5000);
     } else {
       this.show=true;
     }
-    setTimeout(() => {
-      window.location.reload();
-    }, 5000);
+
   }
 
   closeModal() {
