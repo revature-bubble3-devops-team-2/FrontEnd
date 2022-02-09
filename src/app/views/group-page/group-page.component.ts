@@ -3,6 +3,7 @@ import { Profile } from 'app/models/profile';
 import { Component, OnInit } from '@angular/core';
 import { Group } from 'app/models/group';
 import { GroupService } from 'app/services/group.service';
+import { faUsers, faSearch, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-group-page',
@@ -16,6 +17,9 @@ export class GroupPageComponent implements OnInit {
   public sGroups: Group[] = [];
   public groupName: string = '';
   public searchName: string = '';
+  public faUsers = faUsers;
+  public faSearch = faSearch;
+  public faPlusCircle = faPlusCircle;
 
   constructor(
     public groupService: GroupService,
@@ -40,7 +44,6 @@ export class GroupPageComponent implements OnInit {
 
     );
     this.updateJoinedGroups();
-
   }
 
   public updateProfile() {

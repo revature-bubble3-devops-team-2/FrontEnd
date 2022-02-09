@@ -2,57 +2,53 @@
   <nav-bar></nav-bar>
 
   <div id="groups-container">
-    <app-search></app-search>
-    <div id="banner">
-      <h1>Welcome to Bubbl(e) Groups!</h1>
-      <p>From here you can access your groups, create new groups, or search for new groups to join</p>
-    </div>
+    <div id="my-groups">
 
-    <div class="
-      feed-container
-      container-fluid
-      d-flex
-      flex-column
-      align-items-center
-    ">
-      <div class="test-container" id="my-groups" *ngIf="mGroups.length > 0">
-        <div class="content-header">
-          <h2> Your Groups </h2>
-          <p>Stop by and say hi!</p>
-        </div>
-        <ul *ngFor="let g of mGroups; index as i">
-          <li><a [href]="['/groups/'+g.groupId]">{{getJoinedGroupName(i)}} </a><button id="leave-button" name="leave"
-              (click)="leaveGroup(i)">Leave</button>
-          </li>
-        </ul>
+      <div id="search-groups-container" class="group-page-container-box">
+        <header class="groups-container_header">
+          <fa-icon [icon]="faSearch"></fa-icon>
+        </header>
+        <form #userForm="ngForm" class="groups-container_body">
+          <h4>Searching for groups</h4>
+          <label for="group-search" class="hide-label">Group Search: {{userForm.value.searchName}}</label>
+          <input type="text" name="searchName" class="form-control" [(ngModel)]="searchName">
+          <button type="button" class="btn-rounded" (click)="searchByName()">Search</button>
+          <div *ngIf="sGroups.length > 0" id="joinable-groups-list">
+            <ul *ngFor="let g of sGroups; index as i">
+              <li><fa-icon [icon]="faUsers"></fa-icon>{{getSearchGroupName(i)}} <button  name="join" (click)="joinGroup(i)">(Join)</button> </li>
+            </ul>
+          </div>
+        </form>
       </div>
 
-      <div class="test-container" id="search-groups-container">
-        <div class="content-header">
-          <h2>Group Lookup</h2>
-          <p>Where are we going today?</p>
-        </div>
-        <form>
-          <input type="text" placeholder="Search for Groups" name="searchName" class="form-control" [(ngModel)]="searchName">
-          <button type="button" (click)="searchByName()">Submit</button>
-        </form>
-        <div *ngIf="sGroups.length > 0">
-          <ul *ngFor="let g of sGroups; index as i">
-            <li>{{getSearchGroupName(i)}} <button name="join" (click)="joinGroup(i)">Join</button> </li>
+
+    <div id="my-groups-container" class="group-page-container-box" *ngIf="mGroups.length > 0">
+      <header class="groups-container_header">
+        <fa-icon [icon]="faUsers"></fa-icon>
+      </header>
+      <div class="groups-container_body">
+        <h4>My groups</h4>
+        <div class="groups-container_body-group-list">
+          <ul *ngFor="let g of mGroups; index as i">
+            <li><fa-icon [icon]="faUsers"></fa-icon>{{getJoinedGroupName(i)}}  <button  name="leave" (click)="leaveGroup(i)">(Leave?)</button></li>
           </ul>
         </div>
       </div>
+    </div>
 
-      <div class="test-container" id="create-group-container">
-        <div class="content-header">
-          <h2>Create a Group</h2>
-          <p>A new place for people to gather</p>
-        </div>
-        <form>
-          <input type="text" placeholder="Group Name" name="groupName" class="form-control" [(ngModel)]="groupName">
-          <button type="button" (click)="createGroup()">Submit</button>
-        </form>
-      </div>
+
+    <div id="create-group-container" class="group-page-container-box">
+      <header class="groups-container_header">
+        <fa-icon [icon]="faPlusCircle"></fa-icon>
+      </header>
+      <form class="groups-container_body">
+        <h4>Can't find a group? Create one!</h4>
+        <input type="text" name="groupName" class="form-control" [(ngModel)]="groupName" placeholder="What's the name of your new group?">
+        <button type="button" class="btn-rounded" (click)="createGroup()">Create</button>
+      </form>
+
+    </div>
+
 
     </div>
   </div>
