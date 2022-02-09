@@ -87,7 +87,7 @@ getAllPosts(): Observable<any> {
         "Authorization": `${sessionStorage.getItem('Authorization')}`
       })
     };
-    return this.httpClient.get<Post[]>(`${environment.url}/groups/${id}/posts`);
+    return this.httpClient.get<Post[]>(`${environment.url}/groups/${id}/posts`, requestOptions);
   }
 
   getNumLikes(post: Post): Observable<number> {
