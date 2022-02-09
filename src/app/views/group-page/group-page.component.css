@@ -14,7 +14,7 @@ app-search {
   height: 150px;
   width: 100%;
   padding: 100px 0;
-  background-color: var(--revature-dark-gray);
+  background-color: var(--revature-orange);
   text-align: center;
   color: var(--revature-white);
 }
@@ -48,16 +48,14 @@ ul {
   border-radius: 10px;
   margin:25px;
 }
-.test-container input{
+.test-container form{
+  text-align: center;
   margin: 0 auto;
   width: 60%;
 }
-.content-header {
-  text-align: center;
-  background-color: var(--revature-dark-gray);
-  margin-bottom: 10px;
-  border-radius: 10px 10px 0 0;
-  color:white;
+
+.test-container button{
+margin: 20px;
 }
 
 button {
@@ -66,9 +64,16 @@ button {
   padding:5px;
   background-color: var(--revature-dark-gray);
   color: var(--revature-white);
-border: 0;
+  border: 0;
 }
 
+.content-header {
+  text-align: center;
+  background-color: var(--revature-dark-gray);
+  margin-bottom: 10px;
+  border-radius: 10px 10px 0 0;
+  color:white;
+}
 
 #teams-container {
   background-color: rgb(198, 154, 240);

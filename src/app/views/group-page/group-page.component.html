@@ -27,20 +27,9 @@
         </ul>
       </div>
 
-      <div class="test-container" id="create-group-container">
-        <div class="content-header">
-          <h2>Create a Group</h2>
-          <p>A new place for people to gather</p>
-        </div>
-        <form>
-          <input type="text" placeholder="Group Name" name="groupName" class="form-control" [(ngModel)]="groupName">
-          <button type="button" (click)="createGroup()">Submit</button>
-        </form>
-      </div>
-
       <div class="test-container" id="search-groups-container">
         <div class="content-header">
-          <h4>Group Lookup</h4>
+          <h2>Group Lookup</h2>
           <p>Where are we going today?</p>
         </div>
         <form>
@@ -52,6 +41,17 @@
             <li>{{getSearchGroupName(i)}} <button name="join" (click)="joinGroup(i)">Join</button> </li>
           </ul>
         </div>
+      </div>
+
+      <div class="test-container" id="create-group-container">
+        <div class="content-header">
+          <h2>Create a Group</h2>
+          <p>A new place for people to gather</p>
+        </div>
+        <form>
+          <input type="text" placeholder="Group Name" name="groupName" class="form-control" [(ngModel)]="groupName">
+          <button type="button" (click)="createGroup()">Submit</button>
+        </form>
       </div>
 
     </div>
