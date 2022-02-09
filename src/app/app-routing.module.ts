@@ -20,12 +20,11 @@ const routes: Routes = [
   {path: 'passwordreset', component: PasswordResetComponent},
   {path: 'email/verify/password', component: PasswordResetComponent},
   {path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
-  {path : "profile/:id", component: ProfileComponent , canActivate:[AuthGuard],pathMatch: 'full'},
-  {path : "profileview/:id", component: ProfileviewComponent, canActivate:[AuthGuard], pathMatch: 'full' },
-  {path: "groups/:id", component: GroupHomeComponent, canActivate:[AuthGuard]},
+  {path: 'profile/:id', component: ProfileComponent , canActivate:[AuthGuard],pathMatch: 'full'},
+  {path: 'profileview/:id', component: ProfileviewComponent, canActivate:[AuthGuard], pathMatch: 'full' },
+  {path: 'groups/:id', component: GroupHomeComponent, canActivate:[AuthGuard]},
   {path: 'group-page', component: GroupPageComponent, canActivate:[AuthGuard]},
   {path: 'verify/email', component: VerifyEmailComponent},
-  {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'check-email', component: CheckEmailComponent}
 ];
 

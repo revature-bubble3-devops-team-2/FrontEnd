@@ -30,7 +30,7 @@
         <h4>My groups</h4>
         <div class="groups-container_body-group-list">
           <ul *ngFor="let g of mGroups; index as i">
-            <li><fa-icon [icon]="faUsers"></fa-icon>{{getJoinedGroupName(i)}}  <button  name="leave" (click)="leaveGroup(i)">(Leave?)</button></li>
+            <li><a [href]="['/groups/'+ g.groupId]"><fa-icon [icon]="faUsers"></fa-icon>{{getJoinedGroupName(i)}}</a> <button  name="leave" (click)="leaveGroup(i)">(Leave?)</button></li>
           </ul>
         </div>
       </div>
