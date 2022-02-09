@@ -12,5 +12,9 @@
         </a>
       </div>
     </ng-container>
+    <div *ngIf="profiles.length == 0" class="listed-user_none">
+      <fa-icon [icon]="faFrown"></fa-icon>
+      Nothing to display here...
+    </div>
   </div>
 </div>

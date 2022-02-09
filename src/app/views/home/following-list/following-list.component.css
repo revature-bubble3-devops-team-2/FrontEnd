@@ -33,3 +33,10 @@
 .listed-user:hover > a > .listed-user_info{
   color: var(--revature-light-gray);
 }
+.listed-user_none{
+  text-align: center;
+}
+.listed-user_none fa-icon{
+  display: block;
+  font-size: 40px;
+}
