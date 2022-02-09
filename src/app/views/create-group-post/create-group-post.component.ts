@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Post } from 'app/models/post';
@@ -30,7 +31,8 @@ export class CreateGroupPostComponent implements OnInit {
 
   constructor(
     public postService: PostService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private router: Router
     ) {}
 
   ngOnInit(): void {
@@ -51,7 +53,9 @@ export class CreateGroupPostComponent implements OnInit {
   createPost() {
     if (this.addPost.body!=='') {
       this.postService.createPost(this.addPost);
-      window.location.reload();
+      setTimeout(() => {
+        window.location.reload();
+      }, 5000);
     } else {
       this.show=true;
     }
