@@ -28,10 +28,10 @@ export class ProfileHeaderComponent implements OnInit {
   followersProfiles : Profile[] | any;
   id : any ;
   sessionId : any;
-  firstName: any ;
-  lastName: any ;
+  firstName: any = "";
+  lastName: any = "";
   email: any ;
-  username : any;
+  username : any = "username";
   url : any  =  `../../../../assets/favicon.png`;
   posts :any[] =[] ;
   profilePosts : Post[] =[];

@@ -40,6 +40,11 @@
   text-decoration: none;
   transition: 0.33s all;
 }
+.profile_current-user_text a{
+  color: var(--revature-dark-gray);
+  text-decoration: none;
+  transition: 0.33s all;
+}
 #profile_navbar li:hover, #profile_navbar a:hover,
 .profile_current-user_text a:hover{
   color: var(--revature-light-gray);

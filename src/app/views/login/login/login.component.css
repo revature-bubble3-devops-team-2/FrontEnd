@@ -33,12 +33,14 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -60%);
+    max-width: 500px;
   width: 65%;
 }
 .login-form-container img{
   display: block;
   height: auto;
   margin: 5% auto;
+  max-width: 300px;
   width: 75%;
 }
 .login-form input{
@@ -64,16 +66,26 @@
   padding-left: 50px;
   padding-right: 50px;
 }
-.sign-up{
-  margin: 10px 5%;
+.sign-up:before{
+  content: "";
+  clear: both;
+  display: table;
 }
-.sign-up a{
+.sign-up{
+  padding: 30px 0px 0px 0px;
+  text-align: center;
+  width: 100%;
+}
+a{
   color: var(--revature-orange);
   text-decoration: none;
   transition: 0.33s all;
 }
-.sign-up a:hover{
+a:hover{
   color: #CC5216;
+}
+.forgot-password{
+  padding: 10px 0px 0px 10px;
 }
 
 /*

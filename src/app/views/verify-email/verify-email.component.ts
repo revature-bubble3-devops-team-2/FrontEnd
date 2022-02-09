@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProfileService } from 'app/services/profile.service';
+import { faLaughBeam } from '@fortawesome/free-solid-svg-icons';
+import { faFrown} from '@fortawesome/free-regular-svg-icons';
 
 @Component({
   selector: 'app-verify-email',
@@ -12,6 +14,12 @@ export class VerifyEmailComponent implements OnInit {
    confirmed?: boolean;
    randomCode ?: string;
    email ?: string;
+
+   // Font Awesome Icons
+   faFrown = faFrown;
+   faLaughBeam = faLaughBeam;
+
+
   constructor(private profileService: ProfileService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {

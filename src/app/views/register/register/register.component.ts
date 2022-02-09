@@ -27,6 +27,8 @@ export class RegisterComponent implements OnInit {
   pswMatch: boolean = false;
   success: boolean = false;
 
+  loginPic: number = Math.floor(Math.random() * 3);
+
   constructor(private profileService:ProfileService, private router: Router) { }
 
   ngOnInit(): void {
