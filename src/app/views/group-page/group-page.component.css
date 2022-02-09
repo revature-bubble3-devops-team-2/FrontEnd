@@ -1,12 +1,14 @@
 #groups-container {
   background-color: var(--revature-bg-gray);
+  height: 100%;
+  overflow-y: scroll;
   width:100%;
 }
 .group-page-container-box{
   background-color: var(--revature-white);
   border-radius: 10px;
   display: flex;
-  margin: 25px auto 10px auto;
+  margin: 45px auto 10px auto;
   max-width: 1140px;
   padding: 0px;
   width: 80%;
