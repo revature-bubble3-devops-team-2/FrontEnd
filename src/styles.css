@@ -121,40 +121,6 @@ color: var(--revature-dark-gray);
 .hideTab{
   display: none !important;
 }
-/*
-* OLD STYLING
-html,
-body {
-height: 100vh;
-width: 100vw;
-overflow: auto;
-}
-body {
-margin: 0;
-padding: 0;
-min-height: 100vh;
-display: flex;
-flex-direction: column;
-font-family: Futura, sans-serif;
-}
-.createPostModal > .modal-content{
-background-color: transparent!important;
-border: none!important;
-}
-.profilemodal > .modal-content{
-background-color: transparent!important;
-border: none!important;
-}
-.postModal {
-max-width: 1080px;
-}
-@media screen and (max-width: 900px) {
-.postModal {
-  max-width: 670px;
-  margin: 2rem;
-}
-}
-*/
 
 /* BOOTSTRAP OVERRIDES */
 .modal-dialog{
