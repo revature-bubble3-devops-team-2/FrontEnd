@@ -26,6 +26,12 @@
 
 }
 
+
+
+/* If you ever cannot scroll,
+this is the property preventing it.
+Apply "overflow-y: scroll" to its
+container to fix it */
 html, body{
 height: 100%;
 margin: 0px;
@@ -42,34 +48,42 @@ margin: 0px;
 .posts-container{
 overflow-y: scroll;
 }
+
+/* Hide gradient on iOS devices */
 [type=button], [type=reset], [type=submit], button {
 -webkit-appearance: none;
 }
 
-.btn-rounded{
-background-color: var(--revature-dark-gray);
-border: 0px;
-border-radius: 50px;
-color: var(--revature-white);
-cursor: pointer;
-padding: 5px 25px;
-transition: 0.33s all;
 
-/* Not sure of buttons that'd be on page,
-   so using a little CSS hack to force
-   hardware acceleration (uses GPU).   */
--webkit-transform: translate3d(0, 0, 0);
--webkit-backface-visibility: hidden;
--webkit-perspective: 1000;
-transform: translate3d(0, 0, 0);
-backface-visibility: hidden;
-perspective: 1000;
+/* Use this for rounded buttons */
+.btn-rounded{
+  background-color: var(--revature-dark-gray);
+  border: 0px;
+  border-radius: 50px;
+  color: var(--revature-white);
+  cursor: pointer;
+  padding: 5px 25px;
+  transition: 0.33s all;
+
+  /* Not sure of buttons that'd be on page,
+    so using a little CSS hack to force
+    hardware acceleration (uses GPU).   */
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000;
 }
 .btn-rounded:hover{
-background-color: var(--revature-light-gray);
-color: var(--revature-dark-gray);
+  background-color: var(--revature-light-gray);
+  color: var(--revature-dark-gray);
 }
 
+
+
+/*  Bubble Avatar sizes.
+    Use these to standardize your sizes */
 .bubble-avatar_sm{
   border-radius: 50%;
   height: var(--revature-sm-avatar);
@@ -95,6 +109,11 @@ color: var(--revature-dark-gray);
   width: var(--revature-xl-avatar);
 }
 
+
+
+/*  CSS Hack to force hardware acceleration */
+/*  Use this if you ever perform any heavy
+    CSS animations. */
 .animate-el{
   transition: 0.33s all;
   -webkit-transform: translate3d(0, 0, 0);
@@ -103,6 +122,18 @@ color: var(--revature-dark-gray);
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   perspective: 1000;
+}
+
+
+
+/* Bubble Block with left side header and
+right side content. See "groups-page"
+component for example */
+.bubble_standard-block{
+  background-color: var(--revature-white);
+  background-clip: border-box;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: 20px;
 }
 .bubble_centered-block{
   background-color: var(--revature-white);
@@ -118,9 +149,98 @@ color: var(--revature-dark-gray);
   -ms-transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
 }
+.bubble_icon-block{
+  background-color: var(--revature-white);
+  border-radius: 10px;
+  display: flex;
+  max-width: 1140px;
+  padding: 0px;
+}
+.bubble_icon-block label{
+  text-align: right;
+  width: 10%;
+}
+.bubble_icon-block input{
+  background: var(--revature-white);
+  border: 2px solid var(--revature-ink);
+  border-radius: 12px!important;
+  display: inline-block;
+  font-size: 16px;
+  height: 50px!important;
+  margin: 5px 5% 25px 5%;
+  min-width: 400px;
+  padding: 8px 18px;
+  width: 70%;
+}
+.bubble_icon-block input:focus{
+  border: 2px solid var(--revature-blue);
+  outline: 0px;
+}
+.bubble_icon-block button{
+  display: inline-block;
+}
+.bubble_icon-block_header{
+  background-color: var(--revature-blue);
+  border-radius: 10px 0px 0px 10px;
+  color: var(--revature-white);
+  padding: 40px 0px 10px 0px;
+  position: relative;
+  text-align: center;
+  width: 20%;
+}
+.bubble_icon-block_header fa-icon{
+  font-size: 50px;
+  left: 50%;
+  padding: 25px;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+}
+.bubble_icon-block_body{
+  padding: 10px 0px;
+  width: 80%;
+}
+.bubble_icon-block_body h4{
+  margin: 15px 0px 25px 0px;
+  text-align: center;
+}
+.bubble_icon-block_body p{
+  margin: 10px auto 20px auto;
+  width: 70%;
+}
+.bubble_icon-block_body-group-list ul{
+  list-style-type: none;
+  margin: 15px auto;
+  width: 70%;
+}
+.bubble_icon-block_body-group-list fa-icon{
+  color: var(--revature-light-gray);
+  margin-right: 10px;
+}
+.bubble_icon-block_body-group-list button{
+  background: none;
+  border: 0px;
+  color: var(--revature-orange);
+  transition: 0.33s all;
+}
+.bubble_icon-block_body-group-list button:hover{
+  color: var(#a74819);
+}
+
+
+
+
+/*  Use this to hide elements instead
+    of commenting them out */
 .hideTab, .todo_needs-implementation{
   display: none !important;
 }
+
+
+
 
 /* BOOTSTRAP OVERRIDES */
 .modal-dialog{

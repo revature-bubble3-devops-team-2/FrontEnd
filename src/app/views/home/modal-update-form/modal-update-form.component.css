@@ -1,24 +1,13 @@
-:host .container{
-    padding: 20px;
-    border-radius: 50px;
-    background-color: #F26925;
+.close{
+  position: absolute;
+  top: 8px;
+  right: 16px;
 }
-:host .modal-content{
-    border-radius: 50px;
-    background-color: #F26925;
+.profile-modal-form{
+  padding: 40px 10px 20px 10px;
+  position: relative;
 }
-:host body{
-    border-radius: 40px;
-    background-color: #F26925;
-}
-
-.submit{
-    text-align: center;
-}
-
-label{
-    display: block;
-    color:#474C55;
-    font-weight: bold;
-    margin-bottom:0;
+.btn{
+  display: block;
+  margin: 10px auto;
 }

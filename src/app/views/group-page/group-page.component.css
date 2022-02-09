@@ -71,7 +71,7 @@
   width: 80%;
 }
 .groups-container_body h4{
-  margin: 10px 0px;
+  margin: 15px 0px 25px 0px;
   text-align: center;
 }
 .groups-container_body p{
@@ -80,7 +80,7 @@
 }
 .groups-container_body-group-list ul{
   list-style-type: none;
-  margin: 10px auto 20px auto;
+  margin: 15px auto;
   width: 70%;
 }
 .groups-container_body-group-list fa-icon,
@@ -109,4 +109,13 @@
   border: 0px;
   color: var(--revature-blue);
   font-weight: 500;
+}
+
+.groups-container_body a{
+  color: var(--revature-dark-gray);
+  text-decoration: none;
+  transition: 0.33s all;
+}
+.groups-container_body a:hover{
+  color: var(--revature-light-gray);
 }
