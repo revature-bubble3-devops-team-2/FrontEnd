@@ -12,10 +12,13 @@
 .hoverable{
   border: 0px !important;
   border-radius: 50% !important;
+  cursor: pointer;
   display: block !important;
+  height: 200px;
   margin: 0px auto !important;
   position: relative !important;
   transition: 0.33s all !important;
+  width: 200px;
 }
 .profile_current-user_text{
   margin-top: 10px;
@@ -41,15 +44,13 @@
 }
 .profile_current-user_text a{
   color: var(--revature-dark-gray);
+  font-size: 25px;
   text-decoration: none;
   transition: 0.33s all;
 }
 #profile_navbar li:hover, #profile_navbar a:hover,
 .profile_current-user_text a:hover{
   color: var(--revature-light-gray);
-}
-.profile_current-user_text a{
-  font-size: 25px;
 }
 fa-icon{
 margin-right: 5px;
@@ -125,16 +126,6 @@ width: 10px;
 img {
 height: 100%;
 width: 100%;
-border-radius: 50%;
-}
-
-.hoverable{
-position: relative;
-display: block;
-cursor: pointer;
-height: 200px;
-width: 200px;
-border: 5px solid #000;
 border-radius: 50%;
 }
 .hoverable .hover-text{

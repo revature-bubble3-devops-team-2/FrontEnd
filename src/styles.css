@@ -118,7 +118,7 @@ color: var(--revature-dark-gray);
   -ms-transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
 }
-.hideTab{
+.hideTab, .todo_needs-implementation{
   display: none !important;
 }
 

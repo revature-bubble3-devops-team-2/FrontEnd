@@ -67,6 +67,7 @@
   -webkit-transform: translate(-50%, -50%);
 }
 .groups-container_body{
+  padding: 10px 0px;
   width: 80%;
 }
 .groups-container_body h4{
