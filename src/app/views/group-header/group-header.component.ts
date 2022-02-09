@@ -2,7 +2,7 @@ import { Profile } from 'app/models/profile';
 import { Group } from 'app/models/group';
 import { GroupService } from 'app/services/group.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import {
   faCameraRetro,
   faUserPlus,
