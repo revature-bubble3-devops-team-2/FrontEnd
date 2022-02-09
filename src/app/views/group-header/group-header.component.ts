@@ -54,7 +54,6 @@ export class GroupHeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
-    console.log(`id(header): ${this.id}`);
 
     this.group = this.groupService.getGroupByID(this.id).subscribe((g: any) => {
       this.groupName = g.groupName;

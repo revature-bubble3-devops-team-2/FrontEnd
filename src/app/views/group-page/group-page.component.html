@@ -3,38 +3,48 @@
 
   <div id="groups-container">
     <app-search></app-search>
+    <div id="banner">
+      <h1>Welcome to Bubbl(e) Groups!</h1>
+      <p>From here you can access your groups, create new groups, or search for new groups to join</p>
+    </div>
 
-    <div id="my-groups" class="
+    <div class="
       feed-container
       container-fluid
       d-flex
       flex-column
       align-items-center
     ">
-      <div class="test-container" id="create-group-container">
-        <span id="banner">
-          <h2>Welcome to Bubbl(e) Groups</h2>
-        </span>
+      <div class="test-container" id="my-groups" *ngIf="mGroups.length > 0">
+        <div class="content-header">
+          <h2> Your Groups </h2>
+          <p>Stop by and say hi!</p>
+        </div>
+        <ul *ngFor="let g of mGroups; index as i">
+          <li><a [href]="['/groups/'+g.groupId]">{{getJoinedGroupName(i)}} </a><button id="leave-button" name="leave"
+              (click)="leaveGroup(i)">Leave</button>
+          </li>
+        </ul>
+      </div>
 
+      <div class="test-container" id="create-group-container">
+        <div class="content-header">
+          <h2>Create a Group</h2>
+          <p>A new place for people to gather</p>
+        </div>
         <form>
-          <label for="group-name">Group Name:</label>
-          <input type="text" name="groupName" class="form-control" [(ngModel)]="groupName">
+          <input type="text" placeholder="Group Name" name="groupName" class="form-control" [(ngModel)]="groupName">
           <button type="button" (click)="createGroup()">Submit</button>
         </form>
-        <div *ngIf="mGroups.length > 0">
-          <ul *ngFor="let g of mGroups; index as i">
-            <li><a [href]="['/groups/'+g.groupId]">{{getJoinedGroupName(i)}} </a><button name="leave"
-                (click)="leaveGroup(i)">Leave</button>
-            </li>
-          </ul>
-        </div>
       </div>
 
       <div class="test-container" id="search-groups-container">
-        <h4>Searching for groups</h4>
-        <form #userForm="ngForm">
-          <label for="group-search">Group Search: {{userForm.value.searchName}}</label>
-          <input type="text" name="searchName" class="form-control" [(ngModel)]="searchName">
+        <div class="content-header">
+          <h4>Group Lookup</h4>
+          <p>Where are we going today?</p>
+        </div>
+        <form>
+          <input type="text" placeholder="Search for Groups" name="searchName" class="form-control" [(ngModel)]="searchName">
           <button type="button" (click)="searchByName()">Submit</button>
         </form>
         <div *ngIf="sGroups.length > 0">
@@ -46,6 +56,4 @@
 
     </div>
   </div>
-
-
 </div>

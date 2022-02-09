@@ -4,99 +4,27 @@
   <div class="posts-container">
     <app-search></app-search>
     <app-group-header></app-group-header>
-
+    <div id="profile-view_tab-btns">
+      <span [ngClass]="showPosts ? 'activeProfileTab' : ''" (click)="toggleViewTabs()">Posts</span>
+      <span [ngClass]="showMembers ? 'activeProfileTab' : ''" (click)="toggleViewTabs()">Members</span>
+    </div>
     <div id="profileview_user-posts" class="
           feed-container
           container-fluid
           d-flex
           flex-column
           align-items-center
-        " infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" [scrollWindow]="false">
-      <!-- <app-create-post class="col" *ngIf=" id ==  sessionId"></app-create-post> -->
-      <!-- <app-post-feed [posts]="groupPosts" class="col"></app-post-feed> -->
+        " infiniteScroll
+        [infiniteScrollDistance]="2"
+        [infiniteScrollThrottle]="50"
+        [scrollWindow]="false"
+        [ngClass]="showPosts ? '' : 'hideTab'">
+      <app-create-group-post class="col"></app-create-group-post>
+      <app-post-feed [posts]="groupPosts" class="col" [ngClass]="id !=  sessionId ? 'profile-view_other' : ''">
+      </app-post-feed>
     </div>
-
-    <!-- <app-following-list [profiles]="memberProfiles"  [text]="'Group Members'"></app-following-list> -->
-    <div id="groupview_members">
-      <p id="follow-list-text">
-        Members: {{groupMembers.length}}<br/>
-      </p>
-      <div class="member-list-container">
-        <ng-container *ngFor="let g of groupMembers">
-          <div class="listed-user">
-            <a [href]="'/profileview/'+ g.pid" class="profile-link">
-              <div class="listed-user_avatar">
-                <img [src]="[ (g.imgurl) ? g.imgurl : '../../../../assets/favicon.png']" alt="user"
-                  class="bubble-avatar_sm">
-              </div>
-              <div class="listed-user_info">
-                <p>{{g.firstName + " " + g.lastName}}</p>
-              </div>
-            </a>
-          </div>
-        </ng-container>
-      </div>
+    <div id="profile-view_user-follow" [ngClass]="showMembers ? '' : 'hideTab'">
+      <app-following-list [profiles]="groupMembers"  [text]="'Members'"></app-following-list>
     </div>
-
   </div><!-- /posts-container -->
 </div><!-- /view-container -->
-
-
-<!--
-<div class="view-container">
-  <nav-bar></nav-bar>
-
-  align-items-center  --
-<div class="container d-flex justify-content-center posts-container " style="padding-top: 30px">
-
-    <div class="card">
-        <div class="upper"> <img src="https://i.imgur.com/Qtrsrk5.jpg" alt="image-loading" class="img-fluid"> </div>
-        <div class="user text-center">
-
-    </div>
-    <div class="user text-center">
-      <div class="profile">
-        <img
-          [src]="url"
-          alt="image-loading"
-          class="rounded-circle"
-          width="80"
-        />
-      </div>
-    </div>
-
-
-    <div class="mt-5 text-center">
-
-      <h4 class="mb-0">{{ firstName + " " + lastName }}</h4>
-      <span class="text-muted d-block mb-2">{{ username }}</span>
-      <span class="text-muted d-block mb-2">{{ email }}</span>
-
-
-
-
-
-      <app-modal-button *ngIf=" id ==  sessionId"></app-modal-button>
-
-
-      <button  *ngIf=" ! followed &&   id !=  sessionId " type="submit" class="btn btn-primary btn-sm follow" (click)="follow()">Follow</button>
-      <button *ngIf="  followed &&   id !=  sessionId " type="submit" class="btn btn-primary btn-sm follow" (click)="unfollow()">Unfollow</button>
-
-
-
-    </div>
-
-
-
-    <app-follow *ngIf=" id ==  sessionId"  style="padding-top: 80px"></app-follow>
-
-    <app-post-feed [posts]="profilePosts" class="col" style=" margin-top: 120px;"></app-post-feed>
-
-  </div>
-
-</div>
-
-<app-following-list [profiles]="followersProfiles"  [text]="'Following'"></app-following-list>
-<app-following-list [profiles]="followersOfThisUser "  [text]="'Followers'"></app-following-list>
-
-</div> -->

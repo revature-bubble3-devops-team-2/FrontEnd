@@ -81,6 +81,15 @@ getAllPosts(): Observable<any> {
       });
   }
 
+  getGroupPosts(id: number): Observable<Post[]>{
+    const requestOptions = {
+      headers: new HttpHeaders({
+        "Authorization": `${sessionStorage.getItem('Authorization')}`
+      })
+    };
+    return this.httpClient.get<Post[]>(`${environment.url}/groups/${id}/posts`);
+  }
+
   getNumLikes(post: Post): Observable<number> {
     const headerDict = {'post': `${post.psid}`, "find": "false", "Authorization": `${sessionStorage.getItem('Authorization')}`};
     const requestOptions = {

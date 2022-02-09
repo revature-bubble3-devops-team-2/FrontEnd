@@ -1,7 +1,7 @@
+import { PostService } from 'app/services/post.service';
 import { ProfileService } from 'app/services/profile.service';
 import { Profile } from 'app/models/profile';
 import { Post } from 'app/models/post';
-import { PostService } from 'app/services/post.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Group } from 'app/models/group';
 import { GroupService } from 'app/services/group.service';
@@ -21,42 +21,73 @@ export class GroupHomeComponent implements OnInit {
     private router: Router
   ) {}
 
-  profile: Profile | any;
-  group: Group | any;
-  owner: Profile | any;
-  groupMembers: Profile[] | any;
-  memberProfiles: Profile[] | any;
-
-  id: any;
-
-  sessionId: any;
-  firstName: any;
-  lastName: any;
-  email: any;
-  username: any;
-
-  url: any = `../../../../assets/favicon.png`;
-  posts: any[] = [];
-  groupPosts: Post[] = [];
+  profile : Profile | any;
+  followersProfiles : Profile[] | any;
+  followersOfThisUser : Profile[] | any;
+  id : any ;
+  sessionId : any;
+  firstName: any ;
+  lastName: any ;
+  email: any ;
+  username : any;
+  url : any  =  `../../../../assets/favicon.png`;
+  posts :any[] =[] ;
 
   failed: boolean = false;
   success: boolean = false;
   followed: boolean = false;
 
-  ngOnInit(): void {
+
+  //Groups
+  groupMembers: Profile[] | any;
+  group: Group | any;
+  owner: Profile | any;
+  memberProfiles: Profile[] | any;
+  groupPosts: Post[] = []; //profilePosts
+
+  //Tabs
+  showPosts: boolean = true;
+  showMembers: boolean = false;
+
+  async ngOnInit(): Promise<void> {
     this.id = this.route.snapshot.paramMap.get('id');
-    console.log(`id: ${this.id}`);
+    let sessionProfile : any = sessionStorage.getItem("profile");
+    sessionProfile = JSON.parse(sessionProfile);
+    this.sessionId = sessionProfile.pid;
+
+    this.groupService.getGroupMembers(this.id).subscribe( (m: any) =>{
+      this.memberProfiles = m;
+      console.log(this.memberProfiles);
+    })
 
     this.group = this.groupService.getGroupByID(this.id).subscribe( (g:any) =>{
        this.owner = g.owner;
-       console.log(this.owner);
        this.groupMembers = g.members;
-       console.log(this.groupMembers)
+       sessionStorage.setItem("group", JSON.stringify(g));
+       this.getGroupPosts();
       });
-    // let sessionProfile: any = sessionStorage.getItem('profile');
-    // sessionProfile = JSON.parse(sessionProfile);
-    // this.sessionId = sessionProfile.pid;
-    // console.log(`sessionid: ${this.sessionId}`);
-    // this.memberProfiles = data.members;
+
+
+  }
+
+  getGroupPosts() {
+    this.postService.getGroupPosts(this.id).subscribe((data) => {
+      this.groupPosts = data;
+      this.groupPosts.sort((a, b) => {
+          let dateA = new Date(a.datePosted ?? 0);
+          let dateB = new Date(b.datePosted ?? 1)
+          return dateB.getTime() - dateA.getTime()
+      })
+    })
+  }
+
+  toggleViewTabs(){
+    if(this.showPosts){
+      this.showPosts = false;
+      this.showMembers = true;
+    } else {
+      this.showPosts = true;
+      this.showMembers = false;
+    }
   }
 }

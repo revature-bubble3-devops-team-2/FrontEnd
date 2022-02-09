@@ -10,18 +10,65 @@ app-search {
   width: 50%;
 }
 
+#banner {
+  height: 150px;
+  width: 100%;
+  padding: 100px 0;
+  background-color: var(--revature-dark-gray);
+  text-align: center;
+  color: var(--revature-white);
+}
+
+#banner p{
+  font-size: 16pt;
+}
+
 #groups-container {
-  background-color: var(--revature-cool-gray);
+  background-color: var(--revature-bg-gray);
   width: 70%;
 }
 
-.test-container {
-  width: 50%;
-  height: 50%;
-  padding: 10px;
-  background-color: cadetblue;
-  border: 2px solid white;
+#my-groups li, a{
+  color: var(--revature-dark-gray);
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 15px 0px;
+  text-decoration: none;
+  transition: 0.33s all;
 }
+ul {
+  list-style-type: none;
+}
+
+.test-container {
+  width: 80%;
+  height: 50%;
+  background-color: var(--revature-white);
+  border-radius: 10px;
+  margin:25px;
+}
+.test-container input{
+  margin: 0 auto;
+  width: 60%;
+}
+.content-header {
+  text-align: center;
+  background-color: var(--revature-dark-gray);
+  margin-bottom: 10px;
+  border-radius: 10px 10px 0 0;
+  color:white;
+}
+
+button {
+  border-radius: 20px;
+  width: 100px;
+  padding:5px;
+  background-color: var(--revature-dark-gray);
+  color: var(--revature-white);
+border: 0;
+}
+
 
 #teams-container {
   background-color: rgb(198, 154, 240);

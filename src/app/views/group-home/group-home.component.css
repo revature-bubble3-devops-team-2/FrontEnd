@@ -1,12 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap");
 
-
-
-
-
-
 nav-bar{
-  /* border: 1px solid var(--revature-light-gray); */
   width: 30%;
 }
 app-search{
@@ -16,10 +10,28 @@ app-search{
   width: 50%;
 }
 .posts-container{
-  background-color: var(--revature-cool-gray);
+  background-color: var(--revature-bg-gray);
   width: 70%;
 }
-
+.profile-view_other{
+  margin-top: 35px;
+}
+#profile-view_tab-btns{
+  text-align: center;
+}
+#profile-view_tab-btns span{
+  color: var(--revature-light-gray);
+  cursor: pointer;
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 500;
+  margin: 20px 10px 0px 10px;
+  text-align: center;
+  text-decoration: none;
+}
+#profile-view_tab-btns span:hover{
+  color: var(--revature-dark-gray);
+}
 /* .container {
     height: 100vh
 }
