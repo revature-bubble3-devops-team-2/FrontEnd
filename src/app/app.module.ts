@@ -38,7 +38,9 @@ import { FollowingListComponent } from './views/home/following-list/following-li
 import { CheckEmailComponent } from './views/check-email/check-email.component';
 
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { GroupSearchComponent } from './views/group-search/group-search.component';
+import { GroupHeaderComponent } from './views/group-header/group-header.component';
+import { CreateGroupPostComponent } from './views/create-group-post/create-group-post.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,12 +62,13 @@ import { GroupSearchComponent } from './views/group-search/group-search.componen
     ProfileviewComponent,
     GroupHomeComponent,
     NavbarComponent,
-    PasswordResetComponent,
-    VerifyEmailComponent,
     FollowingListComponent,
     ProfileHeaderComponent,
-    GroupSearchComponent,
-    CheckEmailComponent
+    PasswordResetComponent,
+    VerifyEmailComponent,
+    CheckEmailComponent,
+    GroupHeaderComponent,
+    CreateGroupPostComponent
   ],
   imports: [
     BrowserModule,

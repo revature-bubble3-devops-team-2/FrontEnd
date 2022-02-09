@@ -33,7 +33,8 @@
   margin: 10% auto 0px auto;
   width: 150px;
 }
-#profile_navbar li, #profile_navbar a{
+#profile_navbar li, #profile_navbar a,
+.profile_current-user_text a{
   color: var(--revature-dark-gray);
   cursor: pointer;
   font-size: 18px;

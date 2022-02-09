@@ -1,31 +1,27 @@
-import { FilterService } from './../../../services/filter.service';
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Post } from 'app/models/post';
 import { Profile } from 'app/models/profile';
 import { PostService } from 'app/services/post.service';
 import { faImage} from '@fortawesome/free-regular-svg-icons';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { Group } from 'app/models/group';
 
 @Component({
-  selector: 'app-create-post',
-  templateUrl: './create-post.component.html',
-  styleUrls: ['./create-post.component.css'],
+  selector: 'app-create-group-post',
+  templateUrl: './create-group-post.component.html',
+  styleUrls: ['./create-group-post.component.css']
 })
-export class CreatePostComponent implements OnInit {
+export class CreateGroupPostComponent implements OnInit {
+  group:Group = {};
   profile: Profile = {};
   addPost: Post = {
-    creator: {
-      pid: this.profile.pid,
-      username: this.profile.username,
-      passkey: '',
-      firstName: this.profile.firstName,
-      lastName: this.profile.lastName,
-      email: this.profile.email
-    },
+    creator: {},
     body: '',
     datePosted: new Date(),
     imgURL: '',
+    group: {}
   };
   faImage = faImage;
   faCheckCircle = faCheckCircle;
@@ -35,17 +31,19 @@ export class CreatePostComponent implements OnInit {
 
   constructor(
     public postService: PostService,
-    public activeModal: NgbActiveModal,
     private modalService: NgbModal,
-    private filterService: FilterService
-    //public activeModal: NgbActiveModal,
+    private router: Router
     ) {}
 
   ngOnInit(): void {
-    var sessionProfile = sessionStorage.getItem("profile");
+    let sessionProfile = sessionStorage.getItem('profile');
     if(sessionProfile!=null){
-      this.profile = JSON.parse(sessionProfile);
-    }
+      let tempProf = JSON.parse(sessionProfile);
+      this.addPost.creator = new Profile(tempProf.pid, tempProf.firstName, tempProf.lastName,'',tempProf.email,tempProf.username,tempProf.verification,tempProf.groups)    }
+    let group: any = sessionStorage.getItem('group');
+    group = JSON.parse(group);
+    this.addPost.group = new Group(group.groupId, group.groupName, group.owner, group.members)
+
   }
 
   ngOnDestroy(): void {
@@ -54,13 +52,14 @@ export class CreatePostComponent implements OnInit {
 
   createPost() {
     if (this.addPost.body!=='') {
-      //filter body for profanity
-      this.addPost.body = this.filterService.filterProfanity(this.addPost.body);
       this.postService.createPost(this.addPost);
-     // window.location.reload();
+      // setTimeout(() => {
+      //   window.location.reload();
+      // }, 5000);
     } else {
       this.show=true;
     }
+
   }
 
   closeModal() {
@@ -82,13 +81,13 @@ export class CreatePostComponent implements OnInit {
     if (event.target.files && event.target.files[0]) {
 
       let file = event.target.files[0] ;
-      console.log(file);
-      this.changeFile(file).then((e : any)=>{ this.addPost.imgURL = e ; console.log(e)}) }
+      this.changeFile(file).then((e : any)=>{ this.addPost.imgURL = e}) }
       this.uploadDesired = true;
     }
 
 
   }
+
 
 
 
