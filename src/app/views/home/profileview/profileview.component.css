@@ -43,3 +43,7 @@ app-search{
   font-weight: 750 !important;
   text-decoration: underline !important;
 }
+.profileview_followers-list{
+  display: block;
+  margin: 70px 0px 0px 0px;
+}

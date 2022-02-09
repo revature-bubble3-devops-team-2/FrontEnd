@@ -1,7 +1,17 @@
-<div *ngIf= "confirmed; else elseBlock">
-    <h2> Your account has been verified</h2>
-    <button class="btn btn-primary" routerLink="/login">Log In</button>
+<div id="verify-email_container">
+  <div *ngIf= "confirmed; else elseBlock">
+    <div class="bubble_centered-block verify-email_message">
+      <fa-icon [icon]="faLaughBeam"></fa-icon>
+      <h4>Welcome to Bubble!</h4>
+      <p>Your account is now verified.</p>
+      <a routerLink="/login">Let's get started...</a>
+    </div>
+  </div>
+  <ng-template #elseBlock>
+    <div class="bubble_centered-block verify-email_message">
+      <fa-icon [icon]="faFrown"></fa-icon>
+      <p>Aww man!<br/>It looks like the email verification link isn't valid</p>
+      <a routerLink="/login">Take me back to home</a>
+    </div>
+  </ng-template>
 </div>
-<ng-template #elseBlock>
-    <h2> is not a valid url</h2>
-</ng-template>
