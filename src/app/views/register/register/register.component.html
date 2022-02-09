@@ -1,7 +1,11 @@
-<div class="register-container min-vh-100">
+<div class="register-page-container">
+  <div class="register-deco-container register-deco-pic{{loginPic}}">
+
+  </div>
+  <div class="register-form-container">
   <form class="register-form">
     <div class="container">
-      <h2 class="text-center">Bubbl(e)</h2>
+      <img src="../../../../assets/images/bubble-logo.png" alt="Logo">
       <p>Please fill in this form to create an account.</p>
       <div class="alert alert-danger" role="alert" *ngIf="taken">
         Email or Username is already Used
@@ -19,7 +23,7 @@
 
       <div class="row g-3">
         <div class="col-md-6">
-          <label for="firstname">First Name</label>
+          <label for="firstname">First Name<sup>*</sup></label>
           <input
             class="form-control"
             type="text"
@@ -31,7 +35,7 @@
           />
         </div>
         <div class="col-md-6">
-          <label for="lastname">Last Name</label>
+          <label for="lastname">Last Name<sup>*</sup></label>
           <input
             class="form-control"
             type="text"
@@ -44,7 +48,7 @@
         </div>
       </div>
 
-      <label for="username">Username</label>
+      <label for="username">Username<sup>*</sup></label>
       <input
         class="form-control"
         type="text"
@@ -55,7 +59,7 @@
         required
       />
 
-      <label for="email">Email</label>
+      <label for="email">Email<sup>*</sup></label>
       <input
         class="form-control"
         type="text"
@@ -68,7 +72,7 @@
 
       <div class="row g-3">
         <div class="col-md-6">
-          <label for="psw">Password</label>
+          <label for="psw">Password<sup>*</sup></label>
           <input
             class="form-control"
             type="password"
@@ -80,7 +84,7 @@
           />
         </div>
         <div class="col-md-6">
-          <label for="psw-repeat">Repeat Password</label>
+          <label for="psw-repeat">Repeat Password<sup>*</sup></label>
           <input
             class="form-control"
             type="password"
@@ -92,15 +96,15 @@
           />
         </div>
       </div>
-
+      <small><sup>*</sup>Required</small>
+      <button type="submit" class="btn-rounded registration-button" (click)="registerProfile()">
+        Register
+      </button>
       <hr />
 
       <p>
         By creating an account you agree to our <a href="#">Terms & Privacy</a>.
       </p>
-      <button type="submit" class="registerbtn btn" (click)="registerProfile()">
-        Register
-      </button>
 
       <div class="sign-in">
         <p>Already have an account? <a href="/login">Sign in</a></p>
