@@ -94,8 +94,13 @@ export class ProfileviewComponent implements OnInit {
         if (data) {
           this.posts = data;
 
-          this.profilePosts =this.posts.filter((p:Post)=>{
+          this.profilePosts = this.posts.filter((p:Post)=>{
            return  p.creator.pid == this.id });
+          this.profilePosts.sort((a, b) => {
+            let dateA = new Date(a.datePosted ?? 0);
+            let dateB = new Date(b.datePosted ?? 1)
+            return dateB.getTime() - dateA.getTime()
+          })
         }
       });
 

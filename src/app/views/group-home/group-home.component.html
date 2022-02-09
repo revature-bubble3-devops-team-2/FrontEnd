@@ -1,14 +1,30 @@
 <div class="view-container">
   <nav-bar></nav-bar>
 
-  <div class="groups-container">
+  <div class="posts-container">
     <app-search></app-search>
-    <app-profile-header></app-profile-header>
-
-    <div id="members">
-      <app-group-search></app-group-search>
-      <ul *ngFor=""></ul>
+    <app-group-header></app-group-header>
+    <div id="profile-view_tab-btns">
+      <span [ngClass]="showPosts ? 'activeProfileTab' : ''" (click)="toggleViewTabs()">Posts</span>
+      <span [ngClass]="showMembers ? 'activeProfileTab' : ''" (click)="toggleViewTabs()">Members</span>
     </div>
-
-  </div>
-</div>
+    <div id="profileview_user-posts" class="
+          feed-container
+          container-fluid
+          d-flex
+          flex-column
+          align-items-center
+        " infiniteScroll
+        [infiniteScrollDistance]="2"
+        [infiniteScrollThrottle]="50"
+        [scrollWindow]="false"
+        [ngClass]="showPosts ? '' : 'hideTab'">
+      <app-create-group-post class="col"></app-create-group-post>
+      <app-post-feed [posts]="groupPosts" class="col" [ngClass]="id !=  sessionId ? 'profile-view_other' : ''">
+      </app-post-feed>
+    </div>
+    <div id="profile-view_user-follow" [ngClass]="showMembers ? '' : 'hideTab'">
+      <app-following-list [profiles]="groupMembers"  [text]="'Members'"></app-following-list>
+    </div>
+  </div><!-- /posts-container -->
+</div><!-- /view-container -->

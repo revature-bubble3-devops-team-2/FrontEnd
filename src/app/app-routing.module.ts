@@ -22,11 +22,10 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
   {path : "profile/:id", component: ProfileComponent , canActivate:[AuthGuard],pathMatch: 'full'},
   {path : "profileview/:id", component: ProfileviewComponent, canActivate:[AuthGuard], pathMatch: 'full' },
-  {path: "group/:id", component: GroupHomeComponent, canActivate:[AuthGuard]},
+  {path: "groups/:id", component: GroupHomeComponent, canActivate:[AuthGuard]},
   {path: 'group-page', component: GroupPageComponent, canActivate:[AuthGuard]},
   {path: 'verify/email', component: VerifyEmailComponent},
   {path: '', redirectTo: '/login', pathMatch: 'full'},
-  {path: 'verify/email', component: VerifyEmailComponent},
   {path: 'check-email', component: CheckEmailComponent}
 ];
 
