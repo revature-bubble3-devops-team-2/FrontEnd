@@ -4,11 +4,7 @@
   padding: 10px 5px;
   text-align: center;
 }
-.follow-list-container{
-  height: calc(100% - 70px);
-  overflow-y: scroll !important;
-  overflow-x: hidden !important;
-}
+
 .listed-user{
   cursor: pointer;
   display: inline-block;

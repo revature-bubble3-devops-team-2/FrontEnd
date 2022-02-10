@@ -19,6 +19,7 @@ const groupUrl = `${baseUrl}/groups`;
 export class GroupService {
   private groupsSubject = new BehaviorSubject<Group[]>([]);
   private _unsubscribeAll = new Subject<any>();
+  public currentGroup: Group = {};
 
   constructor(private httpClient: HttpClient) {}
 
