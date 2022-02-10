@@ -49,7 +49,7 @@ export class GroupHomeComponent implements OnInit {
   showPosts: boolean = true;
   showMembers: boolean = false;
 
-  async ngOnInit(): Promise<void> {
+  ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
     let sessionProfile : any = sessionStorage.getItem("profile");
     sessionProfile = JSON.parse(sessionProfile);
@@ -57,13 +57,13 @@ export class GroupHomeComponent implements OnInit {
 
     this.groupService.getGroupMembers(this.id).subscribe( (m: any) =>{
       this.memberProfiles = m;
-      console.log(this.memberProfiles);
+      // console.log(this.memberProfiles);
     })
 
     this.groupService.getGroupByID(this.id).subscribe( (g:any) =>{
        this.owner = g.owner;
        this.groupMembers = g.members;
-       sessionStorage.setItem("group", JSON.stringify(g));
+       this.groupService.currentGroup = g;
        this.getGroupPosts();
       });
 

@@ -46,12 +46,12 @@ app-search{
 .profileview_followers-list{
   display: block;
   height: auto;
-  margin: 70px 0px 0px 0px;
+  margin: 10px 0px 0px 0px;
   overflow: visible;
 }
 #profile-view_user-follow small{
   display: block;
-  margin: 55px 0px 10px 0px;
+  margin: 70px 0px 10px 0px;
   text-align: center;
   width: 100%;
 }

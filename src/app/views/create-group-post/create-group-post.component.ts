@@ -7,6 +7,7 @@ import { PostService } from 'app/services/post.service';
 import { faImage} from '@fortawesome/free-regular-svg-icons';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { Group } from 'app/models/group';
+import { GroupService } from 'app/services/group.service';
 
 @Component({
   selector: 'app-create-group-post',
@@ -32,26 +33,25 @@ export class CreateGroupPostComponent implements OnInit {
   constructor(
     public postService: PostService,
     private modalService: NgbModal,
-    private router: Router
+    private router: Router,
+    private groupService: GroupService
     ) {}
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     let sessionProfile = sessionStorage.getItem('profile');
     if(sessionProfile!=null){
       let tempProf = JSON.parse(sessionProfile);
       this.addPost.creator = new Profile(tempProf.pid, tempProf.firstName, tempProf.lastName,'',tempProf.email,tempProf.username,tempProf.verification,tempProf.groups)    }
-    let group: any = sessionStorage.getItem('group');
-    group = JSON.parse(group);
-    this.addPost.group = new Group(group.groupId, group.groupName, group.owner, group.members)
 
-  }
+    }
 
-  ngOnDestroy(): void {
-    window.location.href = '/home';
-  }
+    ngOnDestroy(): void {
+      window.location.href = '/home';
+    }
 
-  createPost() {
-    if (this.addPost.body!=='') {
+    createPost() {
+      if (this.addPost.body!=='') {
+      this.addPost.group = this.groupService.currentGroup
       this.postService.createPost(this.addPost);
       // setTimeout(() => {
       //   window.location.reload();
