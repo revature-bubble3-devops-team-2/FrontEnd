@@ -31,7 +31,9 @@
           <app-post-feed [posts]="profilePosts" class="col" [ngClass]="id !=  sessionId ? 'profile-view_other' : ''"></app-post-feed>
       </div>
       <div id="profile-view_user-follow" [ngClass]="showFollowers ? '' : 'hideTab'">
+        <small>Following</small>
         <app-following-list [profiles]="followersProfiles"  [text]="'Following'" class="profileview_following-list"></app-following-list>
+        <small>Followers</small>
         <app-following-list [profiles]="followersOfThisUser"  [text]="'Followers'" class="profileview_followers-list"></app-following-list>
       </div>
 

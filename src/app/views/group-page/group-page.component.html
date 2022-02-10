@@ -15,12 +15,11 @@
           <button type="button" class="btn-rounded" (click)="searchByName()">Search</button>
           <div *ngIf="sGroups.length > 0" id="joinable-groups-list">
             <ul *ngFor="let g of sGroups; index as i">
-              <li><fa-icon [icon]="faUsers"></fa-icon>{{getSearchGroupName(i)}} <button  name="join" (click)="joinGroup(i)">(Join)</button> </li>
+              <li><a [href]="['/groups/'+ g.groupId]"><fa-icon [icon]="faUsers"></fa-icon>{{getSearchGroupName(i)}}</a> <button  name="join" (click)="joinGroup(i)">(Join)</button> </li>
             </ul>
           </div>
         </form>
       </div>
-
 
     <div id="my-groups-container" class="group-page-container-box" *ngIf="mGroups.length > 0">
       <header class="groups-container_header">

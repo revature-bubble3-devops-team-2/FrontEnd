@@ -57,7 +57,7 @@ export class CreatePostComponent implements OnInit {
       //filter body for profanity
       this.addPost.body = this.filterService.filterProfanity(this.addPost.body);
       this.postService.createPost(this.addPost);
-      window.location.reload();
+     // window.location.reload();
     } else {
       this.show=true;
     }

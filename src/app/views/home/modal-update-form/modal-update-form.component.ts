@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Profile } from 'app/models/profile';
 import { ProfileService } from 'app/services/profile.service';
+import { faUserTag } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-modal-update-form',
@@ -16,6 +17,7 @@ export class ModalUpdateFormComponent implements OnInit {
   firstName: string = "";
   lastName: string = "";
   email: string = "";
+  faUserTag = faUserTag;
 
 
   ngOnInit(): void {

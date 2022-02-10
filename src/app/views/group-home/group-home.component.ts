@@ -60,7 +60,7 @@ export class GroupHomeComponent implements OnInit {
       console.log(this.memberProfiles);
     })
 
-    this.group = this.groupService.getGroupByID(this.id).subscribe( (g:any) =>{
+    this.groupService.getGroupByID(this.id).subscribe( (g:any) =>{
        this.owner = g.owner;
        this.groupMembers = g.members;
        sessionStorage.setItem("group", JSON.stringify(g));
