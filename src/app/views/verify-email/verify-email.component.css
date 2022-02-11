@@ -1,0 +1,20 @@
+#verify-email_container{
+  background-color: var(--revature-bg-gray);
+  height: 100%;
+}
+#verify-email_container a{
+  color: var(--revature-orange);
+  display: block;
+  margin: 25px 0px 0px 0px;
+  text-decoration: none;
+  transition: 0.33s all;
+}
+#verify-email_container a:hover{
+  color: #CC5216;
+}
+.verify-email_message{
+  text-align: center;
+}
+.verify-email_message fa-icon{
+  font-size: 55px;
+}

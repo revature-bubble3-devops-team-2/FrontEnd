@@ -1,3 +1,24 @@
 :host .modal-content{
-    border-radius: 50px;
+  border-radius: 50px;
+}
+fa-icon{
+  background-color: var(--revature-white);
+  border-radius: 50%;
+  color: var(--revature-dark-gray);
+  display: block;
+  font-size: 25px;
+  margin: 0px auto 2.5px auto;
+  padding: 10px;
+  width: 57.5px;
+}
+fa-icon:hover{
+  background-color: var(--revature-light-gray);
+}
+fa-icon:hover ~ p {
+  color: var(--revature-light-gray);
+}
+button{
+  background: none;
+  border: 0px;
+  color: var(--revature-white);
 }

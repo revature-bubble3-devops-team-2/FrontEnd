@@ -1,86 +1,89 @@
 * {box-sizing: border-box}
-
-.login-container {
-    background-image: url("/assets/images/login-register-background.jpg");
-    background-size: cover;
-    background-attachment: fixed;
-    height: 100vh;
+.login-page-container{
+  background: var(--revature-light-gray);
+  display:flex;
 }
-
-.error {
-    color: rgb(185, 37, 37);
-    font-size: 18px;
-    font-weight: bold;
+.login-deco-container{
+  background: url("/assets/images/login-bg.png") no-repeat center center;
+  background-size: cover;
+  /* background-attachment: fixed; */
+  display: block;
+  height: 100vh;
+  opacity: 1;
+  width: 55%;
 }
-
-.login-form {
-    padding: 5rem;
+.login-deco-pic0{
+  background: url("/assets/images/login-bg_alt.jpg") no-repeat center center !important;
+  opacity: 0.35 !important;
 }
-
-.text-center {
-    background-color: #de6f3d;
-    border-radius: 80px;
-    padding: 1rem;
-    color: white;
-    margin-bottom: 3rem;
+.login-deco-pic1{
+  background: url("/assets/images/login-bg_alt1.jpg") no-repeat center center !important;
+  opacity: 0.3 !important;
 }
-
-/* Add padding to containers */
-.container {
-    padding: 4rem;
-    border-radius: 80px;
+.login-form-container{
+  background: var(--revature-white);
+  display: block;
+  position: relative;
+  width: 45%;
+}
+.login-form-container > form{
+  display: block;
+  margin: 0px auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
     max-width: 500px;
-    backdrop-filter: blur(40px);
-    -webkit-backdrop-filter: blur(40px);
+  width: 65%;
 }
-
-/* Full-width input fields */
-:host input {
-    width: 100%;
-    padding: 15px;
-    margin: 5px 5px 22px 5px;
-    display: inline-block;
-    border: none;
-    background: #f1f1f1;
-    border-radius: 100px;
+.login-form-container img{
+  display: block;
+  height: auto;
+  margin: 5% auto;
+  max-width: 300px;
+  width: 75%;
 }
-
-:host input[type=text]:focus, input[type=password]:focus {
-    background-color: #ddd;
-    outline: none;
+.login-form input{
+  background: var(--revature-white);
+  border: 2px solid var(--revature-ink);
+  border-radius: 12px!important;
+  font-size: 16px;
+  height: 50px!important;
+  margin: 25px 5%;
+  padding: 8px 18px!important;
+  width: 100%;
 }
-
-/* Overwrite default styles of hr */
-:host hr {
-    border: 1px solid #f1f1f1;
-    margin-bottom: 25px;
+.login-form input::placeholder{
+  font-size: 16px;
 }
-
-/* Set a style for the submit/register button */
-.onLoginBtn {
-    background-color: #F26925;
-    color: white;
-    padding: 16px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    opacity: 0.9;
-    border-radius: 100px;
+.login-form input:focus{
+  border: 3px solid var(--revature-blue);
+  outline: 0px;
 }
-
-.onLoginBtn:hover {
-    opacity:1;
+.onLoginBtn{
+  float: right;
+  margin: 10px auto;
+  padding-left: 50px;
+  padding-right: 50px;
 }
-
-/* Add a blue text color to links */
-:host a {
-    color: rgb(156, 112, 45);
-    font-weight: 500;
+.sign-up:before{
+  content: "";
+  clear: both;
+  display: table;
 }
-
-/* Set a grey background color and center the text of the "sign in" section */
-.sign-up {
-    margin-top: 3rem;
-    text-align: center;
+.sign-up{
+  padding: 30px 0px 0px 0px;
+  text-align: center;
+  width: 100%;
+}
+a{
+  color: var(--revature-orange);
+  text-decoration: none;
+  transition: 0.33s all;
+}
+a:hover{
+  color: #CC5216;
+}
+.forgot-password{
+  padding: 10px 0px 0px 10px;
 }

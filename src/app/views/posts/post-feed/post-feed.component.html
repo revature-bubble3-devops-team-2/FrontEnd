@@ -1,17 +1,19 @@
 <div class="container">
-  <div class="col post-card mb-4 card shadow-lg" *ngFor="let post of posts">
+  <div class="col post-card mb-4 card" *ngFor="let post of posts">
     <header>
       <div class="d-flex justify-content-between user-info">
-        <div class="d-flex flex-column">
-          <h4>{{ post.creator?.username | titlecase }}</h4>
+        <div class="post-feed_author-info">
+     <a [href]="'/profileview/' + post.creator.pid" class="post-feed_author-link">   <img
+          [src]=" (post.creator?.imgurl )? post.creator?.imgurl :  '../../../../assets/favicon.png'" alt="..."
+          class="bubble-avatar_sm" />
+          <h4>{{ post.creator?.username }}</h4></a>
           <p class="text-muted post-date">{{ post.datePosted | date }}</p>
         </div>
       </div>
     </header>
-    <hr />
     <section>
-      <div class="card-body" (click)="open(post)">
-        <p class="card-text">{{ post.body }}</p>
+      <div class="card-body bubble-post_bodycopy" (click)="open(post)">
+        <p>{{ post.body }}</p>
         <ng-container *ngIf="post.imgURL">
             <img
               alt="post image"
@@ -22,20 +24,20 @@
         </ng-container>
       </div>
     </section>
-    <hr />
-    <div class="d-flex justify-content-between align-items-center btn-div">
-      <div class="btn-group">
-        <app-like [postInfo]="post"></app-like>
-      </div>
-      <div class="btn-group" (click)="open(post)">
-        <fa-icon class="comment-icon" [icon]="faComment"></fa-icon>
-      </div>
-    </div>
+    <div class="post-feed_engagement-buttons">
+      <fa-icon class="comment-icon" [icon]="faComment" (click)="open(post)"></fa-icon>
+      <app-like [postInfo]="post"></app-like>
+  </div>
   </div>
   <div class="d-flex justify-content-center" *ngIf="Loading">
     <div class="spinner-border" role="status">
       <span class="sr-only">Loading...</span>
     </div>
+  </div>
+  <div
+    class="" style="margin-top: 5%; text-align: center;"
+    *ngIf="posts.length == 0">
+    Nothing to display just yet...
   </div>
   <div
     class="mb-4 post-card card shadow-lg d-flex justify-content-center"

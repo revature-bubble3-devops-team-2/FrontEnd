@@ -1,6 +1,6 @@
+import { Post } from 'app/models/post';
 import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Post } from '../models/post';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators'
 import { Profile } from 'app/models/profile';
@@ -15,11 +15,31 @@ export class PostService implements OnDestroy {
   private postsSubject = new BehaviorSubject<Post[]>([]);
   private _unsubscribeAll = new Subject<any>();
   public numLikes!: number;
+  public  sessionPosts: any[] = [];
+
 
   constructor(private httpClient: HttpClient) {}
 
+
+setPosts(posts : any){
+  this.sessionPosts = posts;
+}
+
+getAllPosts(): Observable<any> {
+  const requestOptions = {
+        headers: new HttpHeaders({
+          "Authorization": `${sessionStorage.getItem('Authorization')}`
+        })
+      };
+
+
+  return this.httpClient
+    .get<Post[]>(`${environment.url}/post/page/all`, requestOptions);
+}
+
+
   public createPost(post: Post) {
-    const requestOptions = {                                                                                                                                                                                 
+    const requestOptions = {
       headers: new HttpHeaders({
         "Authorization": `${sessionStorage.getItem("Authorization")}`
       })
@@ -43,7 +63,7 @@ export class PostService implements OnDestroy {
   }
 
   getPostsByFollowers(pageNumber: number): any {
-    const requestOptions = {                                                                                                                                                                                 
+    const requestOptions = {
           headers: new HttpHeaders({
             "Authorization": `${sessionStorage.getItem('Authorization')}`
           })
@@ -61,9 +81,18 @@ export class PostService implements OnDestroy {
       });
   }
 
+  getGroupPosts(id: number): Observable<Post[]>{
+    const requestOptions = {
+      headers: new HttpHeaders({
+        "Authorization": `${sessionStorage.getItem('Authorization')}`
+      })
+    };
+    return this.httpClient.get<Post[]>(`${environment.url}/groups/${id}/posts`, requestOptions);
+  }
+
   getNumLikes(post: Post): Observable<number> {
     const headerDict = {'post': `${post.psid}`, "find": "false", "Authorization": `${sessionStorage.getItem('Authorization')}`};
-    const requestOptions = {                                                                                                                                                                                 
+    const requestOptions = {
       headers: new HttpHeaders(headerDict)
     };
     return this.httpClient.get<number>(environment.url+'/like', requestOptions).pipe(takeUntil(this._unsubscribeAll));
@@ -71,14 +100,14 @@ export class PostService implements OnDestroy {
 
   getLiked(post: Post): Observable<number> {
     const headerDict = {'post': `${post.psid}`, "find": "true", "Authorization": `${sessionStorage.getItem('Authorization')}`};
-    const requestOptions = {                                                                                                                                                                                 
+    const requestOptions = {
       headers: new HttpHeaders(headerDict)
     };
     return this.httpClient.get<number>(environment.url+'/like', requestOptions).pipe(takeUntil(this._unsubscribeAll));
   }
 
   postLike(post: Post): Observable<Profile> {
-    const requestOptions = {                                                                                                                                                                                 
+    const requestOptions = {
       headers: new HttpHeaders({
         "Authorization": `${sessionStorage.getItem('Authorization')}`
       })

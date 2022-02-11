@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap");
+
+nav-bar{
+  width: 30%;
+}
+app-search{
+  float: right;
+  margin: 10px 25px 0px 0px;
+  max-width: 500px;
+  width: 50%;
+}
+.posts-container{
+  background-color: var(--revature-bg-gray);
+  width: 70%;
+}
+.profile-view_other{
+  margin-top: 35px;
+}
+#profile-view_tab-btns{
+  text-align: center;
+}
+#profile-view_tab-btns span{
+  color: var(--revature-light-gray);
+  cursor: pointer;
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 500;
+  margin: 20px 10px 0px 10px;
+  text-align: center;
+  text-decoration: none;
+}
+#profile-view_tab-btns span:hover{
+  color: var(--revature-dark-gray);
+}
+#profile-view_user-follow{
+  display: block;
+  margin: 10px auto;
+  /* Three columns of user friends which are 280px wide */
+  width: calc(280px * 3);
+}
+.activeProfileTab{
+  color: var(--revature-ink) !important;
+  font-weight: 750 !important;
+  text-decoration: underline !important;
+}
+.profileview_followers-list{
+  display: block;
+  height: auto;
+  margin: 10px 0px 0px 0px;
+  overflow: visible;
+}
+#profile-view_user-follow small{
+  display: block;
+  margin: 70px 0px 10px 0px;
+  text-align: center;
+  width: 100%;
+}

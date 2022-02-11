@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Profile } from 'app/models/profile';
 import { ProfileService } from 'app/services/profile.service';
+import { faUserTag } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-modal-update-form',
@@ -16,12 +17,13 @@ export class ModalUpdateFormComponent implements OnInit {
   firstName: string = "";
   lastName: string = "";
   email: string = "";
+  faUserTag = faUserTag;
 
 
   ngOnInit(): void {
     var modaled = document.querySelector('.modal-content');
     modaled?.setAttribute("style","border-radius:30px;");
-    
+
     var sessionProfile = sessionStorage.getItem("profile");
     if(sessionProfile!=null){
       this.profile = JSON.parse(sessionProfile);
@@ -34,7 +36,7 @@ export class ModalUpdateFormComponent implements OnInit {
     }
     if(this.firstName!=""){
       this.profile.firstName = this.firstName;
-    }  
+    }
     if(this.lastName!=""){
       this.profile.lastName = this.lastName;
     }

@@ -1,6 +1,11 @@
 export const environment = {
   production: false,
-  url: 'http://ec2-54-242-69-21.compute-1.amazonaws.com:8082'
+  url: 'http://35.170.242.190:5000',
+  angUrl: 'http://revature-bubble-2.s3-website-us-east-1.amazonaws.com'
+
+
+
+
 };
 
 /*

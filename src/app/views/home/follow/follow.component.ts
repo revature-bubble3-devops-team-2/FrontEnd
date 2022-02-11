@@ -15,7 +15,13 @@ export class FollowComponent {
   success: boolean = false;
   successUnfollow: boolean = false;
 
+
   constructor(private followService:FollowService, private router:Router) { }
+   sessionProfile : any = sessionStorage.getItem("profile");
+   sessionId  = JSON.parse(this.sessionProfile).pid;
+
+   //  sessionId : any =this.sessionProfile.pid;
+
 
   follow() {
     this.error = false;
@@ -24,14 +30,14 @@ export class FollowComponent {
     this.successUnfollow = false;
 
     if (this.email !== "") {
-      this.followService.followUserByEmail(this.email).subscribe(
-        r => this.success = true, 
+      this.followService.followUserByEmail(this.email , this.sessionId).subscribe(
+        r => this.success = true,
         err => this.error = true
       );
     }
     else { this.missing = true; }
   }
-  
+
   unfollow() {
     this.error = false;
     this.missing = false;

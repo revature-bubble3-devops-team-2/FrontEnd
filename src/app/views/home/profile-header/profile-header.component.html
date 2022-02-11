@@ -1,0 +1,26 @@
+<header id="profile-header_container">
+  <div id="profile-header_cover-photo" #profileHeaderCoverPhoto>
+  </div>
+  <div id="profile-header_user-info">
+      <div class = "profile-header_pfp" id="profile-header_edit-pfp">
+          <img [src]="url" alt="profile image" class="bubble-avatar_xl">
+      </div>
+    <h3>{{firstName}} {{lastName}}</h3>
+    <small id="profile-header_username">@{{ username }}</small>
+    <div id="profile-header_buttons">
+      <app-modal-button *ngIf=" id ==  sessionId"></app-modal-button>
+      <button  *ngIf=" ! followed &&   id !=  sessionId " type="submit" (click)="follow()">
+        <div class="profile-header_btn">
+          <fa-icon [icon]="faUserPlus"></fa-icon>
+          <p>Follow</p>
+        </div>
+      </button>
+      <button *ngIf="  followed &&   id !=  sessionId " type="submit" (click)="unfollow()">
+        <div class="profile-header_btn">
+        <fa-icon [icon]="faUserMinus"></fa-icon>
+        <p>Unfollow</p>
+      </div>
+      </button>
+    </div>
+  </div>
+</header>

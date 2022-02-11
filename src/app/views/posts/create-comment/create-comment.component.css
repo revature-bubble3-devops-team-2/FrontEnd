@@ -1,92 +1,139 @@
-body{
-    background:#eee;
+.card-post-popup{
+  display: block;
+}
+.card-post-popup section:nth-of-type(1){
+  width: 100%;
+}
+.card-post-popup section:nth-of-type(2){
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 100%;
+}
+#create-comment_post-img{
+  display: block;
+  height: 50vh;
+  margin: 10px auto 0px auto;
+  max-width: 100%;
+  width: auto;
+}
+.post-feed_author-info img{
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0px 10px 0px 0px;
+}
+.post-feed_author-info h4{
+  display: inline-block;
+}
+.post-feed-comment_container{
+  display: flex;
+}
+.post-feed_engagement-buttons{
+  display: flex;
+  padding: 10px 15px 20px 15px;
+  margin-left: calc(100% - var(--post-feed-total-width));
+  text-align: right;
+  width: var(--post-feed-total-width);
+
+  /* The total width allotted for each button.  */
+  /* This is aimed at promoting uniformity.     */
+  --post-feed-button-width: 45px;
+
+  /* There are TWO buttons with FOUR sides of */
+  /* padding as per the box model.            */
+  --post-feed-total-width: calc( (var(--post-feed-button-width) * 2) + (5px * 4) );
+  /*  Calculation = (Button width * number of buttons) + (4 sides of padding)  */
+
+}
+.post-feed_engagement-buttons > *{
+  padding: 0px 5px;
+  width: var(--post-feed-button-width);
+}
+.bubble-post_bodycopy{
+  font-size: 1.15em;
+  line-height: 1.69em;
+}
+.comments{
+  list-style-type: none;
+}
+.comment-pfp{
+  float: left !important;
+  width: 80px;
+}
+#original-post > p{
+  font-size: 1.15em;
+  line-height: 1.69em;
+  max-width: 1000px;
+  padding: 2px 2.5%;
+}
+#original-post-comments{
+  display: block;
+  margin: 25px auto 10px auto;
+  width: 75%;
 }
 
-hr {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border: 0;
-    border-top: 1px solid #FFFFFF;
+.create-post_submit-btn{
+  height: 35px;
+  margin: 10px 0px 0px 0px;
 }
-a {
-    color: #474c55;
-    text-decoration: none;
+.create-post-btn{
+  float: right;
 }
-.blog-comment::before,
-.blog-comment::after,
-.blog-comment-form::before,
-.blog-comment-form::after{
-    /* content: ""; */
-	display: table;
-	clear: both;
-}
+.post-feed_engagement-buttons{
+  display: flex;
+  padding: 10px 15px 20px 15px;
+  margin-left: calc(95% - var(--post-feed-total-width));
+  text-align: right;
+  width: var(--post-feed-total-width);
 
-/* .blog-comment{
-    padding-left: 15%;
-	padding-right: 15%;
-} */
+  /* The total width allotted for each button.  */
+  /* This is aimed at promoting uniformity.     */
+  --post-feed-button-width: 45px;
 
-.blog-comment ul{
-	list-style-type: none;
-	padding: 0;
+  /* There are TWO buttons with FOUR sides of */
+  /* padding as per the box model.            */
+  --post-feed-total-width: calc( (var(--post-feed-button-width) * 2) + (5px * 4) );
+  /*  Calculation = (Button width * number of buttons) + (4 sides of padding)  */
+
 }
-
-.blog-comment img{
-	opacity: 1;
-	filter: Alpha(opacity=100);
-	-webkit-border-radius: 4px;
-	   -moz-border-radius: 4px;
-	  	 -o-border-radius: 4px;
-			border-radius: 4px;
+.post-feed_engagement-buttons > *{
+  padding: 0px 5px;
+  width: var(--post-feed-button-width);
 }
-
-.blog-comment img.avatar {
-	position: relative;
-	float: left;
-	margin-left: 0;
-	margin-top: 0;
-	width: 65px;
-	height: 65px;
-    border-radius: 30px;
+.comment-icon {
+  color:#007bff;
+  font-size: 14pt;
+  margin-right: 4px;
 }
-
-.blog-comment .post-comments{
-	border: 1px solid #eee;
-    margin-bottom: 20px;
-    margin-left: 85px;
-	margin-right: 0px;
-    padding: 10px 20px;
-    border-radius: 30px;
-    position: relative;  		
-	background: #fff;
-	color: #6b6e80;
+.first-level-comment{
+  margin: 50px 0px;
 }
-
-.blog-comment .meta {
-	font-size: 13px;
-	color: #aaaaaa;
-	padding-bottom: 8px;
-	margin-bottom: 10px !important;
-	border-bottom: 1px solid #eee;
-    
+.post-feed-comment_profile-pic{
+  width: 80px;
 }
-
-.blog-comment ul.comments ul{
-	list-style-type: none;
-	padding: 0;
-	margin-left: 85px;
+.post-feed-comment_body-copy{
+  padding-left: 10px;
+  width: calc(100% - 80px);
 }
-
-.blog-comment-form{
-	padding-left: 15%;
-	padding-right: 15%;
-	padding-top: 40px;
+.bubble_create-reply-btn{
+  color: var(--revature-orange);
+  text-decoration: none;
+  transition: 0.33s all;
 }
-
-.blog-comment h3,
-.blog-comment-form h3{
-	margin-bottom: 40px;
-	font-size: 26px;
-	line-height: 30px;
-	font-weight: 800;
+.bubble_create-reply-btn:hover{
+  color: #ee9d75;
+}
+.bubble_create-comment-btn{
+  float: right;
+}
+.bubble-create-comment-self-avatar{
+  width: 80px;
+}
+.bubble-create-comment-textarea{
+  width: calc(100% - 80px);
+}
+.bubble-create-comment-textarea textarea{
+  border: 0px;
+  border-bottom: 1px solid rgba(0,0,0, 0.5);
+  border-radius: 0px;
+  width: 100%;
 }

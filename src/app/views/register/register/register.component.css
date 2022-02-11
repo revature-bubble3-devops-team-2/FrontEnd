@@ -1,115 +1,99 @@
-* {
-  box-sizing: border-box;
+* {box-sizing: border-box}
+a{
+  color: var(--revature-orange);
+  text-decoration: none;
+  transition: 0.5s all;
 }
-
-.register-container {
-  background-image: url("/assets/images/login-register-background.jpg");
+a:hover{
+  color: #CC5216;
+}
+.register-page-container{
+  background: var(--revature-light-gray);
+  display:flex;
+  height: 100%;
+}
+.register-deco-container{
+  background: url("/assets/images/login-bg.png") no-repeat center center;
   background-size: cover;
-  background-attachment: fixed;
-}
-
-.alert {
-  border-radius: 30px;
-}
-
-.success {
-  color: rgb(29, 133, 29);
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.sign-in {
-  margin-top: 3rem;
-  text-align: center;
-}
-
-.register-form {
-  padding: 5rem;
-}
-
-.text-center {
-  background-color: #de6f3d;
-  border-radius: 80px;
-  padding: 1rem;
-  color: white;
-  margin-bottom: 3rem;
-}
-
-/* Add padding to containers */
-.container {
-  padding: 4rem;
-  border-radius: 80px;
-  max-width: 700px;
-  -webkit-backdrop-filter: blur(50px);
-  backdrop-filter: blur(50px);
-}
-
-/* slightly transparent fallback for Firefox (not supporting backdrop-filter) */
-@supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
-  .container {
-    background-color: rgba(255, 255, 255, 0.4);
-  }
-}
-
-/* Full-width input fields */
-input[type="text"],
-input[type="password"] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 5px 22px 5px;
-  display: inline-block;
-  border: none;
-  background: #b1e3fb;
-  border-radius: 100px;
-}
-
-input[type="text"]:focus,
-input[type="password"]:focus {
-  background-color: #ddd;
-  outline: none;
-}
-
-/* Overwrite default styles of hr */
-hr {
-  border: 1px solid #b1e3fb;
-  margin-bottom: 25px;
-}
-
-/* Set a style for the submit/register button */
-.registerbtn {
-  background-color: #f26925;
-  color: white;
-  padding: 16px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-  border-radius: 100px;
-}
-
-.registerbtn:hover {
+  /* background-attachment: fixed; */
+  display: block;
+  height: 100vh;
   opacity: 1;
+  width: 45%;
 }
-
-/* Add a blue text color to links */
-a {
-  color: rgb(156, 112, 45);
-  font-weight: 500;
+.register-deco-pic0{
+  background: url("/assets/images/login-bg_alt.jpg") no-repeat center center !important;
+  opacity: 0.35 !important;
 }
-
-/* Set a grey background color and center the text of the "sign in" section */
-.signin {
-  background-color: #f1f1f1;
-  text-align: center;
+.register-deco-pic1{
+  background: url("/assets/images/login-bg_alt1.jpg") no-repeat center center !important;
+  opacity: 0.3 !important;
 }
-
-@media screen and (max-width: 600px) {
-  .container {
-    padding: 2rem;
-  }
-
-  .register-form {
-    padding: 2rem;
-  }
+.register-form-container{
+  background: var(--revature-white);
+  display: block;
+  position: relative;
+  overflow-y: scroll;
+  width: 55%;
+}
+.register-form-container > form{
+  display: block;
+  margin: 0px auto;
+  position: relative;
+  max-width: 500px;
+  width: 65%;
+}
+.register-form-container img{
+  display: block;
+  height: auto;
+  margin: 5% auto;
+  max-width: 300px;
+  width: 75%;
+}
+.register-form label{
+  color: var(--revature-dark-gray);
+  font-weight: 600;
+  margin: 0px 0px 10px 0px;
+}
+sup{
+  color: var(--revature-orange);
+  font-size: 15px;
+}
+.register-form input{
+  background: var(--revature-white);
+  border: 2px solid var(--revature-ink);
+  border-radius: 12px!important;
+  font-size: 16px;
+  height: 50px!important;
+  margin: 0px 0 25px 0;
+  padding: 8px 18px!important;
+  width: 100%;
+}
+.register-form input::placeholder{
+  font-size: 16px;
+}
+.register-form input:focus{
+  border: 3px solid var(--revature-blue);
+  outline: 0px;
+}
+.onLoginBtn{
+  float: right;
+  margin: 10px auto;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+.sign-up{
+  margin: 10px 5%;
+}
+.sign-up a{
+  color: var(--revature-orange);
+  text-decoration: none;
+  transition: 0.33s all;
+}
+.sign-up a:hover{
+  color: #CC5216;
+}
+.registration-button{
+  display: block;
+  margin: 15px auto;
 }

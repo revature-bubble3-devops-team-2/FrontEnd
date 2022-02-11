@@ -4,6 +4,9 @@ import { CommentService } from 'app/services/comment.service';
 import { Comment } from 'app/models/comment';
 import { Post } from 'app/models/post';
 import { Profile } from 'app/models/profile';
+import { formatDate } from '@angular/common';
+import { faComment} from '@fortawesome/free-regular-svg-icons';
+import { ProfileService } from 'app/services/profile.service';
 
 
 @Component({
@@ -12,7 +15,7 @@ import { Profile } from 'app/models/profile';
   styleUrls: ['./create-comment.component.css']
 })
 export class CreateCommentComponent implements OnInit {
-  @Input() 
+  @Input()
   post!: Post;
   comment: Comment= {};
   reply: Comment = {};
@@ -29,10 +32,19 @@ export class CreateCommentComponent implements OnInit {
   replyDate: string = "";
   previous: Comment ={};
 
+  // Icons
+  faComment = faComment;
+
+  // Session
+  id : number =0;
+  session : any = {};
+  url : any = this.profile.imgurl ? this.profile.imgurl : `../../../../assets/favicon.png`
+
   constructor(
-    public commentService: CommentService, 
+    public commentService: CommentService,
     public activeModal: NgbActiveModal,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private profileService: ProfileService
     ) {}
 
   ngOnInit(): void {
@@ -41,19 +53,25 @@ export class CreateCommentComponent implements OnInit {
     modaled?.setAttribute("style","border-radius:30px;");
 
     this.getOriginCommentsByPsid();
-    
+
     let sessionProfile = sessionStorage.getItem("profile");
     if(sessionProfile!=null){
       this.profile = JSON.parse(sessionProfile);
-    } 
+    }
+
+    this.id = this.session.pid;
+     this.profileService.getProfileByPid(this.id).subscribe( (e : any) =>{
+      this.url  = e.imgurl ?  e.imgurl : `../../../../assets/favicon.png` ;
+      this.profileService.getProfile().imgurl =  e.imgurl;
+      });
+
   }
 
-  dateFormatForComment(d: Date) {
-    if(d){
-      var formattedDate = (d.getMonth() + 1)  + "-"  +d.getDate()+  "-"+ d.getFullYear() ;
-      if(formattedDate)
-        this.commentLocaleDate = formattedDate;
-     }
+  dateFormatForComment(d?: Date) {
+    if(d) {
+      return formatDate(d, 'M-d-yyyy', "en-US")
+    }
+    return "";
   }
 
   dateFormatForReply(d: Date) {
@@ -71,7 +89,7 @@ export class CreateCommentComponent implements OnInit {
       d = new Date(temp);
       this.dateFormatForReply(d);
     }
-    return true;   
+    return true;
   }
 
   checkWriterForEachComment(comment: Comment){
@@ -82,7 +100,7 @@ export class CreateCommentComponent implements OnInit {
     if(temp){
       d = new Date(temp);
       this.dateFormatForComment(d);
-    }   
+    }
     if(comment.writer){
       this.commentWriter = comment.writer;
     }
@@ -93,7 +111,7 @@ export class CreateCommentComponent implements OnInit {
       return false;
     }
   }
-  
+
   getOriginCommentsByPsid(){
     if(this.post.psid){
       this.commentService.getCommentsByPsid(this.post.psid).subscribe(
@@ -103,7 +121,7 @@ export class CreateCommentComponent implements OnInit {
           this.getReplyComments();
         }
       )
-    }  
+    }
   }
 
   getReplyComments(){
@@ -114,7 +132,7 @@ export class CreateCommentComponent implements OnInit {
           this.replys = this.replys.filter(obj => obj.previous!=null)
         }
       )
-    }  
+    }
   }
 
   submitComment(comment: Comment){
@@ -142,7 +160,7 @@ export class CreateCommentComponent implements OnInit {
         (result)=>{
           this.isReply = false;
           this.reply.cbody = "";
-          this.getOriginCommentsByPsid(); 
+          this.getOriginCommentsByPsid();
         }
       );
     }
