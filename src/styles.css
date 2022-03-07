@@ -246,3 +246,14 @@ component for example */
 .modal-dialog{
   max-width: 1140px !important;
 }
+
+/* Dark mode styles */
+body.dark-mode .login-form-container {
+  background-color: #2d3436 !important;
+  color: #dfe6e9 !important;
+}
+
+body.light-mode {
+  background-color: #dfe6e9 !important;
+  color: #2d3436 !important;
+}
