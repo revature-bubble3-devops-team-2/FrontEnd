@@ -40,6 +40,7 @@ import { CheckEmailComponent } from './views/check-email/check-email.component';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { GroupHeaderComponent } from './views/group-header/group-header.component';
 import { CreateGroupPostComponent } from './views/create-group-post/create-group-post.component';
+import { BookmarkComponent } from './views/bookmark/bookmark.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { CreateGroupPostComponent } from './views/create-group-post/create-group
     VerifyEmailComponent,
     CheckEmailComponent,
     GroupHeaderComponent,
-    CreateGroupPostComponent
+    CreateGroupPostComponent,
+    BookmarkComponent
   ],
   imports: [
     BrowserModule,
