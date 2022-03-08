@@ -3,60 +3,60 @@
   font-family: Futura;
   src: url("/assets/fonts/Futura-Normal.woff2") format("woff2");
 }
-:root{
-/* Primary Revature Colors */
---revature-orange: #F26925;
---revature-white: #FFF;
---revature-dark-gray: #474C55;
+:root {
+  /* Primary Revature Colors */
+  --revature-orange: #f26925;
+  --revature-white: #fff;
+  --revature-dark-gray: #474c55;
 
-/* Secondary Revature Colors */
---revature-blue: #72A4C2;
---revature-yellow: #FCB414;
---revature-light-gray: #B9B9BA;
+  /* Secondary Revature Colors */
+  --revature-blue: #72a4c2;
+  --revature-yellow: #fcb414;
+  --revature-light-gray: #b9b9ba;
 
-/* Additional colors */
---revature-bg-gray: #f0f2f5;
---revature-ink: #252525;
+  /* Additional colors */
+  --revature-bg-gray: #f0f2f5;
+  --revature-ink: #252525;
 
-/* Avatar Sizes */
---revature-sm-avatar: 70px;
---revature-md-avatar: 100px;
---revature-lg-avatar: 150px;
---revature-xl-avatar: 200px;
-
+  /* Avatar Sizes */
+  --revature-sm-avatar: 70px;
+  --revature-md-avatar: 100px;
+  --revature-lg-avatar: 150px;
+  --revature-xl-avatar: 200px;
 }
-
-
 
 /* If you ever cannot scroll,
 this is the property preventing it.
 Apply "overflow-y: scroll" to its
 container to fix it */
-html, body{
-height: 100%;
-margin: 0px;
-padding: 0px;
-overflow: hidden;
-width: 100%;
+html,
+body {
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+  width: 100%;
 }
 
-.view-container{
-display: flex;
-height: 100%;
-margin: 0px;
+.view-container {
+  display: flex;
+  height: 100%;
+  margin: 0px;
 }
-.posts-container{
-overflow-y: scroll;
+.posts-container {
+  overflow-y: scroll;
 }
 
 /* Hide gradient on iOS devices */
-[type=button], [type=reset], [type=submit], button {
--webkit-appearance: none;
+[type="button"],
+[type="reset"],
+[type="submit"],
+button {
+  -webkit-appearance: none;
 }
 
-
 /* Use this for rounded buttons */
-.btn-rounded{
+.btn-rounded {
   background-color: var(--revature-dark-gray);
   border: 0px;
   border-radius: 50px;
@@ -75,46 +75,42 @@ overflow-y: scroll;
   backface-visibility: hidden;
   perspective: 1000;
 }
-.btn-rounded:hover{
+.btn-rounded:hover {
   background-color: var(--revature-light-gray);
   color: var(--revature-dark-gray);
 }
 
-
-
 /*  Bubble Avatar sizes.
     Use these to standardize your sizes */
-.bubble-avatar_sm{
+.bubble-avatar_sm {
   border-radius: 50%;
   height: var(--revature-sm-avatar);
   object-fit: cover !important;
   width: var(--revature-sm-avatar);
 }
-.bubble-avatar_md{
+.bubble-avatar_md {
   border-radius: 50%;
   height: var(--revature-md-avatar);
   object-fit: cover !important;
   width: var(--revature-md-avatar);
 }
-.bubble-avatar_lg{
+.bubble-avatar_lg {
   border-radius: 50%;
   height: var(--revature-lg-avatar);
   object-fit: cover !important;
   width: var(--revature-lg-avatar);
 }
-.bubble-avatar_xl{
+.bubble-avatar_xl {
   border-radius: 50%;
   height: var(--revature-xl-avatar);
   object-fit: cover !important;
   width: var(--revature-xl-avatar);
 }
 
-
-
 /*  CSS Hack to force hardware acceleration */
 /*  Use this if you ever perform any heavy
     CSS animations. */
-.animate-el{
+.animate-el {
   transition: 0.33s all;
   -webkit-transform: translate3d(0, 0, 0);
   -webkit-backface-visibility: hidden;
@@ -124,21 +120,19 @@ overflow-y: scroll;
   perspective: 1000;
 }
 
-
-
 /* Bubble Block with left side header and
 right side content. See "groups-page"
 component for example */
-.bubble_standard-block{
+.bubble_standard-block {
   background-color: var(--revature-white);
   background-clip: border-box;
-  border: 1px solid rgba(0,0,0,.125);
+  border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 20px;
 }
-.bubble_centered-block{
+.bubble_centered-block {
   background-color: var(--revature-white);
   background-clip: border-box;
-  border: 1px solid rgba(0,0,0,.125);
+  border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 20px;
   left: 50%;
   padding: 25px;
@@ -149,37 +143,37 @@ component for example */
   -ms-transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
 }
-.bubble_icon-block{
+.bubble_icon-block {
   background-color: var(--revature-white);
   border-radius: 10px;
   display: flex;
   max-width: 1140px;
   padding: 0px;
 }
-.bubble_icon-block label{
+.bubble_icon-block label {
   text-align: right;
   width: 10%;
 }
-.bubble_icon-block input{
+.bubble_icon-block input {
   background: var(--revature-white);
   border: 2px solid var(--revature-ink);
-  border-radius: 12px!important;
+  border-radius: 12px !important;
   display: inline-block;
   font-size: 16px;
-  height: 50px!important;
+  height: 50px !important;
   margin: 5px 5% 25px 5%;
   min-width: 400px;
   padding: 8px 18px;
   width: 70%;
 }
-.bubble_icon-block input:focus{
+.bubble_icon-block input:focus {
   border: 2px solid var(--revature-blue);
   outline: 0px;
 }
-.bubble_icon-block button{
+.bubble_icon-block button {
   display: inline-block;
 }
-.bubble_icon-block_header{
+.bubble_icon-block_header {
   background-color: var(--revature-blue);
   border-radius: 10px 0px 0px 10px;
   color: var(--revature-white);
@@ -188,7 +182,7 @@ component for example */
   text-align: center;
   width: 20%;
 }
-.bubble_icon-block_header fa-icon{
+.bubble_icon-block_header fa-icon {
   font-size: 50px;
   left: 50%;
   padding: 25px;
@@ -199,51 +193,46 @@ component for example */
   -ms-transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
 }
-.bubble_icon-block_body{
+.bubble_icon-block_body {
   padding: 10px 0px;
   width: 80%;
 }
-.bubble_icon-block_body h4{
+.bubble_icon-block_body h4 {
   margin: 15px 0px 25px 0px;
   text-align: center;
 }
-.bubble_icon-block_body p{
+.bubble_icon-block_body p {
   margin: 10px auto 20px auto;
   width: 70%;
 }
-.bubble_icon-block_body-group-list ul{
+.bubble_icon-block_body-group-list ul {
   list-style-type: none;
   margin: 15px auto;
   width: 70%;
 }
-.bubble_icon-block_body-group-list fa-icon{
+.bubble_icon-block_body-group-list fa-icon {
   color: var(--revature-light-gray);
   margin-right: 10px;
 }
-.bubble_icon-block_body-group-list button{
+.bubble_icon-block_body-group-list button {
   background: none;
   border: 0px;
   color: var(--revature-orange);
   transition: 0.33s all;
 }
-.bubble_icon-block_body-group-list button:hover{
+.bubble_icon-block_body-group-list button:hover {
   color: var(#a74819);
 }
 
-
-
-
 /*  Use this to hide elements instead
     of commenting them out */
-.hideTab, .todo_needs-implementation{
+.hideTab,
+.todo_needs-implementation {
   display: none !important;
 }
 
-
-
-
 /* BOOTSTRAP OVERRIDES */
-.modal-dialog{
+.modal-dialog {
   max-width: 1140px !important;
 }
 
@@ -270,7 +259,7 @@ body.dark-mode .profile_current-user_text li {
   color: #dfe6e9 !important;
 }
 
-/* Password Reset */ 
+/* Password Reset */
 body.dark-mode #verify-email_container {
   background-color: #2d3436 !important;
   color: #dfe6e9 !important;
@@ -302,6 +291,15 @@ body.dark-mode #create-post_image-upload {
   cursor: pointer;
 }
 
+body.dark-mode h4 {
+  color: #dfe6e9 !important;
+  cursor: pointer;
+}
+body.dark-mode p {
+  color: #dfe6e9 !important;
+  cursor: pointer;
+}
+
 /* Register */
 body.dark-mode .register-form-container {
   background-color: #2d3436 !important;
@@ -313,3 +311,40 @@ body.dark-mode .register-form label {
   color: #dfe6e9 !important;
 }
 
+/* Group-home */
+body.dark-mode #groups-container {
+  background-color: #0b0d0e !important;
+  color: #dfe6e9 !important;
+}
+
+body.dark-mode .groups-container_body {
+  background-color: #2d3436 !important;
+  color: #dfe6e9 !important;
+}
+
+body.dark-mode .groups-container_body-group-list ul > li > a {
+  color: #dfe6e9 !important;
+}
+
+/* Check-email */
+
+body.dark-mode #verify-email_container {
+  background-color: #2d3436 !important;
+  color: #dfe6e9 !important;
+}
+
+body.dark-mode .verify-email_message {
+  background-color: #0b0d0e !important;
+  color: #dfe6e9 !important;
+}
+
+/* Verify-email */
+body.dark-mode #verify-email_container {
+  background-color: #2d3436 !important;
+  color: #dfe6e9 !important;
+}
+
+body.dark-mode .verify-email_message {
+  background-color: #0b0d0e !important;
+  color: #dfe6e9 !important;
+}
