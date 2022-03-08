@@ -6,10 +6,11 @@
     <app-profile-header></app-profile-header>
     <div id="profile-view_tab-btns">
       <span [ngClass]="showPosts ? 'activeProfileTab' : ''"
-      (click)="toggleViewTabs()">Posts</span>
+      (click)="togglePosts()">Posts</span>
       <span [ngClass]="showFollowers ? 'activeProfileTab' : ''"
-      (click)="toggleViewTabs()">Followers</span>
-      <span>Favorites</span>
+      (click)="toggleFollowers()">Followers</span>
+      <span [ngClass]="showFavorites ? 'activeProfileTab' : ''"
+      (click)="toggleFavorites()">Favorites</span>
     </div>
 
 
@@ -36,6 +37,11 @@
         <app-following-list [profiles]="followersProfiles"  [text]="'Following'" class="profileview_following-list"></app-following-list>
         <small>Followers</small>
         <app-following-list [profiles]="followersOfThisUser"  [text]="'Followers'" class="profileview_followers-list"></app-following-list>
+      </div>
+
+      <div id="profile-view_user-favorites" [ngClass]="showFavorites ? '' : 'hideTab'">
+        <small>TEST</small>
+        <!-- this is where out bookmark tage will be going-->
       </div>
 
 
