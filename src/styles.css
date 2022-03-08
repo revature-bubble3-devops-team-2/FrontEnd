@@ -247,13 +247,69 @@ component for example */
   max-width: 1140px !important;
 }
 
-/* Dark mode styles */
+/* DARK MODE STYLES */
+/* Login */
 body.dark-mode .login-form-container {
   background-color: #2d3436 !important;
   color: #dfe6e9 !important;
 }
 
-body.light-mode {
-  background-color: #dfe6e9 !important;
-  color: #2d3436 !important;
+/* Navbar */
+body.dark-mode .profile-container {
+  background-color: #2d3436 !important;
+  color: #dfe6e9 !important;
 }
+
+body.dark-mode .profile_current-user_text a {
+  background-color: #2d3436 !important;
+  color: #dfe6e9 !important;
+}
+
+body.dark-mode .profile_current-user_text li {
+  background-color: #2d3436 !important;
+  color: #dfe6e9 !important;
+}
+
+/* Password Reset */ 
+body.dark-mode #verify-email_container {
+  background-color: #2d3436 !important;
+  color: #dfe6e9 !important;
+}
+
+body.dark-mode #verify-email_box {
+  background-color: #0b0d0e !important;
+  color: #dfe6e9 !important;
+}
+
+/* Posts */
+body.dark-mode .posts-container {
+  background-color: #0b0d0e !important;
+  color: #dfe6e9 !important;
+}
+
+body.dark-mode .post-card {
+  background-color: #2d3436 !important;
+  color: #dfe6e9 !important;
+}
+
+body.dark-mode .modal-content {
+  background-color: #2d3436 !important;
+  color: #dfe6e9 !important;
+}
+
+body.dark-mode #create-post_image-upload {
+  color: #dfe6e9 !important;
+  cursor: pointer;
+}
+
+/* Register */
+body.dark-mode .register-form-container {
+  background-color: #2d3436 !important;
+  color: #dfe6e9 !important;
+}
+
+body.dark-mode .register-form label {
+  background-color: #2d3436 !important;
+  color: #dfe6e9 !important;
+}
+
