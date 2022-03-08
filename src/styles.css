@@ -250,12 +250,11 @@ body.dark-mode .profile-container {
 }
 
 body.dark-mode .profile_current-user_text a {
-  background-color: #2d3436 !important;
   color: #dfe6e9 !important;
 }
 
 body.dark-mode .profile_current-user_text li {
-  background-color: #2d3436 !important;
+  /* background-color: #2d3436 !important; */
   color: #dfe6e9 !important;
 }
 
