@@ -6,9 +6,11 @@
     <app-profile-header></app-profile-header>
     <div id="profile-view_tab-btns">
       <span [ngClass]="showPosts ? 'activeProfileTab' : ''"
-      (click)="toggleViewTabs()">Posts</span>
+      (click)="toggleViewTabs(0)">Posts</span>
       <span [ngClass]="showFollowers ? 'activeProfileTab' : ''"
-      (click)="toggleViewTabs()">Followers</span>
+      (click)="toggleViewTabs(1)">Followers</span>
+      <span [ngClass]="showGroups ? 'activeProfileTab' : ''"
+      (click)="toggleViewTabs(2)">My Groups</span>
     </div>
 
 
