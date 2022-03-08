@@ -29,8 +29,14 @@ getEmailMod(){
     return this.profile;
   }
 
+  //sety profile photo url
   setImhg(img : any){
     this.profile.imgurl = img;
+  }
+
+  //set cover photo url
+  setCoverImg(img : any) { 
+    this.profile.coverImgurl = img;
   }
 
   getData(){
