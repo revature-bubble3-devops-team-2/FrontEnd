@@ -55,3 +55,10 @@ app-search{
   text-align: center;
   width: 100%;
 }
+
+#profile-view_user-favorites{
+  display: block;
+  margin: 10px auto;
+  /* Three columns of user friends which are 280px wide */
+  width: calc(280px * 3);
+}

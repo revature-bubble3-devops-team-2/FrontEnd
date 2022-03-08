@@ -12,38 +12,22 @@ import { AuthGuard } from './guards/auth.guard';
 import { LoginGuard } from './guards/login.guard';
 import { ProfileComponent } from './views/home/profile/profile.component';
 import { VerifyEmailComponent } from './views/verify-email/verify-email.component';
+import { BookmarkComponent } from './views/bookmark/bookmark.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
-  { path: 'register', component: RegisterComponent, canActivate: [LoginGuard] },
-  { path: 'passwordreset', component: PasswordResetComponent },
-  { path: 'email/verify/password', component: PasswordResetComponent },
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  {
-    path: 'profile/:id',
-    component: ProfileComponent,
-    canActivate: [AuthGuard],
-    pathMatch: 'full',
-  },
-  {
-    path: 'profileview/:id',
-    component: ProfileviewComponent,
-    canActivate: [AuthGuard],
-    pathMatch: 'full',
-  },
-  {
-    path: 'groups/:id',
-    component: GroupHomeComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'group-page',
-    component: GroupPageComponent,
-    canActivate: [AuthGuard],
-  },
-  { path: 'verify/email', component: VerifyEmailComponent },
-  { path: 'check-email', component: CheckEmailComponent },
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {path: 'login', component: LoginComponent, canActivate:[LoginGuard]},
+  {path: 'register', component: RegisterComponent, canActivate:[LoginGuard]},
+  {path: 'passwordreset', component: PasswordResetComponent},
+  {path: 'email/verify/password', component: PasswordResetComponent},
+  {path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
+  {path: 'profile/:id', component: ProfileComponent , canActivate:[AuthGuard],pathMatch: 'full'},
+  {path: 'profileview/:id', component: ProfileviewComponent, canActivate:[AuthGuard], pathMatch: 'full' },
+  {path: 'groups/:id', component: GroupHomeComponent, canActivate:[AuthGuard]},
+  {path: 'group-page', component: GroupPageComponent, canActivate:[AuthGuard]},
+  {path: 'verify/email', component: VerifyEmailComponent},
+  {path: 'check-email', component: CheckEmailComponent},
+  {path: 'favorites/:id', component: BookmarkComponent, canActivate:[AuthGuard]}
 ];
 
 @NgModule({
