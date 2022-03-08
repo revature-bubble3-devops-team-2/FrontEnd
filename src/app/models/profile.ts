@@ -9,6 +9,7 @@ export class Profile {
     email?:string;
     username?:string;
     imgurl?: string;
+    coverImgurl?: string; //cover photo img url
     groups?:Group[];
     verification?: boolean;
 
