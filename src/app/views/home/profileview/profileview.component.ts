@@ -40,7 +40,7 @@ export class ProfileviewComponent implements OnInit {
   showPosts: boolean = true;
   showFollowers: boolean = false;
   showFollowing : boolean = false;
-  showFavorites: boolean = false;
+  showFavorites: boolean =false;
 
 
 
