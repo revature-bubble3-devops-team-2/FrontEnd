@@ -1,24 +1,46 @@
 <div class="login-page-container">
-  <div class="login-deco-container login-deco-pic{{loginPic}}">
-
-  </div>
+  <app-darkmode-toggle></app-darkmode-toggle>
+  <div class="login-deco-container login-deco-pic{{ loginPic }}"></div>
   <div class="login-form-container">
-    <form class = "login-form">
-          <img src="../../../../assets/images/bubble-logo.png" alt="Logo">
-          <div class="error" *ngIf="error">Username or password is incorrect.</div>
-          <div class="error" *ngIf="missing">Must enter both username and password.</div>
-          <input class="form-control" type="text" placeholder="Enter Username" name="username" id="username" [(ngModel)]="username" required>
+    <form class="login-form">
+      <img src="../../../../assets/images/bubble-logo.png" alt="Logo" />
+      <div class="error" *ngIf="error">Username or password is incorrect.</div>
+      <div class="error" *ngIf="missing">
+        Must enter both username and password.
+      </div>
+      <input
+        class="form-control"
+        type="text"
+        placeholder="Enter Username"
+        name="username"
+        id="username"
+        [(ngModel)]="username"
+        required
+      />
 
-          <input class="form-control" type="password" placeholder="Enter Password" name="password" id="password" [(ngModel)]="password" required>
+      <input
+        class="form-control"
+        type="password"
+        placeholder="Enter Password"
+        name="password"
+        id="password"
+        [(ngModel)]="password"
+        required
+      />
 
-          <button type="submit" class="onLoginBtn btn btn-rounded" (click)="login()">Login</button>
-            <div class="forgot-password">
-              <p> <a routerLink="/passwordreset">Forgot Password?</a></p>
-          </div>
-          <div class="sign-up">
-            <p>Not a user yet? <a routerLink="/register">Register now!</a></p>
-            <p><app-darkmode-toggle></app-darkmode-toggle></p>
-        </div>
+      <button
+        type="submit"
+        class="onLoginBtn btn btn-rounded"
+        (click)="login()"
+      >
+        Login
+      </button>
+      <div class="forgot-password">
+        <p><a routerLink="/passwordreset">Forgot Password?</a></p>
+      </div>
+      <div class="sign-up">
+        <p>Not a user yet? <a routerLink="/register">Register now!</a></p>
+      </div>
     </form>
   </div>
 </div>
