@@ -11,6 +11,7 @@
   <div *ngIf="id !=  sessionId" id="group-header_cover-photo" #groupHeaderCoverPhoto>
     <img [src]="cover" alt="cover photo">
   </div>
+
   <div id="profile-header_user-info">
     <div *ngIf=" id !=  sessionId" class="profile-header_pfp" id="profile-header_edit-pfp">
       <img [src]="url" alt="profile image" class="bubble-avatar_xl">
@@ -22,6 +23,7 @@
           <fa-icon class="camera-icon" [icon]="faCameraRetro"></fa-icon>
         </div>
       </label>
+    <input id="cover_photo" type='file' (change)="onUpdatePhoto($event)">
     </div>
 
     <h3>{{firstName}} {{lastName}}</h3>

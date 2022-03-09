@@ -125,6 +125,22 @@ onUpdateCover(event : any) {
       });
   }
 }
+onUpdatePhoto(event : any) {
+  if (event.target.files && event.target.files[0]) {
+      const file = event.target.files[0];
+      this.changeFile(file).then((e: any): any => {
+        let profile:Profile={
+            pid:this.id,
+            imgurl:e
+        }
+        this.cover = e;
+        this.profileService.updateProfile(profile).subscribe(d=> {
+          console.log("here");
+          window.location.reload();
+        });
+      });
+  }
+}
 
 
 
