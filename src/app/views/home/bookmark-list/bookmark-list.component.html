@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="bookmark-list-container">
+    <div class="col post-card mb-4 card" *ngFor="let post of posts">
+      <header>
+        <div class="d-flex justify-content-between user-info">
+          <div class="post-feed_author-info">
+            <a
+              [href]="'/profileview/' + post.creator.pid"
+              class="post-feed_author-link"
+            >
+              <img
+                [src]="
+                  post.creator?.imgurl
+                    ? post.creator?.imgurl
+                    : '../../../../assets/favicon.png'
+                "
+                alt="..."
+                class="bubble-avatar_sm"
+              />
+              <h4>{{ post.creator?.username }}</h4></a
+            >
+            <p class="text-muted post-date">{{ post.datePosted | date }}</p>
+          </div>
+        </div>
+      </header>
+      <section>
+        <div class="card-body bubble-post_bodycopy" (click)="open(post)">
+          <p>{{ post.body }}</p>
+          <ng-container *ngIf="post.imgURL">
+            <img
+              alt="post image"
+              class="img-fluid"
+              width="100%"
+              [src]="post.imgURL"
+              aria-label="Placeholder: Thumbnail"
+            />
+          </ng-container>
+        </div>
+      </section>
+      <div class="post-feed_engagement-buttons">
+        <app-like [postInfo]="post"></app-like>
+        <fa-icon
+          class="comment-icon"
+          [icon]="faComment"
+          (click)="open(post)"
+        ></fa-icon>
+        <app-bookmark></app-bookmark>
+      </div>
+    </div>
+
+    <div *ngIf="posts.length == 0" class="listed-user_none">
+      <fa-icon [icon]="faFrown"></fa-icon>
+      Nothing to display here...
+    </div>
+  </div>
+</div>
