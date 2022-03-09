@@ -40,6 +40,7 @@ import { CheckEmailComponent } from './views/check-email/check-email.component';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { GroupHeaderComponent } from './views/group-header/group-header.component';
 import { CreateGroupPostComponent } from './views/create-group-post/create-group-post.component';
+//import { AddGroupCoverPhotoComponent } from './views/add-cover-photo/add-group-cover-photo/add-group-cover-photo.component';
 
 
 import { DarkmodeToggleComponent } from './views/darkmode-toggle/darkmode-toggle.component';
@@ -75,7 +76,8 @@ import { BookmarkComponent } from './views/bookmark/bookmark.component';
     GroupHeaderComponent,
     CreateGroupPostComponent,
     DarkmodeToggleComponent,
-    BookmarkComponent
+    BookmarkComponent,
+    //AddGroupCoverPhotoComponent,
   ],
   imports: [
     BrowserModule,
