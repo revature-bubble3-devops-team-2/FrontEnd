@@ -1,1 +1,16 @@
-<p>bookmark works!</p>
+<div class="like-component-container">
+  <div class="button-container">
+    <div
+      *ngIf="!hasBookmark"
+      role="button"
+      type="button"
+      (click)="bookmarked()"
+    >
+      <fa-icon class="bookmark-icon" [icon]="faBookmarkOutline"></fa-icon>
+    </div>
+    <div *ngIf="hasBookmark" role="button" (click)="bookmarked()">
+      <fa-icon class="bookmark-icon" [icon]="faBookmarkSolid"></fa-icon>
+    </div>
+    <!-- <div class="num-likes" *ngIf="num > 0">{{ num }}</div> -->
+  </div>
+</div>
