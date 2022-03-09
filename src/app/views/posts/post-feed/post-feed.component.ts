@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Post } from 'app/models/post';
 import { PostService } from 'app/services/post.service';
 import { faSpinner, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
-import { faComment, faFrown} from '@fortawesome/free-regular-svg-icons';
+import { faComment, faFrown, faBookmark} from '@fortawesome/free-regular-svg-icons';
 import { Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Profile } from 'app/models/profile';
@@ -27,6 +27,7 @@ export class PostFeedComponent implements OnInit, OnDestroy {
   faSpinner = faSpinner;
   Loading!: boolean;
   endOfContents = false;
+  faBookmark= faBookmark;
 
   private _unsubscribeAll = new Subject<any>();
 

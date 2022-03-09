@@ -40,6 +40,11 @@ import { CheckEmailComponent } from './views/check-email/check-email.component';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { GroupHeaderComponent } from './views/group-header/group-header.component';
 import { CreateGroupPostComponent } from './views/create-group-post/create-group-post.component';
+//import { AddGroupCoverPhotoComponent } from './views/add-cover-photo/add-group-cover-photo/add-group-cover-photo.component';
+import { DarkmodeToggleComponent } from './views/darkmode-toggle/darkmode-toggle.component';
+import { BookmarkComponent } from './views/bookmark/bookmark.component';
+import { YoutubeVideoComponent } from './views/posts/youtube-video/youtube-video.component';
+import { YouTubePlayerModule } from '@angular/youtube-player';
 
 @NgModule({
   declarations: [
@@ -68,7 +73,11 @@ import { CreateGroupPostComponent } from './views/create-group-post/create-group
     VerifyEmailComponent,
     CheckEmailComponent,
     GroupHeaderComponent,
-    CreateGroupPostComponent
+    CreateGroupPostComponent,
+    DarkmodeToggleComponent,
+    BookmarkComponent,
+    //AddGroupCoverPhotoComponent,
+    YoutubeVideoComponent
   ],
   imports: [
     BrowserModule,
@@ -80,7 +89,8 @@ import { CreateGroupPostComponent } from './views/create-group-post/create-group
     BrowserAnimationsModule,
     FontAwesomeModule,
     InfiniteScrollModule,
-    RouterModule
+    RouterModule,
+    YouTubePlayerModule
   ],
 
   providers: [{provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }, HomeComponent,NgbActiveModal],
