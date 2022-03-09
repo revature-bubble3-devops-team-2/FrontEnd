@@ -108,29 +108,11 @@ export class ProfileviewComponent implements OnInit {
 
 }
 
-
-togglePosts(){
-    this.showPosts = true;
-    this.showFollowers = false;
-    this.showFavorites = false;
-}
-
-toggleFollowers(){
-    this.showPosts = false;
-    this.showFollowers = true;
-    this.showFavorites = false;
-}
-
-toggleFavorites(){
-    this.showPosts = false;
-    this.showFollowers = false;
-    this.showFavorites = true;
-}
-
   toggleViewTabs(index: number) {
     this.showPosts = false;
     this.showFollowers = false;
     this.showGroups = false;
+    this.showFavorites = false;
     switch(index){
     case 0:
       this.showPosts = true;
@@ -141,6 +123,8 @@ toggleFavorites(){
     case 2:
       this.showGroups = true;
       break;
+    case 3:
+      this.showFavorites = true;
     }
   }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faBookmark as faBookmarkSolid} from '@fortawesome/free-solid-svg-icons';
-import { faComment , faBookmark as faBookmark} from '@fortawesome/free-regular-svg-icons';
+import { faBookmark as faBookmarkOutline} from '@fortawesome/free-regular-svg-icons';
 
 
 @Component({
@@ -9,6 +9,9 @@ import { faComment , faBookmark as faBookmark} from '@fortawesome/free-regular-s
   styleUrls: ['./bookmark.component.css']
 })
 export class BookmarkComponent implements OnInit {
+
+  faBookmarkSolid = faBookmarkSolid;
+  faBookmarkOutline = faBookmarkOutline;
 
   constructor() { }
 
