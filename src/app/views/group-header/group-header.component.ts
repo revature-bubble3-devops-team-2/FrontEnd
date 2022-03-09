@@ -24,8 +24,8 @@ export class GroupHeaderComponent implements OnInit {
   faUserMinus = faUserMinus;
   faUsers = faUsers;
   faNewspaper = faNewspaper;
-  coverurl: any = `../../../../assets/favicon.png`;
-  groupurl: any ='../../../../assets/favicon.png';
+  urlCoverPhotoIconBubble: any = `../../../../assets/favicon.png`;
+  urlGroupPhotoIconBubble: any ='../../../../assets/favicon.png';
 
   id: any;
   sessionId: any;
@@ -52,8 +52,8 @@ export class GroupHeaderComponent implements OnInit {
       this.groupName = g.groupName;
       this.ownerName = g.owner.username;
       this.groupMembers = g.members;
-      this.groupurl=g.imgurl||this.groupurl;
-      this.coverurl=g.coverImgurl||this.coverurl;
+      this.urlGroupPhotoIconBubble=g.imgurl||this.urlGroupPhotoIconBubble;
+      this.urlCoverPhotoIconBubble=g.coverImgurl||this.urlCoverPhotoIconBubble;
     });
   }
 }
