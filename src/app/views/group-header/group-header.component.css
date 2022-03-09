@@ -1,55 +1,73 @@
-#group-header_container{
+#group-header_container {
   background-color: var(--revature-dark-gray);
   color: var(--revature-white);
   padding: 0px 0px 10px 0px;
 }
-#group-header_cover-photo-background {
+
+#group-header_cover-photo {
   background: var(--revature-light-gray);
-  background-size: cover;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: stretch;
   height: 350px;
+  width: 100%;
+  align-content: center;
 }
-#group-header_group-info{
+
+  #group-header_cover-photo img {
+    background: var(--revature-light-gray);
+    height: 350px;
+    width: stretch;
+    align-content: center;
+  }
+
+#group-header_container img {
+  width: 100%;
+  align-content: center;
+}
+
+#group-header_user-info {
   display: block;
   margin: 0px auto;
   max-width: 1140px;
   width: 90%;
 }
-.group-header_pfp{
+
+.group-header_pfp {
   display: block;
   margin: -95px auto 0px auto;
   width: 200px;
 }
-.group-header-bubble_pfp img{
-  border-radius: 50%;
-  transition: 0.33s all;
-  width: 200px;
-}
-.group-header-background_pfp img {
-  border-radius: 50%;
-  transition: 0.33s all;
-  width: 200px;
-}
-#group-header_container h3, h6, #description{
+
+  .group-header_pfp img {
+    transition: 0.33s all;
+    width: 200px;
+    ;
+  }
+
+#group-header_container h3 {
   position: relative;
   text-align: center;
   width: 100%;
 }
-#group-header_username{
+
+#group-header_username {
   color: var(--revature-light-gray);
   display: block;
   text-align: center;
   width: 100%;
 }
-.hoverable{
+
+.hoverable {
   position: relative;
   transition: 0.33s all;
 }
-.hover-text{
+
+.hover-text {
   /* Use this variable to set     */
   /* the size of the font awesome */
   /* icon inside the image        */
   --profile-icon-size: 60px;
-
   background-color: rgb(255,255,255, 0.33);
   border-radius: 50%;
   color: var(--revature-dark-gray);
@@ -65,44 +83,56 @@
   transition: 0.33s all;
   width: 200px;
 }
+
 .background-hover-text {
   /* Use this variable to set     */
   /* the size of the font awesome */
   /* icon inside the image        */
-  --profile-icon-size: 1000px;
+  display: block;
+  object-fit: cover;
+  --profile-icon-size: 100px;
   background-color: rgb(255,255,255, 0.33);
-  border-radius: 50%;
   color: var(--revature-dark-gray);
   cursor: pointer;
-  display: block;
-  font-size: var(--cover-background-icon-size); /* <-- change using variable */
-  height: 200px;
+  /* margin-top: px; */
   opacity: 0;
-  padding: calc(50% - (var(--cover-background-icon-size) / 2));
   position: absolute;
   top: 0px;
   text-align: center;
   transition: 0.33s all;
-  width: 200px;
+  height: 350px;
+  width: 100%;
+  font-size: var(--profile-icon-size); /* <-- change using variable */
 }
-.hoverable img:hover + .hover-text, .hover-text:hover{
+
+  /*.hoverable img:hover + .hover-text, .hover-text:hover {
+    opacity: 1;
+  }*/
+
+.hoverable img:hover + .hover-text, .hoverable img:hover + .background-hover-text, .background-hover-text:hover, .hover-text:hover {
   opacity: 1;
 }
-.hoverable img{
+
+.hoverable img {
   cursor: pointer;
+
 }
-#group-header_buttons{
+
+#group-header_buttons {
   cursor: pointer;
-  display: flex;
-  justify-content: right;
+  display: block;
   margin: 10px 25px 0px auto;
   position: relative;
   text-align: center;
   transition: 0.3s all;
   width: 100px;
-
+  align-content: center;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: stretch;
 }
-.group-header-bubble_btn > fa-icon{
+
+.group-header_btn > fa-icon {
   background-color: var(--revature-white);
   border-radius: 50%;
   color: var(--revature-dark-gray);
@@ -111,33 +141,45 @@
   margin: 0px auto 2.5px auto;
   padding: 10px;
   width: 57.5px;
+  align-content: center;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: stretch;
 }
-.group-header-bubble_btn:hover > fa-icon{
-  background-color: var(--revature-light-gray);
-}
-.group-header-bubble_btn:hover > p{
-  color: var(--revature-light-gray);
-}
-.group-header-background_btn > fa-icon {
+
+.group-header-cover_btn > fa-icon {
   background-color: var(--revature-white);
   border-radius: 50%;
   color: var(--revature-dark-gray);
   display: block;
-  font-size: 25px;
+  font-size: 50px;
   margin: 0px auto 2.5px auto;
   padding: 10px;
   width: 57.5px;
+  align-content: center;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: stretch;
 }
 
-.group-header-background_btn:hover > fa-icon {
+.group-header_btn:hover > fa-icon {
   background-color: var(--revature-light-gray);
+  align-content: center;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: stretch;
 }
 
-.group-header-background_btn:hover > p {
+.group-header_btn:hover > p {
   color: var(--revature-light-gray);
 }
-button{
+
+button {
   background: none;
   border: 0px;
   color: var(--revature-white);
+}
+
+#cover_photo, #group_photo{
+  display: none;
 }

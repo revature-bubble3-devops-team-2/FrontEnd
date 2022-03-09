@@ -56,4 +56,47 @@ export class GroupHeaderComponent implements OnInit {
       this.urlCoverPhotoIconBubble=g.coverImgurl||this.urlCoverPhotoIconBubble;
     });
   }
+
+  changeFile(file: any) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+    });
+  }
+
+  onUpdateGroupImg(event : any) {
+    if (event.target.files && event.target.files[0]) {
+        const file = event.target.files[0];
+        this.changeFile(file).then((e: any): any => {
+          let group:Group={
+              groupId:this.id,
+              imgurl:e
+          }
+          this.urlGroupPhotoIconBubble = e;
+          this.groupService.updateGroup(group).subscribe(d=> {
+            console.log("here");
+            window.location.reload();
+          });
+        });
+    }
+  }
+
+  onUpdateGroupCover(event : any) {
+    if (event.target.files && event.target.files[0]) {
+        const file = event.target.files[0];
+        this.changeFile(file).then((e: any): any => {
+          let group:Group={
+              groupId:this.id,
+              coverImgurl:e
+          }
+          this.urlCoverPhotoIconBubble = e;
+          this.groupService.updateGroup(group).subscribe(d=> {
+            console.log("here");
+            window.location.reload();
+          });
+        });
+    }
+  }
 }

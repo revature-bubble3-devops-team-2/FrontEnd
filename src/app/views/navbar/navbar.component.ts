@@ -90,11 +90,11 @@ onSelectFile(event : any) {
         this.session.imgurl = e;
         this.url = e;
 
-        this.profileService.updateProfile(this.profileService.getProfile()).subscribe(d=> {
-          this.profileService.getProfile().imgurl = d.imgurl ;
-          this.url = d.imgurl;
-          window.location.reload();
-        });
+        // this.profileService.updateProfile(this.profileService.getProfile()).subscribe(d=> {
+        //   this.profileService.getProfile().imgurl = d.imgurl ;
+        //   this.url = d.imgurl;
+        //   window.location.reload();
+        // });
 
         // console.log(this.session);
         // console.log(this.profileService.getProfile())

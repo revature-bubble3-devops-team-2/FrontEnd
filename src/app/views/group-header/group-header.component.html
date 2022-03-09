@@ -1,37 +1,26 @@
 <header id="group-header_container">
-  <!-- <div id="group-header_cover-photo" #profileHeaderCoverPhoto>
-    <img [src]="urlCoverPhotoIconBubble" alt="cover photo" class="bubble-avatar_xl">
+  <div id="group-header_cover-photo" #groupHeaderCoverPhoto>
+    <label class="hoverable" for="cover_photo">
+      <img [src]="urlCoverPhotoIconBubble" alt="cover photo">
+      <div class="background-hover-text">
+        <fa-icon class="camera-icon" [icon]="faCameraRetro"></fa-icon>
+      </div>
+    </label>
+    <input id="cover_photo" type='file' (change)="onUpdateGroupCover($event)">
   </div>
+
   <div id="group-header_group-info">
     <div class="group-header_pfp" id="group-header_edit-pfp">
-      <img [src]="urlGroupPhotoIconBubble" alt="profile image" class="bubble-avatar_xl">
+      <label class="hoverable" for="group_photo">
+        <img class="bubble-avatar_xl" [src]="urlGroupPhotoIconBubble" alt="group profile image">  <!--icon bubble to change cover photo-->
+        <!-- <img [(src)]="urlCoverPhoto" alt="Cover photo for {{this.group.groupName}}" class=""> <!--icon bubble to change cover photo-->
+        <div class="hover-text">
+          <fa-icon class="camera-icon" [icon]="faCameraRetro"></fa-icon>
+        </div>
+      </label>
+    <input id="group_photo" type='file' (change)="onUpdateGroupImg($event)">    
     </div>
     <h3>{{groupName}}</h3>
-  </div> -->
-
-  <div id="group-header_cover-photo-bubble" #groupHeaderCoverPhotoBubble>
-    <label class="hoverable" for="fileInput">
-      <img [src]="urlCoverPhotoIconBubble" alt="cover photo bubble" class="bubble-avatar_xl"> <!--icon bubble to change cover photo
-<!-- <img [(src)]="urlCoverPhotoIconBubble" alt="Bubble group photo for {{this.group.groupName}}" class="bubble-avatar_xl"> <!--icon bubble to change cover photo-->
-      <div class="hover-text">
-        <fa-icon class="camera-icon" [icon]="faCameraRetro"></fa-icon>
-      </div>
-    </label>
-    <!-- <input id="fileInput" type='file' (change)=" onSelectFile($event)  ">-->
   </div>
-
-  <div id="group-header_profile-photo-bubble" #groupHeaderProfilePhotoBubble>
-    <label class="hoverable" for="fileInput">
-      <img [src]="urlGroupPhotoIconBubble" alt="group profile image" class="bubble-avatar_xl">  <!--icon bubble to change cover photo
-
-<!-- <img [(src)]="urlCoverPhoto" alt="Cover photo for {{this.group.groupName}}" class=""> <!--icon bubble to change cover photo-->
-      <div class="hover-text">
-        <fa-icon class="camera-icon" [icon]="faCameraRetro"></fa-icon>
-      </div>
-      <h3>{{groupName}}</h3>
-    </label>
-    <!-- <input id="fileInput" type='file' (change)=" onSelectFile($event)  ">-->
-  </div>
-
 
 </header>
