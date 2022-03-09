@@ -41,6 +41,7 @@ export class ProfileviewComponent implements OnInit {
   showFollowers: boolean = false;
   showGroups: boolean = false;
   showFollowing : boolean = false;
+  showFavorites: boolean =false;
 
 
 
@@ -107,6 +108,24 @@ export class ProfileviewComponent implements OnInit {
 
 }
 
+
+togglePosts(){
+    this.showPosts = true;
+    this.showFollowers = false;
+    this.showFavorites = false;
+}
+
+toggleFollowers(){
+    this.showPosts = false;
+    this.showFollowers = true;
+    this.showFavorites = false;
+}
+
+toggleFavorites(){
+    this.showPosts = false;
+    this.showFollowers = false;
+    this.showFavorites = true;
+}
 
   toggleViewTabs(index: number) {
     this.showPosts = false;

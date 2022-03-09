@@ -25,8 +25,12 @@
       </div>
     </section>
     <div class="post-feed_engagement-buttons">
-      <fa-icon class="comment-icon" [icon]="faComment" (click)="open(post)"></fa-icon>
       <app-like [postInfo]="post"></app-like>
+      <fa-icon class="comment-icon" [icon]="faComment" (click)="open(post)"></fa-icon>
+      <fa-icon class="bookmark-icon" [icon]="faBookmark" (click)="open(post)"></fa-icon>
+      
+      
+      
   </div>
   </div>
   <div class="d-flex justify-content-center" *ngIf="Loading">

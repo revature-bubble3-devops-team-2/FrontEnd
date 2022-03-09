@@ -131,6 +131,11 @@ export class GroupService {
     return group.groupId;
   }
 
+  //set group cover photo img
+  setImg(group: Group, img: any) {
+    group.imgurl = img;
+  }
+
   private handleError(httpError: HttpErrorResponse) {
     if (httpError.error instanceof ErrorEvent) {
       console.log('An error occurred: ', httpError.error.message);
