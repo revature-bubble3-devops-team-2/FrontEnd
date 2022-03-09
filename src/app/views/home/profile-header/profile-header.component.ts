@@ -100,6 +100,31 @@ unfollow() {
     )
 }
 
+changeFile(file: any) {
+  return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = error => reject(error);
+  });
+}
+
+onUpdateCover(event : any) {
+  if (event.target.files && event.target.files[0]) {
+      const file = event.target.files[0];
+      this.changeFile(file).then((e: any): any => {
+        let profile:Profile={
+            pid:this.id,
+            coverImgurl:e
+        }
+        this.cover = e;
+        this.profileService.updateProfile(profile).subscribe(d=> {
+          console.log("here");
+          window.location.reload();
+        });
+      });
+  }
+}
 
 
 
