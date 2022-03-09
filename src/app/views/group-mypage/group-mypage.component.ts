@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GroupService } from 'app/services/group.service';
 import { ProfileService } from 'app/services/profile.service';
-import { faUsers } from '@fortawesome/free-solid-svg-icons';
-import { Output, EventEmitter } from '@angular/core';
+import { faUsers, faSearch, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { Group } from 'app/models/group';
 import { Profile } from 'app/models/profile';
 
@@ -16,7 +15,6 @@ export class GroupMypageComponent implements OnInit {
   public profile: Profile | any;
   faUsers: any = faUsers;
   mGroups: Group[] = [];
-  // @Output() emitClick: EventEmitter<number> = new EventEmitter();
   constructor(
     public groupService: GroupService,
     public profileService: ProfileService

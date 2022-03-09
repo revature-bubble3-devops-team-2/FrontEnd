@@ -46,6 +46,7 @@ import { DarkmodeToggleComponent } from './views/darkmode-toggle/darkmode-toggle
 import { BookmarkComponent } from './views/bookmark/bookmark.component';
 import { YoutubeVideoComponent } from './views/posts/youtube-video/youtube-video.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
+import { faUsers, faSearch, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
   declarations: [
@@ -91,8 +92,9 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
     BrowserAnimationsModule,
     FontAwesomeModule,
     InfiniteScrollModule,
-    RouterModule,
+    RouterModule
     // YouTubePlayerModule
+
   ],
 
   providers: [{provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }, HomeComponent,NgbActiveModal],
