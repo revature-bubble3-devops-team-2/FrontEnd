@@ -1,5 +1,5 @@
 <div id="verify-email_container">
-  <div *ngIf= "confirmed; else elseBlock">
+  <div *ngIf="confirmed; else elseBlock">
     <div class="bubble_centered-block verify-email_message">
       <fa-icon [icon]="faLaughBeam"></fa-icon>
       <h4>Welcome to Bubble!</h4>
@@ -10,7 +10,7 @@
   <ng-template #elseBlock>
     <div class="bubble_centered-block verify-email_message">
       <fa-icon [icon]="faFrown"></fa-icon>
-      <p>Aww man!<br/>It looks like the email verification link isn't valid</p>
+      <p>Aww man!<br />It looks like the email verification link isn't valid</p>
       <a routerLink="/login">Take me back to home</a>
     </div>
   </ng-template>

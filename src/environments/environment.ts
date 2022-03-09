@@ -1,11 +1,15 @@
 export const environment = {
   production: false,
   url: 'http://localhost:5000',
+<<<<<<< HEAD
   angUrl: 'http://localhost:4200'
 
 
 
 
+=======
+  angUrl: 'http://localhost:4200',
+>>>>>>> 518166acdeda91e79622caefd62568b0de42e1c5
 };
 
 /*
