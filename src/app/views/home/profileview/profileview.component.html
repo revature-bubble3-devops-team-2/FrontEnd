@@ -38,7 +38,9 @@
         <small>Followers</small>
         <app-following-list [profiles]="followersOfThisUser"  [text]="'Followers'" class="profileview_followers-list"></app-following-list>
       </div>
-
+      <div id="profile-view_user-groups" [ngClass]="showGroups ? '' : 'hideTab'">
+        <app-group-mypage></app-group-mypage>
+      </div>
 
 
   </div>
