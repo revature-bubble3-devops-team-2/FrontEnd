@@ -67,13 +67,12 @@
       [ngClass]="showFavorites ? '' : 'hideTab'"
     >
       <small>TEST</small>
-      <app-bookmark-list
+     <app-bookmark-list
         [posts]="bookmarkPosts"
-        class="bookmark-list-container"
+        class="profileview_bookmark-list"
       ></app-bookmark-list>
-      <!-- this is where out bookmark tage will be going-->
     </div>
-
+  
     <div id="profile-view_user-groups" [ngClass]="showGroups ? '' : 'hideTab'">
       <p>test</p>
     </div>

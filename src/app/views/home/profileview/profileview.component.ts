@@ -23,7 +23,7 @@ export class ProfileviewComponent implements OnInit {
   profile: Profile | any;
   followersProfiles: Profile[] | any;
   followersOfThisUser: Profile[] | any;
-  bookmarkPosts: Post[] | any;
+  bookmarkPosts: Post[] = [];
   id: any;
   sessionId: any;
   firstName: any;
@@ -110,6 +110,7 @@ export class ProfileviewComponent implements OnInit {
         break;
       case 3:
         this.showFavorites = true;
+        break;
     }
   }
 }
