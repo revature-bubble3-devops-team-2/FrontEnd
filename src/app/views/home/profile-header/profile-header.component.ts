@@ -33,6 +33,7 @@ export class ProfileHeaderComponent implements OnInit {
   email: any ;
   username : any = "username";
   url : any  =  `../../../../assets/favicon.png`;
+  cover: any = `../../../../assets/favicon.png`;
   posts :any[] =[] ;
   profilePosts : Post[] =[];
 
@@ -60,7 +61,7 @@ export class ProfileHeaderComponent implements OnInit {
     this.email= e.email;
     this.url  = e.imgurl ?  e.imgurl : `../../../../assets/favicon.png` ;
     this.username = e.username;
-
+    this.cover = e.coverimgurl||this.cover;
 
     });
 
