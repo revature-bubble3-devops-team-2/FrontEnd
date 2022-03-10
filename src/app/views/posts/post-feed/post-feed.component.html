@@ -3,6 +3,7 @@
     <header>
       <div class="d-flex justify-content-between user-info">
         <div class="post-feed_author-info">
+
           <a
             [href]="'/profileview/' + post.creator.pid"
             class="post-feed_author-link"
@@ -18,6 +19,7 @@
             />
             <h4>{{ post.creator?.username }}</h4></a
           >
+
           <p class="text-muted post-date">{{ post.datePosted | date }}</p>
         </div>
       </div>
@@ -26,6 +28,7 @@
       <div class="card-body bubble-post_bodycopy" (click)="open(post)">
         <p>{{ post.body }}</p>
         <ng-container *ngIf="post.imgURL">
+
           <img
             alt="post image"
             class="img-fluid"
@@ -33,17 +36,20 @@
             [src]="post.imgURL"
             aria-label="Placeholder: Thumbnail"
           />
+
         </ng-container>
       </div>
     </section>
     <div class="post-feed_engagement-buttons">
       <app-like [postInfo]="post"></app-like>
+
       <fa-icon
         class="comment-icon"
         [icon]="faComment"
         (click)="open(post)"
       ></fa-icon>
       <app-bookmark></app-bookmark>
+
     </div>
   </div>
   <div class="d-flex justify-content-center" *ngIf="Loading">
@@ -51,6 +57,7 @@
       <span class="sr-only">Loading...</span>
     </div>
   </div>
+
   <div
     class=""
     style="margin-top: 5%; text-align: center"
@@ -62,6 +69,7 @@
     class="mb-4 post-card card shadow-lg d-flex justify-content-center"
     *ngIf="endOfContents"
   >
+
     No More Contents
   </div>
 </div>
