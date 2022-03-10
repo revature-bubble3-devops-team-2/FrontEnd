@@ -1,15 +1,36 @@
 <header id="profile-header_container">
-  <div id="profile-header_cover-photo" #profileHeaderCoverPhoto>
-  </div>
-  <div id="profile-header_user-info">
-      <div class = "profile-header_pfp" id="profile-header_edit-pfp">
-          <img [src]="url" alt="profile image" class="bubble-avatar_xl">
+  <div *ngIf=" id ==  sessionId" id="group-header_cover-photo" #groupHeaderCoverPhoto>
+    <label class="hoverable" for="cover_photo">
+      <img [src]="cover" alt="cover photo">
+      <div class="background-hover-text">
+        <fa-icon class="camera-icon" [icon]="faCameraRetro"></fa-icon>
       </div>
+    </label>
+    <input id="cover_photo" type='file' (change)="onUpdateCover($event)">
+  </div>
+  <div *ngIf="id !=  sessionId" id="group-header_cover-photo" #groupHeaderCoverPhoto>
+    <img [src]="cover" alt="cover photo">
+  </div>
+
+  <div id="profile-header_user-info">
+    <div *ngIf=" id !=  sessionId" class="profile-header_pfp" id="profile-header_edit-pfp">
+      <img [src]="url" alt="profile image" class="bubble-avatar_xl">
+    </div>
+    <div *ngIf=" id ==  sessionId" class="group-header_pfp" id="group-header_edit-pfp">
+      <label class="hoverable" for="group_photo">
+        <img class="bubble-avatar_xl" [src]="url" alt="group profile image">  <!--icon bubble to change cover photo-->
+        <div class="hover-text">
+          <fa-icon class="camera-icon" [icon]="faCameraRetro"></fa-icon>
+        </div>
+      </label>
+    <input id="cover_photo" type='file' (change)="onUpdatePhoto($event)">
+    </div>
+
     <h3>{{firstName}} {{lastName}}</h3>
     <small id="profile-header_username">@{{ username }}</small>
     <div id="profile-header_buttons">
       <app-modal-button *ngIf=" id ==  sessionId"></app-modal-button>
-      <button  *ngIf=" ! followed &&   id !=  sessionId " type="submit" (click)="follow()">
+      <button *ngIf=" ! followed &&   id !=  sessionId " type="submit" (click)="follow()">
         <div class="profile-header_btn">
           <fa-icon [icon]="faUserPlus"></fa-icon>
           <p>Follow</p>
@@ -17,9 +38,9 @@
       </button>
       <button *ngIf="  followed &&   id !=  sessionId " type="submit" (click)="unfollow()">
         <div class="profile-header_btn">
-        <fa-icon [icon]="faUserMinus"></fa-icon>
-        <p>Unfollow</p>
-      </div>
+          <fa-icon [icon]="faUserMinus"></fa-icon>
+          <p>Unfollow</p>
+        </div>
       </button>
     </div>
   </div>

@@ -2,6 +2,7 @@ export const environment = {
   production: false,
   url: 'http://localhost:8080',
   angUrl: 'http://localhost:4200',
+
 };
 
 /*
