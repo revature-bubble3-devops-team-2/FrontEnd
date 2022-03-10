@@ -27,6 +27,7 @@
     <section>
       <div class="card-body bubble-post_bodycopy" (click)="open(post)">
         <p>{{ post.body }}</p>
+        <yt-videos [textBody]='post.body'></yt-videos>
         <ng-container *ngIf="post.imgURL">
 
           <img
@@ -73,3 +74,4 @@
     No More Contents
   </div>
 </div>
+

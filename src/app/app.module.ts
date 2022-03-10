@@ -45,7 +45,9 @@ import { DarkmodeToggleComponent } from './views/darkmode-toggle/darkmode-toggle
 import { BookmarkComponent } from './views/bookmark/bookmark.component';
 import { YoutubeVideoComponent } from './views/posts/youtube-video/youtube-video.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
+import { YtVideosComponent } from './views/posts/yt-videos/yt-videos.component';
 import { BookmarkListComponent } from './views/home/bookmark-list/bookmark-list.component';
+
 
 @NgModule({
   declarations: [
@@ -79,6 +81,7 @@ import { BookmarkListComponent } from './views/home/bookmark-list/bookmark-list.
     BookmarkComponent,
     //AddGroupCoverPhotoComponent,
     YoutubeVideoComponent,
+    YtVideosComponent,
     BookmarkListComponent
   ],
   imports: [
