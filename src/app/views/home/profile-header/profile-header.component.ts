@@ -114,6 +114,7 @@ onUpdateCover(event : any) {
       const file = event.target.files[0];
       this.changeFile(file).then((e: any): any => {
         this.sessionProfile.coverimgurl=e;
+        this.sessionProfile.verification=true;
         this.profileService.updateProfile(this.sessionProfile).subscribe(d=> {
           console.log("here");
           sessionStorage.setItem("profile",JSON.stringify(d));
@@ -128,6 +129,7 @@ onUpdatePhoto(event : any) {
       this.changeFile(file).then((e: any): any => {
         this.sessionProfile.imgurl=e;
         this.url = e;
+        this.sessionProfile.verification=true;
         this.profileService.updateProfile(this.sessionProfile).subscribe(d=> {
           console.log("here");
           this.url = e;
