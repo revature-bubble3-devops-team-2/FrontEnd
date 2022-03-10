@@ -5,6 +5,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProfileService } from 'app/services/profile.service';
 import { FollowService } from 'app/services/follow.service';
+import { BookmarkService } from 'app/services/bookmark.service';
+import { pid } from 'process';
 
 @Component({
   selector: 'app-profileview',
@@ -17,7 +19,8 @@ export class ProfileviewComponent implements OnInit {
     private route: ActivatedRoute,
     private postService: PostService,
     private router: Router,
-    private followService: FollowService
+    private followService: FollowService,
+    private bookmarkService: BookmarkService
   ) {}
 
   profile: Profile | any;
@@ -109,6 +112,7 @@ export class ProfileviewComponent implements OnInit {
         this.showGroups = true;
         break;
       case 3:
+        console.log(this.bookmarkPosts);
         this.showFavorites = true;
         break;
     }
