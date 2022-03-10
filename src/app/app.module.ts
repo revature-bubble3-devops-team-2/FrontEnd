@@ -47,7 +47,10 @@ import { GroupMypageComponent } from './views/group-mypage/group-mypage.componen
 import { DarkmodeToggleComponent } from './views/darkmode-toggle/darkmode-toggle.component';
 import { BookmarkComponent } from './views/bookmark/bookmark.component';
 import { YoutubeVideoComponent } from './views/posts/youtube-video/youtube-video.component';
-//import { YouTubePlayerModule } from '@angular/youtube-player';
+import { YouTubePlayerModule } from '@angular/youtube-player';
+import { YtVideosComponent } from './views/posts/yt-videos/yt-videos.component';
+import { BookmarkListComponent } from './views/home/bookmark-list/bookmark-list.component';
+
 
 
 @NgModule({
@@ -84,8 +87,9 @@ import { YoutubeVideoComponent } from './views/posts/youtube-video/youtube-video
     DarkmodeToggleComponent,
     BookmarkComponent,
     //AddGroupCoverPhotoComponent,
-    YoutubeVideoComponent
-
+    YoutubeVideoComponent,
+    YtVideosComponent,
+    BookmarkListComponent
   ],
   imports: [
     BrowserModule,
