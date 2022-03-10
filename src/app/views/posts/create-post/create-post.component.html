@@ -1,12 +1,13 @@
 <div class="container create-post-container">
   <div class="col post-card mb-4 card">
         <form class="create-post-form" >
+          
             <div class="mb-3">
                 <textarea type="text" class="form-control" [(ngModel)]="addPost.body" name="create-post"
                 id="create-post" placeholder="What's Poppin'?" required></textarea>
                 <p class = "error" *ngIf="show"><strong>Please input a text body.</strong></p>
+                <youtube-video></youtube-video>
             </div>
-
             <div class="submit create-post_submit-btn">
               <button id="create-post-btn" class="btn-rounded" type="submit" (click)="createPost()">Post</button>
 

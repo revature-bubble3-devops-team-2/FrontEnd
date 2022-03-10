@@ -1,6 +1,5 @@
 export const environment = {
   production: true,
   url: 'http://localhost:5000',
-  angUrl: 'http://localhost:4200/'
-
+  angUrl: 'http://localhost:4200',
 };

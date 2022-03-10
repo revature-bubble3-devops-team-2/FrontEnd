@@ -5,40 +5,76 @@
     <app-search></app-search>
     <app-profile-header></app-profile-header>
     <div id="profile-view_tab-btns">
-      <span [ngClass]="showPosts ? 'activeProfileTab' : ''"
-      (click)="toggleViewTabs()">Posts</span>
-      <span [ngClass]="showFollowers ? 'activeProfileTab' : ''"
-      (click)="toggleViewTabs()">Followers</span>
+      <span
+        [ngClass]="showPosts ? 'activeProfileTab' : ''"
+        (click)="toggleViewTabs(0)"
+        >Posts</span
+      >
+      <span
+        [ngClass]="showFollowers ? 'activeProfileTab' : ''"
+        (click)="toggleViewTabs(1)"
+        >Followers</span
+      >
+      <span
+        [ngClass]="showGroups ? 'activeProfileTab' : ''"
+        (click)="toggleViewTabs(2)"
+        >MyGroups</span
+      >
+      <span
+        [ngClass]="showFavorites ? 'activeProfileTab' : ''"
+        (click)="toggleViewTabs(3)"
+        >Favorites</span
+      >
     </div>
 
-
+    <div
+      id="profileview_user-posts"
+      class="feed-container container-fluid d-flex flex-column align-items-center"
+      infiniteScroll
+      [infiniteScrollDistance]="2"
+      [infiniteScrollThrottle]="50"
+      [scrollWindow]="false"
+      [ngClass]="showPosts ? '' : 'hideTab'"
+    >
+      <app-create-post class="col" *ngIf="id == sessionId"></app-create-post>
+      <app-post-feed
+        [posts]="profilePosts"
+        class="col"
+        [ngClass]="id != sessionId ? 'profile-view_other' : ''"
+      ></app-post-feed>
+    </div>
 
     <div
-        id="profileview_user-posts"
-        class="
-          feed-container
-          container-fluid
-          d-flex
-          flex-column
-          align-items-center
-        "
-        infiniteScroll
-        [infiniteScrollDistance]="2"
-        [infiniteScrollThrottle]="50"
-        [scrollWindow]="false"
-        [ngClass]="showPosts ? '' : 'hideTab'">
-          <app-create-post class="col" *ngIf=" id ==  sessionId"></app-create-post>
-          <app-post-feed [posts]="profilePosts" class="col" [ngClass]="id !=  sessionId ? 'profile-view_other' : ''"></app-post-feed>
-      </div>
-      <div id="profile-view_user-follow" [ngClass]="showFollowers ? '' : 'hideTab'">
-        <small>Following</small>
-        <app-following-list [profiles]="followersProfiles"  [text]="'Following'" class="profileview_following-list"></app-following-list>
-        <small>Followers</small>
-        <app-following-list [profiles]="followersOfThisUser"  [text]="'Followers'" class="profileview_followers-list"></app-following-list>
-      </div>
+      id="profile-view_user-follow"
+      [ngClass]="showFollowers ? '' : 'hideTab'"
+    >
+      <small>Following</small>
+      <app-following-list
+        [profiles]="followersProfiles"
+        [text]="'Following'"
+        class="profileview_following-list"
+      ></app-following-list>
+      <small>Followers</small>
+      <app-following-list
+        [profiles]="followersOfThisUser"
+        [text]="'Followers'"
+        class="profileview_followers-list"
+      ></app-following-list>
+    </div>
 
-
-
+    <div
+      id="profile-view_user-favorites"
+      [ngClass]="showFavorites ? '' : 'hideTab'"
+    >
+      <small>TEST</small>
+     <app-bookmark-list
+        [posts]="bookmarkPosts"
+        class="profileview_bookmark-list"
+      ></app-bookmark-list>
+    </div>
+  
+    <div id="profile-view_user-groups" [ngClass]="showGroups ? '' : 'hideTab'">
+      <p>test</p>
+    </div>
   </div>
-
 </div>

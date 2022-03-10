@@ -1,0 +1,13 @@
+<div class="darkmode-container">
+  <input
+    type="checkbox"
+    [checked]="darkMode$ | async"
+    (change)="onToggle()"
+    class="toggle"
+  />
+  <!-- Dark Mode -->
+  <label class="toggle-label" for="darkMode">
+    <i class="fa-regular fa-lightbulb light" (click)="onToggle()"></i>
+    <i class="fa-solid fa-lightbulb dark" (click)="onToggle()"></i>
+  </label>
+</div>

@@ -1,7 +1,11 @@
-#bubble-search > form{
+#bubble-search {
+  margin-right: 50px;
+}
+
+#bubble-search > form {
   margin-bottom: 5px;
 }
-#bubble-search > form > input{
+#bubble-search > form > input {
   border: 2px solid var(--revature-dark-gray);
   border-right: 0px;
   border-radius: 20px 0px 0px 20px;
@@ -11,31 +15,30 @@
   width: calc(50% - 100px);
 }
 #bubble-search > form > input:focus,
-#bubble-search > form > input.showResults{
+#bubble-search > form > input.showResults {
   outline: 0px;
   margin-left: 0px;
   width: calc(100% - 100px);
 }
-#bubble-search > form > button{
+#bubble-search > form > button {
   border-radius: 0px 20px 20px 0px;
   width: 100px;
 }
-#search-results{
+#search-results {
   padding: 5px;
   visibility: hidden;
 }
-#search-results a{
+#search-results a {
   color: var(--revature-dark-gray);
   text-decoration: none;
   transition: 0.33s all;
 }
-#search-results a:hover{
+#search-results a:hover {
   color: var(--revature-light-gray);
-
 }
-#search-results.showResults{
+#search-results.showResults {
   visibility: visible !important;
 }
-.list-group{
+.list-group {
   border: 0px !important;
 }
