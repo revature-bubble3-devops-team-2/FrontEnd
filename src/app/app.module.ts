@@ -40,13 +40,19 @@ import { CheckEmailComponent } from './views/check-email/check-email.component';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { GroupHeaderComponent } from './views/group-header/group-header.component';
 import { CreateGroupPostComponent } from './views/create-group-post/create-group-post.component';
+
 import { GroupMypageComponent } from './views/group-mypage/group-mypage.component';
+
 //import { AddGroupCoverPhotoComponent } from './views/add-cover-photo/add-group-cover-photo/add-group-cover-photo.component';
 import { DarkmodeToggleComponent } from './views/darkmode-toggle/darkmode-toggle.component';
 import { BookmarkComponent } from './views/bookmark/bookmark.component';
 import { YoutubeVideoComponent } from './views/posts/youtube-video/youtube-video.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { faUsers, faSearch, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { YtVideosComponent } from './views/posts/yt-videos/yt-videos.component';
+import { BookmarkListComponent } from './views/home/bookmark-list/bookmark-list.component';
+
+
 
 @NgModule({
   declarations: [
@@ -80,7 +86,13 @@ import { faUsers, faSearch, faPlusCircle } from '@fortawesome/free-solid-svg-ico
     DarkmodeToggleComponent,
     BookmarkComponent,
     //AddGroupCoverPhotoComponent,
-    YoutubeVideoComponent
+    YoutubeVideoComponent,
+    DarkmodeToggleComponent,
+    BookmarkComponent,
+    //AddGroupCoverPhotoComponent,
+    YoutubeVideoComponent,
+    YtVideosComponent,
+    BookmarkListComponent
   ],
   imports: [
     BrowserModule,
@@ -92,9 +104,8 @@ import { faUsers, faSearch, faPlusCircle } from '@fortawesome/free-solid-svg-ico
     BrowserAnimationsModule,
     FontAwesomeModule,
     InfiniteScrollModule,
-    RouterModule
-    // YouTubePlayerModule
-
+    RouterModule,
+    //YouTubePlayerModule
   ],
 
   providers: [{provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }, HomeComponent,NgbActiveModal],
