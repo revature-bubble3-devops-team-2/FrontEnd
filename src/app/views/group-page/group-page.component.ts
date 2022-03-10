@@ -72,6 +72,10 @@ export class GroupPageComponent implements OnInit {
       });
   }
 
+  public getJoinedGroupName(target: number) {
+    return this.mGroups[target].groupName;
+  }
+
   public createGroup() {
     if (this.groupName == '') {
       alert("Please enter a GROUP NAME to create a new group")
@@ -102,10 +106,6 @@ export class GroupPageComponent implements OnInit {
 
   public getSearchGroupName(target: number) {
     return this.sGroups[target].groupName;
-  }
-
-  public getJoinedGroupName(target: number) {
-    return this.mGroups[target].groupName;
   }
 
   public joinGroup(targetGroup: number) {

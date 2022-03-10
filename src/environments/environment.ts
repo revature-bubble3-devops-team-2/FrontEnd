@@ -1,9 +1,7 @@
 export const environment = {
   production: false,
-  //url: "http://localhost:5000",
-  url: 'http://localhost:8888',
-  angUrl: 'http://localhost:9999'
-
+  url: 'http://localhost:5000',
+  angUrl: 'http://localhost:4200',
 
 };
 

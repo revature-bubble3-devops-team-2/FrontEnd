@@ -1,9 +1,12 @@
-* {box-sizing: border-box}
-.login-page-container{
-  background: var(--revature-light-gray);
-  display:flex;
+* {
+  box-sizing: border-box;
 }
-.login-deco-container{
+.login-page-container {
+  background: var(--revature-light-gray);
+  display: flex;
+  position: relative;
+}
+.login-deco-container {
   background: url("/assets/images/login-bg.png") no-repeat center center;
   background-size: cover;
   /* background-attachment: fixed; */
@@ -12,78 +15,78 @@
   opacity: 1;
   width: 55%;
 }
-.login-deco-pic0{
+.login-deco-pic0 {
   background: url("/assets/images/login-bg_alt.jpg") no-repeat center center !important;
   opacity: 0.35 !important;
 }
-.login-deco-pic1{
+.login-deco-pic1 {
   background: url("/assets/images/login-bg_alt1.jpg") no-repeat center center !important;
   opacity: 0.3 !important;
 }
-.login-form-container{
+.login-form-container {
   background: var(--revature-white);
   display: block;
   position: relative;
   width: 45%;
 }
-.login-form-container > form{
+.login-form-container > form {
   display: block;
   margin: 0px auto;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -60%);
-    max-width: 500px;
+  max-width: 500px;
   width: 65%;
 }
-.login-form-container img{
+.login-form-container img {
   display: block;
   height: auto;
   margin: 5% auto;
   max-width: 300px;
   width: 75%;
 }
-.login-form input{
+.login-form input {
   background: var(--revature-white);
   border: 2px solid var(--revature-ink);
-  border-radius: 12px!important;
+  border-radius: 12px !important;
   font-size: 16px;
-  height: 50px!important;
+  height: 50px !important;
   margin: 25px 5%;
-  padding: 8px 18px!important;
+  padding: 8px 18px !important;
   width: 100%;
 }
-.login-form input::placeholder{
+.login-form input::placeholder {
   font-size: 16px;
 }
-.login-form input:focus{
+.login-form input:focus {
   border: 3px solid var(--revature-blue);
   outline: 0px;
 }
-.onLoginBtn{
+.onLoginBtn {
   float: right;
   margin: 10px auto;
   padding-left: 50px;
   padding-right: 50px;
 }
-.sign-up:before{
+.sign-up:before {
   content: "";
   clear: both;
   display: table;
 }
-.sign-up{
+.sign-up {
   padding: 30px 0px 0px 0px;
   text-align: center;
   width: 100%;
 }
-a{
+a {
   color: var(--revature-orange);
   text-decoration: none;
   transition: 0.33s all;
 }
-a:hover{
-  color: #CC5216;
+a:hover {
+  color: #cc5216;
 }
-.forgot-password{
+.forgot-password {
   padding: 10px 0px 0px 10px;
 }

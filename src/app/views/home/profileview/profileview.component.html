@@ -40,10 +40,14 @@
         <app-following-list [profiles]="followersOfThisUser"  [text]="'Followers'" class="profileview_followers-list"></app-following-list>
       </div>
 
+      <div id="profile-view_user-favorites" [ngClass]="showFavorites ? '' : 'hideTab'">
+        <small>TEST</small>
+        <!-- this is where out bookmark tage will be going-->
+        </div>
+        
       <div id="profile-view_user-groups" [ngClass]="showGroups ? '' : 'hideTab'">
-        <p>test</p>
+        <app-group-mypage></app-group-mypage>
       </div>
-
 
 
   </div>
