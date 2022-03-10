@@ -19,18 +19,30 @@ export class BookmarkService {
     return this.http.get(`${environment.url}/favorites?psid=${psid}`)
   }*/
 
-  postBookmark(post: Post): Observable<Profile> {
+  postBookmark(post: Post): Observable<Post> {
     const requestOptions = {
       headers: new HttpHeaders({
         Authorization: `${sessionStorage.getItem('Authorization')}`,
       }),
     };
     return this.httpClient
-      .post<Profile>(environment.url + '/bookmark', post, requestOptions)
+      .post<Post>(environment.url + '/bookmark', post, requestOptions)
       .pipe(takeUntil(this._unsubscribeAll));
   }
 
-  deleteBookmark(post: Post): Observable<Profile> {
+  getBookmarks(posts: Post[]): Observable<Post[]> {
+    const options = {
+      headers: new HttpHeaders({
+        Authorization: `${sessionStorage.getItem('Authorization')}`,
+      }),
+      body: posts,
+    };
+    return this.httpClient
+      .get<Post[]>(environment.url + '/bookmark', options)
+      .pipe(takeUntil(this._unsubscribeAll));
+  }
+
+  deleteBookmark(post: Post): Observable<Post> {
     const options = {
       headers: new HttpHeaders({
         Authorization: `${sessionStorage.getItem('Authorization')}`,
@@ -38,7 +50,7 @@ export class BookmarkService {
       body: post,
     };
     return this.httpClient
-      .delete<Profile>(environment.url + '/bookmark', options)
+      .delete<Post>(environment.url + '/bookmark', options)
       .pipe(takeUntil(this._unsubscribeAll));
   }
 }
