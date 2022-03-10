@@ -29,6 +29,7 @@ export class LikeComponent implements OnInit {
   }
 
   public likePost() {
+    console.log(JSON.stringify(this.postInfo))
     this.postService.postLike(this.postInfo).subscribe((data) => {
         this.getLikes();
         }, (err) => {
@@ -41,6 +42,7 @@ export class LikeComponent implements OnInit {
 
 
   ngOnInit(): void {
+    // console.log("doing stuff with post: " + JSON.stringify(this.postInfo))
     this.getLikes();
     this.postService.getLiked(this.postInfo).subscribe((data) => {
       if(data === 0) {

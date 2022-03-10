@@ -20,14 +20,14 @@ export class BookmarkComponent implements OnInit {
 
   @Input()
   postInfo!: Post;
-  posts: Post[] = [];
 
   public createBookmark() {
+    console.log(this.postInfo)
     this.bookmarkService.postBookmark(this.postInfo).subscribe(
       (data) => {
         //add bookmark to posts array
-        this.posts.push(data);
         console.log(data);
+        console.log(this.hasBookmark);
       },
       (err) => {
         this.bookmarkService.deleteBookmark(this.postInfo).subscribe((data) => {
@@ -38,16 +38,16 @@ export class BookmarkComponent implements OnInit {
     this.hasBookmark = !this.hasBookmark;
   }
 
-  public getBookmarks(){
-    this.bookmarkService.getBookmarks(this.posts).subscribe((data) => {
-      console.log(data);
-    });
-  }
-
   constructor(
     public bookmarkService: BookmarkService,
     public activeModal: NgbActiveModal,
     private modalService: NgbModal) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {this.bookmarkService.getBookmark(this.postInfo).subscribe((data) => {
+    if(data === 0) {
+      this.hasBookmark = false;
+    } else {
+      this.hasBookmark = true;}
+    });
+  }
 }
