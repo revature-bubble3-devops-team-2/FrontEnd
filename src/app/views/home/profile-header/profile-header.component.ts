@@ -33,6 +33,7 @@ export class ProfileHeaderComponent implements OnInit {
   email: any ;
   username : any = "username";
   url : any  =  `../../../../assets/favicon.png`;
+  cover: any = `../../../../assets/favicon.png`;
   posts :any[] =[] ;
   profilePosts : Post[] =[];
 
@@ -60,7 +61,7 @@ export class ProfileHeaderComponent implements OnInit {
     this.email= e.email;
     this.url  = e.imgurl ?  e.imgurl : `../../../../assets/favicon.png` ;
     this.username = e.username;
-
+    this.cover = e.coverimgurl||this.cover;
 
     });
 
@@ -98,6 +99,49 @@ unfollow() {
       err => console.log(err)
     )
 }
+
+changeFile(file: any) {
+  return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = error => reject(error);
+  });
+}
+
+onUpdateCover(event : any) {
+  if (event.target.files && event.target.files[0]) {
+      const file = event.target.files[0];
+      this.changeFile(file).then((e: any): any => {
+        let profile:Profile={
+            pid:this.id,
+            coverImgurl:e
+        }
+        this.cover = e;
+        this.profileService.updateProfile(profile).subscribe(d=> {
+          console.log("here");
+          window.location.reload();
+        });
+      });
+  }
+}
+onUpdatePhoto(event : any) {
+  if (event.target.files && event.target.files[0]) {
+      const file = event.target.files[0];
+      this.changeFile(file).then((e: any): any => {
+        let profile:Profile={
+            pid:this.id,
+            imgurl:e
+        }
+        this.cover = e;
+        this.profileService.updateProfile(profile).subscribe(d=> {
+          console.log("here");
+          window.location.reload();
+        });
+      });
+  }
+}
+
 
 
 }

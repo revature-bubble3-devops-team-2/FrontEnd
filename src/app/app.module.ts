@@ -46,6 +46,7 @@ import { BookmarkComponent } from './views/bookmark/bookmark.component';
 import { YoutubeVideoComponent } from './views/posts/youtube-video/youtube-video.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { YtVideosComponent } from './views/posts/yt-videos/yt-videos.component';
+import { BookmarkListComponent } from './views/home/bookmark-list/bookmark-list.component';
 
 
 @NgModule({
@@ -80,8 +81,8 @@ import { YtVideosComponent } from './views/posts/yt-videos/yt-videos.component';
     BookmarkComponent,
     //AddGroupCoverPhotoComponent,
     YoutubeVideoComponent,
-    YtVideosComponent
-  
+    YtVideosComponent,
+    BookmarkListComponent
   ],
   imports: [
     BrowserModule,

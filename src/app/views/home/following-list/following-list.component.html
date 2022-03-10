@@ -1,13 +1,17 @@
 <div class="container">
   <div class="follow-list-container">
-    <ng-container   *ngFor="let p of profiles">
+    <ng-container *ngFor="let p of profiles">
       <div class="listed-user">
-        <a [href]="'/profileview/'+ p.pid" class="profile-link">
+        <a [href]="'/profileview/' + p.pid" class="profile-link">
           <div class="listed-user_avatar">
-            <img [src]="[ (p.imgurl) ? p.imgurl : '../../../../assets/favicon.png']" alt="user" class="bubble-avatar_sm">
+            <img
+              [src]="[p.imgurl ? p.imgurl : '../../../../assets/favicon.png']"
+              alt="user"
+              class="bubble-avatar_sm"
+            />
           </div>
           <div class="listed-user_info">
-            <p>{{p.firstName + " " + p.lastName}}</p>
+            <p>{{ p.firstName + " " + p.lastName }}</p>
           </div>
         </a>
       </div>
