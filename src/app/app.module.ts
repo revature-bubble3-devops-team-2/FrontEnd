@@ -44,7 +44,7 @@ import { CreateGroupPostComponent } from './views/create-group-post/create-group
 import { DarkmodeToggleComponent } from './views/darkmode-toggle/darkmode-toggle.component';
 import { BookmarkComponent } from './views/bookmark/bookmark.component';
 import { YoutubeVideoComponent } from './views/posts/youtube-video/youtube-video.component';
-import { YouTubePlayerModule } from '@angular/youtube-player';
+//import { YouTubePlayerModule } from '@angular/youtube-player';
 
 @NgModule({
   declarations: [
@@ -90,7 +90,7 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
     FontAwesomeModule,
     InfiniteScrollModule,
     RouterModule,
-    YouTubePlayerModule
+    //YouTubePlayerModule
   ],
 
   providers: [{provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }, HomeComponent,NgbActiveModal],
