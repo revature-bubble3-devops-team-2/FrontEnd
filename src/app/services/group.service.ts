@@ -127,6 +127,17 @@ export class GroupService {
       .pipe(catchError(this.handleError));
   }
 
+  updateGroup(group: Group): Observable<Group> {
+    const requestOptions = {
+      headers: new HttpHeaders({
+        Authorization: `${sessionStorage.getItem('Authorization')}`,
+      }),
+    };
+    return this.httpClient
+      .put<Group>(`${groupUrl}`, group, requestOptions)
+      .pipe(catchError(this.handleError));
+  }
+
   getGroupId(group: Group){
     return group.groupId;
   }

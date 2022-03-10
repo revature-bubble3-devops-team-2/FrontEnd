@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
@@ -8,14 +8,22 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 })
 export class YoutubeVideoComponent implements OnInit {
 
-  public videoID: string = 'https://www.youtube.com/embed/fyIm_yQRPgg';
+  @Input() videoID: string = 'https://www.youtube.com/embed/fyIm_yQRPgg';
+
+  baseURL: string = 'https://www.youtube.com/embed/'
+
   safeId: SafeResourceUrl = ''; 
   
 
   constructor(public sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
-    this.safeId= this.sanitizer.bypassSecurityTrustResourceUrl(this.videoID);
+    
+    var newURL = this.baseURL.concat(this.videoID);
+    console.log(newURL);
+    this.safeId= this.sanitizer.bypassSecurityTrustResourceUrl(newURL);
+
+    
   }
 
 }
