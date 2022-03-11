@@ -92,7 +92,7 @@ export class PostService implements OnDestroy {
 
   getNumLikes(post: Post): Observable<number> {
     const headerDict = {
-      post: `${post.psid}`,
+      postId: `${post.psid}`,
       find: 'false',
       Authorization: `${sessionStorage.getItem('Authorization')}`,
     };
@@ -107,7 +107,7 @@ export class PostService implements OnDestroy {
 
   getLiked(post: Post): Observable<number> {
     const headerDict = {
-      post: `${post.psid}`,
+      postId: `${post.psid}`,
       find: 'true',
       Authorization: `${sessionStorage.getItem('Authorization')}`,
     };
