@@ -20,6 +20,7 @@ export class BookmarkService {
   }*/
 
   postBookmark(post: Post): Observable<Profile> {
+    console.log("posting bookmark: " + JSON.stringify(post))
     const requestOptions = {
       headers: new HttpHeaders({
         Authorization: `${sessionStorage.getItem('Authorization')}`,
@@ -27,6 +28,19 @@ export class BookmarkService {
     };
     return this.httpClient
       .post<Profile>(environment.url + '/bookmark', post, requestOptions)
+      .pipe(takeUntil(this._unsubscribeAll));
+  }
+
+  getBookmark(post: Post): Observable<number> {
+    const headerDict = {
+      post: `${post.psid}`,
+      Authorization: `${sessionStorage.getItem('Authorization')}`,
+    };
+    const requestOptions = {
+      headers: new HttpHeaders(headerDict),
+    };
+    return this.httpClient
+      .get<number>(environment.url + '/bookmark', requestOptions)
       .pipe(takeUntil(this._unsubscribeAll));
   }
 

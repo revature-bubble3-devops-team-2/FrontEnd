@@ -36,8 +36,8 @@ export class CreateCommentComponent implements OnInit {
 
   // Icons
   faComment = faComment;
-  faBookmark= faBookmark;
-  faBookmarkSolid= faBookmarkSolid;
+  //faBookmark= faBookmark;
+  //faBookmarkSolid= faBookmarkSolid;
 
   // Session
   id : number =0;

@@ -99,6 +99,7 @@ export class PostService implements OnDestroy {
     const requestOptions = {
       headers: new HttpHeaders(headerDict),
     };
+    console.log(post.psid);
     return this.httpClient
       .get<number>(environment.url + '/like', requestOptions)
       .pipe(takeUntil(this._unsubscribeAll));
