@@ -7,6 +7,7 @@ import { ProfileService } from 'app/services/profile.service';
 import { FollowService } from 'app/services/follow.service';
 import { BookmarkService } from 'app/services/bookmark.service';
 import { BookmarkComponent } from 'app/views/bookmark/bookmark.component';
+import { pid } from 'process';
 
 @Component({
   selector: 'app-profileview',
@@ -103,7 +104,7 @@ export class ProfileviewComponent implements OnInit {
         this.posts = data;
 
         this.bookmarkPosts = this.posts.filter((p: Post) => {
-          return BookmarkComponent == ;
+          //return BookmarkComponent == this;
         });
         this.bookmarkPosts.sort((a, b) => {
           let dateA = new Date(a.datePosted ?? 0);
@@ -130,6 +131,7 @@ export class ProfileviewComponent implements OnInit {
         this.showGroups = true;
         break;
       case 3:
+        console.log(this.bookmarkPosts);
         this.showFavorites = true;
         break;
     }

@@ -20,18 +20,18 @@ export class BookmarkComponent implements OnInit {
 
   @Input()
   postInfo!: Post;
+  bookmarkPosts: Post[] = [];
 
   public createBookmark() {
     console.log(this.postInfo)
     this.bookmarkService.postBookmark(this.postInfo).subscribe(
       (data) => {
-        //add bookmark to posts array
         console.log(data);
         console.log(this.hasBookmark);
       },
       (err) => {
-        this.bookmarkService.deleteBookmark(this.postInfo).subscribe((data) => {
-          console.log(data);
+        this.bookmarkService.deleteBookmark(this.postInfo).subscribe((err) => {
+          console.log(err);
         });
       }
     );
