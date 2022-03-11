@@ -51,6 +51,7 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
 import { faUsers, faSearch, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { YtVideosComponent } from './views/posts/yt-videos/yt-videos.component';
 import { BookmarkListComponent } from './views/home/bookmark-list/bookmark-list.component';
+import { YoutubePipe } from './pipe/youtube/youtube.pipe';
 import { NotificationIconComponent } from './views/notification-icon/notification-icon.component';
 
 
@@ -94,6 +95,7 @@ import { NotificationIconComponent } from './views/notification-icon/notificatio
     YoutubeVideoComponent,
     YtVideosComponent,
     BookmarkListComponent,
+    YoutubePipe,
     NotificationIconComponent
   ],
   imports: [

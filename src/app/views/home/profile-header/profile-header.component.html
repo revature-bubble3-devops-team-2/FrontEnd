@@ -17,13 +17,13 @@
       <img [src]="url" alt="profile image" class="bubble-avatar_xl">
     </div>
     <div *ngIf=" id ==  sessionId" class="group-header_pfp" id="group-header_edit-pfp">
-      <label class="hoverable" for="group_photo">
+      <label class="hoverable" for="profile_photo">
         <img class="bubble-avatar_xl" [src]="url" alt="group profile image">  <!--icon bubble to change cover photo-->
         <div class="hover-text">
           <fa-icon class="camera-icon" [icon]="faCameraRetro"></fa-icon>
         </div>
       </label>
-    <input id="cover_photo" type='file' (change)="onUpdatePhoto($event)">
+    <input id="profile_photo" type='file' (change)="onUpdatePhoto($event)">
     </div>
 
     <h3>{{firstName}} {{lastName}}</h3>
