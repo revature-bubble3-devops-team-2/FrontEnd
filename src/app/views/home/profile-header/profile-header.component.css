@@ -282,7 +282,7 @@ button {
   color: var(--revature-white);
 }
 
-#cover_photo, #group_photo{
+#cover_photo, #profile_photo{
   display: none;
 }
 
