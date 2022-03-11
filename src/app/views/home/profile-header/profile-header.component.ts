@@ -41,17 +41,17 @@ export class ProfileHeaderComponent implements OnInit {
   failed: boolean = false;
   success: boolean = false;
   followed : boolean = false;
-
+  sessionProfile : any;
 
 
 
 
   async ngOnInit(): Promise<void>  {
     this.id = this.route.snapshot.paramMap.get('id');
-    let sessionProfile : any = sessionStorage.getItem("profile");
+    this.sessionProfile = sessionStorage.getItem("profile");
 
-    sessionProfile = JSON.parse(sessionProfile);
-    this.sessionId = sessionProfile.pid;
+    this.sessionProfile = JSON.parse(this.sessionProfile);
+    this.sessionId = this.sessionProfile.pid;
 
    this.profile = this.profileService.getProfileByPid(this.id).subscribe( (e : any) =>{
     this.followersProfiles = e.following;
@@ -66,7 +66,7 @@ export class ProfileHeaderComponent implements OnInit {
     });
 
 
-    sessionProfile.following.forEach((e : Profile) => {
+    this.sessionProfile.following.forEach((e : Profile) => {
 
       if(  e.pid == this.id){
     this.followed = true
@@ -113,14 +113,12 @@ onUpdateCover(event : any) {
   if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
       this.changeFile(file).then((e: any): any => {
-        let profile:Profile={
-            pid:this.id,
-            coverImgurl:e
-        }
-        this.cover = e;
-        this.profileService.updateProfile(profile).subscribe(d=> {
+        this.sessionProfile.coverimgurl=e;
+        this.sessionProfile.verification=true;
+        this.profileService.updateProfile(this.sessionProfile).subscribe(d=> {
           console.log("here");
-          window.location.reload();
+          sessionStorage.setItem("profile",JSON.stringify(d));
+          this.cover = e;
         });
       });
   }
@@ -129,13 +127,13 @@ onUpdatePhoto(event : any) {
   if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
       this.changeFile(file).then((e: any): any => {
-        let profile:Profile={
-            pid:this.id,
-            imgurl:e
-        }
-        this.cover = e;
-        this.profileService.updateProfile(profile).subscribe(d=> {
+        this.sessionProfile.imgurl=e;
+        this.url = e;
+        this.sessionProfile.verification=true;
+        this.profileService.updateProfile(this.sessionProfile).subscribe(d=> {
           console.log("here");
+          this.url = e;
+          sessionStorage.setItem("profile",JSON.stringify(d));
           window.location.reload();
         });
       });
