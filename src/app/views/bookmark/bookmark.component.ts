@@ -21,7 +21,7 @@ export class BookmarkComponent implements OnInit {
   @Input()
   postInfo!: Post;
   bookmarkPosts: Post[] = [];
-
+  
   public createBookmark() {
     console.log(this.postInfo)
     this.bookmarkService.postBookmark(this.postInfo).subscribe(
@@ -30,9 +30,9 @@ export class BookmarkComponent implements OnInit {
         console.log(this.hasBookmark);
       },
       (err) => {
-        this.bookmarkService.deleteBookmark(this.postInfo).subscribe((err) => {
-          console.log(err);
-        });
+        this.bookmarkService.deleteBookmark(this.postInfo).subscribe((data) => {
+          console.log(data);
+          });
       }
     );
     this.hasBookmark = !this.hasBookmark;
@@ -43,7 +43,8 @@ export class BookmarkComponent implements OnInit {
     public activeModal: NgbActiveModal,
     private modalService: NgbModal) {}
 
-  ngOnInit(): void {this.bookmarkService.getBookmark(this.postInfo).subscribe((data) => {
+  ngOnInit(): void {
+    this.bookmarkService.getBookmark(this.postInfo).subscribe((data) => {
     if(data === 0) {
       this.hasBookmark = false;
     } else {
