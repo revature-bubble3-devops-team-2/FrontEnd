@@ -51,6 +51,7 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
 import { YtVideosComponent } from './views/posts/yt-videos/yt-videos.component';
 import { BookmarkListComponent } from './views/home/bookmark-list/bookmark-list.component';
 import { YoutubePipe } from './pipe/youtube/youtube.pipe';
+import { NotificationIconComponent } from './views/notification-icon/notification-icon.component';
 
 
 
@@ -91,7 +92,8 @@ import { YoutubePipe } from './pipe/youtube/youtube.pipe';
     YoutubeVideoComponent,
     YtVideosComponent,
     BookmarkListComponent,
-    YoutubePipe
+    YoutubePipe,
+    NotificationIconComponent
   ],
   imports: [
     BrowserModule,
@@ -104,7 +106,7 @@ import { YoutubePipe } from './pipe/youtube/youtube.pipe';
     FontAwesomeModule,
     InfiniteScrollModule,
     RouterModule,
-    YouTubePlayerModule
+    //YouTubePlayerModule
   ],
 
   providers: [{provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }, HomeComponent,NgbActiveModal],
