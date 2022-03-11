@@ -18,6 +18,9 @@
               <li><a [href]="['/groups/'+ g.groupId]"><fa-icon [icon]="faUsers"></fa-icon>{{getSearchGroupName(i)}}</a> <button  name="join" (click)="joinGroup(i)">(Join)</button> </li>
             </ul>
           </div>
+          <div *ngIf="sGroups.length == 0 && initialSearch == true" id="joinable-groups-list">
+            <p>No groups match that search please try again</p>
+          </div>
         </form>
       </div>
 
