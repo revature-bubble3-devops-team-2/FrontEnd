@@ -92,7 +92,7 @@ import { BookmarkListComponent } from './views/home/bookmark-list/bookmark-list.
     //AddGroupCoverPhotoComponent,
     YoutubeVideoComponent,
     YtVideosComponent,
-    BookmarkListComponent
+    BookmarkListComponent,
   ],
   imports: [
     BrowserModule,

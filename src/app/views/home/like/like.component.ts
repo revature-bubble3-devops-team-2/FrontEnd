@@ -39,10 +39,10 @@ export class LikeComponent implements OnInit {
         this.hasLiked = !this.hasLiked;
   }
 
-
   ngOnInit(): void {
     this.getLikes();
     this.postService.getLiked(this.postInfo).subscribe((data) => {
+      console.log("Here");
       if(data === 0) {
         this.hasLiked = false;
       } else {
