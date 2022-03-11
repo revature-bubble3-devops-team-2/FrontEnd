@@ -1,0 +1,40 @@
+.notification-container {
+    position: absolute;
+    top: 920px;
+    right: 30px;
+    z-index: 1;
+  }
+  
+
+.icon-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: rgb(48, 48, 48);
+    background: lightgray;
+    border: none;
+    outline: none;
+    border-radius : 50%;
+}
+
+.icon-button:hover {
+    cursor: pointer;
+    background: darkgray;
+}
+
+.icon-button:active{
+    background:orange;
+}
+
+.icon-button__badge {
+    position: absolute;
+    bottom: -10ppx;
+    right: -5px;
+    width: 15px;
+    height: 15px;
+    background: red;
+    border-radius: 50%;
+}
