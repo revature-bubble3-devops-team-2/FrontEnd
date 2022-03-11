@@ -31,7 +31,7 @@ export class BookmarkService {
       .pipe(takeUntil(this._unsubscribeAll));
   }
 
-  getBookmark(post: Post): Observable<number> {
+  getBookmarked(post: Post): Observable<number> {
     const headerDict = {
       post: `${post.psid}`,
       Authorization: `${sessionStorage.getItem('Authorization')}`,

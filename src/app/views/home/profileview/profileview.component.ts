@@ -5,6 +5,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProfileService } from 'app/services/profile.service';
 import { FollowService } from 'app/services/follow.service';
+import { BookmarkService } from 'app/services/bookmark.service';
+import { BookmarkComponent } from 'app/views/bookmark/bookmark.component';
 
 @Component({
   selector: 'app-profileview',
@@ -17,7 +19,8 @@ export class ProfileviewComponent implements OnInit {
     private route: ActivatedRoute,
     private postService: PostService,
     private router: Router,
-    private followService: FollowService
+    private followService: FollowService,
+    private bookmarkService: BookmarkService
   ) {}
 
   profile: Profile | any;
@@ -85,6 +88,24 @@ export class ProfileviewComponent implements OnInit {
           return p.creator.pid == this.id;
         });
         this.profilePosts.sort((a, b) => {
+          let dateA = new Date(a.datePosted ?? 0);
+          let dateB = new Date(b.datePosted ?? 1);
+          return dateB.getTime() - dateA.getTime();
+        });
+      }
+    });
+  }
+
+  //Bookmarks
+  getBookmarkPosts(scrollcount: number): any {
+    this.bookmarkService.getBookmarked(Post.arguments).subscribe((data: any) => {
+      if (data) {
+        this.posts = data;
+
+        this.bookmarkPosts = this.posts.filter((p: Post) => {
+          return BookmarkComponent == ;
+        });
+        this.bookmarkPosts.sort((a, b) => {
           let dateA = new Date(a.datePosted ?? 0);
           let dateB = new Date(b.datePosted ?? 1);
           return dateB.getTime() - dateA.getTime();
