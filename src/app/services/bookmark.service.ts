@@ -14,10 +14,16 @@ export class BookmarkService {
 
   constructor(private httpClient: HttpClient) {}
 
-  /*getBookmarkByPsid(psid: number): Observable<any> {
-    console.log(psid);
-    return this.http.get(`${environment.url}/favorites?psid=${psid}`)
-  }*/
+  getBookmarkByPsid(pid: number): Observable<any> {
+    console.log(pid);
+    const requestOptions = {
+      headers: new HttpHeaders({
+        Authorization: `${sessionStorage.getItem('Authorization')}`,
+      }),
+    };
+    return this.httpClient.get(`${environment.url}/bookmark/all/{id}`, requestOptions)
+    .pipe(takeUntil(this._unsubscribeAll));
+  }
 
   postBookmark(post: Post): Observable<Profile> {
     console.log("posting bookmark: " + JSON.stringify(post))

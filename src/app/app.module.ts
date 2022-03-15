@@ -53,7 +53,7 @@ import { YtVideosComponent } from './views/posts/yt-videos/yt-videos.component';
 import { BookmarkListComponent } from './views/home/bookmark-list/bookmark-list.component';
 import { YoutubePipe } from './pipe/youtube/youtube.pipe';
 import { NotificationIconComponent } from './views/notification-icon/notification-icon.component';
-
+import { NotificationComponent } from './views/notification/notification.component';
 
 
 @NgModule({
@@ -89,15 +89,13 @@ import { NotificationIconComponent } from './views/notification-icon/notificatio
     BookmarkComponent,
     //AddGroupCoverPhotoComponent,
     YoutubeVideoComponent,
-    DarkmodeToggleComponent,
-    BookmarkComponent,
-    //AddGroupCoverPhotoComponent,
-    YoutubeVideoComponent,
     YtVideosComponent,
     BookmarkListComponent,
     YoutubePipe,
-    NotificationIconComponent
+    NotificationIconComponent,
+    NotificationComponent
   ],
+
   imports: [
     BrowserModule,
     FormsModule,
@@ -122,6 +120,7 @@ import { NotificationIconComponent } from './views/notification-icon/notificatio
     NgbTooltipModule,
     AppRoutingModule
   ],
+
   bootstrap: [AppComponent]
 
 })

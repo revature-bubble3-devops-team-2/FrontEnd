@@ -1,7 +1,8 @@
 nav-bar{
   /* border: 1px solid var(--revature-light-gray); */
-  width: 30%;
+  width: 25%;
 }
+
 app-search{
   display: block;
   margin: 10px auto 0px auto;
@@ -10,7 +11,7 @@ app-search{
 }
 .posts-container{
   background-color: var(--revature-bg-gray);
-  width: 70%;
+  width: 100%;
 }
 
 
