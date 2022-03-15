@@ -16,13 +16,13 @@
   align-content: center;
 }
 
-  /*Cover photo image inside cover photo section*/
-  #group-header_cover-photo img {
-    background: var(--revature-light-gray);
-    height: 350px;
-    width: stretch;
-    align-content: center;
-  }
+/*Cover photo image inside cover photo section*/
+#group-header_cover-photo img {
+  background: var(--revature-light-gray);
+  height: 350px;
+  width: stretch;
+  align-content: center;
+}
 
 /*Group header container img general formatting*/
 #group-header_container img {
@@ -45,12 +45,12 @@
   width: 200px;
 }
 
-  /*Group "profile" photo (pfp) inside of bubble icon*/
-  .group-header_pfp img {
-    transition: 0.33s all;
-    width: 200px;
-    ;
-  }
+/*Group "profile" photo (pfp) inside of bubble icon*/
+.group-header_pfp img {
+  transition: 0.33s all;
+  width: 200px;
+  ;
+}
 
 /*The section of the header that holds the group name*/
 #group-header_container h3 {
@@ -110,10 +110,10 @@
   font-size: var(--profile-icon-size); /* <-- change using variable */
 }
 
-  /*make it look opaque on hover*/
-  .hoverable img:hover + .hover-text, .hoverable img:hover + .background-hover-text, .background-hover-text:hover, .hover-text:hover {
-    opacity: 1;
-  }
+/*make it look opaque on hover*/
+.hoverable img:hover + .hover-text, .hoverable img:hover + .background-hover-text, .background-hover-text:hover, .hover-text:hover {
+  opacity: 1;
+}
 
 /*Change cursor to a pointer on hover*/
 .hoverable img {
