@@ -335,3 +335,9 @@ body.dark-mode .verify-email_message {
   background-color: #0b0d0e !important;
   color: #dfe6e9 !important;
 }
+
+/* Notification */
+body.dark-mode .notification-container {
+  background-color: #0b0d0e !important;
+  color: #dfe6e9 !important;
+}

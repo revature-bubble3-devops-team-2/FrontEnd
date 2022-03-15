@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap");
 
 nav-bar{
-  width: 30%;
+  width: 25%;
 }
 app-search{
   float: right;
@@ -11,7 +11,7 @@ app-search{
 }
 .posts-container{
   background-color: var(--revature-bg-gray);
-  width: 70%;
+  width: 100%;
 }
 .profile-view_other{
   margin-top: 35px;
