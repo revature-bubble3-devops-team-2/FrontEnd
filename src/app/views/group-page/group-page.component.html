@@ -19,7 +19,7 @@
             </ul>
           </div>
           <div *ngIf="sGroups.length == 0 && initialSearch == true" id="joinable-groups-list">
-            <p>No groups match that search please try again</p>
+            <p>No groups found from search "{{searchName}}", please try a different search</p>
           </div>
         </form>
       </div>
