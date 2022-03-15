@@ -1,0 +1,24 @@
+
+<div class="view-container">
+    <nav-bar></nav-bar>
+
+    <div class="notification-container">
+      <div
+          class="
+            feed-container
+            container-fluid
+            d-flex
+            flex-column
+            align-items-center
+          "
+          infiniteScroll
+          [infiniteScrollDistance]="2"
+          [infiniteScrollThrottle]="50"
+          (scrolled)="onScroll()"
+          [scrollWindow]="false">
+          
+          <button (click)="showMore()" class="btn-rounded" style="margin: 10px auto;">show more</button >
+        </div>
+    </div>
+</div>
+
