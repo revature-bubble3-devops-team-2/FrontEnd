@@ -21,7 +21,7 @@ export class BookmarkService {
         Authorization: `${sessionStorage.getItem('Authorization')}`,
       }),
     };
-    return this.httpClient.get(`${environment.url}/bookmark/all/{id}`, requestOptions)
+    return this.httpClient.get(`${environment.url}/bookmark`, requestOptions)
     .pipe(takeUntil(this._unsubscribeAll));
   }
 
