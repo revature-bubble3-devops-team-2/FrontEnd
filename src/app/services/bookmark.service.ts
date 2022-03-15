@@ -21,7 +21,7 @@ export class BookmarkService {
         Authorization: `${sessionStorage.getItem('Authorization')}`,
       }),
     };
-    return this.httpClient.get(`${environment.url}/bookmark/all/{id}`, requestOptions)
+    return this.httpClient.get(`${environment.url}/bookmark`, requestOptions)
     .pipe(takeUntil(this._unsubscribeAll));
   }
 
@@ -46,7 +46,7 @@ export class BookmarkService {
       headers: new HttpHeaders(headerDict),
     };
     return this.httpClient
-      .get<number>(environment.url + '/bookmark', requestOptions)
+      .get<number>(environment.url + '/bookmark/has', requestOptions)
       .pipe(takeUntil(this._unsubscribeAll));
   }
 
