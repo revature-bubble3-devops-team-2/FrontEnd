@@ -4,6 +4,8 @@ import { Profile } from "./profile";
 export class Group {
   groupId?: number;
   groupName?: string;
+  imgurl?: string;
+  coverImgurl?:string;
   owner?: Profile;
   members?: Profile[] = [];
 

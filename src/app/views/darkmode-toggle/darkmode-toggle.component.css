@@ -1,0 +1,58 @@
+.darkmode-container {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  z-index: 1;
+}
+
+.toggle {
+  display: none;
+}
+
+.toggle-label {
+  position: relative;
+  display: inline-block;
+  width: 3rem;
+  height: 3rem;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.dark,
+.light {
+  padding: 10px;
+  font-size: 30px;
+  position: absolute;
+  cursor: pointer;
+  /* left: 0;
+  width: 100%;
+  height: auto; */
+  transition: top 0.3s;
+  /* user-select: none; */
+}
+
+.light {
+  padding: 5px;
+  top: 0;
+}
+
+.light:hover {
+  color: yellow;
+  background-color: black;
+  border-radius: 50px;
+  opacity: 0.5;
+}
+
+.dark {
+  padding: 5px;
+  top: -150%;
+}
+
+.toggle:checked + .toggle-label .light {
+  top: 150%;
+}
+
+.toggle:checked + .toggle-label .dark {
+  color: yellow;
+  top: 0;
+}

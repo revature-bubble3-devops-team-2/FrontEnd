@@ -5,8 +5,10 @@ import { Comment } from 'app/models/comment';
 import { Post } from 'app/models/post';
 import { Profile } from 'app/models/profile';
 import { formatDate } from '@angular/common';
-import { faComment} from '@fortawesome/free-regular-svg-icons';
+import { faComment , faBookmark as faBookmark} from '@fortawesome/free-regular-svg-icons';
 import { ProfileService } from 'app/services/profile.service';
+import { faBookmark as faBookmarkSolid} from '@fortawesome/free-solid-svg-icons';
+
 
 
 @Component({
@@ -34,6 +36,8 @@ export class CreateCommentComponent implements OnInit {
 
   // Icons
   faComment = faComment;
+  //faBookmark= faBookmark;
+  //faBookmarkSolid= faBookmarkSolid;
 
   // Session
   id : number =0;

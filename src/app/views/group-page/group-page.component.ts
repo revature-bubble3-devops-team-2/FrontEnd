@@ -20,6 +20,7 @@ export class GroupPageComponent implements OnInit {
   public faUsers = faUsers;
   public faSearch = faSearch;
   public faPlusCircle = faPlusCircle;
+  public initialSearch: boolean = false;
 
   constructor(
     public groupService: GroupService,
@@ -72,6 +73,10 @@ export class GroupPageComponent implements OnInit {
       });
   }
 
+  public getJoinedGroupName(target: number) {
+    return this.mGroups[target].groupName;
+  }
+
   public createGroup() {
     if (this.groupName == '') {
       alert("Please enter a GROUP NAME to create a new group")
@@ -86,6 +91,7 @@ export class GroupPageComponent implements OnInit {
   }
 
   public searchByName() {
+    this.initialSearch = true;
     if (this.searchName == '') {
       alert("please enter something to search by")
     } else {
@@ -102,10 +108,6 @@ export class GroupPageComponent implements OnInit {
 
   public getSearchGroupName(target: number) {
     return this.sGroups[target].groupName;
-  }
-
-  public getJoinedGroupName(target: number) {
-    return this.mGroups[target].groupName;
   }
 
   public joinGroup(targetGroup: number) {

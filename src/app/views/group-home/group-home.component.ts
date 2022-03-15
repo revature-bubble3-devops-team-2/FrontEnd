@@ -30,7 +30,8 @@ export class GroupHomeComponent implements OnInit {
   lastName: any ;
   email: any ;
   username : any;
-  url : any  =  `../../../../assets/favicon.png`;
+  url: any = `../../../../assets/favicon.png`;
+  imgurl: any; //group cover photo
   posts :any[] =[] ;
 
   failed: boolean = false;
