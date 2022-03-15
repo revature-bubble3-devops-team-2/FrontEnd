@@ -27,7 +27,6 @@ export class BookmarkComponent implements OnInit {
     this.bookmarkService.postBookmark(this.postInfo).subscribe(
       (data) => {
         console.log(data);
-        console.log(this.hasBookmark);
       },
       (err) => {
         this.bookmarkService.deleteBookmark(this.postInfo).subscribe((data) => {
