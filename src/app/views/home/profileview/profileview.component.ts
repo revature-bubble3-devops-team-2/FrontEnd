@@ -114,6 +114,7 @@ console.log(data);
   }
 
 
+  
   toggleViewTabs(index: number) {
     this.showPosts = false;
     this.showFollowers = false;

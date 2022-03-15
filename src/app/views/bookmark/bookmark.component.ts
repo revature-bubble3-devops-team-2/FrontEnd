@@ -15,6 +15,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class BookmarkComponent implements OnInit {
   public hasBookmark!: boolean;
 
+  //a bookmarked post and non-bookmarked post respectively
   faBookmarkSolid = faBookmarkSolid;
   faBookmarkOutline = faBookmarkOutline;
 
@@ -22,6 +23,7 @@ export class BookmarkComponent implements OnInit {
   postInfo!: Post;
   bookmarkPosts: Post[] = [];
   
+  //will set a post as bookmarked if not already bookmarked and vice versa.
   public createBookmark() {
     console.log(this.postInfo)
     this.bookmarkService.postBookmark(this.postInfo).subscribe(
@@ -43,6 +45,8 @@ export class BookmarkComponent implements OnInit {
     private modalService: NgbModal) {}
 
   ngOnInit(): void {
+    //when the page is loaded, already bookmarked posts will persist along
+    //with whether the correct button (oulined or solid)
     this.bookmarkService.getBookmarked(this.postInfo).subscribe((data) => {
     if(data === 0) {
       this.hasBookmark = false;
