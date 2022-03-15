@@ -45,7 +45,7 @@
     ;
   }
 
-#group-header_container h3 {
+#group-header_container h3, h5{
   position: relative;
   text-align: center;
   width: 100%;
@@ -116,6 +116,11 @@
 .hoverable img {
   cursor: pointer;
 
+}
+
+#description {
+  float: right;
+  
 }
 
 #group-header_buttons {

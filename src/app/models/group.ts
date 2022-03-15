@@ -8,6 +8,7 @@ export class Group {
   coverImgurl?:string;
   owner?: Profile;
   members?: Profile[] = [];
+  description?: string;
 
   constructor(groupId: number, groupName: string, owner: Profile, members: Profile[]) {
     this.groupId = groupId;
