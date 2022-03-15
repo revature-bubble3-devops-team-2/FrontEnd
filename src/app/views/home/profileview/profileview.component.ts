@@ -5,6 +5,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProfileService } from 'app/services/profile.service';
 import { FollowService } from 'app/services/follow.service';
+import { BookmarkService } from 'app/services/bookmark.service';
+import { pid } from 'process';
 
 @Component({
   selector: 'app-profileview',
@@ -17,7 +19,8 @@ export class ProfileviewComponent implements OnInit {
     private route: ActivatedRoute,
     private postService: PostService,
     private router: Router,
-    private followService: FollowService
+    private followService: FollowService,
+    private bookmarkService: BookmarkService
   ) {}
 
   profile: Profile | any;
@@ -68,6 +71,7 @@ export class ProfileviewComponent implements OnInit {
         this.url = e.imgurl ? e.imgurl : `../../../../assets/favicon.png`;
         this.username = e.username;
         this.getFollowerPosts(1);
+        this.getBookmarkPosts(1);
         sessionProfile.following.forEach((p: Profile) => {
           if (p.pid == this.id) {
             this.followed = true;
@@ -92,6 +96,22 @@ export class ProfileviewComponent implements OnInit {
       }
     });
   }
+
+  getBookmarkPosts(scrollcount: number): any {
+    this.bookmarkService.getBookmarkByPsid(this.sessionId).subscribe((data: any) => {
+console.log(data);
+      if (data) {
+        this.bookmarkPosts = data;
+        console.log(this.bookmarkPosts);
+        this.bookmarkPosts.sort((a, b) => {
+          let dateA = new Date(a.datePosted ?? 0);
+          let dateB = new Date(b.datePosted ?? 1);
+          return dateB.getTime() - dateA.getTime();
+        });
+      }
+    });
+  }
+
 
   toggleViewTabs(index: number) {
     this.showPosts = false;

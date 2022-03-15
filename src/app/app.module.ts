@@ -50,8 +50,9 @@ import { YoutubeVideoComponent } from './views/posts/youtube-video/youtube-video
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { YtVideosComponent } from './views/posts/yt-videos/yt-videos.component';
 import { BookmarkListComponent } from './views/home/bookmark-list/bookmark-list.component';
+import { YoutubePipe } from './pipe/youtube/youtube.pipe';
 import { NotificationIconComponent } from './views/notification-icon/notification-icon.component';
-
+import { NotificationComponent } from './views/notification/notification.component';
 
 
 @NgModule({
@@ -82,17 +83,18 @@ import { NotificationIconComponent } from './views/notification-icon/notificatio
     CheckEmailComponent,
     GroupHeaderComponent,
     CreateGroupPostComponent,
-
     GroupMypageComponent,
-
     DarkmodeToggleComponent,
     BookmarkComponent,
     //AddGroupCoverPhotoComponent,
     YoutubeVideoComponent,
     YtVideosComponent,
     BookmarkListComponent,
-    NotificationIconComponent
+    YoutubePipe,
+    NotificationIconComponent,
+    NotificationComponent
   ],
+
   imports: [
     BrowserModule,
     FormsModule,
@@ -117,6 +119,7 @@ import { NotificationIconComponent } from './views/notification-icon/notificatio
     NgbTooltipModule,
     AppRoutingModule
   ],
+
   bootstrap: [AppComponent]
 
 })

@@ -14,12 +14,19 @@ export class BookmarkService {
 
   constructor(private httpClient: HttpClient) {}
 
-  /*getBookmarkByPsid(psid: number): Observable<any> {
-    console.log(psid);
-    return this.http.get(`${environment.url}/favorites?psid=${psid}`)
-  }*/
+  getBookmarkByPsid(pid: number): Observable<any> {
+    console.log(pid);
+    const requestOptions = {
+      headers: new HttpHeaders({
+        Authorization: `${sessionStorage.getItem('Authorization')}`,
+      }),
+    };
+    return this.httpClient.get(`${environment.url}/bookmark/all/{id}`, requestOptions)
+    .pipe(takeUntil(this._unsubscribeAll));
+  }
 
   postBookmark(post: Post): Observable<Profile> {
+    console.log("posting bookmark: " + JSON.stringify(post))
     const requestOptions = {
       headers: new HttpHeaders({
         Authorization: `${sessionStorage.getItem('Authorization')}`,
@@ -27,6 +34,19 @@ export class BookmarkService {
     };
     return this.httpClient
       .post<Profile>(environment.url + '/bookmark', post, requestOptions)
+      .pipe(takeUntil(this._unsubscribeAll));
+  }
+
+  getBookmark(post: Post): Observable<number> {
+    const headerDict = {
+      post: `${post.psid}`,
+      Authorization: `${sessionStorage.getItem('Authorization')}`,
+    };
+    const requestOptions = {
+      headers: new HttpHeaders(headerDict),
+    };
+    return this.httpClient
+      .get<number>(environment.url + '/bookmark', requestOptions)
       .pipe(takeUntil(this._unsubscribeAll));
   }
 

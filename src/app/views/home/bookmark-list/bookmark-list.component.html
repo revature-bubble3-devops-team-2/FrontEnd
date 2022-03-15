@@ -43,7 +43,7 @@
         [icon]="faComment"
         (click)="open(post)"
       ></fa-icon>
-      <app-bookmark></app-bookmark>
+      <app-bookmark [postInfo] ="post"></app-bookmark>
     </div>
   </div>
   <div class="d-flex justify-content-center" *ngIf="Loading">
