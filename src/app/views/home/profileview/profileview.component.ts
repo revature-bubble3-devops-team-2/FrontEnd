@@ -27,7 +27,7 @@ export class ProfileviewComponent implements OnInit {
   profile: Profile | any;
   followersProfiles: Profile[] | any;
   followersOfThisUser: Profile[] | any;
-  bookmarkPosts: Post[] = [];
+  bookmarkPosts: Post[] | any;
   id: any;
   sessionId: any;
   firstName: any;
