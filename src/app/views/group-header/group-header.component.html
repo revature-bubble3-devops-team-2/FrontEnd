@@ -8,12 +8,11 @@
     </label>
     <input id="cover_photo" type='file' (change)="onUpdateGroupCover($event)">
   </div>
-
+  
   <div id="group-header_group-info">
     <div class="group-header_pfp" id="group-header_edit-pfp">
       <label class="hoverable" for="group_photo">
-        <img class="bubble-avatar_xl" [src]="urlGroupPhotoIconBubble" alt="group profile image">  <!--icon bubble to change cover photo-->
-        <!-- <img [(src)]="urlCoverPhoto" alt="Cover photo for {{this.group.groupName}}" class=""> <!--icon bubble to change cover photo-->
+        <img class="bubble-avatar_xl" [src]="urlGroupPhotoIconBubble" alt="group profile image">
         <div class="hover-text">
           <fa-icon class="camera-icon" [icon]="faCameraRetro"></fa-icon>
         </div>
@@ -22,5 +21,4 @@
     </div>
     <h3>{{groupName}}</h3>
   </div>
-
 </header>

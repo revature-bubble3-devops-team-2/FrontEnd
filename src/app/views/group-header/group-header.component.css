@@ -14,12 +14,12 @@
   align-content: center;
 }
 
-  #group-header_cover-photo img {
-    background: var(--revature-light-gray);
-    height: 350px;
-    width: stretch;
-    align-content: center;
-  }
+#group-header_cover-photo img {
+  background: var(--revature-light-gray);
+  height: 350px;
+  width: stretch;
+  align-content: center;
+}
 
 #group-header_container img {
   width: 100%;
@@ -39,11 +39,10 @@
   width: 200px;
 }
 
-  .group-header_pfp img {
-    transition: 0.33s all;
-    width: 200px;
-    ;
-  }
+.group-header_pfp img {
+  transition: 0.33s all;
+  width: 200px;
+}
 
 #group-header_container h3 {
   position: relative;
@@ -104,10 +103,6 @@
   width: 100%;
   font-size: var(--profile-icon-size); /* <-- change using variable */
 }
-
-  /*.hoverable img:hover + .hover-text, .hover-text:hover {
-    opacity: 1;
-  }*/
 
 .hoverable img:hover + .hover-text, .hoverable img:hover + .background-hover-text, .background-hover-text:hover, .hover-text:hover {
   opacity: 1;
