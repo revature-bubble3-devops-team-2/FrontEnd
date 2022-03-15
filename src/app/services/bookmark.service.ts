@@ -46,7 +46,7 @@ export class BookmarkService {
       headers: new HttpHeaders(headerDict),
     };
     return this.httpClient
-      .get<number>(environment.url + '/bookmark', requestOptions)
+      .get<number>(environment.url + '/bookmark/has', requestOptions)
       .pipe(takeUntil(this._unsubscribeAll));
   }
 
