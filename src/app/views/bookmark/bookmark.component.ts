@@ -44,7 +44,7 @@ export class BookmarkComponent implements OnInit {
     private modalService: NgbModal) {}
 
   ngOnInit(): void {
-    this.bookmarkService.getBookmark(this.postInfo).subscribe((data) => {
+    this.bookmarkService.getBookmarked(this.postInfo).subscribe((data) => {
     if(data === 0) {
       this.hasBookmark = false;
     } else {

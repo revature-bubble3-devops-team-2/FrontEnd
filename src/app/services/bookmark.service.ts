@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Profile } from 'app/models/profile';
 import { environment } from 'environments/environment';
+import { profile } from 'console';
 
 @Injectable({
   providedIn: 'root',
@@ -14,14 +15,15 @@ export class BookmarkService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getBookmarkByPsid(pid: number): Observable<any> {
+  getBookmarkByPid(pid: number): Observable<any> {
     console.log(pid);
     const requestOptions = {
       headers: new HttpHeaders({
+        //profile: `${pid}`,
         Authorization: `${sessionStorage.getItem('Authorization')}`,
       }),
     };
-    return this.httpClient.get(`${environment.url}/bookmark/all/{id}`, requestOptions)
+    return this.httpClient.get(`${environment.url}/bookmark`, requestOptions)
     .pipe(takeUntil(this._unsubscribeAll));
   }
 

@@ -27,7 +27,7 @@ export class ProfileviewComponent implements OnInit {
   profile: Profile | any;
   followersProfiles: Profile[] | any;
   followersOfThisUser: Profile[] | any;
-  bookmarkPosts: Post[] | any;
+  bookmarkPosts: Post[] = [];
   id: any;
   sessionId: any;
   firstName: any;
@@ -99,15 +99,15 @@ export class ProfileviewComponent implements OnInit {
   }
 
   getBookmarkPosts(scrollcount: number): any {
-    this.bookmarkService.getBookmarkByPsid(this.sessionId).subscribe((data: any) => {
+    this.bookmarkService.getBookmarkByPid(this.sessionId).subscribe((data: any) => {
 console.log(data);
       if (data) {
         this.bookmarkPosts = data;
         console.log(this.bookmarkPosts);
-        this.bookmarkPosts.sort((a, b) => {
-          let dateA = new Date(a.datePosted ?? 0);
-          let dateB = new Date(b.datePosted ?? 1);
-          return dateB.getTime() - dateA.getTime();
+        this.bookmarkPosts.sort((c, d) => {
+          let dateC = new Date(c.datePosted ?? 0);
+          let dateD = new Date(d.datePosted ?? 1);
+          return dateD.getTime() - dateC.getTime();
         });
       }
     });
