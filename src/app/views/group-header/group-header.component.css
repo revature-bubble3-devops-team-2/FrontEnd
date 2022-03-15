@@ -1,9 +1,11 @@
+/*Container holding entire group header*/
 #group-header_container {
   background-color: var(--revature-dark-gray);
   color: var(--revature-white);
   padding: 0px 0px 10px 0px;
 }
 
+/*Cover photo section of group header*/
 #group-header_cover-photo {
   background: var(--revature-light-gray);
   display: flex;
@@ -14,6 +16,7 @@
   align-content: center;
 }
 
+  /*Cover photo image inside cover photo section*/
   #group-header_cover-photo img {
     background: var(--revature-light-gray);
     height: 350px;
@@ -21,11 +24,13 @@
     align-content: center;
   }
 
+/*Group header container img general formatting*/
 #group-header_container img {
   width: 100%;
   align-content: center;
 }
 
+/*group name displayed under group "profile" img*/
 #group-header_user-info {
   display: block;
   margin: 0px auto;
@@ -33,24 +38,28 @@
   width: 90%;
 }
 
+/*Group "profile" photo (pfp) bubble icon that holds the photo*/
 .group-header_pfp {
   display: block;
   margin: -95px auto 0px auto;
   width: 200px;
 }
 
+  /*Group "profile" photo (pfp) inside of bubble icon*/
   .group-header_pfp img {
     transition: 0.33s all;
     width: 200px;
     ;
   }
 
+/*The section of the header that holds the group name*/
 #group-header_container h3 {
   position: relative;
   text-align: center;
   width: 100%;
 }
 
+/*The group name displayed in group header*/
 #group-header_username {
   color: var(--revature-light-gray);
   display: block;
@@ -58,15 +67,14 @@
   width: 100%;
 }
 
+/*make hoverable*/
 .hoverable {
   position: relative;
   transition: 0.33s all;
 }
 
+/*Set how the camera-icon looks when it displays for group "profile" photo on hover*/
 .hover-text {
-  /* Use this variable to set     */
-  /* the size of the font awesome */
-  /* icon inside the image        */
   --profile-icon-size: 60px;
   background-color: rgb(255,255,255, 0.33);
   border-radius: 50%;
@@ -84,17 +92,14 @@
   width: 200px;
 }
 
+/*Set how the camera-icon looks when it displays for group cover photo on hover*/
 .background-hover-text {
-  /* Use this variable to set     */
-  /* the size of the font awesome */
-  /* icon inside the image        */
   display: block;
   object-fit: cover;
   --profile-icon-size: 100px;
   background-color: rgb(255,255,255, 0.33);
   color: var(--revature-dark-gray);
   cursor: pointer;
-  /* margin-top: px; */
   opacity: 0;
   position: absolute;
   top: 0px;
@@ -105,33 +110,19 @@
   font-size: var(--profile-icon-size); /* <-- change using variable */
 }
 
-  /*.hoverable img:hover + .hover-text, .hover-text:hover {
+  /*make it look opaque on hover*/
+  .hoverable img:hover + .hover-text, .hoverable img:hover + .background-hover-text, .background-hover-text:hover, .hover-text:hover {
     opacity: 1;
-  }*/
+  }
 
-.hoverable img:hover + .hover-text, .hoverable img:hover + .background-hover-text, .background-hover-text:hover, .hover-text:hover {
-  opacity: 1;
-}
-
+/*Change cursor to a pointer on hover*/
 .hoverable img {
   cursor: pointer;
-
 }
 
-#group-header_buttons {
-  cursor: pointer;
-  display: block;
-  margin: 10px 25px 0px auto;
-  position: relative;
-  text-align: center;
-  transition: 0.3s all;
-  width: 100px;
-  align-content: center;
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: stretch;
-}
 
+
+/*specify how the camera icon will be displayed for the group "profile" photo*/
 .group-header_btn > fa-icon {
   background-color: var(--revature-white);
   border-radius: 50%;
@@ -147,6 +138,7 @@
   align-items: stretch;
 }
 
+/*specify how the camera icon will be displayed for the cover photo*/
 .group-header-cover_btn > fa-icon {
   background-color: var(--revature-white);
   border-radius: 50%;
@@ -162,24 +154,16 @@
   align-items: stretch;
 }
 
-.group-header_btn:hover > fa-icon {
-  background-color: var(--revature-light-gray);
-  align-content: center;
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: stretch;
-}
 
-.group-header_btn:hover > p {
-  color: var(--revature-light-gray);
-}
 
+/*the clickable button, allowing photos to be changed*/
 button {
   background: none;
   border: 0px;
   color: var(--revature-white);
 }
 
-#cover_photo, #group_photo{
+/*Remove the "Choose file, no file chosen" button from being displayed*/
+#cover_photo, #group_photo {
   display: none;
 }
