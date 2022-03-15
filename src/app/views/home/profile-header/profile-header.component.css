@@ -179,3 +179,10 @@ button {
   display: none;
 }
 
+.profile-header_btn:hover > fa-icon{
+  background-color: var(--revature-light-gray);
+}
+.profile-header_btn:hover > p{
+  color: var(--revature-light-gray);
+}
+
