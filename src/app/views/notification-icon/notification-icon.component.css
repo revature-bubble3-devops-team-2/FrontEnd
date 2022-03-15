@@ -1,7 +1,7 @@
-.notification-container {
+.notification-icon-container {
     position: absolute;
-    top: 920px;
-    right: 30px;
+    top: 20px;
+    left: 20px;
     z-index: 1;
   }
   
@@ -29,10 +29,16 @@
     background:orange;
 }
 
+a {
+    text-decoration: none;
+}
+
+
+
 .icon-button__badge {
     position: absolute;
-    bottom: -10ppx;
-    right: -5px;
+    top: -2px;
+    right: -3px;
     width: 15px;
     height: 15px;
     background: red;

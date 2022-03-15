@@ -1,0 +1,9 @@
+nav-bar{
+    /* border: 1px solid var(--revature-light-gray); */
+    width: 25%;
+}
+
+.notification-container{
+    background-color: var(--revature-bg-gray);
+    width: 100%;
+}
