@@ -109,13 +109,14 @@ export class GroupService {
 
   //create a new group, sets groupName as the name, owner as the owner and first member,
   //and generates a new ID. Returns the new group object
-  createGroup(owner: Profile, groupName: string): Observable<Group> {
+  createGroup(owner: Profile, groupName: string, desc: string): Observable<Group> {
     let initialMember: Profile[] = [];
     initialMember.push(owner);
     let newGroup = {
       groupName: groupName,
       owner: owner,
       members: initialMember,
+      description: desc
     };
     const requestOptions = {
       headers: new HttpHeaders({
