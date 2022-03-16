@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { Post } from 'app/models/post';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -40,17 +40,17 @@ export class NotificationService {
     );
   }
 
-  updateNotification(toProfileId: number, notification: Notification): Observable<Profile> {
-    let token = sessionStorage.getItem("Authorization");
-    if(token){
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': token });
-      let options = { headers: headers };
-      return this.httpClient.put(`${environment.url}/${toProfileId}/update`, notification, options);
-    } else {
-        return this.httpClient.put(`${environment.url}/${toProfileId}/update`, notification);
-    }
+  updateNotification(toProfileId: number, notification: any): Observable<any> {
+    const requestOptions = {
+      headers: new HttpHeaders({
+        Authorization: `${sessionStorage.getItem('Authorization')}`,
+      }),
+    };
+    return this.httpClient.put<Post[]>(
+      `${environment.url}/notification/${toProfileId}/update`,
+      notification,
+      requestOptions
+    );
   }
 
 }

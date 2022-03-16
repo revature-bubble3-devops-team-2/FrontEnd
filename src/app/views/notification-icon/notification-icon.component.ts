@@ -1,6 +1,7 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NotificationService } from 'app/services/notification.service';
 import { Notification } from 'app/models/notification';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-notification-icon',
@@ -16,7 +17,7 @@ export class NotificationIconComponent implements OnInit {
    id:number = 0;
    notifications: Notification[] = [];
 
-  constructor(private notificationService: NotificationService){
+  constructor(private notificationService: NotificationService, private router: Router){
   }
 
   ngOnInit(): void {
@@ -36,30 +37,25 @@ export class NotificationIconComponent implements OnInit {
         if(data[i].read == false) {
           this.hasNotification = true;
         }
+        this.hasNotification = false;
       }
     });
   }
 
-  public handleClick() {
-    let sessionProfile : any = sessionStorage.getItem("profile");
-    let sessionProfileObj = JSON.parse(sessionProfile);
-    if(this.hasNotification == true) {
-      for(let i = 0; i < this.notifications.length; i++) {
-        const updateNotification = {
-          ...this.notifications[i],
-          isRead: true
-        }
-        this.notificationService.updateNotification(sessionProfileObj.pid, updateNotification).subscribe((data)=> {
-        })
-        this.hasNotification = false;
-      }    
-    }
-  }
-
-  // public showNotification() {
-  //   if(this.hasNotification == true) {
-  //     this.hasNotification = false;
+  // public handleClick() {
+  //   let sessionProfile : any = sessionStorage.getItem("profile");
+  //   let sessionProfileObj = JSON.parse(sessionProfile);
+  //   if(this.hasNotification == false) {
+  //     for(let i = 0; i < this.notifications.length; i++) {
+  //       const updateNotification = {
+  //         ...this.notifications[i],
+  //         read: true
+  //       }
+  //       console.log(updateNotification);
+  //       this.notificationService.updateNotification(sessionProfileObj.pid, updateNotification).subscribe((data)=> {
+  //       })
+  //       this.hasNotification = false;
+  //     }    
   //   }
   // }
-
 }
