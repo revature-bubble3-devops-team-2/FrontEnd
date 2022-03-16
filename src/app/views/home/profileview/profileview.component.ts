@@ -15,14 +15,6 @@ import { pid } from 'process';
   styleUrls: ['./profileview.component.css'],
 })
 export class ProfileviewComponent implements OnInit {
-  constructor(
-    private profileService: ProfileService,
-    private route: ActivatedRoute,
-    private postService: PostService,
-    private router: Router,
-    private followService: FollowService,
-    private bookmarkService: BookmarkService
-  ) {}
 
   profile: Profile | any;
   followersProfiles: Profile[] | any;
@@ -48,6 +40,15 @@ export class ProfileviewComponent implements OnInit {
   showGroups: boolean = false;
   showFollowing: boolean = false;
   showFavorites: boolean = false;
+
+  constructor(
+    private profileService: ProfileService,
+    private route: ActivatedRoute,
+    private postService: PostService,
+    private router: Router,
+    private followService: FollowService,
+    private bookmarkService: BookmarkService
+  ) {}
 
   async ngOnInit(): Promise<void> {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -100,7 +101,7 @@ export class ProfileviewComponent implements OnInit {
 
   getBookmarkPosts(scrollcount: number): any {
     this.bookmarkService.getBookmarkByPid(this.sessionId).subscribe((data: any) => {
-console.log(data);
+    console.log(data);
       if (data) {
         this.bookmarkPosts = data;
         console.log(this.bookmarkPosts);
@@ -113,8 +114,6 @@ console.log(data);
     });
   }
 
-
-  
   toggleViewTabs(index: number) {
     this.showPosts = false;
     this.showFollowers = false;

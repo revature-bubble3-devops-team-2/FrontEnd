@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NotificationService } from 'app/services/notification.service';
 
 @Component({
   selector: 'notification',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotificationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private notificationService: NotificationService) { }
 
   scrollCount:number = 1;
   
@@ -26,8 +27,16 @@ export class NotificationComponent implements OnInit {
     //this.getNotifications(++this.scrollcount);
   }
 
-
   ngOnInit(): void {
+    this.showNotification;
+  }
+
+  public showNotification() {
+    let sessionProfile : any = sessionStorage.getItem("profile");
+    let sessionProfileObj = JSON.parse(sessionProfile);
+    this.notificationService.getNotifications(sessionProfileObj.pid).subscribe((data) => { 
+      console.log(data);
+    });
   }
 
 }
