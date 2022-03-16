@@ -1,27 +1,35 @@
 <header id="group-header_container">
+  <!--div for the cover photo in the header on the group page-->
   <div id="group-header_cover-photo" #groupHeaderCoverPhoto>
+    <!--make cover photo hoverable-->
     <label class="hoverable" for="cover_photo">
       <img [src]="urlCoverPhotoIconBubble" alt="cover photo">
       <div class="background-hover-text">
+        <!--when hover over cover photo show the camera-icon-->
         <fa-icon class="camera-icon" [icon]="faCameraRetro"></fa-icon>
       </div>
     </label>
+    <!--change the cover photo when user submits new photo file-->
     <input id="cover_photo" type='file' (change)="onUpdateGroupCover($event)">
   </div>
-
+  
   <div id="group-header_group-info">
+    <!--div for the group photo (similar to a profile photo for the group page) in the header on the group page-->
     <div class="group-header_pfp" id="group-header_edit-pfp">
+      <!--make group photo hoverable-->
       <label class="hoverable" for="group_photo">
-        <img class="bubble-avatar_xl" [src]="urlGroupPhotoIconBubble" alt="group profile image">  <!--icon bubble to change cover photo-->
-        <!-- <img [(src)]="urlCoverPhoto" alt="Cover photo for {{this.group.groupName}}" class=""> <!--icon bubble to change cover photo-->
+        <img class="bubble-avatar_xl" [src]="urlGroupPhotoIconBubble" alt="group profile image">  <!--icon bubble to change group photo-->
         <div class="hover-text">
+          <!--when hover over group photo show the camera-icon-->
           <fa-icon class="camera-icon" [icon]="faCameraRetro"></fa-icon>
         </div>
       </label>
-    <input id="group_photo" type='file' (change)="onUpdateGroupImg($event)">    
+      <!--change the group photo when user submits new photo file-->
+      <input id="group_photo" type='file' (change)="onUpdateGroupImg($event)">
     </div>
+    <!--display the group name below the group photo-->
     <h3>{{groupName}}</h3>
     <h5>{{groupDesc}}</h5>
   </div>
-
 </header>
+
