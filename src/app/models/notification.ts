@@ -9,7 +9,7 @@ export class Notification {
     cid?:Comment;
     fromProfileId:Profile;
     toProfileId:Profile;
-    postId?:Post;
+    postId:Post;
 
     constructor(nid:number, isRead:boolean, cid:Comment, fromProfileId:Profile, toProfileId:Profile, postId: Post){
         this.nid = nid;

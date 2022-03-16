@@ -29,7 +29,7 @@ export class NotificationIconComponent implements OnInit {
   public showNotification() {
     let sessionProfile : any = sessionStorage.getItem("profile");
     let sessionProfileObj = JSON.parse(sessionProfile);
-    this.notificationService.getNotifications(sessionProfileObj.pid).subscribe((data) => { 
+    this.notificationService.getNotifications(sessionProfileObj.pid).subscribe((data) => {       
       console.log(data);
       this.notifications = data;
       for(let i = 0; i < data.length; i++) {
