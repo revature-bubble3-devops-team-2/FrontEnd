@@ -8,7 +8,8 @@ import { formatDate } from '@angular/common';
 import { faComment , faBookmark as faBookmark} from '@fortawesome/free-regular-svg-icons';
 import { ProfileService } from 'app/services/profile.service';
 import { faBookmark as faBookmarkSolid} from '@fortawesome/free-solid-svg-icons';
-
+import { NotificationService } from 'app/services/notification.service';
+import { Notification } from 'app/models/notification';
 
 
 @Component({
@@ -33,6 +34,8 @@ export class CreateCommentComponent implements OnInit {
   commentLocaleDate: string = "";
   replyDate: string = "";
   previous: Comment ={};
+  commentNotification!: Notification;
+  replyNotification!: Notification;
 
   // Icons
   faComment = faComment;
@@ -48,7 +51,8 @@ export class CreateCommentComponent implements OnInit {
     public commentService: CommentService,
     public activeModal: NgbActiveModal,
     private renderer: Renderer2,
-    private profileService: ProfileService
+    private profileService: ProfileService,
+    private notificationService: NotificationService
     ) {}
 
   ngOnInit(): void {
@@ -64,10 +68,10 @@ export class CreateCommentComponent implements OnInit {
     }
 
     this.id = this.session.pid;
-     this.profileService.getProfileByPid(this.id).subscribe( (e : any) =>{
+    this.profileService.getProfileByPid(this.id).subscribe( (e : any) =>{
       this.url  = e.imgurl ?  e.imgurl : `../../../../assets/favicon.png` ;
       this.profileService.getProfile().imgurl =  e.imgurl;
-      });
+    });
 
   }
 
@@ -151,8 +155,27 @@ export class CreateCommentComponent implements OnInit {
           this.getOriginCommentsByPsid();
         }
       );
-    }
-  }
+      // send notification when comment is submitted
+      const fromProfileId = this.profile;
+      const toProfileId = this.post.creator;
+      const isRead = false;
+
+      this.commentNotification = {
+        fromProfileId: {
+          pid: fromProfileId.pid
+        },
+        toProfileId: {
+          pid: toProfileId.pid
+        },
+        postId: this.post,
+        cid: this.comment,
+        isRead: isRead
+      }
+
+      this.notificationService.postNotification(this.commentNotification).subscribe((data) => { 
+      });    
+    } // end if (this.post.body !== " ")
+  } // end subumitComment(comment: Comment)
 
   submitReply(reply: Comment){
     if (this.post.body !== " ") {
@@ -167,9 +190,27 @@ export class CreateCommentComponent implements OnInit {
           this.getOriginCommentsByPsid();
         }
       );
+      // send notification when reply is submitted
+      const fromProfileId = this.profile;
+      const toProfileId = reply.previous.writer!;
+      const isRead = false;
+      
+      this.replyNotification = {
+        fromProfileId: {
+          pid: fromProfileId.pid
+        },
+        toProfileId: {
+          pid: toProfileId.pid
+        },
+        postId: this.post,
+        cid: this.reply,
+        isRead: isRead
+      }
+
+      this.notificationService.postNotification(this.replyNotification).subscribe((data) => { 
+      });   
     }
   }
-
 
   submitCommentOnComment(comment: Comment){
     if (comment.cbody !== " ") {
