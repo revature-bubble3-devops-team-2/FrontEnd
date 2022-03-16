@@ -127,6 +127,7 @@ export class GroupPageComponent implements OnInit {
           return;
         }
       }
+      this.initialSearch = false;
       this.groupService.joinGroup(targetId, userId).subscribe((groupData: any) => {
         this.profileService.getProfileByPid(userId).subscribe((userData: any) => {
           this.profileService.setData(userData);
