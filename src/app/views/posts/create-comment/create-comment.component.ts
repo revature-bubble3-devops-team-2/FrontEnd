@@ -35,6 +35,7 @@ export class CreateCommentComponent implements OnInit {
   replyDate: string = "";
   previous: Comment ={};
   commentNotification!: Notification;
+  replyNotification!: Notification;
 
   // Icons
   faComment = faComment;
@@ -172,7 +173,7 @@ export class CreateCommentComponent implements OnInit {
       }
 
       this.notificationService.postNotification(this.commentNotification).subscribe((data) => { 
-      })    
+      });    
     } // end if (this.post.body !== " ")
   } // end subumitComment(comment: Comment)
 
@@ -189,6 +190,25 @@ export class CreateCommentComponent implements OnInit {
           this.getOriginCommentsByPsid();
         }
       );
+      // send notification when reply is submitted
+      const fromProfileId = this.profile;
+      const toProfileId = reply.previous.writer!;
+      const isRead = false;
+      
+      this.replyNotification = {
+        fromProfileId: {
+          pid: fromProfileId.pid
+        },
+        toProfileId: {
+          pid: toProfileId.pid
+        },
+        postId: this.post,
+        cid: this.reply,
+        isRead: isRead
+      }
+
+      this.notificationService.postNotification(this.replyNotification).subscribe((data) => { 
+      });   
     }
   }
 
