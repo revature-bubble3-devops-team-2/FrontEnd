@@ -27,7 +27,7 @@
           <table>
             <tr *ngFor="let notification of notifications" >
               <span *ngIf="!notification.cid">{{notification.fromProfileId.firstName}} {{notification.fromProfileId.lastName}} liked your post "{{notification.postId.body}}"</span>
-              <span *ngIf="!notification.cid?.previous?.cbody">{{notification.fromProfileId.firstName}} {{notification.fromProfileId.lastName}} commented on your post "{{notification.postId.body}}"</span>
+              <span *ngIf="notification.cid && !notification.cid?.previous?.cbody">{{notification.fromProfileId.firstName}} {{notification.fromProfileId.lastName}} commented on your post "{{notification.postId.body}}"</span>
               <span *ngIf="notification.cid?.previous?.cbody">{{notification.fromProfileId.firstName}} {{notification.fromProfileId.lastName}} replied to your comment "{{notification.cid!.previous!.cbody}}"</span>
             </tr>
           </table>
