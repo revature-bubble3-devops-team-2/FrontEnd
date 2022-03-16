@@ -22,7 +22,7 @@
 
           <table>
             <tr *ngFor="let notification of notifications">
-              {{notification.fromProfileId.firstName}} {{notification.fromProfileId.lastName}} liked your post "{{notification.postId.body}} "
+              {{notification.fromProfileId.firstName}} {{notification.fromProfileId.lastName}} liked your post "{{notification.postId?.body}} "
             </tr>
           </table>
 
