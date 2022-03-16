@@ -10,14 +10,24 @@
             d-flex
             flex-column
             align-items-center
+            mt-5
           "
           infiniteScroll
           [infiniteScrollDistance]="2"
           [infiniteScrollThrottle]="50"
           (scrolled)="onScroll()"
           [scrollWindow]="false">
-          
-          <button (click)="showMore()" class="btn-rounded" style="margin: 10px auto;">show more</button >
+
+          <h3>Notifications</h3>
+
+          <table>
+            <tr *ngFor="let notification of notifications">
+              {{notification.fromProfileId.firstName}} {{notification.fromProfileId.lastName}} liked your post "{{notification.postId?.body}} "
+            </tr>
+          </table>
+
+          <!-- not sure how to implement show more button yet -->
+          <!-- <button (click)="showMore()" class="btn-rounded" style="margin: 10px auto;">show more</button > -->
         </div>
     </div>
 </div>
