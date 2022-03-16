@@ -2,7 +2,7 @@ import { Comment } from "./comment";
 import { Profile } from "./profile";
 import { Post } from "./post";
 
-export class Notification {
+export class FollowNotification {
 
     nid?:number;
     isRead:boolean;

@@ -34,7 +34,7 @@ export class NotificationIconComponent implements OnInit {
       this.notifications = data;
       for(let i = 0; i < data.length; i++) {
         if(data[i].read == false) {
-          this.hasNotification = true;
+          //this.hasNotification = true;
         }
       }
     });
