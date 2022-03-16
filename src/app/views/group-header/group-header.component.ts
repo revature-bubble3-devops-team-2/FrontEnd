@@ -33,6 +33,7 @@ export class GroupHeaderComponent implements OnInit {
   group: Group | any;
   owner: Profile | any;
   groupName: any;
+  groupDesc: any;
   ownerName: any;
 
   groupMembers: Profile[] | any;
@@ -52,6 +53,7 @@ export class GroupHeaderComponent implements OnInit {
       this.groupName = g.groupName;
       this.ownerName = g.owner.username;
       this.groupMembers = g.members;
+      this.groupDesc = g.description;
       this.urlGroupPhotoIconBubble=g.imgurl||this.urlGroupPhotoIconBubble;
       this.urlCoverPhotoIconBubble=g.coverImgurl||this.urlCoverPhotoIconBubble;
     });

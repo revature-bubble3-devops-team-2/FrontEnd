@@ -1,112 +1,12 @@
-#profile-header_container{
-  background-color: var(--revature-dark-gray);
-  color: var(--revature-white);
-  padding: 0px 0px 10px 0px;
-}
-#profile-header_cover-photo{
-  background: var(--revature-light-gray)/* url("../../../../assets/images/test0.jpg") no-repeat bottom center*/;
-  background-size: cover;
-  height: 350px;
-}
-#profile-header_user-info{
-  display: block;
-  margin: 0px auto;
-  max-width: 1140px;
-  width: 90%;
-}
-.profile-header_pfp{
-  display: block;
-  margin: -95px auto 0px auto;
-  width: 200px;
-}
-.profile-header_pfp img{
-  border-radius: 50%;
-  transition: 0.33s all;
-  width: 200px;
-}
-#profile-header_container h3{
-  position: relative;
-  text-align: center;
-  width: 100%;
-}
-#profile-header_username{
-  color: var(--revature-light-gray);
-  display: block;
-  text-align: center;
-  width: 100%;
-}
-.hoverable{
-  position: relative;
-  transition: 0.33s all;
-}
-.hover-text{
-  /* Use this variable to set     */
-  /* the size of the font awesome */
-  /* icon inside the image        */
-  --profile-icon-size: 60px;
-
-  background-color: rgb(255,255,255, 0.33);
-  border-radius: 50%;
-  color: var(--revature-dark-gray);
-  cursor: pointer;
-  display: block;
-  font-size: var(--profile-icon-size); /* <-- change using variable */
-  height: 200px;
-  opacity: 0;
-  padding: calc(50% - (var(--profile-icon-size) / 2));
-  position: absolute;
-  top: 0px;
-  text-align: center;
-  transition: 0.33s all;
-  width: 200px;
-}
-.hoverable img:hover + .hover-text, .hover-text:hover{
-  opacity: 1;
-}
-.hoverable img{
-  cursor: pointer;
-}
-#profile-header_buttons{
-  cursor: pointer;
-  display: block;
-  margin: 10px 25px 0px auto;
-  position: relative;
-  text-align: center;
-  transition: 0.3s all;
-  width: 100px;
-
-}
-.profile-header_btn > fa-icon{
-  background-color: var(--revature-white);
-  border-radius: 50%;
-  color: var(--revature-dark-gray);
-  display: block;
-  font-size: 25px;
-  margin: 0px auto 2.5px auto;
-  padding: 10px;
-  width: 57.5px;
-}
-.profile-header_btn:hover > fa-icon{
-  background-color: var(--revature-light-gray);
-}
-.profile-header_btn:hover > p{
-  color: var(--revature-light-gray);
-}
-button{
-  background: none;
-  border: 0px;
-  color: var(--revature-white);
-}
-
-
-
-#group-header_container {
+/*Container holding entire profile header*/
+#profile-header_container {
   background-color: var(--revature-dark-gray);
   color: var(--revature-white);
   padding: 0px 0px 10px 0px;
 }
 
-#group-header_cover-photo {
+/*Cover photo section of profile header*/
+#profile-header_cover-photo {
   background: var(--revature-light-gray);
   display: flex;
   flex-flow: column nowrap;
@@ -116,59 +16,65 @@ button{
   align-content: center;
 }
 
-  #group-header_cover-photo img {
-    background: var(--revature-light-gray);
-    height: 350px;
-    width: stretch;
-    align-content: center;
-  }
+/*Cover photo image inside cover photo section*/
+#profile-header_cover-photo img {
+  background: var(--revature-light-gray);
+  height: 350px;
+  width: stretch;
+  align-content: center;
+}
 
-#group-header_container img {
+/*Profile header container img general formatting*/
+#profile-header_container img {
   width: 100%;
   align-content: center;
 }
 
-#group-header_user-info {
+/*user's name and username displayed under profile img*/
+#profile-header_user-info {
   display: block;
   margin: 0px auto;
   max-width: 1140px;
   width: 90%;
 }
 
-.group-header_pfp {
+/*profile photo (pfp) bubble icon that holds the photo*/
+.profile-header_pfp {
   display: block;
   margin: -95px auto 0px auto;
   width: 200px;
 }
 
-  .group-header_pfp img {
-    transition: 0.33s all;
-    width: 200px;
-    ;
-  }
+/*profile photo (pfp) inside of bubble icon*/
+.profile-header_pfp img {
+  transition: 0.33s all;
+  width: 200px;
+  ;
+}
 
-#group-header_container h3 {
+/*The section of the header that holds the username*/
+#profile-header_container h3 {
   position: relative;
   text-align: center;
   width: 100%;
 }
 
-#group-header_username {
+/*The profile name displayed in profile header*/
+#profile-header_username {
   color: var(--revature-light-gray);
   display: block;
   text-align: center;
   width: 100%;
 }
 
+/*make hoverable*/
 .hoverable {
   position: relative;
   transition: 0.33s all;
 }
 
+/*Set how the camera-icon looks when it displays for profile photo on hover*/
 .hover-text {
-  /* Use this variable to set     */
-  /* the size of the font awesome */
-  /* icon inside the image        */
   --profile-icon-size: 60px;
   background-color: rgb(255,255,255, 0.33);
   border-radius: 50%;
@@ -186,17 +92,14 @@ button{
   width: 200px;
 }
 
+/*Set how the camera-icon looks when it displays for profile cover photo on hover*/
 .background-hover-text {
-  /* Use this variable to set     */
-  /* the size of the font awesome */
-  /* icon inside the image        */
   display: block;
   object-fit: cover;
   --profile-icon-size: 100px;
   background-color: rgb(255,255,255, 0.33);
   color: var(--revature-dark-gray);
   cursor: pointer;
-  /* margin-top: px; */
   opacity: 0;
   position: absolute;
   top: 0px;
@@ -207,20 +110,18 @@ button{
   font-size: var(--profile-icon-size); /* <-- change using variable */
 }
 
-  /*.hoverable img:hover + .hover-text, .hover-text:hover {
-    opacity: 1;
-  }*/
-
+  /*make it look opaque on hover*/
 .hoverable img:hover + .hover-text, .hoverable img:hover + .background-hover-text, .background-hover-text:hover, .hover-text:hover {
   opacity: 1;
 }
 
+/*Change cursor to a pointer on hover*/
 .hoverable img {
   cursor: pointer;
-
 }
 
-#group-header_buttons {
+/*The "Update profile" button*/
+#profile-header_buttons {
   cursor: pointer;
   display: block;
   margin: 10px 25px 0px auto;
@@ -234,7 +135,8 @@ button{
   align-items: stretch;
 }
 
-.group-header_btn > fa-icon {
+/*specify how the camera icon will be displayed for the profile photo*/
+.profile-header_btn > fa-icon {
   background-color: var(--revature-white);
   border-radius: 50%;
   color: var(--revature-dark-gray);
@@ -249,7 +151,8 @@ button{
   align-items: stretch;
 }
 
-.group-header-cover_btn > fa-icon {
+/*specify how the camera icon will be displayed for the cover photo*/
+.profile-header-cover_btn > fa-icon {
   background-color: var(--revature-white);
   border-radius: 50%;
   color: var(--revature-dark-gray);
@@ -264,25 +167,22 @@ button{
   align-items: stretch;
 }
 
-.group-header_btn:hover > fa-icon {
-  background-color: var(--revature-light-gray);
-  align-content: center;
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: stretch;
-}
-
-.group-header_btn:hover > p {
-  color: var(--revature-light-gray);
-}
-
+/*the clickable button, allowing photos to be changed*/
 button {
   background: none;
   border: 0px;
   color: var(--revature-white);
 }
 
+/*Remove the "Choose file, no file chosen" button from being displayed*/
 #cover_photo, #profile_photo{
   display: none;
+}
+
+.profile-header_btn:hover > fa-icon{
+  background-color: var(--revature-light-gray);
+}
+.profile-header_btn:hover > p{
+  color: var(--revature-light-gray);
 }
 
