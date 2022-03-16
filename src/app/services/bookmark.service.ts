@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Profile } from 'app/models/profile';
 import { environment } from 'environments/environment';
+import { profile } from 'console';
 
 @Injectable({
   providedIn: 'root',
@@ -14,8 +15,8 @@ export class BookmarkService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getBookmarkByPsid(pid: number): Observable<any> {
-    console.log(pid);
+  //grabs bookmarks to be displayed on the Favorites tab in profile view
+  getBookmarkByPid(pid: number): Observable<any> {
     const requestOptions = {
       headers: new HttpHeaders({
         Authorization: `${sessionStorage.getItem('Authorization')}`,
@@ -25,6 +26,7 @@ export class BookmarkService {
     .pipe(takeUntil(this._unsubscribeAll));
   }
 
+  //creates a bookmark when the bookmark button on a post is clicked
   postBookmark(post: Post): Observable<Profile> {
     console.log("posting bookmark: " + JSON.stringify(post))
     const requestOptions = {
@@ -37,7 +39,8 @@ export class BookmarkService {
       .pipe(takeUntil(this._unsubscribeAll));
   }
 
-  getBookmark(post: Post): Observable<number> {
+  //checks if a bookmark is actually bookmarked. will return true or false
+  getBookmarked(post: Post): Observable<number> {
     const headerDict = {
       post: `${post.psid}`,
       Authorization: `${sessionStorage.getItem('Authorization')}`,
@@ -50,6 +53,8 @@ export class BookmarkService {
       .pipe(takeUntil(this._unsubscribeAll));
   }
 
+  //removed a bookmark from the table when the bookmark button is selected
+  //a second time 
   deleteBookmark(post: Post): Observable<Profile> {
     const options = {
       headers: new HttpHeaders({
