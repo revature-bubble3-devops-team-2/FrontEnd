@@ -13,6 +13,7 @@ import { LoginGuard } from './guards/login.guard';
 import { ProfileComponent } from './views/home/profile/profile.component';
 import { VerifyEmailComponent } from './views/verify-email/verify-email.component';
 import { BookmarkComponent } from './views/bookmark/bookmark.component';
+import { NotificationComponent } from './views/notification/notification.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent, canActivate:[LoginGuard]},
   {path: 'passwordreset', component: PasswordResetComponent},
   {path: 'email/verify/password', component: PasswordResetComponent},
+  {path: 'notification', component: NotificationComponent, canActivate:[AuthGuard]},
   {path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
   {path: 'profile/:id', component: ProfileComponent , canActivate:[AuthGuard],pathMatch: 'full'},
   {path: 'profileview/:id', component: ProfileviewComponent, canActivate:[AuthGuard], pathMatch: 'full' },
