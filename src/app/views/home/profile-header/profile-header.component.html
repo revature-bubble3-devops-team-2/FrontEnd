@@ -1,33 +1,44 @@
 <header id="profile-header_container">
-  <div *ngIf=" id ==  sessionId" id="group-header_cover-photo" #groupHeaderCoverPhoto>
+  <!--div for the cover photo in the header-->
+  <div *ngIf=" id ==  sessionId" id="profile-header_cover-photo" #profileHeaderCoverPhoto>
+    <!--make cover photo hoverable-->
     <label class="hoverable" for="cover_photo">
       <img [src]="cover" alt="cover photo">
       <div class="background-hover-text">
+        <!--when hover over cover photo show the camera-icon-->
         <fa-icon class="camera-icon" [icon]="faCameraRetro"></fa-icon>
       </div>
     </label>
+    <!--change the cover photo when user submits new photo file-->
     <input id="cover_photo" type='file' (change)="onUpdateCover($event)">
   </div>
-  <div *ngIf="id !=  sessionId" id="group-header_cover-photo" #groupHeaderCoverPhoto>
+  <div *ngIf="id !=  sessionId" id="profile-header_cover-photo" #profileHeaderCoverPhoto>
     <img [src]="cover" alt="cover photo">
   </div>
 
   <div id="profile-header_user-info">
+    <!--div for the profile photo in the header-->
     <div *ngIf=" id !=  sessionId" class="profile-header_pfp" id="profile-header_edit-pfp">
       <img [src]="url" alt="profile image" class="bubble-avatar_xl">
     </div>
-    <div *ngIf=" id ==  sessionId" class="group-header_pfp" id="group-header_edit-pfp">
+    <div *ngIf=" id ==  sessionId" class="profile-header_pfp" id="profile-header_edit-pfp">
+      <!--make profile photo hoverable-->
       <label class="hoverable" for="profile_photo">
-        <img class="bubble-avatar_xl" [src]="url" alt="group profile image">  <!--icon bubble to change cover photo-->
+        <img class="bubble-avatar_xl" [src]="url" alt="profile image">  <!--icon bubble to change cover photo-->
         <div class="hover-text">
+          <!--when hover over profile photo show the camera-icon-->
           <fa-icon class="camera-icon" [icon]="faCameraRetro"></fa-icon>
         </div>
       </label>
-    <input id="profile_photo" type='file' (change)="onUpdatePhoto($event)">
+      <!--change the profile photo when user submits new photo file-->
+      <input id="profile_photo" type='file' (change)="onUpdatePhoto($event)">
     </div>
 
+    <!--display the user's' name below the profile photo-->
     <h3>{{firstName}} {{lastName}}</h3>
+    <!--display the username below the user's name'-->
     <small id="profile-header_username">@{{ username }}</small>
+    <!--the "update profile" button" as well as follow/unfollow buttons-->
     <div id="profile-header_buttons">
       <app-modal-button *ngIf=" id ==  sessionId"></app-modal-button>
       <button *ngIf=" ! followed &&   id !=  sessionId " type="submit" (click)="follow()">

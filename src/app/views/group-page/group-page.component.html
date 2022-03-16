@@ -19,7 +19,7 @@
             </ul>
           </div>
           <div *ngIf="sGroups.length == 0 && initialSearch == true" id="joinable-groups-list">
-            <p>No groups match that search please try again</p>
+            <p>No groups found from search "{{searchName}}", please try a different search</p>
           </div>
         </form>
       </div>
@@ -45,9 +45,9 @@
         <form class="groups-container_body">
           <h4>Can't find a group? Create one!</h4>
           <input type="text" name="groupName" class="form-control" [(ngModel)]="groupName" placeholder="What's the name of your new group?">
+          <input type="text" name="groupDescription" class="form-control" [(ngModel)]="groupDesc" placeholder="How would you describe your group?">
           <button type="button" class="btn-rounded" (click)="createGroup()">Create</button>
         </form>
-
       </div>
 
     </div>
