@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FollowService } from 'app/services/follow.service';
 import { Router } from '@angular/router';
+import { Post } from 'app/models/post';
 
 @Component({
   selector: 'app-follow',
@@ -22,7 +23,6 @@ export class FollowComponent {
 
    //  sessionId : any =this.sessionProfile.pid;
 
-
   follow() {
     this.error = false;
     this.missing = false;
@@ -37,6 +37,7 @@ export class FollowComponent {
     }
     else { this.missing = true; }
   }
+
 
   unfollow() {
     this.error = false;
@@ -54,4 +55,8 @@ export class FollowComponent {
     else
     { this.missing = true; }
   }
+
+
+
+
 }
