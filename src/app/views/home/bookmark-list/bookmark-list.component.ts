@@ -19,6 +19,8 @@ import { CreateCommentComponent } from 'app/views/posts/create-comment/create-co
   templateUrl: './bookmark-list.component.html',
   styleUrls: ['./bookmark-list.component.css'],
 })
+
+//for all purposes, a duplicated post feed component catered to bookmarks
 export class BookmarkListComponent implements OnInit {
   @Input() posts!: Post[];
   @Input() text: string | any;

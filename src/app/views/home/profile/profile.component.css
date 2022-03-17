@@ -4,11 +4,11 @@
     width:100%;
 }
 
-.card{
+.card {
     background-color:#72A4C2;
 }
 
- :host h6{
+ :host h6 {
     color: white;
 }
 
@@ -21,7 +21,7 @@
     -webkit-backdrop-filter: blur(40px);
 }
 
-.bg-white{
+.bg-white {
     height: 40%;
     width: 100%;
 }
@@ -30,7 +30,7 @@
     transform: translateY(5rem)
 }
 
-.col-md-7{
+.col-md-7 {
     background-color: #474C55;
 }
 
@@ -38,24 +38,25 @@
     background-color: #72A4C2;
 }
 
-:host .modal-content{
+:host .modal-content {
     border-radius: 50px;
 }
 
-@media  (max-width: 1024px){
-    .container{
-        margin-left:0rem;
-        width:100%;
-        text-align: center;
-    }
-    .bg-white {
-        display:flex !important;
-        flex-flow:column nowrap !important;
+@media  (max-width: 1024px) {
+  .container {
+      margin-left:0rem;
+      width:100%;
+      text-align: center;
+  }
 
-    }
-    .profile-head {
-        transform: translateY(.5rem)
-    }
+  .bg-white {
+      display:flex !important;
+      flex-flow:column nowrap !important;
+  }
+  
+  .profile-head {
+      transform: translateY(.5rem)
+  }
 }
 
 img {
@@ -64,7 +65,7 @@ img {
   border-radius: 50%;
 }
 
-.hoverable{
+.hoverable {
   position: relative;
   display: block;
   cursor: pointer;
@@ -73,7 +74,8 @@ img {
   border: 5px solid #000;
   border-radius: 50%;
 }
-.hoverable .hover-text{
+
+.hoverable .hover-text {
   position: absolute;
   display: none;
   top: 50%;
@@ -82,7 +84,7 @@ img {
   z-index: 2;
 }
 
-.hoverable .background{
+.hoverable .background {
   position: absolute;
   display: none;
   top: 0;
@@ -94,25 +96,25 @@ img {
   border-radius: 50%;
   z-index: 1;
 }
-.hoverable:hover .hover-text{
-  display: block;
-}
-.hoverable:hover .background{
+
+.hoverable:hover .hover-text {
   display: block;
 }
 
-#fileInput{
+.hoverable:hover .background {
+  display: block;
+}
+
+#fileInput {
   display: none;
 }
 
-#user-info
-{
+#user-info {
   margin:5px;
   padding-left: 5px;
 }
 
-#user-title
-{
+#user-title {
   margin: 5px;
   padding: 5px;
 }

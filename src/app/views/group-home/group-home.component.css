@@ -3,22 +3,27 @@
 nav-bar{
   width: 30%;
 }
+
 app-search{
   float: right;
   margin: 10px 25px 0px 0px;
   max-width: 500px;
   width: 50%;
 }
+
 .posts-container{
   background-color: var(--revature-bg-gray);
   width: 70%;
 }
+
 .profile-view_other{
   margin-top: 35px;
 }
+
 #profile-view_tab-btns{
   text-align: center;
 }
+
 #profile-view_tab-btns span{
   color: var(--revature-light-gray);
   cursor: pointer;
@@ -29,60 +34,7 @@ app-search{
   text-align: center;
   text-decoration: none;
 }
+
 #profile-view_tab-btns span:hover{
   color: var(--revature-dark-gray);
 }
-/* .container {
-    height: 100vh
-}
-
-.card {
-    width: 380px;
-    border: none;
-    border-radius: 15px;
-    padding: 8px;
-    background-color: #fff;
-    position: relative;
-    height: 370px
-}
-
-.upper {
-    height: 100px
-}
-
-.upper img {
-    width: 100%;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px
-}
-
-.user {
-    position: relative
-}
-
-.profile img {
-    height: 80px;
-    width: 80px;
-    margin-top: 2px
-}
-
-.profile {
-    position: absolute;
-    top: -50px;
-    left: 38%;
-    height: 90px;
-    width: 90px;
-    border: 3px solid #fff;
-    border-radius: 50%
-}
-
-.follow {
-    border-radius: 15px;
-    padding-left: 20px;
-    padding-right: 20px;
-    height: 35px
-}
-
-.stats span {
-    font-size: 29px
-} */

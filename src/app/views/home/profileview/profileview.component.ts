@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProfileService } from 'app/services/profile.service';
 import { FollowService } from 'app/services/follow.service';
 import { BookmarkService } from 'app/services/bookmark.service';
+import { BookmarkComponent } from 'app/views/bookmark/bookmark.component';
 import { pid } from 'process';
 
 @Component({
@@ -14,14 +15,6 @@ import { pid } from 'process';
   styleUrls: ['./profileview.component.css'],
 })
 export class ProfileviewComponent implements OnInit {
-  constructor(
-    private profileService: ProfileService,
-    private route: ActivatedRoute,
-    private postService: PostService,
-    private router: Router,
-    private followService: FollowService,
-    private bookmarkService: BookmarkService
-  ) {}
 
   profile: Profile | any;
   followersProfiles: Profile[] | any;
@@ -47,6 +40,15 @@ export class ProfileviewComponent implements OnInit {
   showGroups: boolean = false;
   showFollowing: boolean = false;
   showFavorites: boolean = false;
+
+  constructor(
+    private profileService: ProfileService,
+    private route: ActivatedRoute,
+    private postService: PostService,
+    private router: Router,
+    private followService: FollowService,
+    private bookmarkService: BookmarkService
+  ) {}
 
   async ngOnInit(): Promise<void> {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -98,20 +100,19 @@ export class ProfileviewComponent implements OnInit {
   }
 
   getBookmarkPosts(scrollcount: number): any {
-    this.bookmarkService.getBookmarkByPsid(this.sessionId).subscribe((data: any) => {
-console.log(data);
+    this.bookmarkService.getBookmarkByPid(this.sessionId).subscribe((data: any) => {
+    console.log(data);
       if (data) {
         this.bookmarkPosts = data;
         console.log(this.bookmarkPosts);
-        this.bookmarkPosts.sort((a, b) => {
-          let dateA = new Date(a.datePosted ?? 0);
-          let dateB = new Date(b.datePosted ?? 1);
-          return dateB.getTime() - dateA.getTime();
+        this.bookmarkPosts.sort((c, d) => {
+          let dateC = new Date(c.datePosted ?? 0);
+          let dateD = new Date(d.datePosted ?? 1);
+          return dateD.getTime() - dateC.getTime();
         });
       }
     });
   }
-
 
   toggleViewTabs(index: number) {
     this.showPosts = false;
