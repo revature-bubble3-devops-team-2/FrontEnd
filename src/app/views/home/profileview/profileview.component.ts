@@ -6,8 +6,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProfileService } from 'app/services/profile.service';
 import { FollowService } from 'app/services/follow.service';
 import { BookmarkService } from 'app/services/bookmark.service';
-import { BookmarkComponent } from 'app/views/bookmark/bookmark.component';
-import { pid } from 'process';
 
 @Component({
   selector: 'app-profileview',
@@ -72,6 +70,8 @@ export class ProfileviewComponent implements OnInit {
         this.email = e.email;
         this.url = e.imgurl ? e.imgurl : `../../../../assets/favicon.png`;
         this.username = e.username;
+        //automatically creates these lists so that they are there when you tab over
+        //to the corresponding page
         this.getFollowerPosts(1);
         this.getBookmarkPosts(1);
         sessionProfile.following.forEach((p: Profile) => {
@@ -99,12 +99,15 @@ export class ProfileviewComponent implements OnInit {
     });
   }
 
+  //stores the grabbed bookmarks from the database into the bookmarkPosts array
+  //to be displayed on the profile view
   getBookmarkPosts(scrollcount: number): any {
     this.bookmarkService.getBookmarkByPid(this.sessionId).subscribe((data: any) => {
     console.log(data);
       if (data) {
         this.bookmarkPosts = data;
         console.log(this.bookmarkPosts);
+        //this part just orders the list of bookmark posts by most to least recent
         this.bookmarkPosts.sort((c, d) => {
           let dateC = new Date(c.datePosted ?? 0);
           let dateD = new Date(d.datePosted ?? 1);
@@ -113,6 +116,7 @@ export class ProfileviewComponent implements OnInit {
       }
     });
   }
+
 
   toggleViewTabs(index: number) {
     this.showPosts = false;

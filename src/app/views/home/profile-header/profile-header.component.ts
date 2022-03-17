@@ -7,7 +7,7 @@ import { ProfileService } from 'app/services/profile.service';
 import { FollowService } from 'app/services/follow.service';
 import { faCameraRetro, faUserPlus, faUserMinus } from '@fortawesome/free-solid-svg-icons';
 import { NotificationService } from 'app/services/notification.service';
-import { FollowNotification } from 'app/models/follow-notification';
+import { Notification } from 'app/models/notification';
 
 @Component({
   selector: 'app-profile-header',
@@ -22,8 +22,7 @@ export class ProfileHeaderComponent implements OnInit {
   faUserMinus = faUserMinus;
 
   @Input()
-  profileInfo!: Profile;
-  followNotification!: FollowNotification;
+  followNotification!: Notification;
 
 
   constructor(private notificationService: NotificationService, private profileService: ProfileService , private route: ActivatedRoute ,
@@ -93,7 +92,11 @@ follow() {
       err => this.failed = true
     );
 
-    let sessionProfile: any = sessionStorage.getItem("profile");
+    this.addNotification();
+  }
+
+addNotification() {
+  let sessionProfile: any = sessionStorage.getItem("profile");
     const fromProfileId = JSON.parse(sessionProfile);
     this.profileService.getProfileByPid(this.id).subscribe(
 
@@ -101,30 +104,25 @@ follow() {
         const toProfileId = t;
 
         this.followNotification = {
+          isRead: isRead,
 
           fromProfileId: {
             pid: fromProfileId.pid
           },
           toProfileId: {
             pid: toProfileId.pid
-          },
-          isRead: isRead
+          }
         }
 
           console.log(toProfileId);
           console.log(fromProfileId);
-          this.notificationService.postFollowNotification(this.followNotification).subscribe((data) => {
-            console.log(data);
+
+          this.notificationService.postNotification(this.followNotification).subscribe((data) => {
           })
         },
-      err => {
-      console.error(err);
-    }
     );
-
     const isRead = false;
-  }
-
+}
 
 
 unfollow() {
