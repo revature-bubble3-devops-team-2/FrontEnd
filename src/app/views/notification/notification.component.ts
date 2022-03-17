@@ -13,6 +13,7 @@ export class NotificationComponent implements OnInit {
   session:any = {};
   id:number = 0;
   notifications: Notification[] = [];
+  notReadNotifications: any = [];
 
   constructor(private notificationService: NotificationService) { }
 
@@ -47,14 +48,14 @@ export class NotificationComponent implements OnInit {
 
     this.notificationService.getNotifications(sessionProfileObj.pid).subscribe((data) => {    
       this.notifications = data;
-
-      let notReadNotifications: any = [];
       
       for(let i = 0; i < data.length; i++) {
         if(data[i].read == false) {
-          notReadNotifications.push(data[i]);
+          this.notReadNotifications.push(data[i]);
         }
       }
+      this.notReadNotifications.pid.firstName;
+      console.log("Profile firstname");
     });
   }
 }
