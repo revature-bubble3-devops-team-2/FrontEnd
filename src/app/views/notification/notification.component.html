@@ -1,24 +1,21 @@
-
 <div class="view-container">
-    <nav-bar></nav-bar>
+  <nav-bar></nav-bar>
 
-    <div class="notification-container">
-      <div
-          class="
-            feed-container
-            container-fluid
-            d-flex
-            flex-column
-            align-items-center
-            mt-5
-          "
-          infiniteScroll
-          [infiniteScrollDistance]="2"
-          [infiniteScrollThrottle]="50"
-          (scrolled)="onScroll()"
-          [scrollWindow]="false">
-
-          <h3>Notifications</h3>
+  <div class="notification-container">
+    <div
+        class="
+          feed-container
+          container-fluid
+          d-flex
+          flex-column
+          align-items-center
+          mt-5
+        "
+        infiniteScroll
+        [infiniteScrollDistance]="2"
+        [infiniteScrollThrottle]="50"
+        (scrolled)="onScroll()"
+        [scrollWindow]="false">
 
           <!-- 
             make this look prettier after finishing functionality
@@ -38,5 +35,5 @@
           <!-- <button (click)="showMore()" class="btn-rounded" style="margin: 10px auto;">show more</button > -->
         </div>
     </div>
-</div>
 
+</div>

@@ -111,7 +111,6 @@ follow() {
   }
 
 
-
 unfollow() {
     console.log("Email entered: ", this.email);
     this.followed = false;
