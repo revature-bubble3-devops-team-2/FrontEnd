@@ -1,6 +1,8 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NotificationService } from 'app/services/notification.service';
 import { Notification } from 'app/models/notification';
+import { Router } from '@angular/router';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-notification-icon',
@@ -10,56 +12,50 @@ import { Notification } from 'app/models/notification';
 
 export class NotificationIconComponent implements OnInit {
 
-   //Need to grab data from database.
    hasNotification:boolean = false;
    session:any = {};
    id:number = 0;
    notifications: Notification[] = [];
 
-  constructor(private notificationService: NotificationService){
+  constructor(private notificationService: NotificationService, private router: Router){
   }
 
   ngOnInit(): void {
     let sessionProfile : any = sessionStorage.getItem("profile");
     this.session = JSON.parse(sessionProfile);
     this.id = this.session.pid;
-    this.showNotification();
+
+    const notifyObs$ = interval(2500);
+    notifyObs$.subscribe((n) => {
+      this.toggleNotificationBtn();
+    });
+    
+
   }
 
-  public showNotification() {
+  //if there's notifications, this toggles red dot notification
+  public toggleNotificationBtn() {
     let sessionProfile : any = sessionStorage.getItem("profile");
     let sessionProfileObj = JSON.parse(sessionProfile);
+
     this.notificationService.getNotifications(sessionProfileObj.pid).subscribe((data) => {       
-      console.log(data);
       this.notifications = data;
+      this.hasNotification = false;
       for(let i = 0; i < data.length; i++) {
         if(data[i].read == false) {
-          //this.hasNotification = true;
+          this.hasNotification = true;
         }
       }
     });
   }
 
+  //this updates isRead = true & navigates to notification page
   public handleClick() {
-    let sessionProfile : any = sessionStorage.getItem("profile");
-    let sessionProfileObj = JSON.parse(sessionProfile);
-    if(this.hasNotification == true) {
-      for(let i = 0; i < this.notifications.length; i++) {
-        const updateNotification = {
-          ...this.notifications[i],
-          isRead: true
-        }
-        this.notificationService.updateNotification(sessionProfileObj.pid, updateNotification).subscribe((data)=> {
-        })
-        this.hasNotification = false;
-      }    
+    for(let i = 0; i < this.notifications.length; i++) {
+      const currNotification = this.notifications[i];      
+      this.notificationService.updateNotification(currNotification.nid, true).subscribe((data)=> {
+        this.router.navigateByUrl("/notification");
+      })
     }
   }
-
-  // public showNotification() {
-  //   if(this.hasNotification == true) {
-  //     this.hasNotification = false;
-  //   }
-  // }
-
 }
