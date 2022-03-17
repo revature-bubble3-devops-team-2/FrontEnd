@@ -6,7 +6,6 @@ import { takeUntil } from 'rxjs/operators';
 import { environment } from 'environments/environment';
 import { Profile } from 'app/models/profile';
 import { Notification } from 'app/models/notification';
-import { FollowNotification } from 'app/models/follow-notification';
 
 @Injectable({
   providedIn: 'root'
@@ -19,17 +18,6 @@ export class NotificationService {
   constructor(private httpClient: HttpClient) { }
 
   postNotification(notification: Notification): Observable<Profile> {
-    const requestOptions = {
-      headers: new HttpHeaders({
-        Authorization: `${sessionStorage.getItem('Authorization')}`,
-      }),
-    };
-    return this.httpClient
-      .post<Profile>(environment.url + '/notification', notification, requestOptions)
-      .pipe(takeUntil(this._unsubscribeAll));
-  }
-
-  postFollowNotification(notification: FollowNotification): Observable<Profile> {
     console.log("Is this being called?");
     console.log(notification);
     const requestOptions = {
