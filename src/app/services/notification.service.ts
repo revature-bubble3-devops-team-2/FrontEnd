@@ -54,15 +54,15 @@ export class NotificationService {
     );
   }
 
-  updateNotification(toProfileId: number, notification: any): Observable<any> {
+  updateNotification(nid: any, read: any): Observable<any> {
     const requestOptions = {
       headers: new HttpHeaders({
         Authorization: `${sessionStorage.getItem('Authorization')}`,
       }),
     };
     return this.httpClient.put<Post[]>(
-      `${environment.url}/notification/${toProfileId}/update`,
-      notification,
+      `${environment.url}/notification/${nid}/update-read`,
+      { read },
       requestOptions
     );
   }

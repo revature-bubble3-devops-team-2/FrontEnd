@@ -56,7 +56,7 @@ export class LikeComponent implements OnInit {
         pid: toProfileId.pid
       },
       postId: this.postInfo,
-      isRead: isRead
+      read: isRead
     }
     if(this.hasLiked == false) {
       this.notificationService.postNotification(this.postNotification).subscribe((data) => { 

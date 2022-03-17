@@ -10,7 +10,6 @@ import { NotificationService } from 'app/services/notification.service';
 export class NotificationComponent implements OnInit {
 
   //Need to grab data from database.
-  hasNotification:boolean = false;
   session:any = {};
   id:number = 0;
   notifications: Notification[] = [];
@@ -38,35 +37,24 @@ export class NotificationComponent implements OnInit {
     let sessionProfile : any = sessionStorage.getItem("profile");
     this.session = JSON.parse(sessionProfile);
     this.id = this.session.pid;
-    this.showNotification();
+    this.showNotifications();
   }
 
-  showNotification() {
+  //this gets !isRead notifications
+  showNotifications() {
     let sessionProfile : any = sessionStorage.getItem("profile");
     let sessionProfileObj = JSON.parse(sessionProfile);
+
     this.notificationService.getNotifications(sessionProfileObj.pid).subscribe((data) => {    
       this.notifications = data;
-      console.log('notifications:', this.notifications);
+
+      let notReadNotifications: any = [];
       
       for(let i = 0; i < data.length; i++) {
         if(data[i].read == false) {
-          this.hasNotification = true;
+          notReadNotifications.push(data[i]);
         }
       }
     });
   }
-
-  // public showNotification() {
-  //   let sessionProfile : any = sessionStorage.getItem("profile");
-  //   let sessionProfileObj = JSON.parse(sessionProfile);
-  //   this.notificationService.getNotifications(sessionProfileObj.pid).subscribe((data) => { 
-  //     console.log(data);
-  //     this.notifications = data;
-  //     for(let i = 0; i < data.length; i++) {
-  //       if(data[i].read == false) {
-  //         this.hasNotification = true;
-  //       }
-  //     }
-  //   });
-  // }
 }
