@@ -54,8 +54,6 @@ export class NotificationComponent implements OnInit {
           this.notReadNotifications.push(data[i]);
         }
       }
-      this.notReadNotifications.pid.firstName;
-      console.log("Profile firstname");
     });
   }
 }

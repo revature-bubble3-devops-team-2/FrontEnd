@@ -58,4 +58,12 @@ export class NotificationIconComponent implements OnInit {
       })
     }
   }
+
+  ngOnDestroy(): void {
+    let sessionProfile : any = sessionStorage.getItem("profile");
+    if(sessionProfile == null) {
+      clearInterval();
+    }
+    
+  }
 }
