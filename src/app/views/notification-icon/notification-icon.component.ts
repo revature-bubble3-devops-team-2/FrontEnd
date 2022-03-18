@@ -25,11 +25,10 @@ export class NotificationIconComponent implements OnInit {
     this.session = JSON.parse(sessionProfile);
     this.id = this.session.pid;
 
-    const notifyObs$ = interval(2500);
+    const notifyObs$ = interval(2000);
     notifyObs$.subscribe((n) => {
       this.toggleNotificationBtn();
     });
-    
 
   }
 
@@ -52,10 +51,18 @@ export class NotificationIconComponent implements OnInit {
   //this updates isRead = true & navigates to notification page
   public handleClick() {
     for(let i = 0; i < this.notifications.length; i++) {
-      const currNotification = this.notifications[i];      
+      const currNotification = this.notifications[i];    
       this.notificationService.updateNotification(currNotification.nid, true).subscribe((data)=> {
-        this.router.navigateByUrl("/notification");
       })
+      this.router.navigateByUrl("/notification");
     }
   }
+
+  // ngOnDestroy(): void {
+  //   let sessionProfile : any = sessionStorage.getItem("profile");
+  //   if(sessionProfile == null) {
+  //     clearInterval();
+  //   }
+  // }
+  
 }

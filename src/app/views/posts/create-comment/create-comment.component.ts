@@ -150,9 +150,11 @@ export class CreateCommentComponent implements OnInit {
       comment.writer = this.profile;
       this.commentService.createComment(comment).subscribe(
         (result)=>{
-          
-          console.log("lksdjf;lakj", result);
-           // send notification when comment is submitted
+          this.isReply = false;
+          this.comment.cbody = "";
+          this.getOriginCommentsByPsid();
+
+          // send notification when comment is submitted
           const fromProfileId = this.profile;
           const toProfileId = this.post.creator;
           const isRead = false;
@@ -172,14 +174,8 @@ export class CreateCommentComponent implements OnInit {
           }
           this.notificationService.postNotification(this.commentNotification).subscribe((data) => { 
           });  
-
-          this.isReply = false;
-          this.comment.cbody = "";
-          this.getOriginCommentsByPsid();
-
         }
       );
-      
     } // end if (this.post.body !== " ")
   } // end subumitComment(comment: Comment)
 
