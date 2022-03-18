@@ -17,10 +17,15 @@
         (scrolled)="onScroll()"
         [scrollWindow]="false">
 
+<<<<<<< HEAD
+=======
+        <h3>Notifications</h3>
+>>>>>>> bef30081067b8707797f6223b272eae8c22a7490
         <!-- 
           make this look prettier after finishing functionality
           figure out a better way to render which notification message is sent using ngIf?
         -->
+<<<<<<< HEAD
         <div class="notification-table-container">
           <h3>New Notifications</h3>
           <table>
@@ -44,6 +49,15 @@
             </tr>
           </table>
         </div>
+=======
+        <table>
+          <tr *ngFor="let notReadNotification of notReadNotifications" >
+            <span *ngIf="!notReadNotification.cid">{{notReadNotification.fromProfileId.firstName}} {{notReadNotification.fromProfileId.lastName}} liked your post "{{notReadNotification.postId!.body}}"</span>
+            <span *ngIf="notReadNotification.cid && !notReadNotification.cid?.previous?.cbody">{{notReadNotification.fromProfileId.firstName}} {{notReadNotification.fromProfileId.lastName}} commented on your post "{{notReadNotification.postId!.body}}"</span>
+            <span *ngIf="notReadNotification.cid?.previous?.cbody">{{notReadNotification.fromProfileId.firstName}} {{notReadNotification.fromProfileId.lastName}} replied to your comment "{{notReadNotification.cid!.previous!.cbody}}"</span>
+          </tr>
+        </table>
+>>>>>>> bef30081067b8707797f6223b272eae8c22a7490
         <!-- not sure how to implement show more button yet -->
         <!-- <button (click)="showMore()" class="btn-rounded" style="margin: 10px auto;">show more</button > -->
       </div>
