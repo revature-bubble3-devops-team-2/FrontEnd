@@ -176,8 +176,8 @@ export class CreateCommentComponent implements OnInit {
           });  
         }
       );
-    } // end if (this.post.body !== " ")
-  } // end subumitComment(comment: Comment)
+    } 
+  } 
 
   submitReply(reply: Comment){
     if (this.post.body !== " ") {
