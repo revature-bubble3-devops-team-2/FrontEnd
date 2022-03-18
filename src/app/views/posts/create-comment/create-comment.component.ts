@@ -143,7 +143,7 @@ export class CreateCommentComponent implements OnInit {
     }
   }
 
-  submitComment(comment: Comment){
+submitComment(comment: Comment){
     if (this.post.body !== " ") {
       comment.post = this.post;
       comment.dateCreated = new Date();
@@ -215,6 +215,7 @@ export class CreateCommentComponent implements OnInit {
       );
     }
   }
+
 
   submitCommentOnComment(comment: Comment){
     if (comment.cbody !== " ") {
