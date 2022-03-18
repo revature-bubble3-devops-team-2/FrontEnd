@@ -11,3 +11,7 @@ nav-bar{
 .newNotification-container{
     width: 400px;
 }
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    background-color: #F26925;
+}
