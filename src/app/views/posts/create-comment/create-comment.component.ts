@@ -171,6 +171,9 @@ export class CreateCommentComponent implements OnInit {
         cid: this.comment,
         isRead: isRead
       }
+      console.log(this.comment);
+      console.log(fromProfileId);
+      console.log(toProfileId);
 
       this.notificationService.postNotification(this.commentNotification).subscribe((data) => { 
       });    
