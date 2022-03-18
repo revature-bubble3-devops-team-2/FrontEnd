@@ -7,3 +7,7 @@ nav-bar{
     background-color: var(--revature-bg-gray);
     width: 100%;
 }
+
+.newNotification-container{
+    width: 400px;
+}

@@ -5,7 +5,11 @@ import { Post } from "./post";
 export class Notification {
 
     nid?:number;
-    isRead:boolean;
+
+    // Spring does weird things with booleans...
+    isRead?:boolean;
+    read?:boolean;
+
     cid?:Comment;
     fromProfileId:Profile;
     toProfileId:Profile;

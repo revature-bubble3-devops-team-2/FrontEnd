@@ -7,7 +7,7 @@ import { ProfileService } from 'app/services/profile.service';
 import { FollowService } from 'app/services/follow.service';
 import { faCameraRetro, faUserPlus, faUserMinus } from '@fortawesome/free-solid-svg-icons';
 import { NotificationService } from 'app/services/notification.service';
-import { FollowNotification } from 'app/models/follow-notification';
+import { Notification } from 'app/models/notification';
 
 @Component({
   selector: 'app-profile-header',
@@ -23,17 +23,11 @@ export class ProfileHeaderComponent implements OnInit {
 
   @Input()
   profileInfo!: Profile;
-  followNotification!: FollowNotification;
-
-
-  constructor(private notificationService: NotificationService, private profileService: ProfileService , private route: ActivatedRoute ,
-    private  postService : PostService , private router: Router  , private followService:FollowService) { }
-
-
-  profile : Profile | any;
-  followersProfiles : Profile[] | any;
-  id : any ;
-  sessionId : any;
+  followNotification!: Notification;
+  profile: Profile | any;
+  followersProfiles: Profile[] | any;
+  id: any ;
+  sessionId: any;
   firstName: any = "";
   lastName: any = "";
   email: any ;
@@ -42,89 +36,79 @@ export class ProfileHeaderComponent implements OnInit {
   cover: any = `../../../../assets/favicon.png`;
   posts :any[] =[] ;
   profilePosts : Post[] =[];
-
-
   failed: boolean = false;
   success: boolean = false;
   followed : boolean = false;
   sessionProfile : any;
 
-
-
+  constructor(private notificationService: NotificationService, private profileService: ProfileService , private route: ActivatedRoute, private  postService : PostService , private router: Router, private followService:FollowService) { }
 
   async ngOnInit(): Promise<void>  {
     this.id = this.route.snapshot.paramMap.get('id');
     this.sessionProfile = sessionStorage.getItem("profile");
-
     this.sessionProfile = JSON.parse(this.sessionProfile);
     this.sessionId = this.sessionProfile.pid;
-
-   this.profile = this.profileService.getProfileByPid(this.id).subscribe( (e : any) =>{
-    this.followersProfiles = e.following;
-    this.id = e.pid;
-    this.firstName =e.firstName;
-    this.lastName = e.lastName;
-    this.email= e.email;
-    this.url  = e.imgurl ?  e.imgurl : `../../../../assets/favicon.png` ;
-    this.username = e.username;
-    this.cover = e.coverimgurl||this.cover;
-
+    this.profile = this.profileService.getProfileByPid(this.id).subscribe( (e : any) =>{
+      this.followersProfiles = e.following;
+      this.id = e.pid;
+      this.firstName =e.firstName;
+      this.lastName = e.lastName;
+      this.email= e.email;
+      this.url  = e.imgurl ?  e.imgurl : `../../../../assets/favicon.png` ;
+      this.username = e.username;
+      this.cover = e.coverimgurl||this.cover;
+      console.log('this:', this); 
     });
 
 
     this.sessionProfile.following.forEach((e : Profile) => {
-
       if(  e.pid == this.id){
-    this.followed = true
-   }
-
-  });
-
+        this.followed = true
+      }
+    });
   }
 
 follow() {
+  this.followService.followUserByEmail(this.email , this.sessionId).subscribe(
+    r => { this.success = true  ;
+      console.log(this.email);
+      console.log(r);
 
-    this.followService.followUserByEmail(this.email , this.sessionId).subscribe(
-      r => { this.success = true  ;
-        console.log(this.email);
-        console.log(r);
+      this.followed = true},
+    err => this.failed = true
+  );
 
-        this.followed = true},
-      err => this.failed = true
-    );
+  // send notification when user is followed  
+  this.profileService.getProfileByPid(this.id).subscribe(
+    t => {
+      let sessionProfile: any = sessionStorage.getItem("profile");
+      const fromProfileId = JSON.parse(sessionProfile);
+      const toProfileId = t;
+      const isRead = false;
 
-    let sessionProfile: any = sessionStorage.getItem("profile");
-    const fromProfileId = JSON.parse(sessionProfile);
-    this.profileService.getProfileByPid(this.id).subscribe(
+      this.followNotification = {
 
-      t => {
-        const toProfileId = t;
-
-        this.followNotification = {
-
-          fromProfileId: {
-            pid: fromProfileId.pid
-          },
-          toProfileId: {
-            pid: toProfileId.pid
-          },
-          isRead: isRead
-        }
-
-          console.log(toProfileId);
-          console.log(fromProfileId);
-          this.notificationService.postFollowNotification(this.followNotification).subscribe((data) => {
-            console.log(data);
-          })
+        fromProfileId: {
+          pid: fromProfileId.pid
         },
-      err => {
+        toProfileId: {
+          pid: toProfileId.pid
+        },
+        isRead: isRead
+      }
+
+      console.log(toProfileId);
+      console.log(fromProfileId);
+      this.notificationService.postNotification(this.followNotification).subscribe((data) => {
+        console.log(data);
+      })
+    }, err => {
       console.error(err);
     }
+    
     );
 
-    const isRead = false;
   }
-
 
 
 unfollow() {
