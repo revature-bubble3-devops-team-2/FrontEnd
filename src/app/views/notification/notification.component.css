@@ -15,3 +15,7 @@ nav-bar{
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
     background-color: #F26925;
 }
+
+.btn {
+    color: #ffffff !important;
+}
