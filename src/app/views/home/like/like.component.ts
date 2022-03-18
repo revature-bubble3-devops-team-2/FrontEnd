@@ -32,7 +32,7 @@ export class LikeComponent implements OnInit {
   }
 
   public likePost() {
-    console.log(JSON.stringify(this.postInfo))
+    // console.log(JSON.stringify(this.postInfo))
     this.postService.postLike(this.postInfo).subscribe((data) => {
         this.getLikes();
         }, (err) => {
@@ -56,7 +56,7 @@ export class LikeComponent implements OnInit {
         pid: toProfileId.pid
       },
       postId: this.postInfo,
-      isRead: isRead
+      read: isRead
     }
     if(this.hasLiked == false) {
       this.notificationService.postNotification(this.postNotification).subscribe((data) => { 

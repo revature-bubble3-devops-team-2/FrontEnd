@@ -153,27 +153,29 @@ export class CreateCommentComponent implements OnInit {
           this.isReply = false;
           this.comment.cbody = "";
           this.getOriginCommentsByPsid();
+
+          // send notification when comment is submitted
+          const fromProfileId = this.profile;
+          const toProfileId = this.post.creator;
+          const isRead = false;
+
+          this.commentNotification = {
+            fromProfileId: {
+              pid: fromProfileId.pid
+            },
+            toProfileId: {
+              pid: toProfileId.pid
+            },
+            postId: this.post,
+            cid: {
+              cid: result.cid
+            },
+            isRead: isRead
+          }
+          this.notificationService.postNotification(this.commentNotification).subscribe((data) => { 
+          });  
         }
       );
-      // send notification when comment is submitted
-      const fromProfileId = this.profile;
-      const toProfileId = this.post.creator;
-      const isRead = false;
-
-      this.commentNotification = {
-        fromProfileId: {
-          pid: fromProfileId.pid
-        },
-        toProfileId: {
-          pid: toProfileId.pid
-        },
-        postId: this.post,
-        cid: this.comment,
-        isRead: isRead
-      }
-
-      this.notificationService.postNotification(this.commentNotification).subscribe((data) => { 
-      });    
     } // end if (this.post.body !== " ")
   } // end subumitComment(comment: Comment)
 
@@ -188,27 +190,29 @@ export class CreateCommentComponent implements OnInit {
           this.isReply = false;
           this.reply.cbody = "";
           this.getOriginCommentsByPsid();
+
+          // send notification when reply is submitted
+          const fromProfileId = this.profile;
+          const toProfileId = reply.previous?.writer;
+          const isRead = false;
+          
+          this.replyNotification = {
+            fromProfileId: {
+              pid: fromProfileId.pid
+            },
+            toProfileId: {
+              pid: toProfileId?.pid
+            },
+            postId: this.post,
+            cid: {
+              cid: result.cid
+            },
+            isRead: isRead
+          }
+          this.notificationService.postNotification(this.replyNotification).subscribe((data) => { 
+          });   
         }
       );
-      // send notification when reply is submitted
-      const fromProfileId = this.profile;
-      const toProfileId = reply.previous.writer!;
-      const isRead = false;
-      
-      this.replyNotification = {
-        fromProfileId: {
-          pid: fromProfileId.pid
-        },
-        toProfileId: {
-          pid: toProfileId.pid
-        },
-        postId: this.post,
-        cid: this.reply,
-        isRead: isRead
-      }
-
-      this.notificationService.postNotification(this.replyNotification).subscribe((data) => { 
-      });   
     }
   }
 

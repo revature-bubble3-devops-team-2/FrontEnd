@@ -49,7 +49,8 @@ export class CreatePostComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    window.location.href = '/home';
+    // DO NOT DO THIS....
+    // window.location.href = '/home';
   }
 
   createPost() {

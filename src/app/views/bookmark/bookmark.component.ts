@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Post } from 'app/models/post';
 import { faBookmark as faBookmarkSolid } from '@fortawesome/free-solid-svg-icons';
 import { faBookmark as faBookmarkOutline } from '@fortawesome/free-regular-svg-icons';
-import { PostService } from 'app/services/post.service';
 import { BookmarkService } from 'app/services/bookmark.service';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';

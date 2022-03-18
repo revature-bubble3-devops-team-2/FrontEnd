@@ -3,20 +3,15 @@
 
     <div class="notification-icon-container">
         <div *ngIf="!hasNotification">
-            <a [href]="['/notification']">
             <button type = "button" class="icon-button" (click)="handleClick()">
                 <span class="material-icons">notifications</span>
                 <span class = "icon-button-default"></span>
             </button>
-            </a>
         </div>
         <div *ngIf="hasNotification">
-            <a [href]="['/notification']">
             <button type = "button" class="icon-button" (click)="handleClick()">
                 <span class="material-icons">notifications</span>
                 <span class = "icon-button__badge"></span>
             </button>
-            </a>
         </div>
       </div>
- 

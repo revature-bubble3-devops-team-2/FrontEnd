@@ -1,11 +1,10 @@
 import { Post } from 'app/models/post';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Profile } from 'app/models/profile';
 import { environment } from 'environments/environment';
-import { profile } from 'console';
 
 @Injectable({
   providedIn: 'root',
