@@ -60,7 +60,6 @@ export class ProfileHeaderComponent implements OnInit {
       console.log('this:', this); 
     });
 
-
     this.sessionProfile.following.forEach((e : Profile) => {
       if(  e.pid == this.id){
         this.followed = true
@@ -87,7 +86,6 @@ follow() {
       const isRead = false;
 
       this.followNotification = {
-
         fromProfileId: {
           pid: fromProfileId.pid
         },
@@ -97,19 +95,13 @@ follow() {
         isRead: isRead
       }
 
-      console.log(toProfileId);
-      console.log(fromProfileId);
       this.notificationService.postNotification(this.followNotification).subscribe((data) => {
-        console.log(data);
       })
     }, err => {
       console.error(err);
     }
-    
     );
-
   }
-
 
 unfollow() {
     console.log("Email entered: ", this.email);

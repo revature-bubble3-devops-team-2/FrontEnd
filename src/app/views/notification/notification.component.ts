@@ -28,11 +28,10 @@ export class NotificationComponent implements OnInit {
 
   onScroll() {
     ++this.scrollCount;
-    //this.getNotifications(++this.scrollcount);
   }
+  
   showMore(){
     ++this.scrollCount;
-    //this.getNotifications(++this.scrollcount);
   }
 
   ngOnInit(): void {
@@ -58,6 +57,8 @@ export class NotificationComponent implements OnInit {
           this.notReadNotifications.push(data[i]);
         }
       }
+
+      console.log('this.notReadNotifications:', this.notReadNotifications)
     });
   }
 
@@ -73,6 +74,8 @@ export class NotificationComponent implements OnInit {
           this.isReadNotifications.push(data[i]);
         }
       }
+
+      console.log('this.isReadNotifications:', this.isReadNotifications)
     });
   }
 

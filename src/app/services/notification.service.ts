@@ -18,8 +18,6 @@ export class NotificationService {
   constructor(private httpClient: HttpClient) { }
 
   postNotification(notification: Notification): Observable<Profile> {
-    console.log("Is this being called?");
-    console.log(notification);
     const requestOptions = {
       headers: new HttpHeaders({
         Authorization: `${sessionStorage.getItem('Authorization')}`,
