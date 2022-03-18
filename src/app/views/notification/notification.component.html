@@ -53,7 +53,7 @@
                   <p>No notifications.</p>
                 </div>
 
-                <div *ngIf="isReadNotifications > 0">
+                <div *ngIf="isReadNotifications.length > 0">
                   <tr *ngFor="let isReadNotification of isReadNotifications">
                     <span *ngIf="!isReadNotification.cid && isReadNotification.postId">{{isReadNotification.fromProfileId.firstName}} {{isReadNotification.fromProfileId.lastName}} liked your post "{{isReadNotification.postId?.body}}"</span>
                     <span *ngIf="isReadNotification.cid && !isReadNotification.cid?.previous?.cbody">{{isReadNotification.fromProfileId.firstName}} {{isReadNotification.fromProfileId.lastName}} commented on your post "{{isReadNotification.postId!.body}}"</span>
