@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Notification } from 'app/models/notification';
 import { NotificationService } from 'app/services/notification.service';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'notification',
@@ -9,11 +10,11 @@ import { NotificationService } from 'app/services/notification.service';
 })
 export class NotificationComponent implements OnInit {
 
-  //Need to grab data from database.
   session:any = {};
   id:number = 0;
   notifications: Notification[] = [];
   notReadNotifications: any = [];
+  isReadNotifications: any = [];
 
   constructor(private notificationService: NotificationService) { }
 
@@ -38,7 +39,10 @@ export class NotificationComponent implements OnInit {
     let sessionProfile : any = sessionStorage.getItem("profile");
     this.session = JSON.parse(sessionProfile);
     this.id = this.session.pid;
+   
     this.showNotifications();
+    this.showisReadNotifications();
+    
   }
 
   //this gets !isRead notifications
@@ -54,8 +58,22 @@ export class NotificationComponent implements OnInit {
           this.notReadNotifications.push(data[i]);
         }
       }
-      this.notReadNotifications.pid.firstName;
-      console.log("Profile firstname");
     });
   }
+
+  showisReadNotifications() {
+    let sessionProfile : any = sessionStorage.getItem("profile");
+    let sessionProfileObj = JSON.parse(sessionProfile);
+
+    this.notificationService.getNotifications(sessionProfileObj.pid).subscribe((data) => {    
+      this.notifications = data;
+      
+      for(let i = 0; i < data.length; i++) {
+        if(data[i].read == true) {
+          this.isReadNotifications.push(data[i]);
+        }
+      }
+    });
+  }
+
 }
