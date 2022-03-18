@@ -19,3 +19,11 @@ nav-bar{
 .btn {
     color: #ffffff !important;
 }
+
+p {
+    cursor: default !important;
+}
+
+.notification-container {
+    overflow-y: scroll;
+}
