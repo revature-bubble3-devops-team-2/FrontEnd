@@ -1,40 +1,75 @@
-
 <div class="view-container">
-    <nav-bar></nav-bar>
+  <nav-bar></nav-bar>
 
-    <div class="notification-container">
-      <div
-          class="
-            feed-container
-            container-fluid
-            d-flex
-            flex-column
-            align-items-center
-            mt-5
-          "
-          infiniteScroll
-          [infiniteScrollDistance]="2"
-          [infiniteScrollThrottle]="50"
-          (scrolled)="onScroll()"
-          [scrollWindow]="false">
+  <div class="notification-container">
+    <div
+        class="
+          feed-container
+          container-fluid
+          d-flex
+          flex-column
+          align-items-center
+          mt-5
+        "
+        infiniteScroll
+        [infiniteScrollDistance]="2"
+        [infiniteScrollThrottle]="50"
+        (scrolled)="onScroll()"
+        [scrollWindow]="false">
 
-          <h3>Notifications</h3>
+        <!-- 
+          consider lazy loading notifications to make initial render faster?
+        -->
+        <div class="notification-table-container">
+          <ul class="nav nav-pills mb-3 justify-content-center" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="btn nav-link active" id="new-notifications-tab" data-bs-toggle="pill" data-bs-target="#newNotifications" type="button" role="tab" aria-controls="new notifications" aria-selected="true">New</button>
+            </li>
+            <li class="nav-item">
+              <button class="btn nav-link" id="all-notifications-tab" data-bs-toggle="pill" data-bs-target="#allNotifications" type="button" role="tab" aria-controls="all notifications" aria-selected="false">All</button>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="newNotifications" role="tabpanel" aria-labelledby="new-notifications-tab">
+              <table>
+                <div *ngIf="notReadNotifications.length == 0">
+                  <p>No new notifications.</p>
+                </div>
 
-          <!-- 
-            make this look prettier after finishing functionality
-            figure out a better way to render which notification message is sent using ngIf?
-          -->
-          <table>
-            <tr *ngFor="let notification of notifications" >
-              <span *ngIf="!notification.cid">{{notification.fromProfileId.firstName}} {{notification.fromProfileId.lastName}} liked your post "{{notification.postId?.body}}"</span>
-              <span *ngIf="notification.cid && !notification.cid?.previous?.cbody">{{notification.fromProfileId.firstName}} {{notification.fromProfileId.lastName}} commented on your post "{{notification.postId?.body}}"</span>
-              <span *ngIf="notification.cid?.previous?.cbody">{{notification.fromProfileId.firstName}} {{notification.fromProfileId.lastName}} replied to your comment "{{notification.cid!.previous!.cbody}}"</span>
-            </tr>
-          </table>
+                <div *ngIf="notReadNotifications.length > 0">
+                  <tr *ngFor="let notReadNotification of notReadNotifications">
+                    <span *ngIf="!notReadNotification.cid && notReadNotification.postId">{{notReadNotification.fromProfileId.firstName}} {{notReadNotification.fromProfileId.lastName}} liked your post "{{notReadNotification.postId.body}}"</span>
+                    <span *ngIf="notReadNotification.cid && !notReadNotification.cid?.previous?.cbody">{{notReadNotification.fromProfileId.firstName}} {{notReadNotification.fromProfileId.lastName}} commented on your post "{{notReadNotification.postId!.body}}"</span>
+                    <span *ngIf="notReadNotification.cid?.previous?.cbody">{{notReadNotification.fromProfileId.firstName}} {{notReadNotification.fromProfileId.lastName}} replied to your comment "{{notReadNotification.cid!.previous!.cbody}}"</span>
+                    <span *ngIf="!notReadNotification.cid && !notReadNotification.postId">{{notReadNotification.fromProfileId.firstName}} {{notReadNotification.fromProfileId.lastName}} started following you.</span>
+                  </tr>  
+                </div>
+              </table>
+            </div>
+        
+            <div class="tab-pane fade" id="allNotifications" role="tabpanel" aria-labelledby="all-notifications-tab">
+              <table>
+                <div *ngIf="isReadNotifications.length == 0">
+                  <p>No notifications.</p>
+                </div>
 
-          <!-- not sure how to implement show more button yet -->
-          <!-- <button (click)="showMore()" class="btn-rounded" style="margin: 10px auto;">show more</button > -->
+                <div *ngIf="isReadNotifications.length > 0">
+                  <tr *ngFor="let isReadNotification of isReadNotifications">
+                    <span *ngIf="!isReadNotification.cid && isReadNotification.postId">{{isReadNotification.fromProfileId.firstName}} {{isReadNotification.fromProfileId.lastName}} liked your post "{{isReadNotification.postId?.body}}"</span>
+                    <span *ngIf="isReadNotification.cid && !isReadNotification.cid?.previous?.cbody">{{isReadNotification.fromProfileId.firstName}} {{isReadNotification.fromProfileId.lastName}} commented on your post "{{isReadNotification.postId!.body}}"</span>
+                    <span *ngIf="isReadNotification.cid?.previous?.cbody">{{isReadNotification.fromProfileId.firstName}} {{isReadNotification.fromProfileId.lastName}} replied to your comment "{{isReadNotification.cid!.previous!.cbody}}"</span>
+                    <span *ngIf="!isReadNotification.cid && !isReadNotification.postId">{{isReadNotification.fromProfileId.firstName}} {{isReadNotification.fromProfileId.lastName}} started following you.</span>
+                  </tr>  
+                </div>
+              </table>
+            </div>
+          </div>
+
+
         </div>
-    </div>
-</div>
+        <!-- not sure how to implement show more button yet -->
+        <!-- <button (click)="showMore()" class="btn-rounded" style="margin: 10px auto;">show more</button > -->
+      </div>
+  </div>
 
+</div>

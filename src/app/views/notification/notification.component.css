@@ -7,3 +7,15 @@ nav-bar{
     background-color: var(--revature-bg-gray);
     width: 100%;
 }
+
+.newNotification-container{
+    width: 400px;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    background-color: #F26925;
+}
+
+.btn {
+    color: #ffffff !important;
+}
