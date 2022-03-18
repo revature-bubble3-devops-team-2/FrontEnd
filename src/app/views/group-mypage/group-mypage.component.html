@@ -12,3 +12,15 @@
       </div>
     </div>
   </div>
+
+  <div id="my-groups-container" class="group-page-container-box" *ngIf="mGroups.length == 0">
+    <header class="groups-container_header">
+      <fa-icon [icon]="faUsers"></fa-icon>
+    </header>
+    <div class="groups-container_body">
+      <h4>My groups</h4>
+      <div class="groups-container_body-group-list">
+        <ul><li>You are not currently a member of any groups</li></ul>
+      </div>
+    </div>
+  </div>

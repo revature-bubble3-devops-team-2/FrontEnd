@@ -39,7 +39,7 @@ app-search{
   width: calc(280px * 3);
 }
 .activeProfileTab{
-  color: var(--revature-ink) !important;
+  color: var(--revature-orange) !important;
   font-weight: 750 !important;
   text-decoration: underline !important;
 }
