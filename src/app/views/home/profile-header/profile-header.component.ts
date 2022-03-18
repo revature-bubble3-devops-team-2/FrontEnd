@@ -84,6 +84,7 @@ follow() {
       let sessionProfile: any = sessionStorage.getItem("profile");
       const fromProfileId = JSON.parse(sessionProfile);
       const toProfileId = t;
+      const isRead = false;
 
       this.followNotification = {
 
@@ -93,7 +94,7 @@ follow() {
         toProfileId: {
           pid: toProfileId.pid
         },
-        isRead: false
+        isRead: isRead
       }
 
       console.log(toProfileId);
