@@ -22,7 +22,7 @@
           figure out a better way to render which notification message is sent using ngIf?
         -->
         <div class="notification-table-container">
-          <h3>New Notifications</h3>
+          <!-- <h3>New Notifications</h3>
           <table>
             <tr *ngFor="let notReadNotification of notReadNotifications">
               <span *ngIf="!notReadNotification.cid && notReadNotification.postId">{{notReadNotification.fromProfileId.firstName}} {{notReadNotification.fromProfileId.lastName}} liked your post "{{notReadNotification.postId.body}}"</span>
@@ -44,7 +44,40 @@
               <span *ngIf="isReadNotification.cid?.previous?.cbody">{{isReadNotification.fromProfileId.firstName}} {{isReadNotification.fromProfileId.lastName}} replied to your comment "{{isReadNotification.cid!.previous!.cbody}}"</span>
               <span *ngIf="!isReadNotification.cid && !isReadNotification.postId">{{isReadNotification.fromProfileId.firstName}} {{isReadNotification.fromProfileId.lastName}} started following you.</span>
             </tr>
-          </table>
+          </table> -->
+
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="new-notifications-tab" data-toggle="tab" href="#newNotifications" role="tab" aria-controls="new notifications" aria-selected="true">New</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="all-notifications-tab" data-toggle="tab" href="#allNotifications" role="tab" aria-controls="all notifications" aria-selected="false">All</a>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="newNotifications" role="tabpanel" aria-labelledby="new-notifications-tab">
+              <table>
+                <tr *ngFor="let notReadNotification of notReadNotifications">
+                  <span *ngIf="!notReadNotification.cid && notReadNotification.postId">{{notReadNotification.fromProfileId.firstName}} {{notReadNotification.fromProfileId.lastName}} liked your post "{{notReadNotification.postId.body}}"</span>
+                  <span *ngIf="notReadNotification.cid && !notReadNotification.cid?.previous?.cbody">{{notReadNotification.fromProfileId.firstName}} {{notReadNotification.fromProfileId.lastName}} commented on your post "{{notReadNotification.postId!.body}}"</span>
+                  <span *ngIf="notReadNotification.cid?.previous?.cbody">{{notReadNotification.fromProfileId.firstName}} {{notReadNotification.fromProfileId.lastName}} replied to your comment "{{notReadNotification.cid!.previous!.cbody}}"</span>
+                  <span *ngIf="!notReadNotification.cid && !notReadNotification.postId">{{notReadNotification.fromProfileId.firstName}} {{notReadNotification.fromProfileId.lastName}} started following you.</span>
+                </tr>
+              </table>
+            </div>
+        
+            <div class="tab-pane fade" id="allNotifications" role="tabpanel" aria-labelledby="all-notifications-tab">
+              <table>
+                <tr *ngFor="let isReadNotification of isReadNotifications">
+                  <span *ngIf="!isReadNotification.cid && isReadNotification.postId">{{isReadNotification.fromProfileId.firstName}} {{isReadNotification.fromProfileId.lastName}} liked your post "{{isReadNotification.postId?.body}}"</span>
+                  <span *ngIf="isReadNotification.cid && !isReadNotification.cid?.previous?.cbody">{{isReadNotification.fromProfileId.firstName}} {{isReadNotification.fromProfileId.lastName}} commented on your post "{{isReadNotification.postId!.body}}"</span>
+                  <span *ngIf="isReadNotification.cid?.previous?.cbody">{{isReadNotification.fromProfileId.firstName}} {{isReadNotification.fromProfileId.lastName}} replied to your comment "{{isReadNotification.cid!.previous!.cbody}}"</span>
+                  <span *ngIf="!isReadNotification.cid && !isReadNotification.postId">{{isReadNotification.fromProfileId.firstName}} {{isReadNotification.fromProfileId.lastName}} started following you.</span>
+                </tr>
+              </table>
+            </div>
+          </div>
+
         </div>
         <!-- not sure how to implement show more button yet -->
         <!-- <button (click)="showMore()" class="btn-rounded" style="margin: 10px auto;">show more</button > -->
