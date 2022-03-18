@@ -58,6 +58,8 @@ export class NotificationComponent implements OnInit {
           this.notReadNotifications.push(data[i]);
         }
       }
+
+      console.log('this.notReadNotifications:', this.notReadNotifications)
     });
   }
 
@@ -73,6 +75,8 @@ export class NotificationComponent implements OnInit {
           this.isReadNotifications.push(data[i]);
         }
       }
+
+      console.log('this.isReadNotifications:', this.isReadNotifications)
     });
   }
 
