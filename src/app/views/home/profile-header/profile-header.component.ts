@@ -7,7 +7,6 @@ import { ProfileService } from 'app/services/profile.service';
 import { FollowService } from 'app/services/follow.service';
 import { faCameraRetro, faUserPlus, faUserMinus } from '@fortawesome/free-solid-svg-icons';
 import { NotificationService } from 'app/services/notification.service';
-// import { FollowNotification } from 'app/models/follow-notification';
 import { Notification } from 'app/models/notification';
 
 @Component({
@@ -99,7 +98,7 @@ follow() {
 
       console.log(toProfileId);
       console.log(fromProfileId);
-      this.notificationService.postFollowNotification(this.followNotification).subscribe((data) => {
+      this.notificationService.postNotification(this.followNotification).subscribe((data) => {
         console.log(data);
       })
     }, err => {

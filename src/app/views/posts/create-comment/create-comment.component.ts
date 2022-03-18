@@ -155,6 +155,7 @@ export class CreateCommentComponent implements OnInit {
           this.getOriginCommentsByPsid();
 
           // send notification when comment is submitted
+          
           const fromProfileId = this.profile;
           const toProfileId = this.post.creator;
           const isRead = false;
@@ -176,6 +177,32 @@ export class CreateCommentComponent implements OnInit {
           });  
         }
       );
+      
+      // send notification when comment is submitted
+      /*
+      const fromProfileId = this.profile;
+      const toProfileId = this.post.creator;
+      const isRead = false;
+
+      this.commentNotification = {
+        fromProfileId: {
+          pid: fromProfileId.pid
+        },
+        toProfileId: {
+          pid: toProfileId.pid
+        },
+        postId: this.post,
+        cid: this.comment,
+        isRead: isRead
+      }
+      console.log(this.comment);
+      console.log(fromProfileId);
+      console.log(toProfileId);
+
+      this.notificationService.postNotification(this.commentNotification).subscribe((data) => { 
+      });  
+      */
+
     } // end if (this.post.body !== " ")
   } // end subumitComment(comment: Comment)
 
