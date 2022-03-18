@@ -28,11 +28,10 @@ export class NotificationComponent implements OnInit {
 
   onScroll() {
     ++this.scrollCount;
-    //this.getNotifications(++this.scrollcount);
   }
+  
   showMore(){
     ++this.scrollCount;
-    //this.getNotifications(++this.scrollcount);
   }
 
   ngOnInit(): void {
