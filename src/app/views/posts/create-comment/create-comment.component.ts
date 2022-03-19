@@ -143,39 +143,41 @@ export class CreateCommentComponent implements OnInit {
     }
   }
 
-  submitComment(comment: Comment){
+submitComment(comment: Comment){
     if (this.post.body !== " ") {
       comment.post = this.post;
       comment.dateCreated = new Date();
       comment.writer = this.profile;
       this.commentService.createComment(comment).subscribe(
         (result)=>{
-        
-        // send notification when comment is submitted
-        const fromProfileId = this.profile;
-        const toProfileId = this.post.creator;
-        const isRead = false;
-
-        this.commentNotification = {
-          fromProfileId: {
-            pid: fromProfileId.pid
-          },
-          toProfileId: {
-            pid: toProfileId.pid
-          },
-          postId: this.post,
-          cid: result,
-          isRead: isRead
-        }
-
-        this.notificationService.postNotification(this.commentNotification).subscribe((data) => { 
           this.isReply = false;
           this.comment.cbody = "";
           this.getOriginCommentsByPsid();
-        }); 
-      });   
-    } // end if (this.post.body !== " ")
-  } // end subumitComment(comment: Comment)
+
+          // send notification when comment is submitted
+          const fromProfileId = this.profile;
+          const toProfileId = this.post.creator;
+          const isRead = false;
+
+          this.commentNotification = {
+            fromProfileId: {
+              pid: fromProfileId.pid
+            },
+            toProfileId: {
+              pid: toProfileId.pid
+            },
+            postId: this.post,
+            cid: {
+              cid: result.cid
+            },
+            isRead: isRead
+          }
+          this.notificationService.postNotification(this.commentNotification).subscribe((data) => { 
+          });  
+        }
+      );
+    } 
+  } 
 
   submitReply(reply: Comment){
     if (this.post.body !== " ") {
@@ -183,34 +185,37 @@ export class CreateCommentComponent implements OnInit {
       reply.dateCreated = new Date();
       reply.writer = this.profile;
       reply.previous = this.previous;
-      // Kinda scuffed but whatever
-      const fromProfileId = this.profile;
-      const toProfileId = reply.previous.writer!;
-      const isRead = false;
       this.commentService.createComment(reply).subscribe(
         (result)=>{
-        
-        this.replyNotification = {
-          fromProfileId: {
-            pid: fromProfileId.pid
-          },
-          toProfileId: {
-            pid: toProfileId.pid
-          },
-          postId: this.post,
-          cid: result,
-          isRead: isRead
-        }
-
-        this.notificationService.postNotification(this.replyNotification).subscribe((data) => { 
           this.isReply = false;
-            this.reply.cbody = "";
-            this.getOriginCommentsByPsid();
-        });   
-      }
+          this.reply.cbody = "";
+          this.getOriginCommentsByPsid();
+
+          // send notification when reply is submitted
+          const fromProfileId = this.profile;
+          const toProfileId = reply.previous?.writer;
+          const isRead = false;
+          
+          this.replyNotification = {
+            fromProfileId: {
+              pid: fromProfileId.pid
+            },
+            toProfileId: {
+              pid: toProfileId?.pid
+            },
+            postId: this.post,
+            cid: {
+              cid: result.cid
+            },
+            isRead: isRead
+          }
+          this.notificationService.postNotification(this.replyNotification).subscribe((data) => { 
+          });   
+        }
       );
     }
   }
+
 
   submitCommentOnComment(comment: Comment){
     if (comment.cbody !== " ") {

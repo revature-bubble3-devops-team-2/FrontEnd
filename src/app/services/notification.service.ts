@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { Post } from 'app/models/post';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { environment } from 'environments/environment';
 import { Profile } from 'app/models/profile';
 import { Notification } from 'app/models/notification';
-import { FollowNotification } from 'app/models/follow-notification';
 
 @Injectable({
   providedIn: 'root'
@@ -29,19 +28,6 @@ export class NotificationService {
       .pipe(takeUntil(this._unsubscribeAll));
   }
 
-  postFollowNotification(notification: FollowNotification): Observable<Profile> {
-    console.log("Is this being called?");
-    console.log(notification);
-    const requestOptions = {
-      headers: new HttpHeaders({
-        Authorization: `${sessionStorage.getItem('Authorization')}`,
-      }),
-    };
-    return this.httpClient
-      .post<Profile>(environment.url + '/notification', notification, requestOptions)
-      .pipe(takeUntil(this._unsubscribeAll));
-  }
-
   getNotifications(toProfileId: number): Observable<any> {
     const requestOptions = {
       headers: new HttpHeaders({
@@ -54,17 +40,17 @@ export class NotificationService {
     );
   }
 
-  updateNotification(toProfileId: number, notification: Notification): Observable<Profile> {
-    let token = sessionStorage.getItem("Authorization");
-    if(token){
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': token });
-      let options = { headers: headers };
-      return this.httpClient.put(`${environment.url}/${toProfileId}/update`, notification, options);
-    } else {
-        return this.httpClient.put(`${environment.url}/${toProfileId}/update`, notification);
-    }
+  updateNotification(nid: any, read: any): Observable<any> {
+    const requestOptions = {
+      headers: new HttpHeaders({
+        Authorization: `${sessionStorage.getItem('Authorization')}`,
+      }),
+    };
+    return this.httpClient.put<Post[]>(
+      `${environment.url}/notification/${nid}/update-read`,
+      { read },
+      requestOptions
+    );
   }
 
 }
