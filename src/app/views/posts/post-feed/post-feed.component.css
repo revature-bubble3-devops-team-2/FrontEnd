@@ -9,7 +9,7 @@
 .post-feed_engagement-buttons{
   display: flex;
   padding: 10px 15px 20px 15px;
-  margin-left: calc(100% - var(--post-feed-total-width));
+  margin-left: calc(100% - var(--post-feed-total-width) - 15px);
   text-align: right;
   width: var(--post-feed-total-width);
 

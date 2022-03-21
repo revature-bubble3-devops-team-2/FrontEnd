@@ -54,6 +54,9 @@ export class NotificationComponent implements OnInit {
       
       for(let i = 0; i < data.length; i++) {
         if(data[i].read == false) {
+          if(data[i].fromProfileId.imgurl == null){
+            data[i].fromProfileId.imgurl = "../../../assets/favicon.png"
+          }
           this.notReadNotifications.push(data[i]);
         }
       }
@@ -71,6 +74,9 @@ export class NotificationComponent implements OnInit {
       
       for(let i = 0; i < data.length; i++) {
         if(data[i].read == true) {
+          if(data[i].fromProfileId.imgurl == null){
+            data[i].fromProfileId.imgurl = "../../../assets/favicon.png"
+          }
           this.isReadNotifications.push(data[i]);
         }
       }
