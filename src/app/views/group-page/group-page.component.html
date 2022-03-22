@@ -47,6 +47,15 @@
           <input type="text" name="groupName" class="form-control" [(ngModel)]="groupName" placeholder="What's the name of your new group?">
           <input type="text" name="groupDescription" class="form-control" [(ngModel)]="groupDesc" placeholder="How would you describe your group?">
           <button type="button" class="btn-rounded" (click)="createGroup()">Create</button>
+          <div *ngIf="groupBothAdded">
+            <p id = "errorText">Please fill out both Name and Description to add a new group</p>
+          </div>
+          <div *ngIf="groupNameAdded">
+            <p id = "errorText">Please fill out Name field to add a new group</p>
+          </div>
+          <div *ngIf="groupDescripAdded">
+            <p id = "errorText">Please fill out Description field to add a new group</p>
+          </div>
         </form>
       </div>
 
