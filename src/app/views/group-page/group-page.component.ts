@@ -22,6 +22,9 @@ export class GroupPageComponent implements OnInit {
   public faSearch = faSearch;
   public faPlusCircle = faPlusCircle;
   public initialSearch: boolean = false;
+  public groupNameAdded: boolean = false;
+  public groupDescripAdded: boolean = false;
+  public groupBothAdded: boolean = false;
 
   constructor(
     public groupService: GroupService,
@@ -79,12 +82,22 @@ export class GroupPageComponent implements OnInit {
   }
 
   public createGroup() {
-    if (this.groupName == '') {
-      alert("Please enter a GROUP NAME to create a new group")
+    if(this.groupName == '' && this.groupDesc == ''){
+      this.groupBothAdded = true;
+      this.groupDescripAdded = false;
+      this.groupNameAdded = false;
       return;
     }
-    if (this.groupDesc == '') {
-      alert("Please enter a GROUP description to create a new group")
+    else if (this.groupName == '') {
+      this.groupBothAdded = false;
+      this.groupDescripAdded = false;
+      this.groupNameAdded = true;
+      return;
+    }
+    else if (this.groupDesc == '') {
+      this.groupBothAdded = false;
+      this.groupDescripAdded = true;
+      this.groupNameAdded = false;
       return;
     }
     this.groupService

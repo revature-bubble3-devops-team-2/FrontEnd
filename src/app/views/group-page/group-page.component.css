@@ -144,3 +144,7 @@ nav-bar{
 .groups-container_body a:hover{
   color: var(--revature-light-gray);
 }
+
+#errorText {
+  color: var(--revature-orange) !important;
+}
