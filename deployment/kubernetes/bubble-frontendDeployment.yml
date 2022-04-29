@@ -24,9 +24,8 @@ spec:
         tier: frontend
     spec:
       containers:
-        - name: nginx
+        - name: bubble-front
           image: jaylopez/magmabubblefront:v1
-          # cpete22/revature-bubble:fe
           lifecycle:
             preStop:
               exec:
