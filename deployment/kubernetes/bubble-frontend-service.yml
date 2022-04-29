@@ -10,8 +10,8 @@ spec:
     app: bubble-app
     tier: frontend
   ports:
-  - port: 4200
-    targetPort: 4200
-    protocol: TCP
+    - port: 80
+      targetPort: 80
+      protocol: TCP
     # name: http
   type: LoadBalancer

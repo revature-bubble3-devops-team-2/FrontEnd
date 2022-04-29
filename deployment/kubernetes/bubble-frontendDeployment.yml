@@ -8,11 +8,11 @@ metadata:
 spec:
   replicas: 1
   # minReadySeconds: 5
-  # strategy: 
-  #   type: RollingUpdate
-  #   rollingUpdate:
-  #     maxSurge: 1
-  #     maxUnavailable: 0
+  strategy: 
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
   selector:
     matchLabels:
       app: bubble-app
@@ -24,21 +24,22 @@ spec:
         tier: frontend
     spec:
       containers:
-      - name: nginx
-        image: cpete22/revature-bubble:fe
-        lifecycle:
+        - name: nginx
+          image: jaylopez/magmabubblefront:v1
+          # cpete22/revature-bubble:fe
+          lifecycle:
             preStop:
               exec:
                 command: ["/usr/sbin/nginx","-s","quit"]
         # ports:
         # - containerPort: 4200
-        resources:
-          requests:
-            memory: "64Mi"
-            cpu: "50m"
-          limits:
-            memory: "512Mi"
-            cpu: "100m"
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "50m"
+            limits:
+              memory: "512Mi"
+              cpu: "100m"
         # env:
         #   - name: DB_URL
         #     value: jdbc:postgresql://postgres-service:5432/postgres
