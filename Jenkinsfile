@@ -7,8 +7,8 @@ pipeline {
    }
 
    environment {
-      IMAGE_TAG = "cpete22/revature-bubble:fe"
-      CONTAINER_NAME = "bubblefe"
+      IMAGE_TAG = "jaylopez/magmabubblefront:v1"
+      CONTAINER_NAME = "bubble-front"
       CRED = "dockerhub"
    }
 
@@ -18,13 +18,13 @@ pipeline {
       stage('Install Dependencies') {
          steps {
             sh 'npm install'
-            discordSend description: ":construction: *Updated Dependencies*", result: currentBuild.currentResult, webhookURL: env.WEBHO_FE
+            // discordSend description: ":construction: *Updated Dependencies*", result: currentBuild.currentResult, webhookURL: env.WEBHO_FE
          }
       }
       stage('Build Angular Files') {
          steps {
             sh 'ng build --aot --output-hashing none'
-            discordSend description: ":construction_site: *Built Production Model*", result: currentBuild.currentResult, webhookURL: env.WEBHO_FE
+            // discordSend description: ":construction_site: *Built Production Model*", result: currentBuild.currentResult, webhookURL: env.WEBHO_FE
             sh 'ls ./dist/bubble/'
          }
       }
@@ -32,7 +32,7 @@ pipeline {
          steps {
                sh 'docker stop ${CONTAINER_NAME} || true'
                sh 'docker rmi ${IMAGE_TAG} || true'
-               discordSend description: ":axe: *Removed Previous Docker Artifacts*", result: currentBuild.currentResult, webhookURL: env.WEBHO_FE
+               // discordSend description: ":axe: *Removed Previous Docker Artifacts*", result: currentBuild.currentResult, webhookURL: env.WEBHO_FE
          }
       }
       stage('Create Image') {
