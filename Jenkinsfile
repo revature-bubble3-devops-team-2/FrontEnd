@@ -7,8 +7,8 @@ pipeline {
    }
 
    environment {
-      IMAGE_TAG = "cpete22/revature-bubble:fe"
-      CONTAINER_NAME = "bubblefe"
+      IMAGE_TAG = "teammagma/bubblefront"
+      CONTAINER_NAME = "bubblefront"
       CRED = "dockerhub"
    }
 
