@@ -4,15 +4,16 @@ metadata:
   name: frontend
   namespace: team-magma
   labels:
-    name: team-magma
+    name: team-magma-frontend
+    app: bubble-app
 spec:
   replicas: 1
   # minReadySeconds: 5
-  strategy: 
-    type: RollingUpdate
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 0
+  # strategy: 
+  #   type: RollingUpdate
+  #   rollingUpdate:
+  #     maxSurge: 1
+  #     maxUnavailable: 0
   selector:
     matchLabels:
       app: bubble-app
@@ -24,27 +25,16 @@ spec:
         tier: frontend
     spec:
       containers:
-        - name: bubble-front
-          image: jaylopez/magmabubblefront:v1
-          lifecycle:
-            preStop:
-              exec:
-                command: ["/usr/sbin/nginx","-s","quit"]
+      - name: bubble-front
+        image: jaylopez/magmabubblefront:v1
         # ports:
         # - containerPort: 4200
-          resources:
-            requests:
-              memory: "64Mi"
-              cpu: "50m"
-            limits:
-              memory: "512Mi"
-              cpu: "100m"
-        # env:
-        #   - name: DB_URL
-        #     value: jdbc:postgresql://postgres-service:5432/postgres
-        #   - name: DB_USER
-        #     value: postgres
-        #   - name: DB_PASS
-        #     value: pass
-          # could add an env var for spring profile value: prod
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "50m"
+          limits:
+            memory: "512Mi"
+            cpu: "100m"
+       
    
