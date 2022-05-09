@@ -1,12 +1,13 @@
 pipeline {
    agent any
 
-   options {
-      buildDiscarder(logRotator(daysToKeepStr: '7', numToKeepStr: '1'))
-      disableConcurrentBuilds()
-   }
+   // options {
+   //    buildDiscarder(logRotator(daysToKeepStr: '7', numToKeepStr: '1'))
+   //    disableConcurrentBuilds()
+   // }
 
    environment {
+      PORT: 8080
       IMAGE_TAG = "teammagma/bubblefront"
       CONTAINER_NAME = "bubblefront"
       CRED = "dockerhub"
@@ -18,6 +19,7 @@ pipeline {
       stage('Install Dependencies') {
          steps {
             sh 'npm install'
+            sh 'ng --version'
             // discordSend description: ":construction: *Updated Dependencies*", result: currentBuild.currentResult, webhookURL: env.WEBHO_FE
          }
       }
