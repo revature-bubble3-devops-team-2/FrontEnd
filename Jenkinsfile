@@ -7,7 +7,6 @@ pipeline {
    // }
 
    environment {
-      PORT: 8080
       IMAGE_TAG = "teammagma/bubblefront"
       CONTAINER_NAME = "bubblefront"
       CRED = "dockerhub"
