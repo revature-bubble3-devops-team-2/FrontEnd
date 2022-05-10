@@ -1,18 +1,14 @@
 pipeline {
-   agent any
-
-   // options {
-   //    buildDiscarder(logRotator(daysToKeepStr: '7', numToKeepStr: '1'))
-   //    disableConcurrentBuilds()
-   // }
-
+   
+  agent {
+    docker { image 'node:latest' }
+  }
+  
    environment {
       IMAGE_TAG = "teammagma/bubblefront"
       CONTAINER_NAME = "bubblefront"
       CRED = "dockerhub"
    }
-
-   tools { nodejs "node"}
 
    stages {
       stage('Install Dependencies') {
